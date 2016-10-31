@@ -9,6 +9,7 @@ if ( !isset($wp_did_header) ) {
 
 	$wp_did_header = true;
 
+<<<<<<< HEAD
 	// Load the WordPress library.
 	require_once( dirname(__FILE__) . '/wp-load.php' );
 
@@ -16,6 +17,12 @@ if ( !isset($wp_did_header) ) {
 	wp();
 
 	// Load the theme template.
+=======
+	require_once( dirname(__FILE__) . '/wp-load.php' );
+
+	wp();
+
+>>>>>>> origin/master
 	require_once( ABSPATH . WPINC . '/template-loader.php' );
 
 }

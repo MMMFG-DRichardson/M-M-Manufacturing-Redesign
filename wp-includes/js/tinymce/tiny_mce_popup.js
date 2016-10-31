@@ -1,8 +1,15 @@
 /**
+<<<<<<< HEAD
  * tinymce_mce_popup.js
  *
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Popup.js
+ *
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> origin/master
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -78,7 +85,11 @@ var tinyMCEPopup = {
 		 * tinyMCEPopup.onInit.add(function(ed) {
 		 *     alert(ed.selection.getContent());
 		 * });
+<<<<<<< HEAD
 		 *
+=======
+		 * 
+>>>>>>> origin/master
 		 * // Executes the init method on page load in some object using the SomeObject scope
 		 * tinyMCEPopup.onInit.add(SomeObject.init, SomeObject);
 		 */
@@ -107,7 +118,11 @@ var tinyMCEPopup = {
 	 * Returns a window argument/parameter by name.
 	 *
 	 * @method getWindowArg
+<<<<<<< HEAD
 	 * @param {String} name Name of the window argument to retrieve.
+=======
+	 * @param {String} name Name of the window argument to retrive.
+>>>>>>> origin/master
 	 * @param {String} defaultValue Optional default value to return.
 	 * @return {String} Argument value or default value if it wasn't found.
 	 */
@@ -121,7 +136,11 @@ var tinyMCEPopup = {
 	 * Returns a editor parameter/config option value.
 	 *
 	 * @method getParam
+<<<<<<< HEAD
 	 * @param {String} name Name of the editor config option to retrieve.
+=======
+	 * @param {String} name Name of the editor config option to retrive.
+>>>>>>> origin/master
 	 * @param {String} defaultValue Optional default value to return.
 	 * @return {String} Parameter value or default value if it wasn't found.
 	 */
@@ -327,7 +346,11 @@ var tinyMCEPopup = {
 		}
 	},
 
+<<<<<<< HEAD
 	// Internal functions
+=======
+	// Internal functions	
+>>>>>>> origin/master
 
 	_restoreSelection : function() {
 		var e = window.event.srcElement;
@@ -359,7 +382,11 @@ var tinyMCEPopup = {
 				"browse": "Browse"
 			};
 
+<<<<<<< HEAD
 			var langCode = (tinymce.settings ? tinymce.settings : t.editor.settings).language || 'en';
+=======
+			var langCode = tinymce.settings.language || 'en';
+>>>>>>> origin/master
 			for (var key in map) {
 				tinymce.i18n.data[langCode + "." + key] = tinymce.i18n.translate(map[key]);
 			}
@@ -523,7 +550,11 @@ tinymce.util.Dispatcher = function(scope) {
 		var self = this, returnValue, args = arguments, i, listeners = self.listeners, listener;
 
 		self.inDispatch = true;
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> origin/master
 		// Needs to be a real loop since the listener count might change while looping
 		// And this is also more efficient
 		for (i = 0; i < listeners.length; i++) {

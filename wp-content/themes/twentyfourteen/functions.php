@@ -60,12 +60,20 @@ function twentyfourteen_setup() {
 	/*
 	 * Make Twenty Fourteen available for translation.
 	 *
+<<<<<<< HEAD
 	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyfourteen
+=======
+	 * Translations can be added to the /languages/ directory.
+>>>>>>> origin/master
 	 * If you're building a theme based on Twenty Fourteen, use a find and
 	 * replace to change 'twentyfourteen' to the name of your theme in all
 	 * template files.
 	 */
+<<<<<<< HEAD
 	load_theme_textdomain( 'twentyfourteen' );
+=======
+	load_theme_textdomain( 'twentyfourteen', get_template_directory() . '/languages' );
+>>>>>>> origin/master
 
 	// This theme styles the visual editor to resemble the theme style.
 	add_editor_style( array( 'css/editor-style.css', twentyfourteen_font_url(), 'genericons/genericons.css' ) );
@@ -113,9 +121,12 @@ function twentyfourteen_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+<<<<<<< HEAD
 
 	// Indicate widget sidebars can use selective refresh in the Customizer.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+=======
+>>>>>>> origin/master
 }
 endif; // twentyfourteen_setup
 add_action( 'after_setup_theme', 'twentyfourteen_setup' );
@@ -218,7 +229,11 @@ function twentyfourteen_font_url() {
 			'family' => urlencode( 'Lato:300,400,700,900,300italic,400italic,700italic' ),
 			'subset' => urlencode( 'latin,latin-ext' ),
 		);
+<<<<<<< HEAD
 		$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+=======
+		$font_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
+>>>>>>> origin/master
 	}
 
 	return $font_url;
@@ -319,9 +334,15 @@ function twentyfourteen_the_attached_image() {
 
 	// If there is more than 1 attachment in a gallery...
 	if ( count( $attachment_ids ) > 1 ) {
+<<<<<<< HEAD
 		foreach ( $attachment_ids as $idx => $attachment_id ) {
 			if ( $attachment_id == $post->ID ) {
 				$next_id = $attachment_ids[ ( $idx + 1 ) % count( $attachment_ids ) ];
+=======
+		foreach ( $attachment_ids as $attachment_id ) {
+			if ( $attachment_id == $post->ID ) {
+				$next_id = current( $attachment_ids );
+>>>>>>> origin/master
 				break;
 			}
 		}

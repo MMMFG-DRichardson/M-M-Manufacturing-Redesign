@@ -44,10 +44,14 @@ class POP3 {
                                 //  This must be set to true
                                 //  manually
 
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
     function __construct ( $server = '', $timeout = '' ) {
+=======
+    function POP3 ( $server = '', $timeout = '' ) {
+>>>>>>> origin/master
         settype($this->BUFFER,"integer");
         if( !empty($server) ) {
             // Do not allow programs to alter MAILSERVER
@@ -65,6 +69,7 @@ class POP3 {
         return true;
     }
 
+<<<<<<< HEAD
 	/**
 	 * PHP4 constructor.
 	 */
@@ -72,6 +77,8 @@ class POP3 {
 		self::__construct( $server, $timeout );
 	}
 
+=======
+>>>>>>> origin/master
     function update_timer () {
         if (!ini_get('safe_mode'))
             set_time_limit($this->TIMEOUT);
@@ -82,7 +89,11 @@ class POP3 {
         //  Opens a socket to the specified server. Unless overridden,
         //  port defaults to 110. Returns true on success, false on fail
 
+<<<<<<< HEAD
         // If MAILSERVER is set, override $server with its value.
+=======
+        // If MAILSERVER is set, override $server with it's value
+>>>>>>> origin/master
 
     if (!isset($port) || !$port) {$port = 110;}
         if(!empty($this->MAILSERVER))

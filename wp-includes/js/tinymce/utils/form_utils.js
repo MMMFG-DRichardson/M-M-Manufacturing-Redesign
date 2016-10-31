@@ -1,8 +1,13 @@
 /**
  * form_utils.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> origin/master
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing

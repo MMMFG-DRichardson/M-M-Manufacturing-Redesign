@@ -161,12 +161,20 @@ function setUserSetting( name, value, _del ) {
 		path = userSettings.url,
 		secure = !! userSettings.secure;
 
+<<<<<<< HEAD
 	name = name.toString().replace( /[^A-Za-z0-9_-]/g, '' );
+=======
+	name = name.toString().replace( /[^A-Za-z0-9_]/, '' );
+>>>>>>> origin/master
 
 	if ( typeof value === 'number' ) {
 		value = parseInt( value, 10 );
 	} else {
+<<<<<<< HEAD
 		value = value.toString().replace( /[^A-Za-z0-9_-]/g, '' );
+=======
+		value = value.toString().replace( /[^A-Za-z0-9_]/, '' );
+>>>>>>> origin/master
 	}
 
 	settings = settings || {};

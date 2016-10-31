@@ -8,6 +8,7 @@
  */
 
 /**
+<<<<<<< HEAD
  * Return the HTTP protocol sent by the server.
  *
  * @since 4.4.0
@@ -23,10 +24,17 @@ function wp_get_server_protocol() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Turn register globals off.
  *
  * @since 2.1.0
  * @access private
+<<<<<<< HEAD
+=======
+ *
+ * @return null Will return null if register_globals PHP directive was disabled.
+>>>>>>> origin/master
  */
 function wp_unregister_GLOBALS() {
 	if ( !ini_get( 'register_globals' ) )
@@ -126,19 +134,28 @@ function wp_check_php_mysql_versions() {
 
 	if ( version_compare( $required_php_version, $php_version, '>' ) ) {
 		wp_load_translations_early();
+<<<<<<< HEAD
 
 		$protocol = wp_get_server_protocol();
 		header( sprintf( '%s 500 Internal Server Error', $protocol ), true, 500 );
+=======
+>>>>>>> origin/master
 		header( 'Content-Type: text/html; charset=utf-8' );
 		die( sprintf( __( 'Your server is running PHP version %1$s but WordPress %2$s requires at least %3$s.' ), $php_version, $wp_version, $required_php_version ) );
 	}
 
+<<<<<<< HEAD
 	if ( ! extension_loaded( 'mysql' ) && ! extension_loaded( 'mysqli' ) && ! extension_loaded( 'mysqlnd' ) && ! file_exists( WP_CONTENT_DIR . '/db.php' ) ) {
 		wp_load_translations_early();
 
 		$protocol = wp_get_server_protocol();
 		header( sprintf( '%s 500 Internal Server Error', $protocol ), true, 500 );
 		header( 'Content-Type: text/html; charset=utf-8' );
+=======
+	if ( ! extension_loaded( 'mysql' ) && ! extension_loaded( 'mysqli' ) && ! file_exists( WP_CONTENT_DIR . '/db.php' ) ) {
+		wp_load_translations_early();
+		 header( 'Content-Type: text/html; charset=utf-8' );
+>>>>>>> origin/master
 		die( __( 'Your PHP installation appears to be missing the MySQL extension which is required by WordPress.' ) );
 	}
 }
@@ -153,6 +170,10 @@ function wp_check_php_mysql_versions() {
 function wp_favicon_request() {
 	if ( '/favicon.ico' == $_SERVER['REQUEST_URI'] ) {
 		header('Content-Type: image/vnd.microsoft.icon');
+<<<<<<< HEAD
+=======
+		header('Content-Length: 0');
+>>>>>>> origin/master
 		exit;
 	}
 }
@@ -174,7 +195,11 @@ function wp_favicon_request() {
  * @global int $upgrading the unix timestamp marking when upgrading WordPress began.
  */
 function wp_maintenance() {
+<<<<<<< HEAD
 	if ( ! file_exists( ABSPATH . '.maintenance' ) || wp_installing() )
+=======
+	if ( !file_exists( ABSPATH . '.maintenance' ) || defined( 'WP_INSTALLING' ) )
+>>>>>>> origin/master
 		return;
 
 	global $upgrading;
@@ -184,6 +209,7 @@ function wp_maintenance() {
 	if ( ( time() - $upgrading ) >= 600 )
 		return;
 
+<<<<<<< HEAD
 	/**
 	 * Filters whether to enable maintenance mode.
 	 *
@@ -201,6 +227,8 @@ function wp_maintenance() {
 		return;
 	}
 
+=======
+>>>>>>> origin/master
 	if ( file_exists( WP_CONTENT_DIR . '/maintenance.php' ) ) {
 		require_once( WP_CONTENT_DIR . '/maintenance.php' );
 		die();
@@ -208,7 +236,13 @@ function wp_maintenance() {
 
 	wp_load_translations_early();
 
+<<<<<<< HEAD
 	$protocol = wp_get_server_protocol();
+=======
+	$protocol = $_SERVER["SERVER_PROTOCOL"];
+	if ( 'HTTP/1.1' != $protocol && 'HTTP/1.0' != $protocol )
+		$protocol = 'HTTP/1.0';
+>>>>>>> origin/master
 	header( "$protocol 503 Service Unavailable", true, 503 );
 	header( 'Content-Type: text/html; charset=utf-8' );
 	header( 'Retry-After: 600' );
@@ -274,8 +308,12 @@ function timer_stop( $display = 0, $precision = 3 ) {
  * Set PHP error reporting based on WordPress debug settings.
  *
  * Uses three constants: `WP_DEBUG`, `WP_DEBUG_DISPLAY`, and `WP_DEBUG_LOG`.
+<<<<<<< HEAD
  * All three can be defined in wp-config.php. By default, `WP_DEBUG` and
  * `WP_DEBUG_LOG` are set to false, and `WP_DEBUG_DISPLAY` is set to true.
+=======
+ * All three can be defined in wp-config.php, and by default are set to false.
+>>>>>>> origin/master
  *
  * When `WP_DEBUG` is true, all PHP notices are reported. WordPress will also
  * display internal notices: when a deprecated WordPress function, function
@@ -296,12 +334,17 @@ function timer_stop( $display = 0, $precision = 3 ) {
  * When `WP_DEBUG_LOG` is true, errors will be logged to debug.log in the content
  * directory.
  *
+<<<<<<< HEAD
  * Errors are never displayed for XML-RPC, REST, and Ajax requests.
+=======
+ * Errors are never displayed for XML-RPC requests.
+>>>>>>> origin/master
  *
  * @since 3.0.0
  * @access private
  */
 function wp_debug_mode() {
+<<<<<<< HEAD
 	/**
 	 * Filters whether to allow the debug mode check to occur.
 	 *
@@ -318,6 +361,8 @@ function wp_debug_mode() {
 		return;
 	}
 
+=======
+>>>>>>> origin/master
 	if ( WP_DEBUG ) {
 		error_reporting( E_ALL );
 
@@ -333,10 +378,15 @@ function wp_debug_mode() {
 	} else {
 		error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
 	}
+<<<<<<< HEAD
 
 	if ( defined( 'XMLRPC_REQUEST' ) || defined( 'REST_REQUEST' ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 		@ini_set( 'display_errors', 0 );
 	}
+=======
+	if ( defined( 'XMLRPC_REQUEST' ) )
+		ini_set( 'display_errors', 0 );
+>>>>>>> origin/master
 }
 
 /**
@@ -364,7 +414,11 @@ function wp_set_lang_dir() {
 			 */
 			define( 'WP_LANG_DIR', WP_CONTENT_DIR . '/languages' );
 			if ( !defined( 'LANGDIR' ) ) {
+<<<<<<< HEAD
 				// Old static relative path maintained for limited backward compatibility - won't work in some cases.
+=======
+				// Old static relative path maintained for limited backwards compatibility - won't work in some cases
+>>>>>>> origin/master
 				define( 'LANGDIR', 'wp-content/languages' );
 			}
 		} else {
@@ -377,7 +431,11 @@ function wp_set_lang_dir() {
 			 */
 			define( 'WP_LANG_DIR', ABSPATH . WPINC . '/languages' );
 			if ( !defined( 'LANGDIR' ) ) {
+<<<<<<< HEAD
 				// Old relative path maintained for backward compatibility.
+=======
+				// Old relative path maintained for backwards compatibility
+>>>>>>> origin/master
 				define( 'LANGDIR', WPINC . '/languages' );
 			}
 		}
@@ -433,6 +491,7 @@ function wp_set_wpdb_vars() {
 
 	if ( is_wp_error( $prefix ) ) {
 		wp_load_translations_early();
+<<<<<<< HEAD
 		wp_die(
 			/* translators: 1: $table_prefix 2: wp-config.php */
 			sprintf( __( '<strong>ERROR</strong>: %1$s in %2$s can only contain numbers, letters, and underscores.' ),
@@ -440,17 +499,28 @@ function wp_set_wpdb_vars() {
 				'<code>wp-config.php</code>'
 			)
 		);
+=======
+		wp_die( __( '<strong>ERROR</strong>: <code>$table_prefix</code> in <code>wp-config.php</code> can only contain numbers, letters, and underscores.' ) );
+>>>>>>> origin/master
 	}
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Access/Modify private global variable `$_wp_using_ext_object_cache`.
+ *
+>>>>>>> origin/master
  * Toggle `$_wp_using_ext_object_cache` on and off without directly
  * touching global.
  *
  * @since 3.7.0
  *
+<<<<<<< HEAD
  * @global bool $_wp_using_ext_object_cache
  *
+=======
+>>>>>>> origin/master
  * @param bool $using Whether external object cache is being used.
  * @return bool The current 'using' setting.
  */
@@ -509,8 +579,13 @@ function wp_start_object_cache() {
 		wp_cache_init();
 
 	if ( function_exists( 'wp_cache_add_global_groups' ) ) {
+<<<<<<< HEAD
 		wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'site-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites' ) );
 		wp_cache_add_non_persistent_groups( array( 'counts', 'plugins' ) );
+=======
+		wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache' ) );
+		wp_cache_add_non_persistent_groups( array( 'comment', 'counts', 'plugins' ) );
+>>>>>>> origin/master
 	}
 }
 
@@ -524,12 +599,20 @@ function wp_start_object_cache() {
  */
 function wp_not_installed() {
 	if ( is_multisite() ) {
+<<<<<<< HEAD
 		if ( ! is_blog_installed() && ! wp_installing() ) {
+=======
+		if ( ! is_blog_installed() && ! defined( 'WP_INSTALLING' ) ) {
+>>>>>>> origin/master
 			nocache_headers();
 
 			wp_die( __( 'The site you have requested is not installed properly. Please contact the system administrator.' ) );
 		}
+<<<<<<< HEAD
 	} elseif ( ! is_blog_installed() && ! wp_installing() ) {
+=======
+	} elseif ( ! is_blog_installed() && ! defined( 'WP_INSTALLING' ) ) {
+>>>>>>> origin/master
 		nocache_headers();
 
 		require( ABSPATH . WPINC . '/kses.php' );
@@ -591,11 +674,19 @@ function wp_get_active_and_valid_plugins() {
 
 	// Check for hacks file if the option is enabled
 	if ( get_option( 'hack_file' ) && file_exists( ABSPATH . 'my-hacks.php' ) ) {
+<<<<<<< HEAD
 		_deprecated_file( 'my-hacks.php', '1.5.0' );
 		array_unshift( $plugins, ABSPATH . 'my-hacks.php' );
 	}
 
 	if ( empty( $active_plugins ) || wp_installing() )
+=======
+		_deprecated_file( 'my-hacks.php', '1.5' );
+		array_unshift( $plugins, ABSPATH . 'my-hacks.php' );
+	}
+
+	if ( empty( $active_plugins ) || defined( 'WP_INSTALLING' ) )
+>>>>>>> origin/master
 		return $plugins;
 
 	$network_plugins = is_multisite() ? wp_get_active_network_plugins() : false;
@@ -690,13 +781,20 @@ function wp_clone( $object ) {
 /**
  * Whether the current request is for an administrative interface page.
  *
+<<<<<<< HEAD
  * Does not check if the user is an administrator; current_user_can()
+=======
+ * Does not check if the user is an administrator; {@see current_user_can()}
+>>>>>>> origin/master
  * for checking roles and capabilities.
  *
  * @since 1.5.1
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> origin/master
  * @return bool True if inside WordPress administration interface, false otherwise.
  */
 function is_admin() {
@@ -713,13 +811,20 @@ function is_admin() {
  *
  * e.g. `/wp-admin/`
  *
+<<<<<<< HEAD
  * Does not check if the user is an administrator; current_user_can()
+=======
+ * Does not check if the user is an administrator; {@see current_user_can()}
+>>>>>>> origin/master
  * for checking roles and capabilities.
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> origin/master
  * @return bool True if inside WordPress blog administration pages.
  */
 function is_blog_admin() {
@@ -736,13 +841,20 @@ function is_blog_admin() {
  *
  * e.g. `/wp-admin/network/`
  *
+<<<<<<< HEAD
  * Does not check if the user is an administrator; current_user_can()
+=======
+ * Does not check if the user is an administrator; {@see current_user_can()}
+>>>>>>> origin/master
  * for checking roles and capabilities.
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> origin/master
  * @return bool True if inside WordPress network administration pages.
  */
 function is_network_admin() {
@@ -761,12 +873,19 @@ function is_network_admin() {
  *
  * Does not inform on whether the user is an admin! Use capability
  * checks to tell if the user should be accessing a section or not
+<<<<<<< HEAD
  * current_user_can().
  *
  * @since 3.1.0
  *
  * @global WP_Screen $current_screen
  *
+=======
+ * {@see current_user_can()}.
+ *
+ * @since 3.1.0
+ *
+>>>>>>> origin/master
  * @return bool True if inside WordPress user administration pages.
  */
 function is_user_admin() {
@@ -796,6 +915,7 @@ function is_multisite() {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieve the current site ID.
  *
  * @since 3.1.0
@@ -803,6 +923,13 @@ function is_multisite() {
  * @global int $blog_id
  *
  * @return int Site ID.
+=======
+ * Retrieve the current blog ID.
+ *
+ * @since 3.1.0
+ *
+ * @return int Blog id
+>>>>>>> origin/master
  */
 function get_current_blog_id() {
 	global $blog_id;
@@ -810,6 +937,7 @@ function get_current_blog_id() {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the current network ID.
  *
  * @since 4.6.0
@@ -833,6 +961,8 @@ function get_current_network_id() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Attempt an early load of translations.
  *
  * Used for errors encountered during the initial loading process, before
@@ -845,10 +975,14 @@ function get_current_network_id() {
  * @since 3.4.0
  * @access private
  *
+<<<<<<< HEAD
  * @global string    $text_direction
  * @global WP_Locale $wp_locale      The WordPress date and time locale object.
  *
  * @staticvar bool $loaded
+=======
+ * @global $wp_locale The WordPress date and time locale object.
+>>>>>>> origin/master
  */
 function wp_load_translations_early() {
 	global $text_direction, $wp_locale;
@@ -920,6 +1054,7 @@ function wp_load_translations_early() {
 
 	$wp_locale = new WP_Locale();
 }
+<<<<<<< HEAD
 
 /**
  * Check or set whether WordPress is in "installation" mode.
@@ -1036,3 +1171,5 @@ function wp_is_ini_value_changeable( $setting ) {
 
 	return false;
 }
+=======
+>>>>>>> origin/master

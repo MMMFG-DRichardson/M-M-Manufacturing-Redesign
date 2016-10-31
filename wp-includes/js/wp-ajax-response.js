@@ -24,7 +24,11 @@ var wpAjax = jQuery.extend( {
 				response.supplemental = {};
 				if ( !jQuery( 'supplemental', child ).children().each( function() {
 					response.supplemental[this.nodeName] = jQuery(this).text();
+<<<<<<< HEAD
 				} ).length ) { response.supplemental = false; }
+=======
+				} ).size() ) { response.supplemental = false; }
+>>>>>>> origin/master
 				response.errors = [];
 				if ( !jQuery('wp_error', child).each( function() {
 					var code = jQuery(this).attr('code'), anError, errorData, formField;
@@ -37,7 +41,11 @@ var wpAjax = jQuery.extend( {
 					err += '<p>' + anError.message + '</p>';
 					response.errors.push( anError );
 					parsed.errors = true;
+<<<<<<< HEAD
 				} ).length ) { response.errors = false; }
+=======
+				} ).size() ) { response.errors = false; }
+>>>>>>> origin/master
 				parsed.responses.push( response );
 			} );
 			if ( err.length ) { re.html( '<div class="error">' + err + '</div>' ); }
@@ -50,11 +58,19 @@ var wpAjax = jQuery.extend( {
 		return true;
 	},
 	invalidateForm: function ( selector ) {
+<<<<<<< HEAD
 		return jQuery( selector ).addClass( 'form-invalid' ).find('input').one( 'change wp-check-valid-field', function() { jQuery(this).closest('.form-invalid').removeClass( 'form-invalid' ); } );
 	},
 	validateForm: function( selector ) {
 		selector = jQuery( selector );
 		return !wpAjax.invalidateForm( selector.find('.form-required').filter( function() { return jQuery('input:visible', this).val() === ''; } ) ).length;
+=======
+		return jQuery( selector ).addClass( 'form-invalid' ).find('input:visible').change( function() { jQuery(this).closest('.form-invalid').removeClass( 'form-invalid' ); } );
+	},
+	validateForm: function( selector ) {
+		selector = jQuery( selector );
+		return !wpAjax.invalidateForm( selector.find('.form-required').filter( function() { return jQuery('input:visible', this).val() === ''; } ) ).size();
+>>>>>>> origin/master
 	}
 }, wpAjax || { noPerm: 'You do not have permission to do that.', broken: 'An unidentified error has occurred.' } );
 

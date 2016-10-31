@@ -1,8 +1,14 @@
 /* global inlineEditL10n, ajaxurl, typenow */
+<<<<<<< HEAD
 window.wp = window.wp || {};
 
 var inlineEditPost;
 ( function( $, wp ) {
+=======
+
+var inlineEditPost;
+(function($) {
+>>>>>>> origin/master
 inlineEditPost = {
 
 	init : function(){
@@ -23,10 +29,17 @@ inlineEditPost = {
 			}
 		});
 
+<<<<<<< HEAD
 		$( '.cancel', qeRow ).click( function() {
 			return inlineEditPost.revert();
 		});
 		$( '.save', qeRow ).click( function() {
+=======
+		$('a.cancel', qeRow).click(function(){
+			return inlineEditPost.revert();
+		});
+		$('a.save', qeRow).click(function(){
+>>>>>>> origin/master
 			return inlineEditPost.save(this);
 		});
 		$('td', qeRow).keydown(function(e){
@@ -35,7 +48,11 @@ inlineEditPost = {
 			}
 		});
 
+<<<<<<< HEAD
 		$( '.cancel', bulkRow ).click( function() {
+=======
+		$('a.cancel', bulkRow).click(function(){
+>>>>>>> origin/master
 			return inlineEditPost.revert();
 		});
 
@@ -49,9 +66,15 @@ inlineEditPost = {
 		});
 
 		// add events
+<<<<<<< HEAD
 		$('#the-list').on( 'click', 'a.editinline', function( e ) {
 			e.preventDefault();
 			inlineEditPost.edit(this);
+=======
+		$('#the-list').on('click', 'a.editinline', function(){
+			inlineEditPost.edit(this);
+			return false;
+>>>>>>> origin/master
 		});
 
 		$('#bulk-edit').find('fieldset:first').after(
@@ -63,11 +86,15 @@ inlineEditPost = {
 		$('select[name="_status"] option[value="future"]', bulkRow).remove();
 
 		$('#doaction, #doaction2').click(function(e){
+<<<<<<< HEAD
 			var n;
 
 			t.whichBulkButtonId = $( this ).attr( 'id' );
 			n = t.whichBulkButtonId.substr( 2 );
 
+=======
+			var n = $(this).attr('id').substr(2);
+>>>>>>> origin/master
 			if ( 'edit' === $( 'select[name="' + n + '"]' ).val() ) {
 				e.preventDefault();
 				t.setBulk();
@@ -86,7 +113,11 @@ inlineEditPost = {
 		var te = '', type = this.type, tax, c = true;
 		this.revert();
 
+<<<<<<< HEAD
 		$( '#bulk-edit td' ).attr( 'colspan', $( 'th:visible, td:visible', '.widefat:first thead' ).length );
+=======
+		$('#bulk-edit td').attr('colspan', $('.widefat:first thead th:visible').length);
+>>>>>>> origin/master
 		// Insert the editor at the top of the table with an empty row above to maintain zebra striping.
 		$('table.widefat tbody').prepend( $('#bulk-edit') ).prepend('<tr class="hidden"></tr>');
 		$('#bulk-edit').addClass('inline-editor').show();
@@ -122,7 +153,11 @@ inlineEditPost = {
 	},
 
 	edit : function(id) {
+<<<<<<< HEAD
 		var t = this, fields, editRow, rowData, status, pageOpt, pageLevel, nextPage, pageLoop = true, nextLevel, f, val, pw;
+=======
+		var t = this, fields, editRow, rowData, status, pageOpt, pageLevel, nextPage, pageLoop = true, nextLevel, cur_format, f, val;
+>>>>>>> origin/master
 		t.revert();
 
 		if ( typeof(id) === 'object' ) {
@@ -136,9 +171,15 @@ inlineEditPost = {
 
 		// add the new edit row with an extra blank row underneath to maintain zebra striping.
 		editRow = $('#inline-edit').clone(true);
+<<<<<<< HEAD
 		$( 'td', editRow ).attr( 'colspan', $( 'th:visible, td:visible', '.widefat:first thead' ).length );
 
 		$(t.what+id).removeClass('is-expanded').hide().after(editRow).after('<tr class="hidden"></tr>');
+=======
+		$('td', editRow).attr('colspan', $('.widefat:first thead th:visible').length);
+
+		$(t.what+id).hide().after(editRow).after('<tr class="hidden"></tr>');
+>>>>>>> origin/master
 
 		// populate the data
 		rowData = $('#inline_'+id);
@@ -150,6 +191,18 @@ inlineEditPost = {
 			$('label.inline-edit-author', editRow).hide();
 		}
 
+<<<<<<< HEAD
+=======
+		// hide unsupported formats, but leave the current format alone
+		cur_format = $('.post_format', rowData).text();
+		$('option.unsupported', editRow).each(function() {
+			var $this = $(this);
+			if ( $this.val() !== cur_format ) {
+				$this.remove();
+			}
+		});
+
+>>>>>>> origin/master
 		for ( f = 0; f < fields.length; f++ ) {
 			val = $('.'+fields[f], rowData);
 			// Deal with Twemoji
@@ -205,10 +258,16 @@ inlineEditPost = {
 			$('select[name="_status"] option[value="future"]', editRow).remove();
 		}
 
+<<<<<<< HEAD
 		pw = $( '.inline-edit-password-input' ).prop( 'disabled', false );
 		if ( 'private' === status ) {
 			$('input[name="keep_private"]', editRow).prop('checked', true);
 			pw.val( '' ).prop( 'disabled', true );
+=======
+		if ( 'private' === status ) {
+			$('input[name="keep_private"]', editRow).prop('checked', true);
+			$('input.inline-edit-password-input').val('').prop('disabled', true);
+>>>>>>> origin/master
 		}
 
 		// remove the current page and children from the parent dropdown
@@ -240,7 +299,10 @@ inlineEditPost = {
 		return false;
 	},
 
+<<<<<<< HEAD
 	// Ajax saving is only for Quick Edit.
+=======
+>>>>>>> origin/master
 	save : function(id) {
 		var params, fields, page = $('.post_status_page').val() || '';
 
@@ -264,15 +326,20 @@ inlineEditPost = {
 		// make ajax request
 		$.post( ajaxurl, params,
 			function(r) {
+<<<<<<< HEAD
 				var $errorSpan = $( '#edit-' + id + ' .inline-edit-save .error' );
 
 				$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 				$( '.ac_results' ).hide();
+=======
+				$( 'table.widefat .spinner' ).removeClass( 'is-active' );
+>>>>>>> origin/master
 
 				if (r) {
 					if ( -1 !== r.indexOf( '<tr' ) ) {
 						$(inlineEditPost.what+id).siblings('tr.hidden').addBack().remove();
 						$('#edit-'+id).before(r).remove();
+<<<<<<< HEAD
 						$( inlineEditPost.what + id ).hide().fadeIn( 400, function() {
 							// Move focus back to the Quick Edit link. $( this ) is the row being animated.
 							$( this ).find( '.editinline' ).focus();
@@ -313,6 +380,35 @@ inlineEditPost = {
 				id = id.substr( id.lastIndexOf('-') + 1 );
 				// Show the post row and move focus back to the Quick Edit link.
 				$( this.what + id ).show().find( '.editinline' ).focus();
+=======
+						$(inlineEditPost.what+id).hide().fadeIn();
+					} else {
+						r = r.replace( /<.[^<>]*?>/g, '' );
+						$('#edit-'+id+' .inline-edit-save .error').html(r).show();
+					}
+				} else {
+					$('#edit-'+id+' .inline-edit-save .error').html(inlineEditL10n.error).show();
+				}
+			},
+		'html');
+		return false;
+	},
+
+	revert : function(){
+		var id = $('table.widefat tr.inline-editor').attr('id');
+
+		if ( id ) {
+			$( 'table.widefat .spinner' ).removeClass( 'is-active' );
+
+			if ( 'bulk-edit' === id ) {
+				$('table.widefat #bulk-edit').removeClass('inline-editor').hide().siblings('tr.hidden').remove();
+				$('#bulk-titles').empty();
+				$('#inlineedit').append( $('#bulk-edit') );
+			} else {
+				$('#'+id).siblings('tr.hidden').addBack().remove();
+				id = id.substr( id.lastIndexOf('-') + 1 );
+				$(this.what+id).show();
+>>>>>>> origin/master
 			}
 		}
 
@@ -342,7 +438,11 @@ $( document ).on( 'heartbeat-tick.wp-check-locked-posts', function( e, data ) {
 				row.find('.check-column checkbox').prop('checked', false);
 
 				if ( lock_data.avatar_src ) {
+<<<<<<< HEAD
 					avatar = $( '<img class="avatar avatar-18 photo" width="18" height="18" alt="" />' ).attr( 'src', lock_data.avatar_src.replace( /&amp;/g, '&' ) );
+=======
+					avatar = $('<img class="avatar avatar-18 photo" width="18" height="18" />').attr( 'src', lock_data.avatar_src.replace(/&amp;/g, '&') );
+>>>>>>> origin/master
 					row.find('.column-title .locked-avatar').empty().append( avatar );
 				}
 				row.addClass('wp-locked');
@@ -371,4 +471,8 @@ $( document ).on( 'heartbeat-tick.wp-check-locked-posts', function( e, data ) {
 	}
 });
 
+<<<<<<< HEAD
 })( jQuery, window.wp );
+=======
+}(jQuery));
+>>>>>>> origin/master

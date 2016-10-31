@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> origin/master
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -12,7 +17,11 @@
 
 tinymce.PluginManager.add('fullscreen', function(editor) {
 	var fullscreenState = false, DOM = tinymce.DOM, iframeWidth, iframeHeight, resizeHandler;
+<<<<<<< HEAD
 	var containerWidth, containerHeight, scrollPos;
+=======
+	var containerWidth, containerHeight;
+>>>>>>> origin/master
 
 	if (editor.settings.inline) {
 		return;
@@ -37,6 +46,7 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 		return {w: w, h: h};
 	}
 
+<<<<<<< HEAD
 	function getScrollPos() {
 		var vp = tinymce.DOM.getViewPort();
 
@@ -50,6 +60,8 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 		scrollTo(pos.x, pos.y);
 	}
 
+=======
+>>>>>>> origin/master
 	function toggleFullscreen() {
 		var body = document.body, documentElement = document.documentElement, editorContainerStyle;
 		var editorContainer, iframe, iframeStyle;
@@ -66,7 +78,10 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 		iframeStyle = iframe.style;
 
 		if (fullscreenState) {
+<<<<<<< HEAD
 			scrollPos = getScrollPos();
+=======
+>>>>>>> origin/master
 			iframeWidth = iframeStyle.width;
 			iframeHeight = iframeStyle.height;
 			iframeStyle.width = iframeStyle.height = '100%';
@@ -97,14 +112,21 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 			DOM.removeClass(documentElement, 'mce-fullscreen');
 			DOM.removeClass(editorContainer, 'mce-fullscreen');
 			DOM.unbind(window, 'resize', resizeHandler);
+<<<<<<< HEAD
 			setScrollPos(scrollPos);
+=======
+>>>>>>> origin/master
 		}
 
 		editor.fire('FullscreenStateChanged', {state: fullscreenState});
 	}
 
 	editor.on('init', function() {
+<<<<<<< HEAD
 		editor.addShortcut('Ctrl+Shift+F', '', toggleFullscreen);
+=======
+		editor.addShortcut('Meta+Alt+F', '', toggleFullscreen);
+>>>>>>> origin/master
 	});
 
 	editor.on('remove', function() {
@@ -117,12 +139,18 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 
 	editor.addMenuItem('fullscreen', {
 		text: 'Fullscreen',
+<<<<<<< HEAD
 		shortcut: 'Ctrl+Shift+F',
 		selectable: true,
 		onClick: function() {
 			toggleFullscreen();
 			editor.focus();
 		},
+=======
+		shortcut: 'Meta+Alt+F',
+		selectable: true,
+		onClick: toggleFullscreen,
+>>>>>>> origin/master
 		onPostRender: function() {
 			var self = this;
 
@@ -135,7 +163,11 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 
 	editor.addButton('fullscreen', {
 		tooltip: 'Fullscreen',
+<<<<<<< HEAD
 		shortcut: 'Ctrl+Alt+F',
+=======
+		shortcut: 'Meta+Alt+F',
+>>>>>>> origin/master
 		onClick: toggleFullscreen,
 		onPostRender: function() {
 			var self = this;
@@ -151,4 +183,8 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 			return fullscreenState;
 		}
 	};
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> origin/master

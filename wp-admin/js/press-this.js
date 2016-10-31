@@ -5,9 +5,14 @@
 ( function( $, window ) {
 	var PressThis = function() {
 		var editor, $mediaList, $mediaThumbWrap,
+<<<<<<< HEAD
 			$window               = $( window ),
 			$document             = $( document ),
 			saveAlert             = false,
+=======
+			saveAlert             = false,
+			editLinkVisible       = false,
+>>>>>>> origin/master
 			textarea              = document.createElement( 'textarea' ),
 			sidebarIsOpen         = false,
 			settings              = window.wpPressThisConfig || {},
@@ -18,11 +23,14 @@
 			isOffScreen           = 'is-off-screen',
 			isHidden              = 'is-hidden',
 			offscreenHidden       = isOffScreen + ' ' + isHidden,
+<<<<<<< HEAD
 			iOS                   = /iPad|iPod|iPhone/.test( window.navigator.userAgent ),
 			$textEditor           = $( '#pressthis' ),
 			textEditor            = $textEditor[0],
 			textEditorMinHeight   = 600,
 			textLength            = 0,
+=======
+>>>>>>> origin/master
 			transitionEndEvent    = ( function() {
 				var style = document.documentElement.style;
 
@@ -120,6 +128,7 @@
 			$( '.post-actions button' ).removeAttr( 'disabled' );
 		}
 
+<<<<<<< HEAD
 		function textEditorResize( reset ) {
 			var pageYOffset, height;
 
@@ -213,6 +222,8 @@
 			}
 		}
 
+=======
+>>>>>>> origin/master
 		/**
 		 * Replace emoji images with chars and sanitize the text content.
 		 */
@@ -262,7 +273,12 @@
 		 * @param action string publish|draft
 		 */
 		function submitPost( action ) {
+<<<<<<< HEAD
 			var data;
+=======
+			var data,
+				keepFocus = $( document.activeElement ).hasClass( 'draft-button' );
+>>>>>>> origin/master
 
 			saveAlert = false;
 			showSpinner();
@@ -281,6 +297,7 @@
 			}).always( function() {
 				hideSpinner();
 				clearNotices();
+<<<<<<< HEAD
 				$( '.publish-button' ).removeClass( 'is-saving' );
 			}).done( function( response ) {
 				if ( ! response.success ) {
@@ -299,12 +316,57 @@
 					} else {
 						window.location.href = response.data.redirect;
 					}
+=======
+			}).done( function( response ) {
+				var $link, $button;
+
+				if ( ! response.success ) {
+					renderError( response.data.errorMessage );
+				} else if ( response.data.redirect ) {
+					if ( window.opener && settings.redirInParent ) {
+						try {
+							window.opener.location.href = response.data.redirect;
+						} catch( er ) {}
+
+						window.self.close();
+					} else {
+						window.location.href = response.data.redirect;
+					}
+				} else if ( response.data.postSaved ) {
+					$link = $( '.edit-post-link' );
+					$button = $( '.draft-button' );
+					editLinkVisible = true;
+
+					$button.fadeOut( 200, function() {
+						$button.removeClass( 'is-saving' );
+						$link.fadeIn( 200, function() {
+							var active = document.activeElement;
+							// Different browsers move the focus to different places when the button is disabled.
+							if ( keepFocus && ( active === $button[0] || $( active ).hasClass( 'post-actions' ) || active.nodeName === 'BODY' ) ) {
+								$link.focus();
+							}
+						});
+					});
+>>>>>>> origin/master
 				}
 			}).fail( function() {
 				renderError( __( 'serverError' ) );
 			});
 		}
 
+<<<<<<< HEAD
+=======
+		function resetDraftButton() {
+			if ( editLinkVisible ) {
+				editLinkVisible = false;
+
+				$( '.edit-post-link' ).fadeOut( 200, function() {
+					$( '.draft-button' ).removeClass( 'is-saving' ).fadeIn( 200 );
+				});
+			}
+		}
+
+>>>>>>> origin/master
 		/**
 		 * Inserts the media a user has selected from the presented list inside the editor, as an image or embed, based on type
 		 *
@@ -315,6 +377,13 @@
 		function insertSelectedMedia( $element ) {
 			var src, link, newContent = '';
 
+<<<<<<< HEAD
+=======
+			if ( ! editor ) {
+				return;
+			}
+
+>>>>>>> origin/master
 			src = checkUrl( $element.attr( 'data-wp-src' ) || '' );
 			link = checkUrl( data.u );
 
@@ -323,11 +392,16 @@
 					link = src;
 				}
 
+<<<<<<< HEAD
 				newContent = '<a href="' + link + '"><img class="alignnone size-full" src="' + src + '" alt="" /></a>';
+=======
+				newContent = '<a href="' + link + '"><img class="alignnone size-full" src="' + src + '" /></a>';
+>>>>>>> origin/master
 			} else {
 				newContent = '[embed]' + src + '[/embed]';
 			}
 
+<<<<<<< HEAD
 			if ( editor && ! editor.isHidden() ) {
 				if ( ! hasSetFocus ) {
 					editor.setContent( '<p>' + newContent + '</p>' + editor.getContent() );
@@ -336,6 +410,12 @@
 				}
 			} else if ( window.QTags ) {
 				window.QTags.insertContent( newContent );
+=======
+			if ( ! hasSetFocus ) {
+				editor.setContent( '<p>' + newContent + '</p>' + editor.getContent() );
+			} else {
+				editor.execCommand( 'mceInsertContent', false, newContent );
+>>>>>>> origin/master
 			}
 		}
 
@@ -626,6 +706,10 @@
 
 			$titleField.on( 'focus', function() {
 				$placeholder.addClass( 'is-hidden' );
+<<<<<<< HEAD
+=======
+				resetDraftButton();
+>>>>>>> origin/master
 			}).on( 'blur', function() {
 				if ( ! $titleField.text() && ! $titleField.html() ) {
 					$placeholder.removeClass( 'is-hidden' );
@@ -701,11 +785,14 @@
 			});
 		}
 
+<<<<<<< HEAD
 		function splitButtonClose() {
 			$( '.split-button' ).removeClass( 'is-open' );
 			$( '.split-button-toggle' ).attr( 'aria-expanded', 'false' );
 		}
 
+=======
+>>>>>>> origin/master
 		/* ***************************************************************
 		 * PROCESSING FUNCTIONS
 		 *************************************************************** */
@@ -722,24 +809,32 @@
 			if ( window.tagBox ) {
 				window.tagBox.init();
 			}
+<<<<<<< HEAD
 
 			// iOS doesn't fire click events on "standard" elements without this...
 			if ( iOS ) {
 				$( document.body ).css( 'cursor', 'pointer' );
 			}
+=======
+>>>>>>> origin/master
 		}
 
 		/**
 		 * Set app events and other state monitoring related code.
 		 */
 		function monitor() {
+<<<<<<< HEAD
 			var $splitButton = $( '.split-button' );
 
 			$document.on( 'tinymce-editor-init', function( event, ed ) {
+=======
+			$( document ).on( 'tinymce-editor-init', function( event, ed ) {
+>>>>>>> origin/master
 				editor = ed;
 
 				editor.on( 'nodechange', function() {
 					hasSetFocus = true;
+<<<<<<< HEAD
 				});
 
 				editor.on( 'focus', function() {
@@ -761,24 +856,36 @@
 				editor.on( 'keyup', mceKeyup );
 				editor.on( 'undo redo', mceScroll );
 
+=======
+					resetDraftButton();
+				} );
+>>>>>>> origin/master
 			}).on( 'click.press-this keypress.press-this', '.suggested-media-thumbnail', function( event ) {
 				if ( event.type === 'click' || event.keyCode === 13 ) {
 					insertSelectedMedia( $( this ) );
 				}
+<<<<<<< HEAD
 			}).on( 'click.press-this', function( event ) {
 				if ( ! $( event.target ).closest( 'button' ).hasClass( 'split-button-toggle' ) ) {
 					splitButtonClose();
 				}
+=======
+>>>>>>> origin/master
 			});
 
 			// Publish, Draft and Preview buttons
 			$( '.post-actions' ).on( 'click.press-this', function( event ) {
+<<<<<<< HEAD
 				var location,
 					$target = $( event.target ),
+=======
+				var $target = $( event.target ),
+>>>>>>> origin/master
 					$button = $target.closest( 'button' );
 
 				if ( $button.length ) {
 					if ( $button.hasClass( 'draft-button' ) ) {
+<<<<<<< HEAD
 						$( '.publish-button' ).addClass( 'is-saving' );
 						submitPost( 'draft' );
 					} else if ( $button.hasClass( 'publish-button' ) ) {
@@ -792,6 +899,11 @@
 							window.history.replaceState( null, null, location );
 						}
 
+=======
+						$button.addClass( 'is-saving' );
+						submitPost( 'draft' );
+					} else if ( $button.hasClass( 'publish-button' ) ) {
+>>>>>>> origin/master
 						submitPost( 'publish' );
 					} else if ( $button.hasClass( 'preview-button' ) ) {
 						prepareFormData();
@@ -800,6 +912,7 @@
 						$( '#wp-preview' ).val( 'dopreview' );
 						$( '#pressthis-form' ).attr( 'target', '_blank' ).submit().attr( 'target', '' );
 						$( '#wp-preview' ).val( '' );
+<<<<<<< HEAD
 					} else if ( $button.hasClass( 'standard-editor-button' ) ) {
 						$( '.publish-button' ).addClass( 'is-saving' );
 						$( '#pt-force-redirect' ).val( 'true' );
@@ -813,6 +926,12 @@
 							$button.attr( 'aria-expanded', 'true' );
 						}
 					}
+=======
+					}
+				} else if ( $target.hasClass( 'edit-post-link' ) && window.opener ) {
+					window.opener.focus();
+					window.self.close();
+>>>>>>> origin/master
 				}
 			});
 
@@ -852,6 +971,7 @@
 				}
 			} );
 
+<<<<<<< HEAD
 			$window.on( 'beforeunload.press-this', function() {
 				if ( saveAlert || ( editor && editor.isDirty() ) ) {
 					return __( 'saveAlert' );
@@ -861,6 +981,13 @@
 					textEditorResize( 'reset' );
 				}
 			});
+=======
+			$( window ).on( 'beforeunload.press-this', function() {
+				if ( saveAlert || ( editor && editor.isDirty() ) ) {
+					return __( 'saveAlert' );
+				}
+			} );
+>>>>>>> origin/master
 
 			$( 'button.add-cat-toggle' ).on( 'click.press-this', function() {
 				var $this = $( this );
@@ -895,8 +1022,11 @@
 				}
 			} );
 
+<<<<<<< HEAD
 			$textEditor.on( 'focus.press-this input.press-this propertychange.press-this', textEditorResize );
 
+=======
+>>>>>>> origin/master
 			return true;
 		}
 
@@ -913,7 +1043,11 @@
 		}
 
 		// Let's go!
+<<<<<<< HEAD
 		$document.ready( function() {
+=======
+		$( document ).ready( function() {
+>>>>>>> origin/master
 			render();
 			monitor();
 			refreshCatsCache();

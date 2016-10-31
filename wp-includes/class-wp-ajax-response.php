@@ -1,6 +1,10 @@
 <?php
 /**
+<<<<<<< HEAD
  * Send XML response back to Ajax request.
+=======
+ * Send XML response back to AJAX request.
+>>>>>>> origin/master
  *
  * @package WordPress
  * @since 2.1.0
@@ -15,7 +19,11 @@ class WP_Ajax_Response {
 	public $responses = array();
 
 	/**
+<<<<<<< HEAD
 	 * Constructor - Passes args to WP_Ajax_Response::add().
+=======
+	 * Constructor - Passes args to {@link WP_Ajax_Response::add()}.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 * @see WP_Ajax_Response::add()
@@ -28,6 +36,7 @@ class WP_Ajax_Response {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Appends data to an XML response based on given arguments.
 	 *
 	 * With `$args` defaults, extra data output would be:
@@ -60,6 +69,28 @@ class WP_Ajax_Response {
 	 *     @type array           $supplemental An array of extra strings that will be output within a `<supplemental>`
 	 *                                         element as CDATA. Default empty array.
 	 * }
+=======
+	 * Append to XML response based on given arguments.
+	 *
+	 * The arguments that can be passed in the $args parameter are below. It is
+	 * also possible to pass a WP_Error object in either the 'id' or 'data'
+	 * argument. The parameter isn't actually optional, content should be given
+	 * in order to send the correct response.
+	 *
+	 * 'what' argument is a string that is the XMLRPC response type.
+	 * 'action' argument is a boolean or string that acts like a nonce.
+	 * 'id' argument can be WP_Error or an integer.
+	 * 'old_id' argument is false by default or an integer of the previous ID.
+	 * 'position' argument is an integer or a string with -1 = top, 1 = bottom,
+	 * html ID = after, -html ID = before.
+	 * 'data' argument is a string with the content or message.
+	 * 'supplemental' argument is an array of strings that will be children of
+	 * the supplemental element.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string|array $args Override defaults.
+>>>>>>> origin/master
 	 * @return string XML response.
 	 */
 	public function add( $args = '' ) {

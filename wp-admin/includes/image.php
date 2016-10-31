@@ -28,7 +28,11 @@ function wp_crop_image( $src, $src_x, $src_y, $src_w, $src_h, $dst_w, $dst_h, $s
 		$src_file = get_attached_file( $src );
 
 		if ( ! file_exists( $src_file ) ) {
+<<<<<<< HEAD
 			// If the file doesn't exist, attempt a URL fopen on the src link.
+=======
+			// If the file doesn't exist, attempt a url fopen on the src link.
+>>>>>>> origin/master
 			// This can occur with certain file replication plugins.
 			$src = _load_image_to_edit_path( $src, 'full' );
 		} else {
@@ -67,8 +71,11 @@ function wp_crop_image( $src, $src_x, $src_y, $src_w, $src_h, $dst_w, $dst_h, $s
  *
  * @since 2.1.0
  *
+<<<<<<< HEAD
  * @global array $_wp_additional_image_sizes
  *
+=======
+>>>>>>> origin/master
  * @param int $attachment_id Attachment Id to process.
  * @param string $file Filepath of the Attached image.
  * @return mixed Metadata for attachment.
@@ -107,6 +114,7 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Filters the image sizes automatically generated when uploading an image.
 		 *
 		 * @since 2.9.0
@@ -116,6 +124,15 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 		 * @param array $metadata An associative array of image metadata: width, height, file.
 		 */
 		$sizes = apply_filters( 'intermediate_image_sizes_advanced', $sizes, $metadata );
+=======
+		 * Filter the image sizes automatically generated when uploading an image.
+		 *
+		 * @since 2.9.0
+		 *
+		 * @param array $sizes An associative array of image sizes.
+		 */
+		$sizes = apply_filters( 'intermediate_image_sizes_advanced', $sizes );
+>>>>>>> origin/master
 
 		if ( $sizes ) {
 			$editor = wp_get_image_editor( $file );
@@ -174,7 +191,11 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 					'post_content' => '',
 				);
 				/**
+<<<<<<< HEAD
 				 * Filters the parameters for the attachment thumbnail creation.
+=======
+				 * Filter the parameters for the attachment thumbnail creation.
+>>>>>>> origin/master
 				 *
 				 * @since 3.9.0
 				 *
@@ -194,12 +215,20 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 	}
 
 	// Remove the blob of binary data from the array.
+<<<<<<< HEAD
 	if ( $metadata ) {
 		unset( $metadata['image']['data'] );
 	}
 
 	/**
 	 * Filters the generated attachment meta data.
+=======
+	if ( isset( $metadata['image']['data'] ) )
+		unset( $metadata['image']['data'] );
+
+	/**
+	 * Filter the generated attachment meta data.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -279,10 +308,15 @@ function wp_read_image_metadata( $file ) {
 		'shutter_speed' => 0,
 		'title' => '',
 		'orientation' => 0,
+<<<<<<< HEAD
 		'keywords' => array(),
 	);
 
 	$iptc = array();
+=======
+	);
+
+>>>>>>> origin/master
 	/*
 	 * Read IPTC first, since it might contain data not available in exif such
 	 * as caption, description etc.
@@ -329,15 +363,22 @@ function wp_read_image_metadata( $file ) {
 
 			if ( ! empty( $iptc['2#116'][0] ) ) // copyright
 				$meta['copyright'] = trim( $iptc['2#116'][0] );
+<<<<<<< HEAD
 
 			if ( ! empty( $iptc['2#025'][0] ) ) { // keywords array
 				$meta['keywords'] = array_values( $iptc['2#025'] );
 			}
+=======
+>>>>>>> origin/master
 		 }
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the image types to check for exif data.
+=======
+	 * Filter the image types to check for exif data.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *
@@ -408,6 +449,7 @@ function wp_read_image_metadata( $file ) {
 		}
 	}
 
+<<<<<<< HEAD
 	foreach ( $meta['keywords'] as $key => $keyword ) {
 		if ( ! seems_utf8( $keyword ) ) {
 			$meta['keywords'][ $key ] = utf8_encode( $keyword );
@@ -421,13 +463,30 @@ function wp_read_image_metadata( $file ) {
 	 *
 	 * @since 2.5.0
 	 * @since 4.4.0 The `$iptc` parameter was added.
+=======
+	foreach ( $meta as &$value ) {
+		if ( is_string( $value ) ) {
+			$value = wp_kses_post( $value );
+		}
+	}
+
+	/**
+	 * Filter the array of meta data read from an image's exif data.
+	 *
+	 * @since 2.5.0
+>>>>>>> origin/master
 	 *
 	 * @param array  $meta            Image meta data.
 	 * @param string $file            Path to image file.
 	 * @param int    $sourceImageType Type of image.
+<<<<<<< HEAD
 	 * @param array  $iptc            IPTC data.
 	 */
 	return apply_filters( 'wp_read_image_metadata', $meta, $file, $sourceImageType, $iptc );
+=======
+	 */
+	return apply_filters( 'wp_read_image_metadata', $meta, $file, $sourceImageType );
+>>>>>>> origin/master
 
 }
 
@@ -465,7 +524,11 @@ function file_is_displayable_image($path) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether the current image is displayable in the browser.
+=======
+	 * Filter whether the current image is displayable in the browser.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *
@@ -506,7 +569,11 @@ function load_image_to_edit( $attachment_id, $mime_type, $size = 'full' ) {
 	}
 	if ( is_resource($image) ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the current image being loaded for editing.
+=======
+		 * Filter the current image being loaded for editing.
+>>>>>>> origin/master
 		 *
 		 * @since 2.9.0
 		 *
@@ -542,7 +609,11 @@ function _load_image_to_edit_path( $attachment_id, $size = 'full' ) {
 	if ( $filepath && file_exists( $filepath ) ) {
 		if ( 'full' != $size && ( $data = image_get_intermediate_size( $attachment_id, $size ) ) ) {
 			/**
+<<<<<<< HEAD
 			 * Filters the path to the current image.
+=======
+			 * Filter the path to the current image.
+>>>>>>> origin/master
 			 *
 			 * The filter is evaluated for all image sizes except 'full'.
 			 *
@@ -556,7 +627,11 @@ function _load_image_to_edit_path( $attachment_id, $size = 'full' ) {
 		}
 	} elseif ( function_exists( 'fopen' ) && function_exists( 'ini_get' ) && true == ini_get( 'allow_url_fopen' ) ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the image URL if not in the local filesystem.
+=======
+		 * Filter the image URL if not in the local filesystem.
+>>>>>>> origin/master
 		 *
 		 * The filter is only evaluated if fopen is enabled on the server.
 		 *
@@ -570,7 +645,11 @@ function _load_image_to_edit_path( $attachment_id, $size = 'full' ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the returned path or URL of the current image.
+=======
+	 * Filter the returned path or URL of the current image.
+>>>>>>> origin/master
 	 *
 	 * @since 2.9.0
 	 *

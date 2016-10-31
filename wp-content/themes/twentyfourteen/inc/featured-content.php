@@ -8,7 +8,11 @@
  * For maximum compatibility with different methods of posting users
  * will designate a featured post tag to associate posts with. Since
  * this tag now has special meaning beyond that of a normal tags, users
+<<<<<<< HEAD
  * will have the ability to hide it from the front end of their site.
+=======
+ * will have the ability to hide it from the front-end of their site.
+>>>>>>> origin/master
  */
 class Featured_Content {
 
@@ -95,7 +99,11 @@ class Featured_Content {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Hide "featured" tag from the front end.
+=======
+	 * Hide "featured" tag from the front-end.
+>>>>>>> origin/master
 	 *
 	 * Has to run on wp_loaded so that the preview filters of the Customizer
 	 * have a chance to alter the value.
@@ -288,7 +296,11 @@ class Featured_Content {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Hide featured tag from displaying when global terms are queried from the front end.
+=======
+	 * Hide featured tag from displaying when global terms are queried from the front-end.
+>>>>>>> origin/master
 	 *
 	 * Hooks into the "get_terms" filter.
 	 *
@@ -304,7 +316,11 @@ class Featured_Content {
 	 */
 	public static function hide_featured_term( $terms, $taxonomies, $args ) {
 
+<<<<<<< HEAD
 		// This filter is only appropriate on the front end.
+=======
+		// This filter is only appropriate on the front-end.
+>>>>>>> origin/master
 		if ( is_admin() ) {
 			return $terms;
 		}
@@ -336,7 +352,11 @@ class Featured_Content {
 
 	/**
 	 * Hide featured tag from display when terms associated with a post object
+<<<<<<< HEAD
 	 * are queried from the front end.
+=======
+	 * are queried from the front-end.
+>>>>>>> origin/master
 	 *
 	 * Hooks into the "get_the_terms" filter.
 	 *
@@ -353,7 +373,11 @@ class Featured_Content {
 	 */
 	public static function hide_the_featured_term( $terms, $id, $taxonomy ) {
 
+<<<<<<< HEAD
 		// This filter is only appropriate on the front end.
+=======
+		// This filter is only appropriate on the front-end.
+>>>>>>> origin/master
 		if ( is_admin() ) {
 			return $terms;
 		}

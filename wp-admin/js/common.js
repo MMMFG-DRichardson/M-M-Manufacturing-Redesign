@@ -1,10 +1,13 @@
 /* global setUserSetting, ajaxurl, commonL10n, alert, confirm, pagenow */
 var showNotice, adminMenu, columns, validateForm, screenMeta;
 ( function( $, window, undefined ) {
+<<<<<<< HEAD
 	var $document = $( document ),
 		$window = $( window ),
 		$body = $( document.body );
 
+=======
+>>>>>>> origin/master
 // Removed in 3.3.
 // (perhaps) needed for back-compat
 adminMenu = {
@@ -41,19 +44,31 @@ columns = {
 	},
 
 	checked : function(column) {
+<<<<<<< HEAD
 		$('.column-' + column).removeClass( 'hidden' );
+=======
+		$('.column-' + column).show();
+>>>>>>> origin/master
 		this.colSpanChange(+1);
 	},
 
 	unchecked : function(column) {
+<<<<<<< HEAD
 		$('.column-' + column).addClass( 'hidden' );
+=======
+		$('.column-' + column).hide();
+>>>>>>> origin/master
 		this.colSpanChange(-1);
 	},
 
 	hidden : function() {
+<<<<<<< HEAD
 		return $( '.manage-column[id]' ).filter( ':hidden' ).map(function() {
 			return this.id;
 		}).get().join( ',' );
+=======
+		return $('.manage-column').filter(':hidden').map(function() { return this.id; }).get().join(',');
+>>>>>>> origin/master
 	},
 
 	useCheckboxesForHidden : function() {
@@ -74,7 +89,11 @@ columns = {
 	}
 };
 
+<<<<<<< HEAD
 $document.ready(function(){columns.init();});
+=======
+$(document).ready(function(){columns.init();});
+>>>>>>> origin/master
 
 validateForm = function( form ) {
 	return !$( form )
@@ -83,7 +102,11 @@ validateForm = function( form ) {
 		.addClass( 'form-invalid' )
 		.find( 'input:visible' )
 		.change( function() { $( this ).closest( '.form-invalid' ).removeClass( 'form-invalid' ); } )
+<<<<<<< HEAD
 		.length;
+=======
+		.size();
+>>>>>>> origin/master
 };
 
 // stub for doing better warnings
@@ -109,14 +132,24 @@ screenMeta = {
 
 	init: function() {
 		this.element = $('#screen-meta');
+<<<<<<< HEAD
 		this.toggles = $( '#screen-meta-links' ).find( '.show-settings' );
+=======
+		this.toggles = $('.screen-meta-toggle a');
+>>>>>>> origin/master
 		this.page    = $('#wpcontent');
 
 		this.toggles.click( this.toggleEvent );
 	},
 
+<<<<<<< HEAD
 	toggleEvent: function() {
 		var panel = $( '#' + $( this ).attr( 'aria-controls' ) );
+=======
+	toggleEvent: function( e ) {
+		var panel = $( this.href.replace(/.+#/, '#') );
+		e.preventDefault();
+>>>>>>> origin/master
 
 		if ( !panel.length )
 			return;
@@ -127,13 +160,20 @@ screenMeta = {
 			screenMeta.open( panel, $(this) );
 	},
 
+<<<<<<< HEAD
 	open: function( panel, button ) {
 
 		$( '#screen-meta-links' ).find( '.screen-meta-toggle' ).not( button.parent() ).css( 'visibility', 'hidden' );
+=======
+	open: function( panel, link ) {
+
+		$('.screen-meta-toggle').not( link.parent() ).css('visibility', 'hidden');
+>>>>>>> origin/master
 
 		panel.parent().show();
 		panel.slideDown( 'fast', function() {
 			panel.focus();
+<<<<<<< HEAD
 			button.addClass( 'screen-meta-active' ).attr( 'aria-expanded', true );
 		});
 
@@ -143,11 +183,26 @@ screenMeta = {
 	close: function( panel, button ) {
 		panel.slideUp( 'fast', function() {
 			button.removeClass( 'screen-meta-active' ).attr( 'aria-expanded', false );
+=======
+			link.addClass('screen-meta-active').attr('aria-expanded', true);
+		});
+
+		$( document ).trigger( 'screen:options:open' );
+	},
+
+	close: function( panel, link ) {
+		panel.slideUp( 'fast', function() {
+			link.removeClass('screen-meta-active').attr('aria-expanded', false);
+>>>>>>> origin/master
 			$('.screen-meta-toggle').css('visibility', '');
 			panel.parent().hide();
 		});
 
+<<<<<<< HEAD
 		$document.trigger( 'screen:options:close' );
+=======
+		$( document ).trigger( 'screen:options:close' );
+>>>>>>> origin/master
 	}
 };
 
@@ -175,14 +230,25 @@ $('.contextual-help-tabs').delegate('a', 'click', function(e) {
 	panel.addClass('active').show();
 });
 
+<<<<<<< HEAD
 $document.ready( function() {
 	var checks, first, last, checked, sliced, mobileEvent, transitionTimeout, focusedRowActions,
+=======
+$(document).ready( function() {
+	var checks, first, last, checked, sliced, mobileEvent, transitionTimeout, focusedRowActions, $firstHeading,
+>>>>>>> origin/master
 		lastClicked = false,
 		pageInput = $('input.current-page'),
 		currentPage = pageInput.val(),
 		isIOS = /iPhone|iPad|iPod/.test( navigator.userAgent ),
 		isAndroid = navigator.userAgent.indexOf( 'Android' ) !== -1,
 		isIE8 = $( document.documentElement ).hasClass( 'ie8' ),
+<<<<<<< HEAD
+=======
+		$document = $( document ),
+		$window = $( window ),
+		$body = $( document.body ),
+>>>>>>> origin/master
 		$adminMenuWrap = $( '#adminmenuwrap' ),
 		$wpwrap = $( '#wpwrap' ),
 		$adminmenu = $( '#adminmenu' ),
@@ -211,7 +277,11 @@ $document.ready( function() {
 	});
 
 	$('#collapse-menu').on('click.collapse-menu', function() {
+<<<<<<< HEAD
 		var respWidth, state;
+=======
+		var body = $( document.body ), respWidth, state;
+>>>>>>> origin/master
 
 		// reset any compensation for submenus near the bottom of the screen
 		$('#adminmenu div.wp-submenu').css('margin-top', '');
@@ -225,28 +295,47 @@ $document.ready( function() {
 		}
 
 		if ( respWidth && respWidth < 960 ) {
+<<<<<<< HEAD
 			if ( $body.hasClass('auto-fold') ) {
 				$body.removeClass('auto-fold').removeClass('folded');
+=======
+			if ( body.hasClass('auto-fold') ) {
+				body.removeClass('auto-fold').removeClass('folded');
+>>>>>>> origin/master
 				setUserSetting('unfold', 1);
 				setUserSetting('mfold', 'o');
 				state = 'open';
 			} else {
+<<<<<<< HEAD
 				$body.addClass('auto-fold');
+=======
+				body.addClass('auto-fold');
+>>>>>>> origin/master
 				setUserSetting('unfold', 0);
 				state = 'folded';
 			}
 		} else {
+<<<<<<< HEAD
 			if ( $body.hasClass('folded') ) {
 				$body.removeClass('folded');
 				setUserSetting('mfold', 'o');
 				state = 'open';
 			} else {
 				$body.addClass('folded');
+=======
+			if ( body.hasClass('folded') ) {
+				body.removeClass('folded');
+				setUserSetting('mfold', 'o');
+				state = 'open';
+			} else {
+				body.addClass('folded');
+>>>>>>> origin/master
 				setUserSetting('mfold', 'f');
 				state = 'folded';
 			}
 		}
 
+<<<<<<< HEAD
 		currentMenuItemHasPopup();
 		$document.trigger( 'wp-collapse-menu', { state: state } );
 	});
@@ -273,6 +362,11 @@ $document.ready( function() {
 
 	$document.on( 'wp-window-resized wp-responsive-activate wp-responsive-deactivate', currentMenuItemHasPopup );
 
+=======
+		$( document ).trigger( 'wp-collapse-menu', { state: state } );
+	});
+
+>>>>>>> origin/master
 	/**
 	 * Ensure an admin submenu is within the visual viewport.
 	 *
@@ -313,7 +407,11 @@ $document.ready( function() {
 		mobileEvent = isIOS ? 'touchstart' : 'click';
 
 		// close any open submenus when touch/click is not on the menu
+<<<<<<< HEAD
 		$body.on( mobileEvent+'.wp-mobile-hover', function(e) {
+=======
+		$(document.body).on( mobileEvent+'.wp-mobile-hover', function(e) {
+>>>>>>> origin/master
 			if ( $adminmenu.data('wp-responsive') ) {
 				return;
 			}
@@ -393,6 +491,7 @@ $document.ready( function() {
 		});
 	}
 
+<<<<<<< HEAD
 	/*
 	 * The `.below-h2` class is here just for backward compatibility with plugins
 	 * that are (incorrectly) using it. Do not use. Use `.inline` instead. See #34570.
@@ -422,6 +521,33 @@ $document.ready( function() {
 	}
 
 	$document.on( 'wp-updates-notice-added wp-plugin-install-error wp-plugin-update-error wp-plugin-delete-error wp-theme-install-error wp-theme-delete-error', makeNoticesDismissible );
+=======
+	// Move .notice, .updated and .error alert boxes. Don't move boxes designed to be inline.
+	$firstHeading = $( 'div.wrap h2:first' );
+	$firstHeading.nextAll( 'div.updated, div.error, div.notice' ).addClass( 'below-h2' );
+	$( 'div.updated, div.error, div.notice' ).not( '.below-h2, .inline' ).insertAfter( $firstHeading );
+
+	// Make notices dismissible
+	$( '.notice.is-dismissible' ).each( function() {
+		var $this = $( this ),
+			$button = $( '<button type="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>' ),
+			btnText = commonL10n.dismiss || '';
+
+		// Ensure plain text
+		$button.find( '.screen-reader-text' ).text( btnText );
+
+		$this.append( $button );
+
+		$button.on( 'click.wp-dismiss-notice', function( event ) {
+			event.preventDefault();
+			$this.fadeTo( 100 , 0, function() {
+				$(this).slideUp( 100, function() {
+					$(this).remove();
+				});
+			});
+		});
+	});
+>>>>>>> origin/master
 
 	// Init screen meta
 	screenMeta.init();
@@ -431,7 +557,11 @@ $document.ready( function() {
 		if ( 'undefined' == e.shiftKey ) { return true; }
 		if ( e.shiftKey ) {
 			if ( !lastClicked ) { return true; }
+<<<<<<< HEAD
 			checks = $( lastClicked ).closest( 'form' ).find( ':checkbox' ).filter( ':visible:enabled' );
+=======
+			checks = $( lastClicked ).closest( 'form' ).find( ':checkbox' );
+>>>>>>> origin/master
 			first = checks.index( lastClicked );
 			last = checks.index( this );
 			checked = $(this).prop('checked');
@@ -448,7 +578,11 @@ $document.ready( function() {
 		lastClicked = this;
 
 		// toggle "check all" checkboxes
+<<<<<<< HEAD
 		var unchecked = $(this).closest('tbody').find(':checkbox').filter(':visible:enabled').not(':checked');
+=======
+		var unchecked = $(this).closest('tbody').find(':checkbox').filter(':visible').not(':checked');
+>>>>>>> origin/master
 		$(this).closest('table').children('thead, tfoot').find(':checkbox').prop('checked', function() {
 			return ( 0 === unchecked.length );
 		});
@@ -465,7 +599,11 @@ $document.ready( function() {
 		$table.children( 'tbody' ).filter(':visible')
 			.children().children('.check-column').find(':checkbox')
 			.prop('checked', function() {
+<<<<<<< HEAD
 				if ( $(this).is(':hidden,:disabled') ) {
+=======
+				if ( $(this).is(':hidden') ) {
+>>>>>>> origin/master
 					return false;
 				}
 
@@ -507,12 +645,16 @@ $document.ready( function() {
 				focusedRowActions.removeClass( 'visible' );
 			}, 30 );
 		}
+<<<<<<< HEAD
 	}, '.has-row-actions' );
 
 	// Toggle list table rows on small screens
 	$( 'tbody' ).on( 'click', '.toggle-row', function() {
 		$( this ).closest( 'tr' ).toggleClass( 'is-expanded' );
 	});
+=======
+	}, 'td.post-title, td.title, td.comment, .tags td.column-name, .bookmarks td.column-name, td.blogname, .users-network td.column-blogs, td.username, .dashboard-comment-wrap' );
+>>>>>>> origin/master
 
 	$('#default-password-nag-no').click( function() {
 		setUserSetting('default_password_nag', 'hide');
@@ -774,10 +916,13 @@ $document.ready( function() {
 			// Toggle sidebar when toggle is clicked
 			$( '#wp-admin-bar-menu-toggle' ).on( 'click.wp-responsive', function( event ) {
 				event.preventDefault();
+<<<<<<< HEAD
 
 				// close any open toolbar submenus
 				$adminbar.find( '.hover' ).removeClass( 'hover' );
 
+=======
+>>>>>>> origin/master
 				$wpwrap.toggleClass( 'wp-responsive-open' );
 				if ( $wpwrap.hasClass( 'wp-responsive-open' ) ) {
 					$(this).find('a').attr( 'aria-expanded', 'true' );
@@ -895,6 +1040,7 @@ $document.ready( function() {
 		}
 	};
 
+<<<<<<< HEAD
 	// Add an ARIA role `button` to elements that behave like UI controls when JavaScript is on.
 	function aria_button_if_js() {
 		$( '.aria-button-if-js' ).attr( 'role', 'button' );
@@ -914,6 +1060,12 @@ $document.ready( function() {
 
 	// Set initial focus on a specific element.
 	$( '.wp-initial-focus' ).focus();
+=======
+	window.wpResponsive.init();
+	setPinMenu();
+
+	$document.on( 'wp-window-resized.pin-menu postboxes-columnchange.pin-menu postbox-toggled.pin-menu wp-collapse-menu.pin-menu wp-scroll-start.pin-menu', setPinMenu );
+>>>>>>> origin/master
 });
 
 // Fire a custom jQuery event at the end of window resize
@@ -921,7 +1073,11 @@ $document.ready( function() {
 	var timeout;
 
 	function triggerEvent() {
+<<<<<<< HEAD
 		$document.trigger( 'wp-window-resized' );
+=======
+		$(document).trigger( 'wp-window-resized' );
+>>>>>>> origin/master
 	}
 
 	function fireOnce() {
@@ -929,7 +1085,11 @@ $document.ready( function() {
 		timeout = window.setTimeout( triggerEvent, 200 );
 	}
 
+<<<<<<< HEAD
 	$window.on( 'resize.wp-fire-once', fireOnce );
+=======
+	$(window).on( 'resize.wp-fire-once', fireOnce );
+>>>>>>> origin/master
 }());
 
 // Make Windows 8 devices play along nicely.

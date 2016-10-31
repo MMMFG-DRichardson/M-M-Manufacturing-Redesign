@@ -5,7 +5,11 @@
  * @package WordPress
  */
 
+<<<<<<< HEAD
 header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . get_option('blog_charset'), true);
+=======
+header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true);
+>>>>>>> origin/master
 $more = 1;
 
 echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
@@ -38,7 +42,11 @@ do_action( 'rss_tag_pre', 'rss2' );
 >
 
 <channel>
+<<<<<<< HEAD
 	<title><?php wp_title_rss(); ?></title>
+=======
+	<title><?php bloginfo_rss('name'); wp_title_rss(); ?></title>
+>>>>>>> origin/master
 	<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
@@ -48,7 +56,11 @@ do_action( 'rss_tag_pre', 'rss2' );
 		$duration = 'hourly';
 
 		/**
+<<<<<<< HEAD
 		 * Filters how often to update the RSS feed.
+=======
+		 * Filter how often to update the RSS feed.
+>>>>>>> origin/master
 		 *
 		 * @since 2.1.0
 		 *
@@ -61,7 +73,11 @@ do_action( 'rss_tag_pre', 'rss2' );
 		$frequency = '1';
 
 		/**
+<<<<<<< HEAD
 		 * Filters the RSS update frequency.
+=======
+		 * Filter the RSS update frequency.
+>>>>>>> origin/master
 		 *
 		 * @since 2.1.0
 		 *
@@ -83,9 +99,13 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<item>
 		<title><?php the_title_rss() ?></title>
 		<link><?php the_permalink_rss() ?></link>
+<<<<<<< HEAD
 <?php if ( get_comments_number() || comments_open() ) : ?>
 		<comments><?php comments_link_feed(); ?></comments>
 <?php endif; ?>
+=======
+		<comments><?php comments_link_feed(); ?></comments>
+>>>>>>> origin/master
 		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
 		<?php the_category_rss('rss2') ?>
@@ -102,10 +122,15 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<content:encoded><![CDATA[<?php the_excerpt_rss(); ?>]]></content:encoded>
 	<?php endif; ?>
 <?php endif; ?>
+<<<<<<< HEAD
 <?php if ( get_comments_number() || comments_open() ) : ?>
 		<wfw:commentRss><?php echo esc_url( get_post_comments_feed_link(null, 'rss2') ); ?></wfw:commentRss>
 		<slash:comments><?php echo get_comments_number(); ?></slash:comments>
 <?php endif; ?>
+=======
+		<wfw:commentRss><?php echo esc_url( get_post_comments_feed_link(null, 'rss2') ); ?></wfw:commentRss>
+		<slash:comments><?php echo get_comments_number(); ?></slash:comments>
+>>>>>>> origin/master
 <?php rss_enclosure(); ?>
 	<?php
 	/**

@@ -2,6 +2,7 @@
 var setCommentsList, theList, theExtraList, commentReply;
 
 (function($) {
+<<<<<<< HEAD
 var getCount, updateCount, updateCountText, updatePending, updateApproved,
 	updateHtmlTitle, updateDashboardText, adminTitle = document.title,
 	isDashboard = $('#dashboard_right_now').length,
@@ -183,6 +184,9 @@ var getCount, updateCount, updateCountText, updatePending, updateApproved,
 			updateCount( a, diff );
 		});
 	};
+=======
+var getCount, updateCount, updatePending;
+>>>>>>> origin/master
 
 setCommentsList = function() {
 	var totalInput, perPageInput, pageInput, dimAfter, delBefore, updateTotalCount, delAfter, refillTheExtraList, diff,
@@ -192,6 +196,7 @@ setCommentsList = function() {
 	perPageInput = $('input[name="_per_page"]', '#comments-form');
 	pageInput = $('input[name="_page"]', '#comments-form');
 
+<<<<<<< HEAD
 	// Updates the current total (stored in the _total input)
 	updateTotalCount = function( total, time, setConfidentTime ) {
 		if ( time < lastConfidentTime )
@@ -212,6 +217,12 @@ setCommentsList = function() {
 			response = settings.parsed.responses[0];
 		}
 
+=======
+	dimAfter = function( r, settings ) {
+		var editRow, replyID, replyButton,
+			c = $( '#' + settings.element );
+
+>>>>>>> origin/master
 		editRow = $('#replyrow');
 		replyID = $('#comment_ID', editRow).val();
 		replyButton = $('#replybtn', editRow);
@@ -220,13 +231,18 @@ setCommentsList = function() {
 			if ( settings.data.id == replyID )
 				replyButton.text(adminCommentsL10n.replyApprove);
 
+<<<<<<< HEAD
 			c.find( '.row-actions span.view' ).addClass( 'hidden' ).end()
 				.find( 'div.comment_status' ).html( '0' );
 
+=======
+			c.find('div.comment_status').html('0');
+>>>>>>> origin/master
 		} else {
 			if ( settings.data.id == replyID )
 				replyButton.text(adminCommentsL10n.reply);
 
+<<<<<<< HEAD
 			c.find( '.row-actions span.view' ).removeClass( 'hidden' ).end()
 				.find( 'div.comment_status' ).html( '1' );
 		}
@@ -240,6 +256,13 @@ setCommentsList = function() {
 			updatePending( diff );
 			updateApproved( -1 * diff  );
 		}
+=======
+			c.find('div.comment_status').html('1');
+		}
+
+		diff = $('#' + settings.element).is('.' + settings.dimClass) ? 1 : -1;
+		updatePending( diff );
+>>>>>>> origin/master
 	};
 
 	// Send current total, page, per_page and url
@@ -287,20 +310,29 @@ setCommentsList = function() {
 			a.attr('class', 'vim-z vim-destructive');
 			$('.avatar', el).first().clone().prependTo('#undo-' + id + ' .' + action + '-undo-inside');
 
+<<<<<<< HEAD
 			a.click(function( e ){
 				e.preventDefault();
 				e.stopPropagation(); // ticket #35904
+=======
+			a.click(function(){
+>>>>>>> origin/master
 				list.wpList.del(this);
 				$('#undo-' + id).css( {backgroundColor:'#ceb'} ).fadeOut(350, function(){
 					$(this).remove();
 					$('#comment-' + id).css('backgroundColor', '').fadeIn(300, function(){ $(this).show(); });
 				});
+<<<<<<< HEAD
+=======
+				return false;
+>>>>>>> origin/master
 			});
 		}
 
 		return settings;
 	};
 
+<<<<<<< HEAD
 	// In admin-ajax.php, we send back the unix time stamp instead of 1 on success
 	delAfter = function( r, settings ) {
 		var total_items_i18n, total, animated, animatedCallback,
@@ -462,6 +494,100 @@ setCommentsList = function() {
 		}
 
 		if ( ! isDashboard ) {
+=======
+	// Updates the current total (stored in the _total input)
+	updateTotalCount = function( total, time, setConfidentTime ) {
+		if ( time < lastConfidentTime )
+			return;
+
+		if ( setConfidentTime )
+			lastConfidentTime = time;
+
+		totalInput.val( total.toString() );
+	};
+
+	getCount = function(el) {
+		var n = parseInt( el.html().replace(/[^0-9]+/g, ''), 10 );
+		if ( isNaN(n) )
+			return 0;
+		return n;
+	};
+
+	updateCount = function(el, n) {
+		var n1 = '';
+		if ( isNaN(n) )
+			return;
+		n = n < 1 ? '0' : n.toString();
+		if ( n.length > 3 ) {
+			while ( n.length > 3 ) {
+				n1 = thousandsSeparator + n.substr(n.length - 3) + n1;
+				n = n.substr(0, n.length - 3);
+			}
+			n = n + n1;
+		}
+		el.html(n);
+	};
+
+	updatePending = function( diff ) {
+		$('span.pending-count').each(function() {
+			var a = $(this), n = getCount(a) + diff;
+			if ( n < 1 )
+				n = 0;
+			a.closest('.awaiting-mod')[ 0 === n ? 'addClass' : 'removeClass' ]('count-0');
+			updateCount( a, n );
+		});
+	};
+
+	// In admin-ajax.php, we send back the unix time stamp instead of 1 on success
+	delAfter = function( r, settings ) {
+		var total_items_i18n, total, spam, trash, pending,
+			untrash = $(settings.target).parent().is('span.untrash'),
+			unspam = $(settings.target).parent().is('span.unspam'),
+			unapproved = $('#' + settings.element).is('.unapproved');
+
+		function getUpdate(s) {
+			if ( $(settings.target).parent().is('span.' + s) )
+				return 1;
+			else if ( $('#' + settings.element).is('.' + s) )
+				return -1;
+
+			return 0;
+		}
+
+		if ( untrash )
+			trash = -1;
+		else
+			trash = getUpdate('trash');
+
+		if ( unspam )
+			spam = -1;
+		else
+			spam = getUpdate('spam');
+
+		if ( $(settings.target).parent().is('span.unapprove') || ( ( untrash || unspam ) && unapproved ) ) {
+			// a comment was 'deleted' from another list (e.g. approved, spam, trash) and moved to pending,
+			// or a trash/spam of a pending comment was undone
+			pending = 1;
+		} else if ( unapproved ) {
+			// a pending comment was trashed/spammed/approved
+			pending = -1;
+		}
+
+		if ( pending )
+			updatePending(pending);
+
+		$('span.spam-count').each( function() {
+			var a = $(this), n = getCount(a) + spam;
+			updateCount(a, n);
+		});
+
+		$('span.trash-count').each( function() {
+			var a = $(this), n = getCount(a) + trash;
+			updateCount(a, n);
+		});
+
+		if ( ! $('#dashboard_right_now').length ) {
+>>>>>>> origin/master
 			total = totalInput.val() ? parseInt( totalInput.val(), 10 ) : 0;
 			if ( $(settings.target).parent().is('span.undo') )
 				total++;
@@ -471,6 +597,7 @@ setCommentsList = function() {
 			if ( total < 0 )
 				total = 0;
 
+<<<<<<< HEAD
 			if ( 'object' === typeof r ) {
 				if ( response.supplemental.total_items_i18n && lastConfidentTime < response.supplemental.time ) {
 					total_items_i18n = response.supplemental.total_items_i18n || '';
@@ -483,11 +610,22 @@ setCommentsList = function() {
 				} else if ( response.supplemental.time ) {
 					updateTotalCount( total, response.supplemental.time, false );
 				}
+=======
+			if ( ( 'object' == typeof r ) && lastConfidentTime < settings.parsed.responses[0].supplemental.time ) {
+				total_items_i18n = settings.parsed.responses[0].supplemental.total_items_i18n || '';
+				if ( total_items_i18n ) {
+					$('.displaying-num').text( total_items_i18n );
+					$('.total-pages').text( settings.parsed.responses[0].supplemental.total_pages_i18n );
+					$('.tablenav-pages').find('.next-page, .last-page').toggleClass('disabled', settings.parsed.responses[0].supplemental.total_pages == $('.current-page').val());
+				}
+				updateTotalCount( total, settings.parsed.responses[0].supplemental.time, true );
+>>>>>>> origin/master
 			} else {
 				updateTotalCount( total, r, false );
 			}
 		}
 
+<<<<<<< HEAD
 		if ( ! theExtraList || theExtraList.length === 0 || theExtraList.children().length === 0 || undoing ) {
 			return;
 		}
@@ -508,6 +646,15 @@ setCommentsList = function() {
 		} else {
 			animatedCallback();
 		}
+=======
+		if ( ! theExtraList || theExtraList.size() === 0 || theExtraList.children().size() === 0 || untrash || unspam ) {
+			return;
+		}
+
+		theList.get(0).wpList.add( theExtraList.children(':eq(0)').remove().clone() );
+
+		refillTheExtraList();
+>>>>>>> origin/master
 	};
 
 	refillTheExtraList = function(ev) {
@@ -566,14 +713,21 @@ setCommentsList = function() {
 commentReply = {
 	cid : '',
 	act : '',
+<<<<<<< HEAD
 	originalContent : '',
+=======
+>>>>>>> origin/master
 
 	init : function() {
 		var row = $('#replyrow');
 
 		$('a.cancel', row).click(function() { return commentReply.revert(); });
 		$('a.save', row).click(function() { return commentReply.send(); });
+<<<<<<< HEAD
 		$( 'input#author-name, input#author-email, input#author-url', row ).keypress( function( e ) {
+=======
+		$('input#author, input#author-email, input#author-url', row).keypress(function(e){
+>>>>>>> origin/master
 			if ( e.which == 13 ) {
 				commentReply.send();
 				e.preventDefault();
@@ -607,9 +761,14 @@ commentReply = {
 	},
 
 	toggle : function(el) {
+<<<<<<< HEAD
 		if ( 'none' !== $( el ).css( 'display' ) && ( $( '#replyrow' ).parent().is('#com-reply') || window.confirm( adminCommentsL10n.warnQuickEdit ) ) ) {
 			$( el ).find( 'a.vim-q' ).click();
 		}
+=======
+		if ( $(el).css('display') != 'none' )
+			$(el).find('a.vim-q').click();
+>>>>>>> origin/master
 	},
 
 	revert : function() {
@@ -650,19 +809,26 @@ commentReply = {
 		$( '.spinner', replyrow ).removeClass( 'is-active' );
 
 		this.cid = '';
+<<<<<<< HEAD
 		this.originalContent = '';
+=======
+>>>>>>> origin/master
 	},
 
 	open : function(comment_id, post_id, action) {
 		var editRow, rowData, act, replyButton, editHeight,
 			t = this,
 			c = $('#comment-' + comment_id),
+<<<<<<< HEAD
 			h = c.height(),
 			colspanVal = 0;
 
 		if ( ! this.discardCommentChanges() ) {
 			return false;
 		}
+=======
+			h = c.height();
+>>>>>>> origin/master
 
 		t.close();
 		t.cid = comment_id;
@@ -672,6 +838,7 @@ commentReply = {
 		action = action || 'replyto';
 		act = 'edit' == action ? 'edit' : 'replyto';
 		act = t.act = act + '-comment';
+<<<<<<< HEAD
 		t.originalContent = $('textarea.comment', rowData).val();
 		colspanVal = $( '> th:visible, > td:visible', c ).length;
 
@@ -679,18 +846,28 @@ commentReply = {
 		if ( editRow.hasClass( 'inline-edit-row' ) && 0 !== colspanVal ) {
 			$( 'td', editRow ).attr( 'colspan', colspanVal );
 		}
+=======
+>>>>>>> origin/master
 
 		$('#action', editRow).val(act);
 		$('#comment_post_ID', editRow).val(post_id);
 		$('#comment_ID', editRow).val(comment_id);
 
 		if ( action == 'edit' ) {
+<<<<<<< HEAD
 			$( '#author-name', editRow ).val( $( 'div.author', rowData ).text() );
+=======
+			$('#author', editRow).val( $('div.author', rowData).text() );
+>>>>>>> origin/master
 			$('#author-email', editRow).val( $('div.author-email', rowData).text() );
 			$('#author-url', editRow).val( $('div.author-url', rowData).text() );
 			$('#status', editRow).val( $('div.comment_status', rowData).text() );
 			$('#replycontent', editRow).val( $('textarea.comment', rowData).val() );
+<<<<<<< HEAD
 			$( '#edithead, #editlegend, #savebtn', editRow ).show();
+=======
+			$('#edithead, #savebtn', editRow).show();
+>>>>>>> origin/master
 			$('#replyhead, #replybtn, #addhead, #addbtn', editRow).hide();
 
 			if ( h > 120 ) {
@@ -705,12 +882,20 @@ commentReply = {
 			});
 		} else if ( action == 'add' ) {
 			$('#addhead, #addbtn', editRow).show();
+<<<<<<< HEAD
 			$( '#replyhead, #replybtn, #edithead, #editlegend, #savebtn', editRow ) .hide();
+=======
+			$('#replyhead, #replybtn, #edithead, #editbtn', editRow).hide();
+>>>>>>> origin/master
 			$('#the-comment-list').prepend(editRow);
 			$('#replyrow').fadeIn(300);
 		} else {
 			replyButton = $('#replybtn', editRow);
+<<<<<<< HEAD
 			$( '#edithead, #editlegend, #savebtn, #addhead, #addbtn', editRow ).hide();
+=======
+			$('#edithead, #savebtn, #addhead, #addbtn', editRow).hide();
+>>>>>>> origin/master
 			$('#replyhead, #replybtn', editRow).show();
 			c.after(editRow);
 
@@ -800,7 +985,11 @@ commentReply = {
 
 		if ( r.supplemental.parent_approved ) {
 			pid = $('#comment-' + r.supplemental.parent_approved);
+<<<<<<< HEAD
 			updatePending( -1, r.supplemental.parent_post_id );
+=======
+			updatePending( -1 );
+>>>>>>> origin/master
 
 			if ( this.comments_listing == 'moderated' ) {
 				pid.animate( { 'backgroundColor':'#CCEEBB' }, 400, function(){
@@ -810,6 +999,7 @@ commentReply = {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( r.supplemental.i18n_comments_text ) {
 			if ( isDashboard ) {
 				updateDashboardText( r.supplemental );
@@ -819,6 +1009,8 @@ commentReply = {
 			}
 		}
 
+=======
+>>>>>>> origin/master
 		c = $.trim(r.data); // Trim leading whitespaces
 		$(c).hide();
 		$('#replyrow').after(c);
@@ -860,6 +1052,7 @@ commentReply = {
 			$('table.comments-box').css('display', '');
 			$('#no-comments').remove();
 		});
+<<<<<<< HEAD
 	},
 
 	/**
@@ -876,6 +1069,8 @@ commentReply = {
 		}
 
 		return window.confirm( adminCommentsL10n.warnCommentChanges );
+=======
+>>>>>>> origin/master
 	}
 };
 
@@ -884,10 +1079,14 @@ $(document).ready(function(){
 
 	setCommentsList();
 	commentReply.init();
+<<<<<<< HEAD
 
 	$(document).on( 'click', 'span.delete a.delete', function( e ) {
 		e.preventDefault();
 	});
+=======
+	$(document).delegate('span.delete a.delete', 'click', function(){return false;});
+>>>>>>> origin/master
 
 	if ( typeof $.table_hotkeys != 'undefined' ) {
 		make_hotkeys_redirect = function(which) {

@@ -1,9 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * Core Post API
  *
  * @package WordPress
  * @subpackage Post
+=======
+ * Post functions and post utility function.
+ *
+ * @package WordPress
+ * @subpackage Post
+ * @since 1.5.0
+>>>>>>> origin/master
  */
 
 //
@@ -13,8 +21,11 @@
 /**
  * Creates the initial post types when 'init' action is fired.
  *
+<<<<<<< HEAD
  * See {@see 'init'}.
  *
+=======
+>>>>>>> origin/master
  * @since 2.9.0
  */
 function create_initial_post_types() {
@@ -27,7 +38,10 @@ function create_initial_post_types() {
 		'_edit_link' => 'post.php?post=%d', /* internal use only. don't use this when registering your own post type. */
 		'capability_type' => 'post',
 		'map_meta_cap' => true,
+<<<<<<< HEAD
 		'menu_position' => 5,
+=======
+>>>>>>> origin/master
 		'hierarchical' => false,
 		'rewrite' => false,
 		'query_var' => false,
@@ -45,7 +59,10 @@ function create_initial_post_types() {
 		'_edit_link' => 'post.php?post=%d', /* internal use only. don't use this when registering your own post type. */
 		'capability_type' => 'page',
 		'map_meta_cap' => true,
+<<<<<<< HEAD
 		'menu_position' => 20,
+=======
+>>>>>>> origin/master
 		'hierarchical' => true,
 		'rewrite' => false,
 		'query_var' => false,
@@ -112,42 +129,66 @@ function create_initial_post_types() {
 	) );
 
 	register_post_status( 'publish', array(
+<<<<<<< HEAD
 		'label'       => _x( 'Published', 'post status' ),
+=======
+		'label'       => _x( 'Published', 'post' ),
+>>>>>>> origin/master
 		'public'      => true,
 		'_builtin'    => true, /* internal use only. */
 		'label_count' => _n_noop( 'Published <span class="count">(%s)</span>', 'Published <span class="count">(%s)</span>' ),
 	) );
 
 	register_post_status( 'future', array(
+<<<<<<< HEAD
 		'label'       => _x( 'Scheduled', 'post status' ),
+=======
+		'label'       => _x( 'Scheduled', 'post' ),
+>>>>>>> origin/master
 		'protected'   => true,
 		'_builtin'    => true, /* internal use only. */
 		'label_count' => _n_noop('Scheduled <span class="count">(%s)</span>', 'Scheduled <span class="count">(%s)</span>' ),
 	) );
 
 	register_post_status( 'draft', array(
+<<<<<<< HEAD
 		'label'       => _x( 'Draft', 'post status' ),
+=======
+		'label'       => _x( 'Draft', 'post' ),
+>>>>>>> origin/master
 		'protected'   => true,
 		'_builtin'    => true, /* internal use only. */
 		'label_count' => _n_noop( 'Draft <span class="count">(%s)</span>', 'Drafts <span class="count">(%s)</span>' ),
 	) );
 
 	register_post_status( 'pending', array(
+<<<<<<< HEAD
 		'label'       => _x( 'Pending', 'post status' ),
+=======
+		'label'       => _x( 'Pending', 'post' ),
+>>>>>>> origin/master
 		'protected'   => true,
 		'_builtin'    => true, /* internal use only. */
 		'label_count' => _n_noop( 'Pending <span class="count">(%s)</span>', 'Pending <span class="count">(%s)</span>' ),
 	) );
 
 	register_post_status( 'private', array(
+<<<<<<< HEAD
 		'label'       => _x( 'Private', 'post status' ),
+=======
+		'label'       => _x( 'Private', 'post' ),
+>>>>>>> origin/master
 		'private'     => true,
 		'_builtin'    => true, /* internal use only. */
 		'label_count' => _n_noop( 'Private <span class="count">(%s)</span>', 'Private <span class="count">(%s)</span>' ),
 	) );
 
 	register_post_status( 'trash', array(
+<<<<<<< HEAD
 		'label'       => _x( 'Trash', 'post status' ),
+=======
+		'label'       => _x( 'Trash', 'post' ),
+>>>>>>> origin/master
 		'internal'    => true,
 		'_builtin'    => true, /* internal use only. */
 		'label_count' => _n_noop( 'Trash <span class="count">(%s)</span>', 'Trash <span class="count">(%s)</span>' ),
@@ -184,6 +225,7 @@ function create_initial_post_types() {
  *
  * @param int  $attachment_id Attachment ID.
  * @param bool $unfiltered    Optional. Whether to apply filters. Default false.
+<<<<<<< HEAD
  * @return string|false The file path to where the attached file should be, false otherwise.
  */
 function get_attached_file( $attachment_id, $unfiltered = false ) {
@@ -200,6 +242,20 @@ function get_attached_file( $attachment_id, $unfiltered = false ) {
 
 	/**
 	 * Filters the attached file based on the given ID.
+=======
+ * @return string|bool The file path to where the attached file should be, false otherwise.
+ */
+function get_attached_file( $attachment_id, $unfiltered = false ) {
+	$file = get_post_meta( $attachment_id, '_wp_attached_file', true );
+	// If the file is relative, prepend upload dir.
+	if ( $file && 0 !== strpos($file, '/') && !preg_match('|^.:\\\|', $file) && ( ($uploads = wp_upload_dir()) && false === $uploads['error'] ) )
+		$file = $uploads['basedir'] . "/$file";
+	if ( $unfiltered )
+		return $file;
+
+	/**
+	 * Filter the attached file based on the given ID.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -226,7 +282,11 @@ function update_attached_file( $attachment_id, $file ) {
 		return false;
 
 	/**
+<<<<<<< HEAD
 	 * Filters the path to the attached file to update.
+=======
+	 * Filter the path to the attached file to update.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -254,14 +314,22 @@ function update_attached_file( $attachment_id, $file ) {
 function _wp_relative_upload_path( $path ) {
 	$new_path = $path;
 
+<<<<<<< HEAD
 	$uploads = wp_get_upload_dir();
+=======
+	$uploads = wp_upload_dir();
+>>>>>>> origin/master
 	if ( 0 === strpos( $new_path, $uploads['basedir'] ) ) {
 			$new_path = str_replace( $uploads['basedir'], '', $new_path );
 			$new_path = ltrim( $new_path, '/' );
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the relative path to an uploaded file.
+=======
+	 * Filter the relative path to an uploaded file.
+>>>>>>> origin/master
 	 *
 	 * @since 2.9.0
 	 *
@@ -284,6 +352,7 @@ function _wp_relative_upload_path( $path ) {
  * Attachments may also be made the child of a post, so if that is an accurate
  * statement (which needs to be verified), it would then be possible to get
  * all of the attachments for a post. Attachments have since changed since
+<<<<<<< HEAD
  * version 2.5, so this is most likely inaccurate, but serves generally as an
  * example of what is possible.
  *
@@ -292,6 +361,17 @@ function _wp_relative_upload_path( $path ) {
  * and are then passed to the get_posts() function, which accepts additional arguments.
  * You can replace the defaults in this function, listed below and the additional
  * arguments listed in the get_posts() function.
+=======
+ * version 2.5, so this is most likely unaccurate, but serves generally as an
+ * example of what is possible.
+ *
+ * The arguments listed as defaults are for this function and also of the
+ * {@link get_posts()} function. The arguments are combined with the
+ * get_children defaults and are then passed to the {@link get_posts()}
+ * function, which accepts additional arguments. You can replace the defaults in
+ * this function, listed below and the additional arguments listed in the
+ * {@link get_posts()} function.
+>>>>>>> origin/master
  *
  * The 'post_parent' is the most important argument and important attention
  * needs to be paid to the $args parameter. If you pass either an object or an
@@ -314,11 +394,17 @@ function _wp_relative_upload_path( $path ) {
  * @see get_posts()
  * @todo Check validity of description.
  *
+<<<<<<< HEAD
  * @global WP_Post $post
  *
  * @param mixed  $args   Optional. User defined arguments for replacing the defaults. Default empty.
  * @param string $output Optional. Constant for return type. Accepts OBJECT, ARRAY_A, ARRAY_N.
  *                       Default OBJECT.
+=======
+ * @param mixed  $args   Optional. User defined arguments for replacing the defaults. Default empty.
+ * @param string $output Optional. Constant for return type. Accepts OBJECT, ARRAY_A, ARRAY_N.
+ *                       Default OBJECt.
+>>>>>>> origin/master
  * @return array Array of children, where the type of each element is determined by $output parameter.
  *               Empty array on failure.
  */
@@ -389,7 +475,11 @@ function get_children( $args = '', $output = OBJECT ) {
  * @since 1.0.0
  *
  * @param string $post Post content.
+<<<<<<< HEAD
  * @return array Post before ('main'), after ('extended'), and custom read more ('more_text').
+=======
+ * @return array Post before ('main'), after ('extended'), and custom readmore ('more_text').
+>>>>>>> origin/master
  */
 function get_extended( $post ) {
 	//Match the new style more links.
@@ -413,6 +503,7 @@ function get_extended( $post ) {
 /**
  * Retrieves post data given a post ID or post object.
  *
+<<<<<<< HEAD
  * See sanitize_post() for optional $filter values. Also, the parameter
  * `$post`, must be given as a variable, since it is passed by reference.
  *
@@ -425,6 +516,18 @@ function get_extended( $post ) {
  *                                 Default OBJECT.
  * @param string           $filter Optional. Type of filter to apply. Accepts 'raw', 'edit', 'db',
  *                                 or 'display'. Default 'raw'.
+=======
+ * See {@link sanitize_post()} for optional $filter values. Also, the parameter
+ * $post, must be given as a variable, since it is passed by reference.
+ *
+ * @since 1.5.1
+ *
+ * @param int|WP_Post $post   Optional. Post ID or post object. Defaults to global $post.
+ * @param string      $output Optional, default is Object. Accepts OBJECT, ARRAY_A, or ARRAY_N.
+ *                            Default OBJECT.
+ * @param string      $filter Optional. Type of filter to apply. Accepts 'raw', 'edit', 'db',
+ *                            or 'display'. Default 'raw'.
+>>>>>>> origin/master
  * @return WP_Post|array|null Type corresponding to $output on success or null on failure.
  *                            When $output is OBJECT, a `WP_Post` instance is returned.
  */
@@ -461,6 +564,338 @@ function get_post( $post = null, $output = OBJECT, $filter = 'raw' ) {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * WordPress Post class.
+ *
+ * @since 3.5.0
+ *
+ * @property-read array  $ancestors
+ * @property-read string $page_template
+ * @property-read int    $post_category
+ * @property-read string $tag_input
+ *
+ */
+final class WP_Post {
+
+	/**
+	 * Post ID.
+	 *
+	 * @var int
+	 */
+	public $ID;
+
+	/**
+	 * ID of post author.
+	 *
+	 * A numeric string, for compatibility reasons.
+	 *
+	 * @var string
+	 */
+	public $post_author = 0;
+
+	/**
+	 * The post's local publication time.
+	 *
+	 * @var string
+	 */
+	public $post_date = '0000-00-00 00:00:00';
+
+	/**
+	 * The post's GMT publication time.
+	 *
+	 * @var string
+	 */
+	public $post_date_gmt = '0000-00-00 00:00:00';
+
+	/**
+	 * The post's content.
+	 *
+	 * @var string
+	 */
+	public $post_content = '';
+
+	/**
+	 * The post's title.
+	 *
+	 * @var string
+	 */
+	public $post_title = '';
+
+	/**
+	 * The post's excerpt.
+	 *
+	 * @var string
+	 */
+	public $post_excerpt = '';
+
+	/**
+	 * The post's status.
+	 *
+	 * @var string
+	 */
+	public $post_status = 'publish';
+
+	/**
+	 * Whether comments are allowed.
+	 *
+	 * @var string
+	 */
+	public $comment_status = 'open';
+
+	/**
+	 * Whether pings are allowed.
+	 *
+	 * @var string
+	 */
+	public $ping_status = 'open';
+
+	/**
+	 * The post's password in plain text.
+	 *
+	 * @var string
+	 */
+	public $post_password = '';
+
+	/**
+	 * The post's slug.
+	 *
+	 * @var string
+	 */
+	public $post_name = '';
+
+	/**
+	 * URLs queued to be pinged.
+	 *
+	 * @var string
+	 */
+	public $to_ping = '';
+
+	/**
+	 * URLs that have been pinged.
+	 *
+	 * @var string
+	 */
+	public $pinged = '';
+
+	/**
+	 * The post's local modified time.
+	 *
+	 * @var string
+	 */
+	public $post_modified = '0000-00-00 00:00:00';
+
+	/**
+	 * The post's GMT modified time.
+	 *
+	 * @var string
+	 */
+	public $post_modified_gmt = '0000-00-00 00:00:00';
+
+	/**
+	 * A utility DB field for post content.
+	 *
+	 *
+	 * @var string
+	 */
+	public $post_content_filtered = '';
+
+	/**
+	 * ID of a post's parent post.
+	 *
+	 * @var int
+	 */
+	public $post_parent = 0;
+
+	/**
+	 * The unique identifier for a post, not necessarily a URL, used as the feed GUID.
+	 *
+	 * @var string
+	 */
+	public $guid = '';
+
+	/**
+	 * A field used for ordering posts.
+	 *
+	 * @var int
+	 */
+	public $menu_order = 0;
+
+	/**
+	 * The post's type, like post or page.
+	 *
+	 * @var string
+	 */
+	public $post_type = 'post';
+
+	/**
+	 * An attachment's mime type.
+	 *
+	 * @var string
+	 */
+	public $post_mime_type = '';
+
+	/**
+	 * Cached comment count.
+	 *
+	 * A numeric string, for compatibility reasons.
+	 *
+	 * @var string
+	 */
+	public $comment_count = 0;
+
+	/**
+	 * Stores the post object's sanitization level.
+	 *
+	 * Does not correspond to a DB field.
+	 *
+	 * @var string
+	 */
+	public $filter;
+
+	/**
+	 * Retrieve WP_Post instance.
+	 *
+	 * @static
+	 * @access public
+	 *
+	 * @param int $post_id Post ID.
+	 * @return WP_Post|bool Post object, false otherwise.
+	 */
+	public static function get_instance( $post_id ) {
+		global $wpdb;
+
+		$post_id = (int) $post_id;
+		if ( ! $post_id )
+			return false;
+
+		$_post = wp_cache_get( $post_id, 'posts' );
+
+		if ( ! $_post ) {
+			$_post = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE ID = %d LIMIT 1", $post_id ) );
+
+			if ( ! $_post )
+				return false;
+
+			$_post = sanitize_post( $_post, 'raw' );
+			wp_cache_add( $_post->ID, $_post, 'posts' );
+		} elseif ( empty( $_post->filter ) ) {
+			$_post = sanitize_post( $_post, 'raw' );
+		}
+
+		return new WP_Post( $_post );
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 * @param WP_Post $post Post object.
+	 */
+	public function __construct( $post ) {
+		foreach ( get_object_vars( $post ) as $key => $value )
+			$this->$key = $value;
+	}
+
+	/**
+	 * Isset-er.
+	 *
+	 * @param string $key Property to check if set.
+	 * @return bool
+	 */
+	public function __isset( $key ) {
+		if ( 'ancestors' == $key )
+			return true;
+
+		if ( 'page_template' == $key )
+			return ( 'page' == $this->post_type );
+
+		if ( 'post_category' == $key )
+		   return true;
+
+		if ( 'tags_input' == $key )
+		   return true;
+
+		return metadata_exists( 'post', $this->ID, $key );
+	}
+
+	/**
+	 * Getter.
+	 *
+	 * @param string $key Key to get.
+	 * @return array|mixed
+	 */
+	public function __get( $key ) {
+		if ( 'page_template' == $key && $this->__isset( $key ) ) {
+			return get_post_meta( $this->ID, '_wp_page_template', true );
+		}
+
+		if ( 'post_category' == $key ) {
+			if ( is_object_in_taxonomy( $this->post_type, 'category' ) )
+				$terms = get_the_terms( $this, 'category' );
+
+			if ( empty( $terms ) )
+				return array();
+
+			return wp_list_pluck( $terms, 'term_id' );
+		}
+
+		if ( 'tags_input' == $key ) {
+			if ( is_object_in_taxonomy( $this->post_type, 'post_tag' ) )
+				$terms = get_the_terms( $this, 'post_tag' );
+
+			if ( empty( $terms ) )
+				return array();
+
+			return wp_list_pluck( $terms, 'name' );
+		}
+
+		// Rest of the values need filtering.
+		if ( 'ancestors' == $key )
+			$value = get_post_ancestors( $this );
+		else
+			$value = get_post_meta( $this->ID, $key, true );
+
+		if ( $this->filter )
+			$value = sanitize_post_field( $key, $value, $this->ID, $this->filter );
+
+		return $value;
+	}
+
+	/**
+	 * {@Missing Summary}
+	 *
+	 * @param string $filter Filter.
+	 * @return $this|array|bool|object|WP_Post
+	 */
+	public function filter( $filter ) {
+		if ( $this->filter == $filter )
+			return $this;
+
+		if ( $filter == 'raw' )
+			return self::get_instance( $this->ID );
+
+		return sanitize_post( $this, $filter );
+	}
+
+	/**
+	 * Convert object to array.
+	 *
+	 * @return array Object as array.
+	 */
+	public function to_array() {
+		$post = get_object_vars( $this );
+
+		foreach ( array( 'ancestors', 'page_template', 'post_category', 'tags_input' ) as $key ) {
+			if ( $this->__isset( $key ) )
+				$post[ $key ] = $this->__get( $key );
+		}
+
+		return $post;
+	}
+}
+
+/**
+>>>>>>> origin/master
  * Retrieve ancestors of a post.
  *
  * @since 2.5.0
@@ -499,17 +934,28 @@ function get_post_ancestors( $post ) {
  * supported values are found within those functions.
  *
  * @since 2.3.0
+<<<<<<< HEAD
  * @since 4.5.0 The `$post` parameter was made optional.
+=======
+>>>>>>> origin/master
  *
  * @see sanitize_post_field()
  *
  * @param string      $field   Post field name.
+<<<<<<< HEAD
  * @param int|WP_Post $post    Optional. Post ID or post object. Defaults to current post.
+=======
+ * @param int|WP_Post $post    Post ID or post object.
+>>>>>>> origin/master
  * @param string      $context Optional. How to filter the field. Accepts 'raw', 'edit', 'db',
  *                             or 'display'. Default 'display'.
  * @return string The value of the post field on success, empty string on failure.
  */
+<<<<<<< HEAD
 function get_post_field( $field, $post = null, $context = 'display' ) {
+=======
+function get_post_field( $field, $post, $context = 'display' ) {
+>>>>>>> origin/master
 	$post = get_post( $post );
 
 	if ( !$post )
@@ -578,6 +1024,7 @@ function get_post_status( $ID = '' ) {
 
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Filters the post status.
 	 *
@@ -587,6 +1034,9 @@ function get_post_status( $ID = '' ) {
 	 * @param WP_Post $post        The post object.
 	 */
 	return apply_filters( 'get_post_status', $post->post_status, $post );
+=======
+	return $post->post_status;
+>>>>>>> origin/master
 }
 
 /**
@@ -640,7 +1090,11 @@ function get_page_statuses() {
  * Arguments prefixed with an _underscore shouldn't be used by plugins and themes.
  *
  * @since 3.0.0
+<<<<<<< HEAD
  * @global array $wp_post_statuses Inserts new post status object into the list
+=======
+ * @uses $wp_post_statuses Inserts new post status object into the list
+>>>>>>> origin/master
  *
  * @param string $post_status Name of the post status.
  * @param array|string $args {
@@ -655,7 +1109,11 @@ function get_page_statuses() {
  *     @type bool        $_builtin                  Whether the status is built-in. Core-use only.
  *                                                  Default false.
  *     @type bool        $public                    Whether posts of this status should be shown
+<<<<<<< HEAD
  *                                                  in the front end of the site. Default false.
+=======
+ *                                                  in the front end of the site. Default true.
+>>>>>>> origin/master
  *     @type bool        $internal                  Whether the status is for internal use only.
  *                                                  Default false.
  *     @type bool        $protected                 Whether posts with this status should be protected.
@@ -671,7 +1129,10 @@ function get_page_statuses() {
  *                                                  e.g. All (12) | Published (9) | My Custom Status (2)
  *                                                  Default is value of $internal.
  * }
+<<<<<<< HEAD
  * @return object
+=======
+>>>>>>> origin/master
  */
 function register_post_status( $post_status, $args = array() ) {
 	global $wp_post_statuses;
@@ -748,7 +1209,11 @@ function register_post_status( $post_status, $args = array() ) {
  * @see register_post_status()
  *
  * @param string $post_status The name of a registered post status.
+<<<<<<< HEAD
  * @return object|null A post status object.
+=======
+ * @return object A post status object.
+>>>>>>> origin/master
  */
 function get_post_status_object( $post_status ) {
 	global $wp_post_statuses;
@@ -819,12 +1284,21 @@ function post_type_exists( $post_type ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the post type of the current post or of a given post.
  *
  * @since 2.1.0
  *
  * @param int|WP_Post|null $post Optional. Post ID or post object. Default is global $post.
  * @return string|false          Post type on success, false on failure.
+=======
+ * Retrieve the post type of the current post or of a given post.
+ *
+ * @since 2.1.0
+ *
+ * @param int|WP_Post $post Optional. Post ID or post object. Default is global $post.
+ * @return string|false Post type on success, false on failure.
+>>>>>>> origin/master
  */
 function get_post_type( $post = null ) {
 	if ( $post = get_post( $post ) )
@@ -834,26 +1308,43 @@ function get_post_type( $post = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves a post type object by name.
  *
  * @since 3.0.0
  * @since 4.6.0 Object returned is now an instance of WP_Post_Type.
+=======
+ * Retrieve a post type object by name.
+ *
+ * @since 3.0.0
+>>>>>>> origin/master
  *
  * @global array $wp_post_types List of post types.
  *
  * @see register_post_type()
  *
  * @param string $post_type The name of a registered post type.
+<<<<<<< HEAD
  * @return WP_Post_Type|null WP_Post_Type object if it exists, null otherwise.
+=======
+ * @return object A post type object.
+>>>>>>> origin/master
  */
 function get_post_type_object( $post_type ) {
 	global $wp_post_types;
 
+<<<<<<< HEAD
 	if ( ! is_scalar( $post_type ) || empty( $wp_post_types[ $post_type ] ) ) {
 		return null;
 	}
 
 	return $wp_post_types[ $post_type ];
+=======
+	if ( empty($wp_post_types[$post_type]) )
+		return null;
+
+	return $wp_post_types[$post_type];
+>>>>>>> origin/master
 }
 
 /**
@@ -871,7 +1362,11 @@ function get_post_type_object( $post_type ) {
  *                               or 'objects'. Default 'names'.
  * @param string       $operator Optional. The logical operation to perform. 'or' means only one
  *                               element from the array needs to match; 'and' means all elements
+<<<<<<< HEAD
  *                               must match; 'not' means no elements may match. Default 'and'.
+=======
+ *                               must match. Accepts 'or' or 'and'. Default 'and'.
+>>>>>>> origin/master
  * @return array A list of post type names or objects.
  */
 function get_post_types( $args = array(), $output = 'names', $operator = 'and' ) {
@@ -883,6 +1378,7 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
 }
 
 /**
+<<<<<<< HEAD
  * Registers a post type.
  *
  * Note: Post type registrations should not be hooked before the
@@ -907,6 +1403,21 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  * @param string $post_type Post type key. Must not exceed 20 characters and may
  *                          only contain lowercase alphanumeric characters, dashes,
  *                          and underscores. See sanitize_key().
+=======
+ * Register a post type. Do not use before init.
+ *
+ * A function for creating or modifying a post type based on the
+ * parameters given. The function will accept an array (second optional
+ * parameter), along with a string for the post type name.
+ *
+ * @since 2.9.0
+ *
+ * @global array      $wp_post_types List of post types.
+ * @global WP_Rewrite $wp_rewrite    Used for default feeds.
+ * @global WP         $wp            Used to add query vars.
+ *
+ * @param string $post_type Post type key, must not exceed 20 characters.
+>>>>>>> origin/master
  * @param array|string $args {
  *     Array or string of arguments for registering a post type.
  *
@@ -914,8 +1425,12 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  *                                             Default is value of $labels['name'].
  *     @type array       $labels               An array of labels for this post type. If not set, post
  *                                             labels are inherited for non-hierarchical types and page
+<<<<<<< HEAD
  *                                             labels for hierarchical ones. See get_post_type_labels() for a full
  *                                             list of supported labels.
+=======
+ *                                             labels for hierarchical ones. {@see get_post_type_labels()}.
+>>>>>>> origin/master
  *     @type string      $description          A short descriptive summary of what the post type is.
  *                                             Default empty.
  *     @type bool        $public               Whether a post type is intended for use publicly either via
@@ -928,12 +1443,20 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  *     @type bool        $exclude_from_search  Whether to exclude posts with this post type from front end search
  *                                             results. Default is the opposite value of $public.
  *     @type bool        $publicly_queryable   Whether queries can be performed on the front end for the post type
+<<<<<<< HEAD
  *                                             as part of parse_request(). Endpoints would include:
+=======
+ *                                             as part of {@see parse_request()}. Endpoints would include:
+>>>>>>> origin/master
  *                                             * ?post_type={post_type_key}
  *                                             * ?{post_type_key}={single_post_slug}
  *                                             * ?{post_type_query_var}={single_post_slug}
  *                                             If not set, the default is inherited from $public.
+<<<<<<< HEAD
  *     @type bool        $show_ui              Whether to generate and allow a UI for managing this post type in the
+=======
+ *     @type bool        $show_ui              Whether to generate a default UI for managing this post type in the
+>>>>>>> origin/master
  *                                             admin. Default is value of $public.
  *     @type bool        $show_in_menu         Where to show the post type in the admin menu. To work, $show_ui
  *                                             must be true. If true, the post type is shown in its own top level
@@ -959,6 +1482,7 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  *                                             array('story', 'stories'). Default 'post'.
  *     @type array       $capabilities         Array of capabilities for this post type. $capability_type is used
  *                                             as a base to construct capabilities by default.
+<<<<<<< HEAD
  *                                             See get_post_type_capabilities().
  *     @type bool        $map_meta_cap         Whether to use the internal default meta capability handling.
  *                                             Default false.
@@ -976,6 +1500,19 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  *     @type array       $taxonomies           An array of taxonomy identifiers that will be registered for the
  *                                             post type. Taxonomies can be registered later with register_taxonomy()
  *                                             or register_taxonomy_for_object_type().
+=======
+ *                                             {@see get_post_type_capabilities()}.
+ *     @type bool        $map_meta_cap         Whether to use the internal default meta capability handling.
+ *                                             Default false.
+ *     @type array       $supports             An alias for calling {@see add_post_type_support()} directly.
+ *                                             Defaults to array containing 'title' & 'editor'.
+ *     @type callback    $register_meta_box_cb Provide a callback function that sets up the meta boxes for the
+ *                                             edit form. Do remove_meta_box() and add_meta_box() calls in the
+ *                                             callback. Default null.
+ *     @type array       $taxonomies           An array of taxonomy identifiers that will be registered for the
+ *                                             post type. Taxonomies can be registered later with
+ *                                             {@see register_taxonomy()} or {@see register_taxonomy_for_object_type()}.
+>>>>>>> origin/master
  *                                             Default empty array.
  *     @type bool|string $has_archive          Whether there should be post type archives, or if a string, the
  *                                             archive slug to use. Will generate the proper rewrite rules if
@@ -1011,6 +1548,7 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  *     @type string      $_edit_link           FOR INTERNAL USE ONLY! URL segment to use for edit link of
  *                                             this post type. Default 'post.php?post=%d'.
  * }
+<<<<<<< HEAD
  * @return WP_Post_Type|WP_Error The registered post type object, or an error object.
  */
 function register_post_type( $post_type, $args = array() ) {
@@ -1096,6 +1634,180 @@ function unregister_post_type( $post_type ) {
 	do_action( 'unregistered_post_type', $post_type );
 
 	return true;
+=======
+ * @return object|WP_Error The registered post type object, or an error object.
+ */
+function register_post_type( $post_type, $args = array() ) {
+	global $wp_post_types, $wp_rewrite, $wp;
+
+	if ( ! is_array( $wp_post_types ) )
+		$wp_post_types = array();
+
+	// Args prefixed with an underscore are reserved for internal use.
+	$defaults = array(
+		'labels'               => array(),
+		'description'          => '',
+		'public'               => false,
+		'hierarchical'         => false,
+		'exclude_from_search'  => null,
+		'publicly_queryable'   => null,
+		'show_ui'              => null,
+		'show_in_menu'         => null,
+		'show_in_nav_menus'    => null,
+		'show_in_admin_bar'    => null,
+		'menu_position'        => null,
+		'menu_icon'            => null,
+		'capability_type'      => 'post',
+		'capabilities'         => array(),
+		'map_meta_cap'         => null,
+		'supports'             => array(),
+		'register_meta_box_cb' => null,
+		'taxonomies'           => array(),
+		'has_archive'          => false,
+		'rewrite'              => true,
+		'query_var'            => true,
+		'can_export'           => true,
+		'delete_with_user'     => null,
+		'_builtin'             => false,
+		'_edit_link'           => 'post.php?post=%d',
+	);
+	$args = wp_parse_args( $args, $defaults );
+	$args = (object) $args;
+
+	$post_type = sanitize_key( $post_type );
+	$args->name = $post_type;
+
+	if ( empty( $post_type ) || strlen( $post_type ) > 20 ) {
+		_doing_it_wrong( __FUNCTION__, __( 'Post type names must be between 1 and 20 characters in length.' ), '4.2' );
+		return new WP_Error( 'post_type_length_invalid', __( 'Post type names must be between 1 and 20 characters in length.' ) );
+	}
+
+	// If not set, default to the setting for public.
+	if ( null === $args->publicly_queryable )
+		$args->publicly_queryable = $args->public;
+
+	// If not set, default to the setting for public.
+	if ( null === $args->show_ui )
+		$args->show_ui = $args->public;
+
+	// If not set, default to the setting for show_ui.
+	if ( null === $args->show_in_menu || ! $args->show_ui )
+		$args->show_in_menu = $args->show_ui;
+
+	// If not set, default to the whether the full UI is shown.
+	if ( null === $args->show_in_admin_bar )
+		$args->show_in_admin_bar = (bool) $args->show_in_menu;
+
+	// If not set, default to the setting for public.
+	if ( null === $args->show_in_nav_menus )
+		$args->show_in_nav_menus = $args->public;
+
+	// If not set, default to true if not public, false if public.
+	if ( null === $args->exclude_from_search )
+		$args->exclude_from_search = !$args->public;
+
+	// Back compat with quirky handling in version 3.0. #14122.
+	if ( empty( $args->capabilities ) && null === $args->map_meta_cap && in_array( $args->capability_type, array( 'post', 'page' ) ) )
+		$args->map_meta_cap = true;
+
+	// If not set, default to false.
+	if ( null === $args->map_meta_cap )
+		$args->map_meta_cap = false;
+
+	$args->cap = get_post_type_capabilities( $args );
+	unset( $args->capabilities );
+
+	if ( is_array( $args->capability_type ) )
+		$args->capability_type = $args->capability_type[0];
+
+	if ( ! empty( $args->supports ) ) {
+		add_post_type_support( $post_type, $args->supports );
+		unset( $args->supports );
+	} elseif ( false !== $args->supports ) {
+		// Add default features
+		add_post_type_support( $post_type, array( 'title', 'editor' ) );
+	}
+
+	if ( false !== $args->query_var && ! empty( $wp ) ) {
+		if ( true === $args->query_var )
+			$args->query_var = $post_type;
+		else
+			$args->query_var = sanitize_title_with_dashes( $args->query_var );
+		$wp->add_query_var( $args->query_var );
+	}
+
+	if ( false !== $args->rewrite && ( is_admin() || '' != get_option( 'permalink_structure' ) ) ) {
+		if ( ! is_array( $args->rewrite ) )
+			$args->rewrite = array();
+		if ( empty( $args->rewrite['slug'] ) )
+			$args->rewrite['slug'] = $post_type;
+		if ( ! isset( $args->rewrite['with_front'] ) )
+			$args->rewrite['with_front'] = true;
+		if ( ! isset( $args->rewrite['pages'] ) )
+			$args->rewrite['pages'] = true;
+		if ( ! isset( $args->rewrite['feeds'] ) || ! $args->has_archive )
+			$args->rewrite['feeds'] = (bool) $args->has_archive;
+		if ( ! isset( $args->rewrite['ep_mask'] ) ) {
+			if ( isset( $args->permalink_epmask ) )
+				$args->rewrite['ep_mask'] = $args->permalink_epmask;
+			else
+				$args->rewrite['ep_mask'] = EP_PERMALINK;
+		}
+
+		if ( $args->hierarchical )
+			add_rewrite_tag( "%$post_type%", '(.+?)', $args->query_var ? "{$args->query_var}=" : "post_type=$post_type&pagename=" );
+		else
+			add_rewrite_tag( "%$post_type%", '([^/]+)', $args->query_var ? "{$args->query_var}=" : "post_type=$post_type&name=" );
+
+		if ( $args->has_archive ) {
+			$archive_slug = $args->has_archive === true ? $args->rewrite['slug'] : $args->has_archive;
+			if ( $args->rewrite['with_front'] )
+				$archive_slug = substr( $wp_rewrite->front, 1 ) . $archive_slug;
+			else
+				$archive_slug = $wp_rewrite->root . $archive_slug;
+
+			add_rewrite_rule( "{$archive_slug}/?$", "index.php?post_type=$post_type", 'top' );
+			if ( $args->rewrite['feeds'] && $wp_rewrite->feeds ) {
+				$feeds = '(' . trim( implode( '|', $wp_rewrite->feeds ) ) . ')';
+				add_rewrite_rule( "{$archive_slug}/feed/$feeds/?$", "index.php?post_type=$post_type" . '&feed=$matches[1]', 'top' );
+				add_rewrite_rule( "{$archive_slug}/$feeds/?$", "index.php?post_type=$post_type" . '&feed=$matches[1]', 'top' );
+			}
+			if ( $args->rewrite['pages'] )
+				add_rewrite_rule( "{$archive_slug}/{$wp_rewrite->pagination_base}/([0-9]{1,})/?$", "index.php?post_type=$post_type" . '&paged=$matches[1]', 'top' );
+		}
+
+		$permastruct_args = $args->rewrite;
+		$permastruct_args['feed'] = $permastruct_args['feeds'];
+		add_permastruct( $post_type, "{$args->rewrite['slug']}/%$post_type%", $permastruct_args );
+	}
+
+	// Register the post type meta box if a custom callback was specified.
+	if ( $args->register_meta_box_cb )
+		add_action( 'add_meta_boxes_' . $post_type, $args->register_meta_box_cb, 10, 1 );
+
+	$args->labels = get_post_type_labels( $args );
+	$args->label = $args->labels->name;
+
+	$wp_post_types[ $post_type ] = $args;
+
+	add_action( 'future_' . $post_type, '_future_post_hook', 5, 2 );
+
+	foreach ( $args->taxonomies as $taxonomy ) {
+		register_taxonomy_for_object_type( $taxonomy, $post_type );
+	}
+
+	/**
+	 * Fires after a post type is registered.
+	 *
+	 * @since 3.3.0
+	 *
+	 * @param string $post_type Post type.
+	 * @param object $args      Arguments used to register the post type.
+	 */
+	do_action( 'registered_post_type', $post_type, $args );
+
+	return $args;
+>>>>>>> origin/master
 }
 
 /**
@@ -1205,6 +1917,7 @@ function get_post_type_capabilities( $args ) {
  * @since 3.1.0
  * @access private
  *
+<<<<<<< HEAD
  * @global array $post_type_meta_caps Used to store meta capabilities.
  *
  * @param array $capabilities Post type meta capabilities.
@@ -1216,10 +1929,22 @@ function _post_type_meta_capabilities( $capabilities = null ) {
 		if ( in_array( $core, array( 'read_post', 'delete_post', 'edit_post' ) ) ) {
 			$post_type_meta_caps[ $custom ] = $core;
 		}
+=======
+ * @param null|array $capabilities Post type meta capabilities.
+ */
+function _post_type_meta_capabilities( $capabilities = null ) {
+	static $meta_caps = array();
+	if ( null === $capabilities )
+		return $meta_caps;
+	foreach ( $capabilities as $core => $custom ) {
+		if ( in_array( $core, array( 'read_post', 'delete_post', 'edit_post' ) ) )
+			$meta_caps[ $custom ] = $core;
+>>>>>>> origin/master
 	}
 }
 
 /**
+<<<<<<< HEAD
  * Builds an object with all post type labels out of a post type object.
  *
  * Accepted keys of the label array in the post type object:
@@ -1255,10 +1980,35 @@ function _post_type_meta_capabilities( $capabilities = null ) {
  * - `items_list_navigation` - Label for the table pagination hidden heading. Default is 'Posts list navigation' /
  *                           'Pages list navigation'.
  * - `items_list` - Label for the table hidden heading. Default is 'Posts list' / 'Pages list'.
+=======
+ * Build an object with all post type labels out of a post type object
+ *
+ * Accepted keys of the label array in the post type object:
+ *
+ * - name - general name for the post type, usually plural. The same and overridden
+ *          by $post_type_object->label. Default is Posts/Pages
+ * - singular_name - name for one object of this post type. Default is Post/Page
+ * - add_new - Default is Add New for both hierarchical and non-hierarchical types.
+ *             When internationalizing this string, please use a gettext context
+ *             {@link https://codex.wordpress.org/I18n_for_WordPress_Developers#Disambiguation_by_context}
+ *             matching your post type. Example: `_x( 'Add New', 'product' );`.
+ * - add_new_item - Default is Add New Post/Add New Page.
+ * - edit_item - Default is Edit Post/Edit Page.
+ * - new_item - Default is New Post/New Page.
+ * - view_item - Default is View Post/View Page.
+ * - search_items - Default is Search Posts/Search Pages.
+ * - not_found - Default is No posts found/No pages found.
+ * - not_found_in_trash - Default is No posts found in Trash/No pages found in Trash.
+ * - parent_item_colon - This string isn't used on non-hierarchical types. In hierarchical
+ *                       ones the default is 'Parent Page:'.
+ * - all_items - String for the submenu. Default is All Posts/All Pages.
+ * - menu_name - Default is the same as `name`.
+>>>>>>> origin/master
  *
  * Above, the first default value is for non-hierarchical post types (like posts)
  * and the second one is for hierarchical post types (like pages).
  *
+<<<<<<< HEAD
  * Note: To set labels used in post type admin notices, see the {@see 'post_updated_messages'} filter.
  *
  * @since 3.0.0
@@ -1272,6 +2022,13 @@ function _post_type_meta_capabilities( $capabilities = null ) {
  *
  * @param object|WP_Post_Type $post_type_object Post type object.
  * @return object Object with all the labels as member variables.
+=======
+ * @since 3.0.0
+ * @access private
+ *
+ * @param object $post_type_object Post type object.
+ * @return object object with all the labels as member variables.
+>>>>>>> origin/master
  */
 function get_post_type_labels( $post_type_object ) {
 	$nohier_vs_hier_defaults = array(
@@ -1286,6 +2043,7 @@ function get_post_type_labels( $post_type_object ) {
 		'not_found' => array( __('No posts found.'), __('No pages found.') ),
 		'not_found_in_trash' => array( __('No posts found in Trash.'), __('No pages found in Trash.') ),
 		'parent_item_colon' => array( null, __('Parent Page:') ),
+<<<<<<< HEAD
 		'all_items' => array( __( 'All Posts' ), __( 'All Pages' ) ),
 		'archives' => array( __( 'Post Archives' ), __( 'Page Archives' ) ),
 		'insert_into_item' => array( __( 'Insert into post' ), __( 'Insert into page' ) ),
@@ -1297,6 +2055,9 @@ function get_post_type_labels( $post_type_object ) {
 		'filter_items_list' => array( __( 'Filter posts list' ), __( 'Filter pages list' ) ),
 		'items_list_navigation' => array( __( 'Posts list navigation' ), __( 'Pages list navigation' ) ),
 		'items_list' => array( __( 'Posts list' ), __( 'Pages list' ) ),
+=======
+		'all_items' => array( __( 'All Posts' ), __( 'All Pages' ) )
+>>>>>>> origin/master
 	);
 	$nohier_vs_hier_defaults['menu_name'] = $nohier_vs_hier_defaults['name'];
 
@@ -1304,10 +2065,15 @@ function get_post_type_labels( $post_type_object ) {
 
 	$post_type = $post_type_object->name;
 
+<<<<<<< HEAD
 	$default_labels = clone $labels;
 
 	/**
 	 * Filters the labels of a specific post type.
+=======
+	/**
+	 * Filter the labels of a specific post type.
+>>>>>>> origin/master
 	 *
 	 * The dynamic portion of the hook name, `$post_type`, refers to
 	 * the post type slug.
@@ -1316,6 +2082,7 @@ function get_post_type_labels( $post_type_object ) {
 	 *
 	 * @see get_post_type_labels() for the full list of labels.
 	 *
+<<<<<<< HEAD
 	 * @param object $labels Object with labels for the post type as member variables.
 	 */
 	$labels = apply_filters( "post_type_labels_{$post_type}", $labels );
@@ -1324,6 +2091,11 @@ function get_post_type_labels( $post_type_object ) {
 	$labels = (object) array_merge( (array) $default_labels, (array) $labels );
 
 	return $labels;
+=======
+	 * @param array $labels Array of labels for the given post type.
+	 */
+	return apply_filters( "post_type_labels_{$post_type}", $labels );
+>>>>>>> origin/master
 }
 
 /**
@@ -1335,7 +2107,10 @@ function get_post_type_labels( $post_type_object ) {
  *
  * @param object $object                  A custom-something object.
  * @param array  $nohier_vs_hier_defaults Hierarchical vs non-hierarchical default labels.
+<<<<<<< HEAD
  * @return object Object containing labels for the given custom-something object.
+=======
+>>>>>>> origin/master
  */
 function _get_custom_object_labels( $object, $nohier_vs_hier_defaults ) {
 	$object->labels = (array) $object->labels;
@@ -1355,18 +2130,25 @@ function _get_custom_object_labels( $object, $nohier_vs_hier_defaults ) {
 	if ( !isset( $object->labels['all_items'] ) && isset( $object->labels['menu_name'] ) )
 		$object->labels['all_items'] = $object->labels['menu_name'];
 
+<<<<<<< HEAD
 	if ( !isset( $object->labels['archives'] ) && isset( $object->labels['all_items'] ) ) {
 		$object->labels['archives'] = $object->labels['all_items'];
 	}
 
+=======
+>>>>>>> origin/master
 	$defaults = array();
 	foreach ( $nohier_vs_hier_defaults as $key => $value ) {
 		$defaults[$key] = $object->hierarchical ? $value[1] : $value[0];
 	}
 	$labels = array_merge( $defaults, $object->labels );
+<<<<<<< HEAD
 	$object->labels = (object) $object->labels;
 
 	return (object) $labels;
+=======
+	return (object)$labels;
+>>>>>>> origin/master
 }
 
 /**
@@ -1399,8 +2181,11 @@ function _add_post_type_submenus() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global array $_wp_post_type_features
  *
+=======
+>>>>>>> origin/master
  * @param string       $post_type The post type for which to add the feature.
  * @param string|array $feature   The feature being added, accepts an array of
  *                                feature strings or a single string.
@@ -1422,15 +2207,23 @@ function add_post_type_support( $post_type, $feature ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global array $_wp_post_type_features
  *
+=======
+>>>>>>> origin/master
  * @param string $post_type The post type for which to remove the feature.
  * @param string $feature   The feature being removed.
  */
 function remove_post_type_support( $post_type, $feature ) {
 	global $_wp_post_type_features;
 
+<<<<<<< HEAD
 	unset( $_wp_post_type_features[ $post_type ][ $feature ] );
+=======
+	if ( isset( $_wp_post_type_features[$post_type][$feature] ) )
+		unset( $_wp_post_type_features[$post_type][$feature] );
+>>>>>>> origin/master
 }
 
 /**
@@ -1438,8 +2231,11 @@ function remove_post_type_support( $post_type, $feature ) {
  *
  * @since 3.4.0
  *
+<<<<<<< HEAD
  * @global array $_wp_post_type_features
  *
+=======
+>>>>>>> origin/master
  * @param string $post_type The post type.
  * @return array Post type supports list.
  */
@@ -1457,6 +2253,7 @@ function get_all_post_type_supports( $post_type ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global array $_wp_post_type_features
  *
  * @param string $post_type The post type being checked.
@@ -1489,6 +2286,16 @@ function get_post_types_by_support( $feature, $operator = 'and' ) {
 	$features = array_fill_keys( (array) $feature, true );
 
 	return array_keys( wp_filter_object_list( $_wp_post_type_features, $features, $operator ) );
+=======
+ * @param string $post_type The post type being checked.
+ * @param string $feature the feature being checked.
+ * @return bool Whether the post type supports the given feature.
+ */
+function post_type_supports( $post_type, $feature ) {
+	global $_wp_post_type_features;
+
+	return ( isset( $_wp_post_type_features[$post_type][$feature] ) );
+>>>>>>> origin/master
 }
 
 /**
@@ -1503,7 +2310,11 @@ function get_post_types_by_support( $feature, $operator = 'and' ) {
  * @param int    $post_id   Optional. Post ID to change post type. Default 0.
  * @param string $post_type Optional. Post type. Accepts 'post' or 'page' to
  *                          name a few. Default 'post'.
+<<<<<<< HEAD
  * @return int|false Amount of rows changed. Should be 1 for success and 0 for failure.
+=======
+ * @return int Amount of rows changed. Should be 1 for success and 0 for failure.
+>>>>>>> origin/master
  */
 function set_post_type( $post_id = 0, $post_type = 'post' ) {
 	global $wpdb;
@@ -1517,6 +2328,7 @@ function set_post_type( $post_id = 0, $post_type = 'post' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Determines whether a post type is considered "viewable".
  *
  * For built-in post types such as posts and pages, the 'public' value will be evaluated.
@@ -1541,6 +2353,8 @@ function is_post_type_viewable( $post_type ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Retrieve list of latest posts or posts matching criteria.
  *
  * The defaults are as follows:
@@ -1550,6 +2364,7 @@ function is_post_type_viewable( $post_type ) {
  * @see WP_Query::parse_query()
  *
  * @param array $args {
+<<<<<<< HEAD
  *     Optional. Arguments to retrieve posts. See WP_Query::parse_query() for all
  *     available arguments.
  *
@@ -1560,13 +2375,34 @@ function is_post_type_viewable( $post_type ) {
  *     @type array      $include          An array of post IDs to retrieve, sticky posts will be included.
  *                                        Is an alias of $post__in in WP_Query. Default empty array.
  *     @type array      $exclude          An array of post IDs not to retrieve. Default empty array.
+=======
+ *     Optional. Arguments to retrieve posts. {@see WP_Query::parse_query()} for more
+ *     available arguments.
+ *
+ *     @type int        $numberposts      Total number of posts to retrieve. Is an alias of $posts_per_page
+ *                                        in WP_Query. Accepts 1+ and -1 for all. Default 5.
+ *     @type int        $offset           The number of posts to offset before retrieval. Default 0.
+ *     @type int|string $category         Category ID or comma-separated list of IDs (this or any children).
+ *                                        Is an alias of $cat in WP_Query. Default 0.
+ *     @type string     $orderby          Which field to order posts by. Accepts post fields. Default 'date'.
+ *     @type array      $include          An array of post IDs to retrieve, sticky posts will be included.
+ *                                        Is an alias of $post__in in WP_Query. Default empty array.
+ *     @type array      $exclude          An array of post IDs not to retrieve. Default empty array.
+ *     @type string     $meta_key         Custom field key. Default empty.
+ *     @type mixed      $meta_value       Custom field value. Default empty string.
+ *     @type string     $post_type        Post type. Default 'post'.
+>>>>>>> origin/master
  *     @type bool       $suppress_filters Whether to suppress filters. Default true.
  * }
  * @return array List of posts.
  */
 function get_posts( $args = null ) {
 	$defaults = array(
+<<<<<<< HEAD
 		'numberposts' => 5,
+=======
+		'numberposts' => 5, 'offset' => 0,
+>>>>>>> origin/master
 		'category' => 0, 'orderby' => 'date',
 		'order' => 'DESC', 'include' => array(),
 		'exclude' => array(), 'meta_key' => '',
@@ -1612,7 +2448,11 @@ function get_posts( $args = null ) {
  * @param mixed  $meta_value Metadata value. Must be serializable if non-scalar.
  * @param bool   $unique     Optional. Whether the same key should not be added.
  *                           Default false.
+<<<<<<< HEAD
  * @return int|false Meta ID on success, false on failure.
+=======
+ * @return int|bool Meta ID on success, false on failure.
+>>>>>>> origin/master
  */
 function add_post_meta( $post_id, $meta_key, $meta_value, $unique = false ) {
 	// Make sure meta is added to the post, not a revision.
@@ -1726,7 +2566,12 @@ function get_post_custom( $post_id = 0 ) {
  * @since 1.2.0
  *
  * @param int $post_id Optional. Post ID. Default is ID of the global $post.
+<<<<<<< HEAD
  * @return array|void Array of the keys, if retrieved.
+=======
+ * @return array|null Either array of the keys, or null if keys could not be
+ *                    retrieved.
+>>>>>>> origin/master
  */
 function get_post_custom_keys( $post_id = 0 ) {
 	$custom = get_post_custom( $post_id );
@@ -1748,7 +2593,11 @@ function get_post_custom_keys( $post_id = 0 ) {
  *
  * @param string $key     Optional. Meta field key. Default empty.
  * @param int    $post_id Optional. Post ID. Default is ID of the global $post.
+<<<<<<< HEAD
  * @return array|null Meta field values.
+=======
+ * @return array Meta field values.
+>>>>>>> origin/master
  */
 function get_post_custom_values( $key = '', $post_id = 0 ) {
 	if ( !$key )
@@ -1814,7 +2663,11 @@ function sanitize_post( $post, $context = 'display' ) {
 		foreach ( array_keys(get_object_vars($post)) as $field )
 			$post->$field = sanitize_post_field($field, $post->$field, $post->ID, $context);
 		$post->filter = $context;
+<<<<<<< HEAD
 	} elseif ( is_array( $post ) ) {
+=======
+	} else {
+>>>>>>> origin/master
 		// Check if post already filtered for this context.
 		if ( isset($post['filter']) && $context == $post['filter'] )
 			return $post;
@@ -1835,16 +2688,27 @@ function sanitize_post( $post, $context = 'display' ) {
  * are treated like 'display' when calling filters.
  *
  * @since 2.3.0
+<<<<<<< HEAD
  * @since 4.4.0 Like `sanitize_post()`, `$context` defaults to 'display'.
+=======
+>>>>>>> origin/master
  *
  * @param string $field   The Post Object field name.
  * @param mixed  $value   The Post Object value.
  * @param int    $post_id Post ID.
+<<<<<<< HEAD
  * @param string $context Optional. How to sanitize post fields. Looks for 'raw', 'edit',
  *                        'db', 'display', 'attribute' and 'js'. Default 'display'.
  * @return mixed Sanitized value.
  */
 function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
+=======
+ * @param string $context How to sanitize post fields. Looks for 'raw', 'edit',
+ *                        'db', 'display', 'attribute' and 'js'.
+ * @return mixed Sanitized value.
+ */
+function sanitize_post_field($field, $value, $post_id, $context) {
+>>>>>>> origin/master
 	$int_fields = array('ID', 'post_parent', 'menu_order');
 	if ( in_array($field, $int_fields) )
 		$value = (int) $value;
@@ -1871,7 +2735,11 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 		if ( $prefixed ) {
 
 			/**
+<<<<<<< HEAD
 			 * Filters the value of a specific post field to edit.
+=======
+			 * Filter the value of a specific post field to edit.
+>>>>>>> origin/master
 			 *
 			 * The dynamic portion of the hook name, `$field`, refers to the post
 			 * field name.
@@ -1884,7 +2752,11 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 			$value = apply_filters( "edit_{$field}", $value, $post_id );
 
 			/**
+<<<<<<< HEAD
 			 * Filters the value of a specific post field to edit.
+=======
+			 * Filter the value of a specific post field to edit.
+>>>>>>> origin/master
 			 *
 			 * The dynamic portion of the hook name, `$field_no_prefix`, refers to
 			 * the post field name.
@@ -1911,7 +2783,11 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 		if ( $prefixed ) {
 
 			/**
+<<<<<<< HEAD
 			 * Filters the value of a specific post field before saving.
+=======
+			 * Filter the value of a specific post field before saving.
+>>>>>>> origin/master
 			 *
 			 * The dynamic portion of the hook name, `$field`, refers to the post
 			 * field name.
@@ -1923,7 +2799,11 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 			$value = apply_filters( "pre_{$field}", $value );
 
 			/**
+<<<<<<< HEAD
 			 * Filters the value of a specific field before saving.
+=======
+			 * Filter the value of a specific field before saving.
+>>>>>>> origin/master
 			 *
 			 * The dynamic portion of the hook name, `$field_no_prefix`, refers
 			 * to the post field name.
@@ -1937,7 +2817,11 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 			$value = apply_filters( "pre_post_{$field}", $value );
 
 			/**
+<<<<<<< HEAD
 			 * Filters the value of a specific post field before saving.
+=======
+			 * Filter the value of a specific post field before saving.
+>>>>>>> origin/master
 			 *
 			 * The dynamic portion of the hook name, `$field`, refers to the post
 			 * field name.
@@ -1954,7 +2838,11 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 		if ( $prefixed ) {
 
 			/**
+<<<<<<< HEAD
 			 * Filters the value of a specific post field for display.
+=======
+			 * Filter the value of a specific post field for display.
+>>>>>>> origin/master
 			 *
 			 * The dynamic portion of the hook name, `$field`, refers to the post
 			 * field name.
@@ -1971,6 +2859,7 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 		} else {
 			$value = apply_filters( "post_{$field}", $value, $post_id, $context );
 		}
+<<<<<<< HEAD
 
 		if ( 'attribute' == $context ) {
 			$value = esc_attr( $value );
@@ -1979,6 +2868,15 @@ function sanitize_post_field( $field, $value, $post_id, $context = 'display' ) {
 		}
 	}
 
+=======
+	}
+
+	if ( 'attribute' == $context )
+		$value = esc_attr($value);
+	elseif ( 'js' == $context )
+		$value = esc_js($value);
+
+>>>>>>> origin/master
 	return $value;
 }
 
@@ -2000,6 +2898,7 @@ function stick_post( $post_id ) {
 	if ( ! in_array($post_id, $stickies) )
 		$stickies[] = $post_id;
 
+<<<<<<< HEAD
 	$updated = update_option( 'sticky_posts', $stickies );
 
 	if ( $updated ) {
@@ -2012,6 +2911,9 @@ function stick_post( $post_id ) {
 		 */
 		do_action( 'post_stuck', $post_id );
 	}
+=======
+	update_option('sticky_posts', $stickies);
+>>>>>>> origin/master
 }
 
 /**
@@ -2038,6 +2940,7 @@ function unstick_post( $post_id ) {
 
 	array_splice($stickies, $offset, 1);
 
+<<<<<<< HEAD
 	$updated = update_option( 'sticky_posts', $stickies );
 
 	if ( $updated ) {
@@ -2050,6 +2953,9 @@ function unstick_post( $post_id ) {
 		 */
 		do_action( 'post_unstuck', $post_id );
 	}
+=======
+	update_option('sticky_posts', $stickies);
+>>>>>>> origin/master
 }
 
 /**
@@ -2085,8 +2991,11 @@ function _count_posts_cache_key( $type = 'post', $perm = '' ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param string $type Optional. Post type to retrieve count. Default 'post'.
  * @param string $perm Optional. 'readable' or empty. Default empty.
  * @return object Number of posts for each status.
@@ -2150,8 +3059,11 @@ function wp_count_posts( $type = 'post', $perm = '' ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param string|array $mime_type Optional. Array or comma-separated list of
  *                                MIME patterns. Default empty.
  * @return object An object containing the attachment counts by mime type.
@@ -2163,7 +3075,11 @@ function wp_count_attachments( $mime_type = '' ) {
 	$count = $wpdb->get_results( "SELECT post_mime_type, COUNT( * ) AS num_posts FROM $wpdb->posts WHERE post_type = 'attachment' AND post_status != 'trash' $and GROUP BY post_mime_type", ARRAY_A );
 
 	$counts = array();
+<<<<<<< HEAD
 	foreach ( (array) $count as $row ) {
+=======
+	foreach( (array) $count as $row ) {
+>>>>>>> origin/master
 		$counts[ $row['post_mime_type'] ] = $row['num_posts'];
 	}
 	$counts['trash'] = $wpdb->get_var( "SELECT COUNT( * ) FROM $wpdb->posts WHERE post_type = 'attachment' AND post_status = 'trash' $and");
@@ -2196,7 +3112,11 @@ function get_post_mime_types() {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the default list of post mime types.
+=======
+	 * Filter the default list of post mime types.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *
@@ -2326,7 +3246,11 @@ function wp_post_mime_type_where( $post_mime_types, $table_alias = '' ) {
  * @param int  $postid       Optional. Post ID. Default 0.
  * @param bool $force_delete Optional. Whether to bypass trash and force deletion.
  *                           Default false.
+<<<<<<< HEAD
  * @return array|false|WP_Post False on failure.
+=======
+ * @return array|bool|WP_Post False on failure.
+>>>>>>> origin/master
  */
 function wp_delete_post( $postid = 0, $force_delete = false ) {
 	global $wpdb;
@@ -2335,12 +3259,17 @@ function wp_delete_post( $postid = 0, $force_delete = false ) {
 		return $post;
 
 	if ( !$force_delete && ( $post->post_type == 'post' || $post->post_type == 'page') && get_post_status( $postid ) != 'trash' && EMPTY_TRASH_DAYS )
+<<<<<<< HEAD
 		return wp_trash_post( $postid );
+=======
+			return wp_trash_post($postid);
+>>>>>>> origin/master
 
 	if ( $post->post_type == 'attachment' )
 		return wp_delete_attachment( $postid, $force_delete );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether a post deletion should take place.
 	 *
 	 * @since 4.4.0
@@ -2355,6 +3284,8 @@ function wp_delete_post( $postid = 0, $force_delete = false ) {
 	}
 
 	/**
+=======
+>>>>>>> origin/master
 	 * Fires before a post is deleted, at the start of wp_delete_post().
 	 *
 	 * @since 3.2.0
@@ -2377,9 +3308,14 @@ function wp_delete_post( $postid = 0, $force_delete = false ) {
 		// Point children of this page to its parent, also clean the cache of affected children.
 		$children_query = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE post_parent = %d AND post_type = %s", $postid, $post->post_type );
 		$children = $wpdb->get_results( $children_query );
+<<<<<<< HEAD
 		if ( $children ) {
 			$wpdb->update( $wpdb->posts, $parent_data, $parent_where + array( 'post_type' => $post->post_type ) );
 		}
+=======
+
+		$wpdb->update( $wpdb->posts, $parent_data, $parent_where + array( 'post_type' => $post->post_type ) );
+>>>>>>> origin/master
 	}
 
 	// Do raw query. wp_get_post_revisions() is filtered.
@@ -2391,6 +3327,7 @@ function wp_delete_post( $postid = 0, $force_delete = false ) {
 	// Point all attachments to this post up one level.
 	$wpdb->update( $wpdb->posts, $parent_data, $parent_where + array( 'post_type' => 'attachment' ) );
 
+<<<<<<< HEAD
 	wp_defer_comment_counting( true );
 
 	$comment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = %d", $postid ));
@@ -2399,6 +3336,11 @@ function wp_delete_post( $postid = 0, $force_delete = false ) {
 	}
 
 	wp_defer_comment_counting( false );
+=======
+	$comment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = %d", $postid ));
+	foreach ( $comment_ids as $comment_id )
+		wp_delete_comment( $comment_id, true );
+>>>>>>> origin/master
 
 	$post_meta_ids = $wpdb->get_col( $wpdb->prepare( "SELECT meta_id FROM $wpdb->postmeta WHERE post_id = %d ", $postid ));
 	foreach ( $post_meta_ids as $mid )
@@ -2489,7 +3431,11 @@ function _reset_front_page_settings_for_post( $post_id ) {
  *
  * @param int $post_id Optional. Post ID. Default is ID of the global $post
  *                     if EMPTY_TRASH_DAYS equals true.
+<<<<<<< HEAD
  * @return false|array|WP_Post|null Post data array, otherwise false.
+=======
+ * @return bool|array Post data array, otherwise false.
+>>>>>>> origin/master
  */
 function wp_trash_post( $post_id = 0 ) {
 	if ( !EMPTY_TRASH_DAYS )
@@ -2514,7 +3460,11 @@ function wp_trash_post( $post_id = 0 ) {
 	add_post_meta($post_id,'_wp_trash_meta_time', time());
 
 	$post['post_status'] = 'trash';
+<<<<<<< HEAD
 	wp_insert_post( wp_slash( $post ) );
+=======
+	wp_insert_post($post);
+>>>>>>> origin/master
 
 	wp_trash_post_comments($post_id);
 
@@ -2536,7 +3486,11 @@ function wp_trash_post( $post_id = 0 ) {
  * @since 2.9.0
  *
  * @param int $post_id Optional. Post ID. Default is ID of the global $post.
+<<<<<<< HEAD
  * @return WP_Post|false WP_Post object. False on failure.
+=======
+ * @return WP_Post|bool WP_Post object. False on failure.
+>>>>>>> origin/master
  */
 function wp_untrash_post( $post_id = 0 ) {
 	if ( !$post = get_post($post_id, ARRAY_A) )
@@ -2561,7 +3515,11 @@ function wp_untrash_post( $post_id = 0 ) {
 	delete_post_meta($post_id, '_wp_trash_meta_status');
 	delete_post_meta($post_id, '_wp_trash_meta_time');
 
+<<<<<<< HEAD
 	wp_insert_post( wp_slash( $post ) );
+=======
+	wp_insert_post($post);
+>>>>>>> origin/master
 
 	wp_untrash_post_comments($post_id);
 
@@ -2584,8 +3542,13 @@ function wp_untrash_post( $post_id = 0 ) {
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @param int|WP_Post|null $post Optional. Post ID or post object. Defaults to global $post.
  * @return mixed|void False on failure.
+=======
+ * @param int|WP_Post $post Optional. Post ID or post object. Defaults to global $post.
+ * @return mixed False on failure.
+>>>>>>> origin/master
  */
 function wp_trash_post_comments( $post = null ) {
 	global $wpdb;
@@ -2638,10 +3601,15 @@ function wp_trash_post_comments( $post = null ) {
  *
  * @since 2.9.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param int|WP_Post|null $post Optional. Post ID or post object. Defaults to global $post.
  * @return true|void
+=======
+ * @param int|WP_Post $post Optional. Post ID or post object. Defaults to global $post.
+ * @return null|bool Null on failure.
+>>>>>>> origin/master
  */
 function wp_untrash_post_comments( $post = null ) {
 	global $wpdb;
@@ -2673,11 +3641,18 @@ function wp_untrash_post_comments( $post = null ) {
 
 	foreach ( $group_by_status as $status => $comments ) {
 		// Sanity check. This shouldn't happen.
+<<<<<<< HEAD
 		if ( 'post-trashed' == $status ) {
 			$status = '0';
 		}
 		$comments_in = implode( ', ', array_map( 'intval', $comments ) );
 		$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_approved = %s WHERE comment_ID IN ($comments_in)", $status ) );
+=======
+		if ( 'post-trashed' == $status )
+			$status = '0';
+		$comments_in = implode( "', '", $comments );
+		$wpdb->query( "UPDATE $wpdb->comments SET comment_approved = '$status' WHERE comment_ID IN ('" . $comments_in . "')" );
+>>>>>>> origin/master
 	}
 
 	clean_comment_cache( array_keys($statuses) );
@@ -2706,10 +3681,15 @@ function wp_untrash_post_comments( $post = null ) {
  *
  * @param int   $post_id Optional. The Post ID. Does not default to the ID of the
  *                       global $post. Default 0.
+<<<<<<< HEAD
  * @param array $args    Optional. Category arguments. See wp_get_object_terms(). Default empty.
  * @return array List of categories. If the `$fields` argument passed via `$args` is 'all' or
  *               'all_with_object_id', an array of WP_Term objects will be returned. If `$fields`
  *               is 'ids', an array of category ids. If `$fields` is 'names', an array of category names.
+=======
+ * @param array $args    Optional. Category arguments. Default empty.
+ * @return array List of categories.
+>>>>>>> origin/master
  */
 function wp_get_post_categories( $post_id = 0, $args = array() ) {
 	$post_id = (int) $post_id;
@@ -2726,12 +3706,20 @@ function wp_get_post_categories( $post_id = 0, $args = array() ) {
  *
  * There is only one default for this function, called 'fields' and by default
  * is set to 'all'. There are other defaults that can be overridden in
+<<<<<<< HEAD
  * wp_get_object_terms().
+=======
+ * {@link wp_get_object_terms()}.
+>>>>>>> origin/master
  *
  * @since 2.3.0
  *
  * @param int   $post_id Optional. The Post ID. Does not default to the ID of the
+<<<<<<< HEAD
  *                       global $post. Default 0.
+=======
+ *                       global $post. Defualt 0.
+>>>>>>> origin/master
  * @param array $args Optional. Overwrite the defaults
  * @return array List of post tags.
  */
@@ -2744,16 +3732,25 @@ function wp_get_post_tags( $post_id = 0, $args = array() ) {
  *
  * There is only one default for this function, called 'fields' and by default
  * is set to 'all'. There are other defaults that can be overridden in
+<<<<<<< HEAD
  * wp_get_object_terms().
+=======
+ * {@link wp_get_object_terms()}.
+>>>>>>> origin/master
  *
  * @since 2.8.0
  *
  * @param int    $post_id  Optional. The Post ID. Does not default to the ID of the
  *                         global $post. Default 0.
  * @param string $taxonomy Optional. The taxonomy for which to retrieve terms. Default 'post_tag'.
+<<<<<<< HEAD
  * @param array  $args     Optional. wp_get_object_terms() arguments. Default empty array.
  * @return array|WP_Error  List of post terms or empty array if no terms were found. WP_Error object
  *                         if `$taxonomy` doesn't exist.
+=======
+ * @param array  $args     Optional. {@link wp_get_object_terms()} arguments. Default empty array.
+ * @return array List of post tags.
+>>>>>>> origin/master
  */
 function wp_get_post_terms( $post_id = 0, $taxonomy = 'post_tag', $args = array() ) {
 	$post_id = (int) $post_id;
@@ -2775,12 +3772,20 @@ function wp_get_post_terms( $post_id = 0, $taxonomy = 'post_tag', $args = array(
  *
  * @param array  $args       Optional. Arguments to retrieve posts. Default empty array.
  * @param string $output     Optional. Type of output. Accepts ARRAY_A or ''. Default ARRAY_A.
+<<<<<<< HEAD
  * @return array|false Associative array if $output equals ARRAY_A, array or false if no results.
+=======
+ * @return array|bool Associative array if $output equals ARRAY_A, array or false if no results.
+>>>>>>> origin/master
  */
 function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
 
 	if ( is_numeric( $args ) ) {
+<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '3.1.0', __( 'Passing an integer number of posts is deprecated. Pass an array of arguments instead.' ) );
+=======
+		_deprecated_argument( __FUNCTION__, '3.1', __( 'Passing an integer number of posts is deprecated. Pass an array of arguments instead.' ) );
+>>>>>>> origin/master
 		$args = array( 'numberposts' => absint( $args ) );
 	}
 
@@ -2800,7 +3805,11 @@ function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
 
 	// Backward compatibility. Prior to 3.1 expected posts to be returned in array.
 	if ( ARRAY_A == $output ){
+<<<<<<< HEAD
 		foreach ( $results as $key => $result ) {
+=======
+		foreach( $results as $key => $result ) {
+>>>>>>> origin/master
 			$results[$key] = get_object_vars( $result );
 		}
 		return $results ? $results : array();
@@ -2821,7 +3830,10 @@ function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
  *
  * @since 1.0.0
  * @since 4.2.0 Support was added for encoding emoji in the post title, content, and excerpt.
+<<<<<<< HEAD
  * @since 4.4.0 A 'meta_input' array can now be passed to `$postarr` to add post meta data.
+=======
+>>>>>>> origin/master
  *
  * @see sanitize_post()
  * @global wpdb $wpdb WordPress database abstraction object.
@@ -2847,8 +3859,12 @@ function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
  *     @type string $ping_status           Whether the post can accept pings. Accepts 'open' or 'closed'.
  *                                         Default is the value of 'default_ping_status' option.
  *     @type string $post_password         The password to access the post. Default empty.
+<<<<<<< HEAD
  *     @type string $post_name             The post name. Default is the sanitized post title
  *                                         when creating a new post.
+=======
+ *     @type string $post_name             The post name. Default is the sanitized post title.
+>>>>>>> origin/master
  *     @type string $to_ping               Space or carriage return-separated list of URLs to ping.
  *                                         Default empty.
  *     @type string $pinged                Space or carriage return-separated list of URLs that have
@@ -2861,10 +3877,13 @@ function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
  *     @type int    $menu_order            The order the post should be displayed in. Default 0.
  *     @type string $post_mime_type        The mime type of the post. Default empty.
  *     @type string $guid                  Global Unique ID for referencing the post. Default empty.
+<<<<<<< HEAD
  *     @type array  $post_category         Array of category names, slugs, or IDs.
  *                                         Defaults to value of the 'default_category' option.
  *     @type array  $tax_input             Array of taxonomy terms keyed by their taxonomy name. Default empty.
  *     @type array  $meta_input            Array of post meta values keyed by their post meta key. Default empty.
+=======
+>>>>>>> origin/master
  * }
  * @param bool  $wp_error Optional. Whether to allow return of WP_Error on failure. Default false.
  * @return int|WP_Error The post ID on success. The value 0 or WP_Error on failure.
@@ -2874,6 +3893,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 
 	$user_id = get_current_user_id();
 
+<<<<<<< HEAD
 	$defaults = array(
 		'post_author' => $user_id,
 		'post_content' => '',
@@ -2893,6 +3913,13 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		'import_id' => 0,
 		'context' => '',
 	);
+=======
+	$defaults = array('post_status' => 'draft', 'post_type' => 'post', 'post_author' => $user_id,
+		'ping_status' => get_option('default_ping_status'), 'post_parent' => 0,
+		'menu_order' => 0, 'to_ping' =>  '', 'pinged' => '', 'post_password' => '',
+		'guid' => '', 'post_content_filtered' => '', 'post_excerpt' => '', 'import_id' => 0,
+		'post_content' => '', 'post_title' => '', 'context' => '');
+>>>>>>> origin/master
 
 	$postarr = wp_parse_args($postarr, $defaults);
 
@@ -2931,9 +3958,12 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	$post_excerpt = $postarr['post_excerpt'];
 	if ( isset( $postarr['post_name'] ) ) {
 		$post_name = $postarr['post_name'];
+<<<<<<< HEAD
 	} elseif ( $update ) {
 		// For an update, don't modify the post_name if it wasn't supplied as an argument.
 		$post_name = $post_before->post_name;
+=======
+>>>>>>> origin/master
 	}
 
 	$maybe_empty = 'attachment' !== $post_type
@@ -2943,7 +3973,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		&& post_type_supports( $post_type, 'excerpt' );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether the post should be considered "empty".
+=======
+	 * Filter whether the post should be considered "empty".
+>>>>>>> origin/master
 	 *
 	 * The post is considered "empty" if both:
 	 * 1. The post type supports the title, editor, and excerpt fields
@@ -3016,11 +4050,15 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	 * is not 'draft' or 'pending', set date to now.
 	 */
 	if ( empty( $postarr['post_date'] ) || '0000-00-00 00:00:00' == $postarr['post_date'] ) {
+<<<<<<< HEAD
 		if ( empty( $postarr['post_date_gmt'] ) || '0000-00-00 00:00:00' == $postarr['post_date_gmt'] ) {
 			$post_date = current_time( 'mysql' );
 		} else {
 			$post_date = get_date_from_gmt( $postarr['post_date_gmt'] );
 		}
+=======
+		$post_date = current_time( 'mysql' );
+>>>>>>> origin/master
 	} else {
 		$post_date = $postarr['post_date'];
 	}
@@ -3062,7 +4100,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 			if ( mysql2date('U', $post_date_gmt, false) > mysql2date('U', $now, false) ) {
 				$post_status = 'future';
 			}
+<<<<<<< HEAD
 		} elseif ( 'future' == $post_status ) {
+=======
+		} elseif( 'future' == $post_status ) {
+>>>>>>> origin/master
 			$now = gmdate('Y-m-d H:i:59');
 			if ( mysql2date('U', $post_date_gmt, false) <= mysql2date('U', $now, false) ) {
 				$post_status = 'publish';
@@ -3070,12 +4112,19 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		}
 	}
 
+<<<<<<< HEAD
 	// Comment status.
+=======
+>>>>>>> origin/master
 	if ( empty( $postarr['comment_status'] ) ) {
 		if ( $update ) {
 			$comment_status = 'closed';
 		} else {
+<<<<<<< HEAD
 			$comment_status = get_default_comment_status( $post_type );
+=======
+			$comment_status = get_option('default_comment_status');
+>>>>>>> origin/master
 		}
 	} else {
 		$comment_status = $postarr['comment_status'];
@@ -3083,8 +4132,13 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 
 	// These variables are needed by compact() later.
 	$post_content_filtered = $postarr['post_content_filtered'];
+<<<<<<< HEAD
 	$post_author = isset( $postarr['post_author'] ) ? $postarr['post_author'] : $user_id;
 	$ping_status = empty( $postarr['ping_status'] ) ? get_default_comment_status( $post_type, 'pingback' ) : $postarr['ping_status'];
+=======
+	$post_author = empty( $postarr['post_author'] ) ? $user_id : $postarr['post_author'];
+	$ping_status = empty( $postarr['ping_status'] ) ? get_option( 'default_ping_status' ) : $postarr['ping_status'];
+>>>>>>> origin/master
 	$to_ping = isset( $postarr['to_ping'] ) ? sanitize_trackback_urls( $postarr['to_ping'] ) : '';
 	$pinged = isset( $postarr['pinged'] ) ? $postarr['pinged'] : '';
 	$import_id = isset( $postarr['import_id'] ) ? $postarr['import_id'] : 0;
@@ -3111,7 +4165,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the post parent -- used to check for and prevent hierarchy loops.
+=======
+	 * Filter the post parent -- used to check for and prevent hierarchy loops.
+>>>>>>> origin/master
 	 *
 	 * @since 3.1.0
 	 *
@@ -3122,6 +4180,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	 */
 	$post_parent = apply_filters( 'wp_insert_post_parent', $post_parent, $post_ID, compact( array_keys( $postarr ) ), $postarr );
 
+<<<<<<< HEAD
 	/*
 	 * If the post is being untrashed and it has a desired slug stored in post meta,
 	 * reassign it.
@@ -3144,6 +4203,8 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		$post_name = wp_add_trashed_suffix_to_post_name_for_post( $post_ID );
 	}
 
+=======
+>>>>>>> origin/master
 	$post_name = wp_unique_post_slug( $post_name, $post_ID, $post_status, $post_type, $post_parent );
 
 	// Don't unslash.
@@ -3154,7 +4215,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 
 	$emoji_fields = array( 'post_title', 'post_content', 'post_excerpt' );
 
+<<<<<<< HEAD
 	foreach ( $emoji_fields as $emoji_field ) {
+=======
+	foreach( $emoji_fields as $emoji_field ) {
+>>>>>>> origin/master
 		if ( isset( $data[ $emoji_field ] ) ) {
 			$charset = $wpdb->get_col_charset( $wpdb->posts, $emoji_field );
 			if ( 'utf8' === $charset ) {
@@ -3165,7 +4230,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 
 	if ( 'attachment' === $post_type ) {
 		/**
+<<<<<<< HEAD
 		 * Filters attachment post data before it is updated in or added to the database.
+=======
+		 * Filter attachment post data before it is updated in or added to the database.
+>>>>>>> origin/master
 		 *
 		 * @since 3.9.0
 		 *
@@ -3175,7 +4244,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		$data = apply_filters( 'wp_insert_attachment_data', $data, $postarr );
 	} else {
 		/**
+<<<<<<< HEAD
 		 * Filters slashed post data just before it is inserted into the database.
+=======
+		 * Filter slashed post data just before it is inserted into the database.
+>>>>>>> origin/master
 		 *
 		 * @since 2.7.0
 		 *
@@ -3226,9 +4299,14 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	}
 
 	if ( empty( $data['post_name'] ) && ! in_array( $data['post_status'], array( 'draft', 'pending', 'auto-draft' ) ) ) {
+<<<<<<< HEAD
 		$data['post_name'] = wp_unique_post_slug( sanitize_title( $data['post_title'], $post_ID ), $post_ID, $data['post_status'], $post_type, $post_parent );
 		$wpdb->update( $wpdb->posts, array( 'post_name' => $data['post_name'] ), $where );
 		clean_post_cache( $post_ID );
+=======
+		$data['post_name'] = sanitize_title( $data['post_title'], $post_ID );
+		$wpdb->update( $wpdb->posts, array( 'post_name' => $data['post_name'] ), $where );
+>>>>>>> origin/master
 	}
 
 	if ( is_object_in_taxonomy( $post_type, 'category' ) ) {
@@ -3243,12 +4321,15 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	if ( ! empty( $postarr['tax_input'] ) ) {
 		foreach ( $postarr['tax_input'] as $taxonomy => $tags ) {
 			$taxonomy_obj = get_taxonomy($taxonomy);
+<<<<<<< HEAD
 			if ( ! $taxonomy_obj ) {
 				/* translators: %s: taxonomy name */
 				_doing_it_wrong( __FUNCTION__, sprintf( __( 'Invalid taxonomy: %s.' ), $taxonomy ), '4.4.0' );
 				continue;
 			}
 
+=======
+>>>>>>> origin/master
 			// array = hierarchical, string = non-hierarchical.
 			if ( is_array( $tags ) ) {
 				$tags = array_filter($tags);
@@ -3259,12 +4340,15 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $postarr['meta_input'] ) ) {
 		foreach ( $postarr['meta_input'] as $field => $value ) {
 			update_post_meta( $post_ID, $field, $value );
 		}
 	}
 
+=======
+>>>>>>> origin/master
 	$current_guid = get_post_field( 'guid', $post_ID );
 
 	// Set GUID.
@@ -3282,6 +4366,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		}
 	}
 
+<<<<<<< HEAD
 	// Set or remove featured image.
 	if ( isset( $postarr['_thumbnail_id'] ) ) {
 		$thumbnail_support = current_theme_supports( 'post-thumbnails', $post_type ) && post_type_supports( $post_type, 'thumbnail' ) || 'revision' === $post_type;
@@ -3303,6 +4388,8 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		}
 	}
 
+=======
+>>>>>>> origin/master
 	clean_post_cache( $post_ID );
 
 	$post = get_post( $post_ID );
@@ -3332,6 +4419,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 			 * @param int $post_ID Attachment ID.
 			 */
 			do_action( 'edit_attachment', $post_ID );
+<<<<<<< HEAD
 			$post_after = get_post( $post_ID );
 
 			/**
@@ -3344,6 +4432,8 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 			 * @param WP_Post $post_before  Post object before the update.
 			 */
 			do_action( 'attachment_updated', $post_ID, $post_after, $post_before );
+=======
+>>>>>>> origin/master
 		} else {
 
 			/**
@@ -3530,8 +4620,16 @@ function wp_publish_post( $post ) {
  * @since 2.5.0
  *
  * @param int|WP_Post $post_id Post ID or post object.
+<<<<<<< HEAD
  */
 function check_and_publish_future_post( $post_id ) {
+=======
+ * @return null Nothing is returned. Which can mean that no action is required
+ *              or post was published.
+ */
+function check_and_publish_future_post( $post_id ) {
+
+>>>>>>> origin/master
 	$post = get_post($post_id);
 
 	if ( empty($post) )
@@ -3549,8 +4647,12 @@ function check_and_publish_future_post( $post_id ) {
 		return;
 	}
 
+<<<<<<< HEAD
 	// wp_publish_post() returns no meaningful value.
 	wp_publish_post( $post_id );
+=======
+	return wp_publish_post($post_id);
+>>>>>>> origin/master
 }
 
 /**
@@ -3558,7 +4660,11 @@ function check_and_publish_future_post( $post_id ) {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @global wpdb       $wpdb WordPress database abstraction object.
+=======
+ * @global wpdb $wpdb WordPress database abstraction object.
+>>>>>>> origin/master
  * @global WP_Rewrite $wp_rewrite
  *
  * @param string $slug        The desired slug (post_name).
@@ -3586,14 +4692,22 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $post_ID ) );
 
 		/**
+<<<<<<< HEAD
 		 * Filters whether the post slug would make a bad attachment slug.
+=======
+		 * Filter whether the post slug would make a bad attachment slug.
+>>>>>>> origin/master
 		 *
 		 * @since 3.1.0
 		 *
 		 * @param bool   $bad_slug Whether the slug would be bad as an attachment slug.
 		 * @param string $slug     The post slug.
 		 */
+<<<<<<< HEAD
 		if ( $post_name_check || in_array( $slug, $feeds ) || 'embed' === $slug || apply_filters( 'wp_unique_post_slug_is_bad_attachment_slug', false, $slug ) ) {
+=======
+		if ( $post_name_check || in_array( $slug, $feeds ) || apply_filters( 'wp_unique_post_slug_is_bad_attachment_slug', false, $slug ) ) {
+>>>>>>> origin/master
 			$suffix = 2;
 			do {
 				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
@@ -3614,7 +4728,11 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $post_type, $post_ID, $post_parent ) );
 
 		/**
+<<<<<<< HEAD
 		 * Filters whether the post slug would make a bad hierarchical post slug.
+=======
+		 * Filter whether the post slug would make a bad hierarchical post slug.
+>>>>>>> origin/master
 		 *
 		 * @since 3.1.0
 		 *
@@ -3623,7 +4741,11 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		 * @param string $post_type   Post type.
 		 * @param int    $post_parent Post parent ID.
 		 */
+<<<<<<< HEAD
 		if ( $post_name_check || in_array( $slug, $feeds ) || 'embed' === $slug || preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $slug )  || apply_filters( 'wp_unique_post_slug_is_bad_hierarchical_slug', false, $slug, $post_type, $post_parent ) ) {
+=======
+		if ( $post_name_check || in_array( $slug, $feeds ) || preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $slug )  || apply_filters( 'wp_unique_post_slug_is_bad_hierarchical_slug', false, $slug, $post_type, $post_parent ) ) {
+>>>>>>> origin/master
 			$suffix = 2;
 			do {
 				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
@@ -3637,6 +4759,7 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
 		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $post_type, $post_ID ) );
 
+<<<<<<< HEAD
 		// Prevent new post slugs that could result in URLs that conflict with date archives.
 		$post = get_post( $post_ID );
 		$conflicts_with_date_archive = false;
@@ -3661,6 +4784,10 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 
 		/**
 		 * Filters whether the post slug would be bad as a flat slug.
+=======
+		/**
+		 * Filter whether the post slug would be bad as a flat slug.
+>>>>>>> origin/master
 		 *
 		 * @since 3.1.0
 		 *
@@ -3668,7 +4795,11 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		 * @param string $slug      The post slug.
 		 * @param string $post_type Post type.
 		 */
+<<<<<<< HEAD
 		if ( $post_name_check || in_array( $slug, $feeds ) || 'embed' === $slug || $conflicts_with_date_archive || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $post_type ) ) {
+=======
+		if ( $post_name_check || in_array( $slug, $feeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $post_type ) ) {
+>>>>>>> origin/master
 			$suffix = 2;
 			do {
 				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
@@ -3680,7 +4811,11 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the unique post slug.
+=======
+	 * Filter the unique post slug.
+>>>>>>> origin/master
 	 *
 	 * @since 3.3.0
 	 *
@@ -3725,10 +4860,17 @@ function _truncate_post_slug( $slug, $length = 200 ) {
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @param int          $post_id Optional. The Post ID. Does not default to the ID of the global $post.
  * @param string|array $tags    Optional. An array of tags to set for the post, or a string of tags
  *                              separated by commas. Default empty.
  * @return array|false|WP_Error Array of affected term IDs. WP_Error or false on failure.
+=======
+ * @param int    $post_id Optional. The Post ID. Does not default to the ID of the global $post.
+ *                        Default 0.
+ * @param string $tags    Optional. The tags to set for the post, separated by commas. Default empty.
+ * @return bool|null Will return false if $post_id is not an integer or is 0. Will return null otherwise.
+>>>>>>> origin/master
  */
 function wp_add_post_tags( $post_id = 0, $tags = '' ) {
 	return wp_set_post_tags($post_id, $tags, true);
@@ -3741,12 +4883,21 @@ function wp_add_post_tags( $post_id = 0, $tags = '' ) {
  *
  * @see wp_set_object_terms()
  *
+<<<<<<< HEAD
  * @param int          $post_id Optional. The Post ID. Does not default to the ID of the global $post.
  * @param string|array $tags    Optional. An array of tags to set for the post, or a string of tags
  *                              separated by commas. Default empty.
  * @param bool         $append  Optional. If true, don't delete existing tags, just add on. If false,
  *                              replace the tags with the new tags. Default false.
  * @return array|false|WP_Error Array of term taxonomy IDs of affected terms. WP_Error or false on failure.
+=======
+ * @param int    $post_id Optional. The Post ID. Does not default to the ID of the global $post.
+ * @param string $tags    Optional. The tags to set for the post, separated by commas.
+ *                        Default empty.
+ * @param bool   $append  Optional. If true, don't delete existing tags, just add on. If false,
+ *                        replace the tags with the new tags. Default false.
+ * @return mixed Array of affected term IDs. WP_Error or false on failure.
+>>>>>>> origin/master
  */
 function wp_set_post_tags( $post_id = 0, $tags = '', $append = false ) {
 	return wp_set_post_terms( $post_id, $tags, 'post_tag', $append);
@@ -3759,6 +4910,7 @@ function wp_set_post_tags( $post_id = 0, $tags = '', $append = false ) {
  *
  * @see wp_set_object_terms()
  *
+<<<<<<< HEAD
  * @param int          $post_id  Optional. The Post ID. Does not default to the ID of the global $post.
  * @param string|array $tags     Optional. An array of terms to set for the post, or a string of terms
  *                               separated by commas. Default empty.
@@ -3766,6 +4918,14 @@ function wp_set_post_tags( $post_id = 0, $tags = '', $append = false ) {
  * @param bool         $append   Optional. If true, don't delete existing terms, just add on. If false,
  *                               replace the terms with the new terms. Default false.
  * @return array|false|WP_Error Array of term taxonomy IDs of affected terms. WP_Error or false on failure.
+=======
+ * @param int    $post_id  Optional. The Post ID. Does not default to the ID of the global $post.
+ * @param string $tags     Optional. The tags to set for the post, separated by commas. Default empty.
+ * @param string $taxonomy Optional. Taxonomy name. Default 'post_tag'.
+ * @param bool   $append   Optional. If true, don't delete existing tags, just add on. If false,
+ *                         replace the tags with the new tags. Default false.
+ * @return mixed Array of affected term IDs. WP_Error or false on failure.
+>>>>>>> origin/master
  */
 function wp_set_post_terms( $post_id = 0, $tags = '', $taxonomy = 'post_tag', $append = false ) {
 	$post_id = (int) $post_id;
@@ -3808,7 +4968,11 @@ function wp_set_post_terms( $post_id = 0, $tags = '', $taxonomy = 'post_tag', $a
  *                                   Default empty array.
  * @param bool      $append         If true, don't delete existing categories, just add on.
  *                                  If false, replace the categories with the new categories.
+<<<<<<< HEAD
  * @return array|false|WP_Error Array of term taxonomy IDs of affected categories. WP_Error or false on failure.
+=======
+ * @return bool|mixed
+>>>>>>> origin/master
  */
 function wp_set_post_categories( $post_ID = 0, $post_categories = array(), $append = false ) {
 	$post_ID = (int) $post_ID;
@@ -3831,6 +4995,7 @@ function wp_set_post_categories( $post_ID = 0, $post_categories = array(), $appe
 }
 
 /**
+<<<<<<< HEAD
  * Fires actions related to the transitioning of a post's status.
  *
  * When a post is saved, the post status is "transitioned" from one status to another,
@@ -3839,6 +5004,13 @@ function wp_set_post_categories( $post_ID = 0, $post_categories = array(), $appe
  * the generic {@see 'transition_post_status'} action, as well as the dynamic hooks
  * {@see '$old_status_to_$new_status'} and {@see '$new_status_$post->post_type'}. Note
  * that the function does not transition the post object in the database.
+=======
+ * Transition the post status of a post.
+ *
+ * When a post is saved, the post status is "transitioned" from one status to another,
+ * though this does not always mean the status has actually changed before and after
+ * the save.
+>>>>>>> origin/master
  *
  * For instance: When publishing a post for the first time, the post status may transition
  * from 'draft' – or some other status – to 'publish'. However, if a post is already
@@ -3898,7 +5070,11 @@ function wp_transition_post_status( $new_status, $old_status, $post ) {
 }
 
 //
+<<<<<<< HEAD
 // Comment, trackback, and pingback functions.
+=======
+// Trackback and ping functions
+>>>>>>> origin/master
 //
 
 /**
@@ -3910,7 +5086,11 @@ function wp_transition_post_status( $new_status, $old_status, $post ) {
  *
  * @param int    $post_id Post ID.
  * @param string $uri     Ping URI.
+<<<<<<< HEAD
  * @return int|false How many rows were updated.
+=======
+ * @return int How many rows were updated.
+>>>>>>> origin/master
  */
 function add_ping( $post_id, $uri ) {
 	global $wpdb;
@@ -3921,7 +5101,11 @@ function add_ping( $post_id, $uri ) {
 	$new = implode("\n", $pung);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the new ping URL to add for the given post.
+=======
+	 * Filter the new ping URL to add for the given post.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
@@ -3951,21 +5135,34 @@ function get_enclosed( $post_id ) {
 	foreach ( $custom_fields as $key => $val ) {
 		if ( 'enclosure' != $key || !is_array( $val ) )
 			continue;
+<<<<<<< HEAD
 		foreach ( $val as $enc ) {
+=======
+		foreach( $val as $enc ) {
+>>>>>>> origin/master
 			$enclosure = explode( "\n", $enc );
 			$pung[] = trim( $enclosure[ 0 ] );
 		}
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the list of enclosures already enclosed for the given post.
+=======
+	 * Filter the list of enclosures already enclosed for the given post.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
 	 * @param array $pung    Array of enclosures for the given post.
 	 * @param int   $post_id Post ID.
 	 */
+<<<<<<< HEAD
 	return apply_filters( 'get_enclosed', $pung, $post_id );
+=======
+	$pung = apply_filters( 'get_enclosed', $pung, $post_id );
+	return $pung;
+>>>>>>> origin/master
 }
 
 /**
@@ -3985,13 +5182,22 @@ function get_pung( $post_id ) {
 	$pung = preg_split('/\s/', $pung);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the list of already-pinged URLs for the given post.
+=======
+	 * Filter the list of already-pinged URLs for the given post.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
 	 * @param array $pung Array of URLs already pinged for the given post.
 	 */
+<<<<<<< HEAD
 	return apply_filters( 'get_pung', $pung );
+=======
+	$pung = apply_filters( 'get_pung', $pung );
+	return $pung;
+>>>>>>> origin/master
 }
 
 /**
@@ -4011,13 +5217,22 @@ function get_to_ping( $post_id ) {
 	$to_ping = preg_split('/\s/', $to_ping, -1, PREG_SPLIT_NO_EMPTY);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the list of URLs yet to ping for the given post.
+=======
+	 * Filter the list of URLs yet to ping for the given post.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
 	 * @param array $to_ping List of URLs yet to ping.
 	 */
+<<<<<<< HEAD
 	return apply_filters( 'get_to_ping', $to_ping );
+=======
+	$to_ping = apply_filters( 'get_to_ping', $to_ping );
+	return $to_ping;
+>>>>>>> origin/master
 }
 
 /**
@@ -4041,7 +5256,11 @@ function trackback_url_list( $tb_list, $post_id ) {
 		}
 
 		$trackback_urls = explode( ',', $tb_list );
+<<<<<<< HEAD
 		foreach ( (array) $trackback_urls as $tb_url ) {
+=======
+		foreach( (array) $trackback_urls as $tb_url ) {
+>>>>>>> origin/master
 			$tb_url = trim( $tb_url );
 			trackback( $tb_url, wp_unslash( $postdata['post_title'] ), $excerpt, $post_id );
 		}
@@ -4086,7 +5305,11 @@ function get_all_page_ids() {
  *                       Default OBJECT.
  * @param string $filter Optional. How the return value should be filtered. Accepts 'raw',
  *                       'edit', 'db', 'display'. Default 'raw'.
+<<<<<<< HEAD
  * @return WP_Post|array|null WP_Post on success or null on failure.
+=======
+ * @return WP_Post|null WP_Post on success or null on failure.
+>>>>>>> origin/master
  */
 function get_page( $page, $output = OBJECT, $filter = 'raw') {
 	return get_post( $page, $output, $filter );
@@ -4103,11 +5326,16 @@ function get_page( $page, $output = OBJECT, $filter = 'raw') {
  * @param string       $output    Optional. Output type. Accepts OBJECT, ARRAY_N, or ARRAY_A.
  *                                Default OBJECT.
  * @param string|array $post_type Optional. Post type or array of post types. Default 'page'.
+<<<<<<< HEAD
  * @return WP_Post|array|void WP_Post on success.
+=======
+ * @return WP_Post|null WP_Post on success or null on failure.
+>>>>>>> origin/master
  */
 function get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	$last_changed = wp_cache_get( 'last_changed', 'posts' );
 	if ( false === $last_changed ) {
 		$last_changed = microtime();
@@ -4126,6 +5354,8 @@ function get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) {
 		}
 	}
 
+=======
+>>>>>>> origin/master
 	$page_path = rawurlencode(urldecode($page_path));
 	$page_path = str_replace('%2F', '/', $page_path);
 	$page_path = str_replace('%20', ' ', $page_path);
@@ -4159,11 +5389,14 @@ function get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) {
 		if ( $page->post_name == $revparts[0] ) {
 			$count = 0;
 			$p = $page;
+<<<<<<< HEAD
 
 			/*
 			 * Loop through the given path parts from right to left,
 			 * ensuring each matches the post ancestry.
 			 */
+=======
+>>>>>>> origin/master
 			while ( $p->post_parent != 0 && isset( $pages[ $p->post_parent ] ) ) {
 				$count++;
 				$parent = $pages[ $p->post_parent ];
@@ -4180,12 +5413,19 @@ function get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) {
 		}
 	}
 
+<<<<<<< HEAD
 	// We cache misses as well as hits.
 	wp_cache_set( $cache_key, $foundid, 'posts' );
 
 	if ( $foundid ) {
 		return get_post( $foundid, $output );
 	}
+=======
+	if ( $foundid )
+		return get_post( $foundid, $output );
+
+	return null;
+>>>>>>> origin/master
 }
 
 /**
@@ -4199,7 +5439,11 @@ function get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) {
  * @param string       $output     Optional. Output type. OBJECT, ARRAY_N, or ARRAY_A.
  *                                 Default OBJECT.
  * @param string|array $post_type  Optional. Post type or array of post types. Default 'page'.
+<<<<<<< HEAD
  * @return WP_Post|array|void WP_Post on success or null on failure
+=======
+ * @return WP_Post|null WP_Post on success or null on failure
+>>>>>>> origin/master
  */
 function get_page_by_title( $page_title, $output = OBJECT, $post_type = 'page' ) {
 	global $wpdb;
@@ -4224,6 +5468,7 @@ function get_page_by_title( $page_title, $output = OBJECT, $post_type = 'page' )
 
 	$page = $wpdb->get_var( $sql );
 
+<<<<<<< HEAD
 	if ( $page ) {
 		return get_post( $page, $output );
 	}
@@ -4262,6 +5507,34 @@ function get_page_children( $page_id, $pages ) {
 					// Append to the `$to_look` stack to descend the tree.
 					$to_look[] = $child;
 				}
+=======
+	if ( $page )
+		return get_post( $page, $output );
+
+	return null;
+}
+
+/**
+ * Retrieve child pages from list of pages matching page ID.
+ *
+ * Matches against the pages parameter against the page ID. Also matches all
+ * children for the same to retrieve all children of a page. Does not make any
+ * SQL queries to get the children.
+ *
+ * @since 1.5.1
+ *
+ * @param int   $page_id    Page ID.
+ * @param array $pages      List of pages' objects.
+ * @return array List of page children.
+ */
+function get_page_children( $page_id, $pages ) {
+	$page_list = array();
+	foreach ( (array) $pages as $page ) {
+		if ( $page->post_parent == $page_id ) {
+			$page_list[] = $page;
+			if ( $children = get_page_children( $page->ID, $pages ) ) {
+				$page_list = array_merge( $page_list, $children );
+>>>>>>> origin/master
 			}
 		}
 	}
@@ -4283,7 +5556,12 @@ function get_page_children( $page_id, $pages ) {
  */
 function get_page_hierarchy( &$pages, $page_id = 0 ) {
 	if ( empty( $pages ) ) {
+<<<<<<< HEAD
 		return array();
+=======
+		$result = array();
+		return $result;
+>>>>>>> origin/master
 	}
 
 	$children = array();
@@ -4308,12 +5586,21 @@ function get_page_hierarchy( &$pages, $page_id = 0 ) {
  * @see _page_traverse_name()
  *
  * @param int   $page_id   Page ID.
+<<<<<<< HEAD
  * @param array $children  Parent-children relations, passed by reference.
  * @param array $result    Result, passed by reference.
  */
 function _page_traverse_name( $page_id, &$children, &$result ){
 	if ( isset( $children[ $page_id ] ) ){
 		foreach ( (array)$children[ $page_id ] as $child ) {
+=======
+ * @param array &$children Parent-children relations, passed by reference.
+ * @param array &$result   Result, passed by reference.
+ */
+function _page_traverse_name( $page_id, &$children, &$result ){
+	if ( isset( $children[ $page_id ] ) ){
+		foreach( (array)$children[ $page_id ] as $child ) {
+>>>>>>> origin/master
 			$result[ $child->ID ] = $child->post_name;
 			_page_traverse_name( $child->ID, $children, $result );
 		}
@@ -4321,11 +5608,16 @@ function _page_traverse_name( $page_id, &$children, &$result ){
 }
 
 /**
+<<<<<<< HEAD
  * Build the URI path for a page.
+=======
+ * Build URI for a page.
+>>>>>>> origin/master
  *
  * Sub pages will be in the "directory" under the parent page post name.
  *
  * @since 1.5.0
+<<<<<<< HEAD
  * @since 4.6.0 Converted the `$page` parameter to optional.
  *
  * @param WP_Post|object|int $page Optional. Page ID or WP_Post object. Default is global $post.
@@ -4335,6 +5627,14 @@ function get_page_uri( $page = 0 ) {
 	if ( ! $page instanceof WP_Post ) {
 		$page = get_post( $page );
 	}
+=======
+ *
+ * @param WP_Post|object|int $page Page object or page ID.
+ * @return string|false Page URI, false on error.
+ */
+function get_page_uri( $page ) {
+	$page = get_post( $page );
+>>>>>>> origin/master
 
 	if ( ! $page )
 		return false;
@@ -4342,6 +5642,7 @@ function get_page_uri( $page = 0 ) {
 	$uri = $page->post_name;
 
 	foreach ( $page->ancestors as $parent ) {
+<<<<<<< HEAD
 		$parent = get_post( $parent );
 		if ( $parent && $parent->post_name ) {
 			$uri = $parent->post_name . '/' . $uri;
@@ -4357,6 +5658,12 @@ function get_page_uri( $page = 0 ) {
 	 * @param WP_Post $page Page object.
 	 */
 	return apply_filters( 'get_page_uri', $uri, $page );
+=======
+		$uri = get_post( $parent )->post_name . '/' . $uri;
+	}
+
+	return $uri;
+>>>>>>> origin/master
 }
 
 /**
@@ -4369,18 +5676,27 @@ function get_page_uri( $page = 0 ) {
  * @param array|string $args {
  *     Optional. Array or string of arguments to retrieve pages.
  *
+<<<<<<< HEAD
  *     @type int          $child_of     Page ID to return child and grandchild pages of. Note: The value
  *                                      of `$hierarchical` has no bearing on whether `$child_of` returns
  *                                      hierarchical results. Default 0, or no restriction.
+=======
+ *     @type int          $child_of     Page ID to return child and grandchild pages of.
+ *                                      Default 0, or no restriction.
+>>>>>>> origin/master
  *     @type string       $sort_order   How to sort retrieved pages. Accepts 'ASC', 'DESC'. Default 'ASC'.
  *     @type string       $sort_column  What columns to sort pages by, comma-separated. Accepts 'post_author',
  *                                      'post_date', 'post_title', 'post_name', 'post_modified', 'menu_order',
  *                                      'post_modified_gmt', 'post_parent', 'ID', 'rand', 'comment_count'.
  *                                      'post_' can be omitted for any values that start with it.
  *                                      Default 'post_title'.
+<<<<<<< HEAD
  *     @type bool         $hierarchical Whether to return pages hierarchically. If false in conjunction with
  *                                      `$child_of` also being false, both arguments will be disregarded.
  *                                      Default true.
+=======
+ *     @type bool         $hierarchical Whether to return pages hierarchically. Default true.
+>>>>>>> origin/master
  *     @type array        $exclude      Array of page IDs to exclude. Default empty array.
  *     @type array        $include      Array of page IDs to include. Cannot be used with `$child_of`,
  *                                      `$parent`, `$exclude`, `$meta_key`, `$meta_value`, or `$hierarchical`.
@@ -4389,7 +5705,12 @@ function get_page_uri( $page = 0 ) {
  *     @type string       $meta_value   Only include pages with this meta value. Requires `$meta_key`.
  *                                      Default empty.
  *     @type string       $authors      A comma-separated list of author IDs. Default empty.
+<<<<<<< HEAD
  *     @type int          $parent       Page ID to return direct children of. Default -1, or no restriction.
+=======
+ *     @type int          $parent       Page ID to return direct children of. `$hierarchical` must be false.
+ *                                      Default -1, or no restriction.
+>>>>>>> origin/master
  *     @type string|array $exclude_tree Comma-separated string or array of page IDs to exclude.
  *                                      Default empty array.
  *     @type int          $number       The number of pages to return. Default 0, or all pages.
@@ -4399,7 +5720,11 @@ function get_page_uri( $page = 0 ) {
  *     @type string       $post_status  A comma-separated list of post status types to include.
  *                                      Default 'publish'.
  * }
+<<<<<<< HEAD
  * @return array|false List of pages matching defaults or `$args`.
+=======
+ * @return array List of pages matching defaults or `$args`.
+>>>>>>> origin/master
  */
 function get_pages( $args = array() ) {
 	global $wpdb;
@@ -4618,7 +5943,11 @@ function get_pages( $args = array() ) {
 
 	if ( ! empty( $r['exclude_tree'] ) ) {
 		$exclude = wp_parse_id_list( $r['exclude_tree'] );
+<<<<<<< HEAD
 		foreach ( $exclude as $id ) {
+=======
+		foreach( $exclude as $id ) {
+>>>>>>> origin/master
 			$children = get_page_children( $id, $pages );
 			foreach ( $children as $child ) {
 				$exclude[] = $child->ID;
@@ -4644,14 +5973,24 @@ function get_pages( $args = array() ) {
 	$pages = array_map( 'get_post', $pages );
 
 	/**
+<<<<<<< HEAD
 	 * Filters the retrieved list of pages.
+=======
+	 * Filter the retrieved list of pages.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $pages List of pages to retrieve.
 	 * @param array $r     Array of get_pages() arguments.
 	 */
+<<<<<<< HEAD
 	return apply_filters( 'get_pages', $pages, $r );
+=======
+	$pages = apply_filters( 'get_pages', $pages, $r );
+
+	return $pages;
+>>>>>>> origin/master
 }
 
 //
@@ -4775,6 +6114,7 @@ function wp_delete_attachment( $post_id, $force_delete = false ) {
 	// Delete all for any posts.
 	delete_metadata( 'post', null, '_thumbnail_id', $post_id, true );
 
+<<<<<<< HEAD
 	wp_defer_comment_counting( true );
 
 	$comment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = %d", $post_id ));
@@ -4783,6 +6123,11 @@ function wp_delete_attachment( $post_id, $force_delete = false ) {
 	}
 
 	wp_defer_comment_counting( false );
+=======
+	$comment_ids = $wpdb->get_col( $wpdb->prepare( "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = %d", $post_id ));
+	foreach ( $comment_ids as $comment_id )
+		wp_delete_comment( $comment_id, true );
+>>>>>>> origin/master
 
 	$post_meta_ids = $wpdb->get_col( $wpdb->prepare( "SELECT meta_id FROM $wpdb->postmeta WHERE post_id = %d ", $post_id ));
 	foreach ( $post_meta_ids as $mid )
@@ -4797,7 +6142,11 @@ function wp_delete_attachment( $post_id, $force_delete = false ) {
 	/** This action is documented in wp-includes/post.php */
 	do_action( 'deleted_post', $post_id );
 
+<<<<<<< HEAD
 	$uploadpath = wp_get_upload_dir();
+=======
+	$uploadpath = wp_upload_dir();
+>>>>>>> origin/master
 
 	if ( ! empty($meta['thumb']) ) {
 		// Don't delete the thumb if another attachment uses it.
@@ -4842,7 +6191,11 @@ function wp_delete_attachment( $post_id, $force_delete = false ) {
  *
  * @param int  $post_id    Attachment ID. Default 0.
  * @param bool $unfiltered Optional. If true, filters are not run. Default false.
+<<<<<<< HEAD
  * @return mixed Attachment meta field. False on failure.
+=======
+ * @return string|bool Attachment meta field. False on failure.
+>>>>>>> origin/master
  */
 function wp_get_attachment_metadata( $post_id = 0, $unfiltered = false ) {
 	$post_id = (int) $post_id;
@@ -4855,7 +6208,11 @@ function wp_get_attachment_metadata( $post_id = 0, $unfiltered = false ) {
 		return $data;
 
 	/**
+<<<<<<< HEAD
 	 * Filters the attachment meta data.
+=======
+	 * Filter the attachment meta data.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -4881,7 +6238,11 @@ function wp_update_attachment_metadata( $post_id, $data ) {
 		return false;
 
 	/**
+<<<<<<< HEAD
 	 * Filters the updated attachment meta data.
+=======
+	 * Filter the updated attachment meta data.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -4899,10 +6260,15 @@ function wp_update_attachment_metadata( $post_id, $data ) {
  *
  * @since 2.1.0
  *
+<<<<<<< HEAD
  * @global string $pagenow
  *
  * @param int $post_id Optional. Attachment ID. Default 0.
  * @return string|false Attachment URL, otherwise false.
+=======
+ * @param int $post_id Optional. Attachment ID. Default 0.
+ * @return string|bool Attachment URL, otherwise false.
+>>>>>>> origin/master
  */
 function wp_get_attachment_url( $post_id = 0 ) {
 	$post_id = (int) $post_id;
@@ -4914,16 +6280,26 @@ function wp_get_attachment_url( $post_id = 0 ) {
 
 	$url = '';
 	// Get attached file.
+<<<<<<< HEAD
 	if ( $file = get_post_meta( $post->ID, '_wp_attached_file', true ) ) {
 		// Get upload directory.
 		if ( ( $uploads = wp_get_upload_dir() ) && false === $uploads['error'] ) {
+=======
+	if ( $file = get_post_meta( $post->ID, '_wp_attached_file', true) ) {
+		// Get upload directory.
+		if ( ($uploads = wp_upload_dir()) && false === $uploads['error'] ) {
+>>>>>>> origin/master
 			// Check that the upload base exists in the file location.
 			if ( 0 === strpos( $file, $uploads['basedir'] ) ) {
 				// Replace file location with url location.
 				$url = str_replace($uploads['basedir'], $uploads['baseurl'], $file);
 			} elseif ( false !== strpos($file, 'wp-content/uploads') ) {
+<<<<<<< HEAD
 				// Get the directory name relative to the basedir (back compat for pre-2.7 uploads)
 				$url = trailingslashit( $uploads['baseurl'] . '/' . _wp_get_attachment_relative_path( $file ) ) . basename( $file );
+=======
+				$url = $uploads['baseurl'] . substr( $file, strpos($file, 'wp-content/uploads') + 18 );
+>>>>>>> origin/master
 			} else {
 				// It's a newly-uploaded file, therefore $file is relative to the basedir.
 				$url = $uploads['baseurl'] . "/$file";
@@ -4939,6 +6315,7 @@ function wp_get_attachment_url( $post_id = 0 ) {
 		$url = get_the_guid( $post->ID );
 	}
 
+<<<<<<< HEAD
 	// On SSL front end, URLs should be HTTPS.
 	if ( is_ssl() && ! is_admin() && 'wp-login.php' !== $GLOBALS['pagenow'] ) {
 		$url = set_url_scheme( $url );
@@ -4946,6 +6323,18 @@ function wp_get_attachment_url( $post_id = 0 ) {
 
 	/**
 	 * Filters the attachment URL.
+=======
+	/*
+	 * If currently on SSL, prefer HTTPS URLs when we know they're supported by the domain
+	 * (which is to say, when they share the domain name of the current SSL page).
+	 */
+	if ( is_ssl() && 'https' !== substr( $url, 0, 5 ) && parse_url( $url, PHP_URL_HOST ) === $_SERVER['HTTP_HOST'] ) {
+		$url = set_url_scheme( $url, 'https' );
+	}
+
+	/**
+	 * Filter the attachment URL.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -4961,6 +6350,7 @@ function wp_get_attachment_url( $post_id = 0 ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the caption for an attachment.
  *
  * @since 4.6.0
@@ -4992,12 +6382,18 @@ function wp_get_attachment_caption( $post_id = 0 ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Retrieve thumbnail for an attachment.
  *
  * @since 2.1.0
  *
  * @param int $post_id Optional. Attachment ID. Default 0.
+<<<<<<< HEAD
  * @return string|false False on failure. Thumbnail file path on success.
+=======
+ * @return mixed False on failure. Thumbnail file path on success.
+>>>>>>> origin/master
  */
 function wp_get_attachment_thumb_file( $post_id = 0 ) {
 	$post_id = (int) $post_id;
@@ -5010,7 +6406,11 @@ function wp_get_attachment_thumb_file( $post_id = 0 ) {
 
 	if ( !empty($imagedata['thumb']) && ($thumbfile = str_replace(basename($file), $imagedata['thumb'], $file)) && file_exists($thumbfile) ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the attachment thumbnail file path.
+=======
+		 * Filter the attachment thumbnail file path.
+>>>>>>> origin/master
 		 *
 		 * @since 2.1.0
 		 *
@@ -5028,7 +6428,11 @@ function wp_get_attachment_thumb_file( $post_id = 0 ) {
  * @since 2.1.0
  *
  * @param int $post_id Optional. Attachment ID. Default 0.
+<<<<<<< HEAD
  * @return string|false False on failure. Thumbnail URL on success.
+=======
+ * @return string|bool False on failure. Thumbnail URL on success.
+>>>>>>> origin/master
  */
 function wp_get_attachment_thumb_url( $post_id = 0 ) {
 	$post_id = (int) $post_id;
@@ -5047,7 +6451,11 @@ function wp_get_attachment_thumb_url( $post_id = 0 ) {
 	$url = str_replace(basename($url), basename($thumb), $url);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the attachment thumbnail URL.
+=======
+	 * Filter the attachment thumbnail URL.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -5062,12 +6470,21 @@ function wp_get_attachment_thumb_url( $post_id = 0 ) {
  *
  * @since 4.2.0
  *
+<<<<<<< HEAD
  * @param string      $type Attachment type. Accepts 'image', 'audio', or 'video'.
  * @param int|WP_Post $post Optional. Attachment ID or object. Default is global $post.
  * @return bool True if one of the accepted types, false otherwise.
  */
 function wp_attachment_is( $type, $post = null ) {
 	if ( ! $post = get_post( $post ) ) {
+=======
+ * @param string      $type    Attachment type. Accepts 'image', 'audio', or 'video'.
+ * @param int|WP_Post $post_id Optional. Attachment ID. Default 0.
+ * @return bool True if one of the accepted types, false otherwise.
+ */
+function wp_attachment_is( $type, $post_id = 0 ) {
+	if ( ! $post = get_post( $post_id ) ) {
+>>>>>>> origin/master
 		return false;
 	}
 
@@ -5110,6 +6527,7 @@ function wp_attachment_is( $type, $post = null ) {
  * Checks if the attachment is an image.
  *
  * @since 2.1.0
+<<<<<<< HEAD
  * @since 4.2.0 Modified into wrapper for wp_attachment_is() and
  *              allowed WP_Post object to be passed.
  *
@@ -5117,6 +6535,14 @@ function wp_attachment_is( $type, $post = null ) {
  * @return bool Whether the attachment is an image.
  */
 function wp_attachment_is_image( $post = null ) {
+=======
+ * @since 4.2.0 Modified into wrapper for wp_attachment_is()
+ *
+ * @param int|WP_Post $post Optional. Attachment ID. Default 0.
+ * @return bool Whether the attachment is an image.
+ */
+function wp_attachment_is_image( $post = 0 ) {
+>>>>>>> origin/master
 	return wp_attachment_is( 'image', $post );
 }
 
@@ -5126,7 +6552,11 @@ function wp_attachment_is_image( $post = null ) {
  * @since 2.1.0
  *
  * @param string|int $mime MIME type or attachment ID.
+<<<<<<< HEAD
  * @return string|false Icon, false otherwise.
+=======
+ * @return string|bool Icon, false otherwise.
+>>>>>>> origin/master
  */
 function wp_mime_type_icon( $mime = 0 ) {
 	if ( !is_numeric($mime) )
@@ -5139,8 +6569,12 @@ function wp_mime_type_icon( $mime = 0 ) {
 			$mime = (int) $mime;
 			if ( $post = get_post( $mime ) ) {
 				$post_id = (int) $post->ID;
+<<<<<<< HEAD
 				$file = get_attached_file( $post_id );
 				$ext = preg_replace('/^.+?\.([^.]+)$/', '$1', $file);
+=======
+				$ext = preg_replace('/^.+?\.([^.]+)$/', '$1', $post->guid);
+>>>>>>> origin/master
 				if ( !empty($ext) ) {
 					$post_mimes[] = $ext;
 					if ( $ext_type = wp_ext2type( $ext ) )
@@ -5158,7 +6592,11 @@ function wp_mime_type_icon( $mime = 0 ) {
 
 		if ( !is_array($icon_files) ) {
 			/**
+<<<<<<< HEAD
 			 * Filters the icon directory path.
+=======
+			 * Filter the icon directory path.
+>>>>>>> origin/master
 			 *
 			 * @since 2.0.0
 			 *
@@ -5167,7 +6605,11 @@ function wp_mime_type_icon( $mime = 0 ) {
 			$icon_dir = apply_filters( 'icon_dir', ABSPATH . WPINC . '/images/media' );
 
 			/**
+<<<<<<< HEAD
 			 * Filters the icon directory URI.
+=======
+			 * Filter the icon directory URI.
+>>>>>>> origin/master
 			 *
 			 * @since 2.0.0
 			 *
@@ -5176,7 +6618,11 @@ function wp_mime_type_icon( $mime = 0 ) {
 			$icon_dir_uri = apply_filters( 'icon_dir_uri', includes_url( 'images/media' ) );
 
 			/**
+<<<<<<< HEAD
 			 * Filters the list of icon directory URIs.
+=======
+			 * Filter the list of icon directory URIs.
+>>>>>>> origin/master
 			 *
 			 * @since 2.5.0
 			 *
@@ -5221,6 +6667,7 @@ function wp_mime_type_icon( $mime = 0 ) {
 		$matches['default'] = array('default');
 
 		foreach ( $matches as $match => $wilds ) {
+<<<<<<< HEAD
 			foreach ( $wilds as $wild ) {
 				if ( ! isset( $types[ $wild ] ) ) {
 					continue;
@@ -5231,12 +6678,23 @@ function wp_mime_type_icon( $mime = 0 ) {
 					wp_cache_add( "mime_type_icon_$mime", $icon );
 				}
 				break 2;
+=======
+			if ( isset($types[$wilds[0]])) {
+				$icon = $types[$wilds[0]];
+				if ( !is_numeric($mime) )
+					wp_cache_add("mime_type_icon_$mime", $icon);
+				break;
+>>>>>>> origin/master
 			}
 		}
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the mime type icon.
+=======
+	 * Filter the mime type icon.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -5266,6 +6724,7 @@ function wp_mime_type_icon( $mime = 0 ) {
  * @param int     $post_id     Post ID.
  * @param WP_Post $post        The Post Object
  * @param WP_Post $post_before The Previous Post Object
+<<<<<<< HEAD
  */
 function wp_check_for_changed_slugs( $post_id, $post, $post_before ) {
 	// Don't bother if it hasn't changed.
@@ -5289,6 +6748,28 @@ function wp_check_for_changed_slugs( $post_id, $post, $post_before ) {
 	if ( in_array( $post->post_name, $old_slugs ) ) {
 		delete_post_meta( $post_id, '_wp_old_slug', $post->post_name );
 	}
+=======
+ * @return int Same as $post_id
+ */
+function wp_check_for_changed_slugs( $post_id, $post, $post_before ) {
+	// Don't bother if it hasnt changed.
+	if ( $post->post_name == $post_before->post_name )
+		return;
+
+	// We're only concerned with published, non-hierarchical objects.
+	if ( $post->post_status != 'publish' || is_post_type_hierarchical( $post->post_type ) )
+		return;
+
+	$old_slugs = (array) get_post_meta($post_id, '_wp_old_slug');
+
+	// If we haven't added this old slug before, add it now.
+	if ( !empty( $post_before->post_name ) && !in_array($post_before->post_name, $old_slugs) )
+		add_post_meta($post_id, '_wp_old_slug', $post_before->post_name);
+
+	// If the new slug was used previously, delete it from the list.
+	if ( in_array($post->post_name, $old_slugs) )
+		delete_post_meta($post_id, '_wp_old_slug', $post->post_name);
+>>>>>>> origin/master
 }
 
 /**
@@ -5300,9 +6781,14 @@ function wp_check_for_changed_slugs( $post_id, $post, $post_before ) {
  * published posts, and all private posts to which the user has access.
  *
  * @since 2.2.0
+<<<<<<< HEAD
  * @since 4.3.0 Added the ability to pass an array to `$post_type`.
  *
  * @param string|array $post_type Single post type or an array of post types. Currently only supports 'post' or 'page'.
+=======
+ *
+ * @param string $post_type Post type. Currently only supports 'post' or 'page'.
+>>>>>>> origin/master
  * @return string SQL code that can be added to a where clause.
  */
 function get_private_posts_cap_sql( $post_type ) {
@@ -5313,6 +6799,7 @@ function get_private_posts_cap_sql( $post_type ) {
  * Retrieve the post SQL based on capability, author, and type.
  *
  * @since 3.0.0
+<<<<<<< HEAD
  * @since 4.3.0 Introduced the ability to pass an array of post types to `$post_type`.
  *
  * @see get_private_posts_cap_sql()
@@ -5324,11 +6811,23 @@ function get_private_posts_cap_sql( $post_type ) {
  * @param int            $post_author Optional. Query posts having a single author ID. Default null.
  * @param bool           $public_only Optional. Only return public posts. Skips cap checks for
  *                                    $current_user.  Default false.
+=======
+ *
+ * @see get_private_posts_cap_sql()
+ *
+ * @param string $post_type   Post type.
+ * @param bool   $full        Optional. Returns a full WHERE statement instead of just
+ *                            an 'andalso' term. Default true.
+ * @param int    $post_author Optional. Query posts having a single author ID. Default null.
+ * @param bool   $public_only Optional. Only return public posts. Skips cap checks for
+ *                            $current_user.  Default false.
+>>>>>>> origin/master
  * @return string SQL WHERE code that can be added to a query.
  */
 function get_posts_by_author_sql( $post_type, $full = true, $post_author = null, $public_only = false ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	if ( is_array( $post_type ) ) {
 		$post_types = $post_type;
 	} else {
@@ -5384,6 +6883,50 @@ function get_posts_by_author_sql( $post_type, $full = true, $post_author = null,
 	if ( null !== $post_author ) {
 		$sql .= $wpdb->prepare( ' AND post_author = %d', $post_author );
 	}
+=======
+	// Private posts.
+	$post_type_obj = get_post_type_object( $post_type );
+	if ( ! $post_type_obj )
+		return $full ? 'WHERE 1 = 0' : ' 1 = 0 ';
+
+	/**
+	 * Filter the capability to read private posts for a custom post type
+	 * when generating SQL for getting posts by author.
+	 *
+	 * @since 2.2.0
+	 * @deprecated 3.2.0 The hook transitioned from "somewhat useless" to "totally useless".
+	 *
+	 * @param string $cap Capability.
+	 */
+	if ( ! $cap = apply_filters( 'pub_priv_sql_capability', '' ) ) {
+		$cap = $post_type_obj->cap->read_private_posts;
+	}
+
+	$sql = $wpdb->prepare( 'post_type = %s', $post_type );
+
+	if ( null !== $post_author ) {
+		$sql .= $wpdb->prepare( ' AND post_author = %d', $post_author );
+	}
+
+	// Only need to check the cap if $public_only is false.
+	$post_status_sql = "post_status = 'publish'";
+	if ( false === $public_only ) {
+		if ( current_user_can( $cap ) ) {
+			// Does the user have the capability to view private posts? Guess so.
+			$post_status_sql .= " OR post_status = 'private'";
+		} elseif ( is_user_logged_in() ) {
+			// Users can view their own private posts.
+			$id = get_current_user_id();
+			if ( null === $post_author || ! $full ) {
+				$post_status_sql .= " OR post_status = 'private' AND post_author = $id";
+			} elseif ( $id == (int) $post_author ) {
+				$post_status_sql .= " OR post_status = 'private'";
+			} // else none
+		} // else none
+	}
+
+	$sql .= " AND ($post_status_sql)";
+>>>>>>> origin/master
 
 	if ( $full ) {
 		$sql = 'WHERE ' . $sql;
@@ -5400,6 +6943,7 @@ function get_posts_by_author_sql( $post_type, $full = true, $post_author = null,
  * 'gmt' is when the last post was posted in GMT formatted date.
  *
  * @since 0.71
+<<<<<<< HEAD
  * @since 4.4.0 The `$post_type` argument was added.
  *
  * @param string $timezone  Optional. The timezone for the timestamp. Accepts 'server', 'blog', or 'gmt'.
@@ -5421,6 +6965,24 @@ function get_lastpostdate( $timezone = 'server', $post_type = 'any' ) {
 	 *                         See get_lastpostdate() for accepted `$timezone` values.
 	 */
 	return apply_filters( 'get_lastpostdate', _get_last_post_time( $timezone, 'date', $post_type ), $timezone );
+=======
+ *
+ * @param string $timezone The location to get the time. Accepts 'gmt', 'blog',
+ *                         or 'server'. Default 'server'.
+ * @return string The date of the last post.
+ */
+function get_lastpostdate( $timezone = 'server' ) {
+	/**
+	 * Filter the date the last post was published.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $date     Date the last post was published. Likely values are 'gmt',
+	 *                         'blog', or 'server'.
+	 * @param string $timezone Location to use for getting the post published date.
+	 */
+	return apply_filters( 'get_lastpostdate', _get_last_post_time( $timezone, 'date' ), $timezone );
+>>>>>>> origin/master
 }
 
 /**
@@ -5431,6 +6993,7 @@ function get_lastpostdate( $timezone = 'server', $post_type = 'any' ) {
  * 'gmt' is when the last post was modified in GMT time.
  *
  * @since 1.2.0
+<<<<<<< HEAD
  * @since 4.4.0 The `$post_type` argument was added.
  *
  * @param string $timezone  Optional. The timezone for the timestamp. See get_lastpostdate()
@@ -5465,12 +7028,35 @@ function get_lastpostmodified( $timezone = 'server', $post_type = 'any' ) {
 
 	/**
 	 * Filters the date the last post was modified.
+=======
+ *
+ * @param string $timezone Optional. The timezone for the timestamp. Uses the server's internal timezone.
+ *                         Accepts 'server', 'blog', 'gmt'. or 'server'. 'server' uses the server's
+ *                         internal timezone. 'blog' uses the `post_modified` field, which proxies
+ *                         to the timezone set for the site. 'gmt' uses the `post_modified_gmt` field.
+ *                         Default 'server'.
+ * @return string The timestamp.
+ */
+function get_lastpostmodified( $timezone = 'server' ) {
+	$lastpostmodified = _get_last_post_time( $timezone, 'modified' );
+
+	$lastpostdate = get_lastpostdate($timezone);
+	if ( $lastpostdate > $lastpostmodified )
+		$lastpostmodified = $lastpostdate;
+
+	/**
+	 * Filter the date the last post was modified.
+>>>>>>> origin/master
 	 *
 	 * @since 2.3.0
 	 *
 	 * @param string $lastpostmodified Date the last post was modified.
 	 * @param string $timezone         Location to use for getting the post modified date.
+<<<<<<< HEAD
 	 *                                 See get_lastpostdate() for accepted `$timezone` values.
+=======
+	 *                                 See {@see get_lastpostmodified()} for accepted `$timezone` values.
+>>>>>>> origin/master
 	 */
 	return apply_filters( 'get_lastpostmodified', $lastpostmodified, $timezone );
 }
@@ -5479,6 +7065,7 @@ function get_lastpostmodified( $timezone = 'server', $post_type = 'any' ) {
  * Get the timestamp of the last time any post was modified or published.
  *
  * @since 3.1.0
+<<<<<<< HEAD
  * @since 4.4.0 The `$post_type` argument was added.
  * @access private
  *
@@ -5496,10 +7083,25 @@ function _get_last_post_time( $timezone, $field, $post_type = 'any' ) {
 	if ( ! in_array( $field, array( 'date', 'modified' ) ) ) {
 		return false;
 	}
+=======
+ * @access private
+ *
+ * @param string $timezone The timezone for the timestamp. See {@see get_lastpostmodified()}
+ *                         for information on accepted values.
+ * @param string $field    Post field to check. Accepts 'date' or 'modified'.
+ * @return string The timestamp.
+ */
+function _get_last_post_time( $timezone, $field ) {
+	global $wpdb;
+
+	if ( !in_array( $field, array( 'date', 'modified' ) ) )
+		return false;
+>>>>>>> origin/master
 
 	$timezone = strtolower( $timezone );
 
 	$key = "lastpost{$field}:$timezone";
+<<<<<<< HEAD
 	if ( 'any' !== $post_type ) {
 		$key .= ':' . sanitize_key( $post_type );
 	}
@@ -5514,6 +7116,17 @@ function _get_last_post_time( $timezone, $field, $post_type = 'any' ) {
 		} else {
 			$post_types = "'" . sanitize_key( $post_type ) . "'";
 		}
+=======
+
+	$date = wp_cache_get( $key, 'timeinfo' );
+
+	if ( !$date ) {
+		$add_seconds_server = date('Z');
+
+		$post_types = get_post_types( array( 'public' => true ) );
+		array_walk( $post_types, array( &$wpdb, 'escape_by_ref' ) );
+		$post_types = "'" . implode( "', '", $post_types ) . "'";
+>>>>>>> origin/master
 
 		switch ( $timezone ) {
 			case 'gmt':
@@ -5523,14 +7136,22 @@ function _get_last_post_time( $timezone, $field, $post_type = 'any' ) {
 				$date = $wpdb->get_var("SELECT post_{$field} FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ({$post_types}) ORDER BY post_{$field}_gmt DESC LIMIT 1");
 				break;
 			case 'server':
+<<<<<<< HEAD
 				$add_seconds_server = date( 'Z' );
+=======
+>>>>>>> origin/master
 				$date = $wpdb->get_var("SELECT DATE_ADD(post_{$field}_gmt, INTERVAL '$add_seconds_server' SECOND) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ({$post_types}) ORDER BY post_{$field}_gmt DESC LIMIT 1");
 				break;
 		}
 
+<<<<<<< HEAD
 		if ( $date ) {
 			wp_cache_set( $key, $date, 'timeinfo' );
 		}
+=======
+		if ( $date )
+			wp_cache_set( $key, $date, 'timeinfo' );
+>>>>>>> origin/master
 	}
 
 	return $date;
@@ -5562,12 +7183,20 @@ function update_post_cache( &$posts ) {
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @global bool $_wp_suspend_cache_invalidation
+=======
+ * @global wpdb $wpdb WordPress database abstraction object.
+>>>>>>> origin/master
  *
  * @param int|WP_Post $post Post ID or post object to remove from the cache.
  */
 function clean_post_cache( $post ) {
+<<<<<<< HEAD
 	global $_wp_suspend_cache_invalidation;
+=======
+	global $_wp_suspend_cache_invalidation, $wpdb;
+>>>>>>> origin/master
 
 	if ( ! empty( $_wp_suspend_cache_invalidation ) )
 		return;
@@ -5665,8 +7294,13 @@ function update_post_caches( &$posts, $post_type = 'post', $update_term_cache = 
  * @since 2.1.0
  *
  * @param array $post_ids List of post IDs.
+<<<<<<< HEAD
  * @return array|false Returns false if there is nothing to update or an array
  *                     of metadata.
+=======
+ * @return bool|array Returns false if there is nothing to update or an array
+ *                    of metadata.
+>>>>>>> origin/master
  */
 function update_postmeta_cache( $post_ids ) {
 	return update_meta_cache('post', $post_ids);
@@ -5682,7 +7316,11 @@ function update_postmeta_cache( $post_ids ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global bool $_wp_suspend_cache_invalidation
+=======
+ * @see wp_suspend_cache_invalidation()
+>>>>>>> origin/master
  *
  * @param int  $id          The attachment ID in the cache to clean.
  * @param bool $clean_terms Optional. Whether to clean terms cache. Default false.
@@ -5752,7 +7390,10 @@ function _transition_post_status( $new_status, $old_status, $post ) {
 		foreach ( array( 'server', 'gmt', 'blog' ) as $timezone ) {
 			wp_cache_delete( "lastpostmodified:$timezone", 'timeinfo' );
 			wp_cache_delete( "lastpostdate:$timezone", 'timeinfo' );
+<<<<<<< HEAD
 			wp_cache_delete( "lastpostdate:$timezone:{$post->post_type}", 'timeinfo' );
+=======
+>>>>>>> origin/master
 		}
 	}
 
@@ -5775,7 +7416,12 @@ function _transition_post_status( $new_status, $old_status, $post ) {
  *
  * @param int     $deprecated Not used. Can be set to null. Never implemented. Not marked
  *                            as deprecated with _deprecated_argument() as it conflicts with
+<<<<<<< HEAD
  *                            wp_transition_post_status() and the default filter for _future_post_hook().
+=======
+ *                            wp_transition_post_status() and the default filter for
+ *                            {@see _future_post_hook()}.
+>>>>>>> origin/master
  * @param WP_Post $post       Post object.
  */
 function _future_post_hook( $deprecated, $post ) {
@@ -5822,7 +7468,11 @@ function _publish_post_hook( $post_id ) {
  *
  * @param int $post_ID
  *
+<<<<<<< HEAD
  * @return int|false Post parent ID, otherwise false.
+=======
+ * @return int|bool Post parent ID, otherwise false.
+>>>>>>> origin/master
  */
 function wp_get_post_parent_id( $post_ID ) {
 	$post = get_post( $post_ID );
@@ -5835,7 +7485,11 @@ function wp_get_post_parent_id( $post_ID ) {
  * Check the given subset of the post hierarchy for hierarchy loops.
  *
  * Prevents loops from forming and breaks those that it finds. Attached
+<<<<<<< HEAD
  * to the {@see 'wp_insert_post_parent'} filter.
+=======
+ * to the 'wp_insert_post_parent' filter.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  *
@@ -5880,7 +7534,11 @@ function wp_check_post_hierarchy_for_loops( $post_parent, $post_ID ) {
  *
  * @param int|WP_Post $post         Post ID or post object where thumbnail should be attached.
  * @param int         $thumbnail_id Thumbnail to attach.
+<<<<<<< HEAD
  * @return int|bool True on success, false on failure.
+=======
+ * @return bool True on success, false on failure.
+>>>>>>> origin/master
  */
 function set_post_thumbnail( $post, $thumbnail_id ) {
 	$post = get_post( $post );
@@ -5928,6 +7586,7 @@ function wp_delete_auto_drafts() {
 }
 
 /**
+<<<<<<< HEAD
  * Queues posts for lazy-loading of term meta.
  *
  * @since 4.5.0
@@ -5965,6 +7624,8 @@ function wp_queue_posts_for_term_meta_lazyload( $posts ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Update the custom taxonomies' term counts when a post's status is changed.
  *
  * For example, default posts term counts (for custom taxonomies) don't include
@@ -5993,9 +7654,13 @@ function _update_term_count_on_transition_post_status( $new_status, $old_status,
  *
  * @see update_post_caches()
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param array $ids               ID list.
+=======
+ * @param array $ids               ID list
+>>>>>>> origin/master
  * @param bool  $update_term_cache Optional. Whether to update the term cache. Default true.
  * @param bool  $update_meta_cache Optional. Whether to update the meta cache. Default true.
  */
@@ -6009,6 +7674,7 @@ function _prime_post_caches( $ids, $update_term_cache = true, $update_meta_cache
 		update_post_caches( $fresh_posts, 'any', $update_term_cache, $update_meta_cache );
 	}
 }
+<<<<<<< HEAD
 
 /**
  * Adds a suffix if any trashed posts have a given slug.
@@ -6068,3 +7734,5 @@ function wp_add_trashed_suffix_to_post_name_for_post( $post ) {
 	clean_post_cache( $post->ID );
 	return $post_name;
 }
+=======
+>>>>>>> origin/master

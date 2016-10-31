@@ -7,8 +7,13 @@ window.autosave = function() {
 ( function( $, window ) {
 	function autosave() {
 		var initialCompareString,
+<<<<<<< HEAD
 			lastTriggerSave = 0,
 			$document = $(document);
+=======
+		lastTriggerSave = 0,
+		$document = $(document);
+>>>>>>> origin/master
 
 		/**
 		 * Returns the data saved in both local and remote autosave
@@ -19,11 +24,19 @@ window.autosave = function() {
 			var post_name, parent_id, data,
 				time = ( new Date() ).getTime(),
 				cats = [],
+<<<<<<< HEAD
 				editor = getEditor();
 
 			// Don't run editor.save() more often than every 3 sec.
 			// It is resource intensive and might slow down typing in long posts on slow devices.
 			if ( editor && editor.isDirty() && ! editor.isHidden() && time - 3000 > lastTriggerSave ) {
+=======
+				editor = typeof tinymce !== 'undefined' && tinymce.get('content');
+
+			// Don't run editor.save() more often than every 3 sec.
+			// It is resource intensive and might slow down typing in long posts on slow devices.
+			if ( editor && ! editor.isHidden() && time - 3000 > lastTriggerSave ) {
+>>>>>>> origin/master
 				editor.save();
 				lastTriggerSave = time;
 			}
@@ -88,6 +101,7 @@ window.autosave = function() {
 			$document.trigger( 'autosave-enable-buttons' );
 		}
 
+<<<<<<< HEAD
 		function getEditor() {
 			return typeof tinymce !== 'undefined' && tinymce.get('content');
 		}
@@ -95,6 +109,11 @@ window.autosave = function() {
 		// Autosave in localStorage
 		function autosaveLocal() {
 			var blog_id, post_id, hasStorage, intervalTimer,
+=======
+		// Autosave in localStorage
+		function autosaveLocal() {
+			var restorePostData, undoPostData, blog_id, post_id, hasStorage, intervalTimer,
+>>>>>>> origin/master
 				lastCompareString,
 				isSuspended = false;
 
@@ -270,7 +289,11 @@ window.autosave = function() {
 				intervalTimer = window.setInterval( save, 15000 );
 
 				$( 'form#post' ).on( 'submit.autosave-local', function() {
+<<<<<<< HEAD
 					var editor = getEditor(),
+=======
+					var editor = typeof tinymce !== 'undefined' && tinymce.get('content'),
+>>>>>>> origin/master
 						post_id = $('#post_ID').val() || 0;
 
 					if ( editor && ! editor.isHidden() ) {
@@ -290,8 +313,12 @@ window.autosave = function() {
 						});
 					}
 
+<<<<<<< HEAD
 					var secure = ( 'https:' === window.location.protocol );
 					wpCookies.set( 'wp-saving-post', post_id + '-check', 24 * 60 * 60, false, false, secure );
+=======
+					wpCookies.set( 'wp-saving-post', post_id + '-check', 24 * 60 * 60 );
+>>>>>>> origin/master
 				});
 			}
 
@@ -314,8 +341,12 @@ window.autosave = function() {
 			function checkPost() {
 				var content, post_title, excerpt, $notice,
 					postData = getSavedPostData(),
+<<<<<<< HEAD
 					cookie = wpCookies.get( 'wp-saving-post' ),
 					$newerAutosaveNotice = $( '#has-newer-autosave' ).parent( '.notice' );
+=======
+					cookie = wpCookies.get( 'wp-saving-post' );
+>>>>>>> origin/master
 
 				if ( cookie === post_id + '-saved' ) {
 					wpCookies.remove( 'wp-saving-post' );
@@ -328,6 +359,14 @@ window.autosave = function() {
 					return;
 				}
 
+<<<<<<< HEAD
+=======
+				// There is a newer autosave. Don't show two "restore" notices at the same time.
+				if ( $( '#has-newer-autosave' ).length ) {
+					return;
+				}
+
+>>>>>>> origin/master
 				content = $( '#content' ).val() || '';
 				post_title = $( '#title' ).val() || '';
 				excerpt = $( '#excerpt' ).val() || '';
@@ -338,6 +377,7 @@ window.autosave = function() {
 					return;
 				}
 
+<<<<<<< HEAD
 				$notice = $( '#local-storage-notice' )
 					.insertAfter( $( '.wrap h1, .wrap h2' ).first() )
 					.addClass( 'notice-warning' );
@@ -357,6 +397,34 @@ window.autosave = function() {
 					$notice.fadeTo( 250, 0, function() {
 						$notice.slideUp( 150 );
 					});
+=======
+				restorePostData = postData;
+				undoPostData = {
+					content: content,
+					post_title: post_title,
+					excerpt: excerpt
+				};
+
+				$notice = $( '#local-storage-notice' );
+				$('.wrap h2').first().after( $notice.addClass( 'notice-warning' ).show() );
+
+				$notice.on( 'click.autosave-local', function( event ) {
+					var $target = $( event.target );
+
+					if ( $target.hasClass( 'restore-backup' ) ) {
+						restorePost( restorePostData );
+						$target.parent().hide();
+						$(this).find( 'p.undo-restore' ).show();
+						$notice.removeClass( 'notice-warning' ).addClass( 'notice-success' );
+					} else if ( $target.hasClass( 'undo-restore-backup' ) ) {
+						restorePost( undoPostData );
+						$target.parent().hide();
+						$(this).find( 'p.local-restore' ).show();
+						$notice.removeClass( 'notice-success' ).addClass( 'notice-warning' );
+					}
+
+					event.preventDefault();
+>>>>>>> origin/master
 				});
 			}
 
@@ -373,6 +441,7 @@ window.autosave = function() {
 					}
 
 					$( '#excerpt' ).val( postData.excerpt || '' );
+<<<<<<< HEAD
 					editor = getEditor();
 
 					if ( editor && ! editor.isHidden() && typeof switchEditors !== 'undefined' ) {
@@ -392,6 +461,18 @@ window.autosave = function() {
 						// Using document.execCommand() will let the user undo.
 						document.execCommand( 'selectAll' );
 						document.execCommand( 'insertText', false, postData.content || '' );
+=======
+					editor = typeof tinymce !== 'undefined' && tinymce.get('content');
+
+					if ( editor && ! editor.isHidden() && typeof switchEditors !== 'undefined' ) {
+						// Make sure there's an undo level in the editor
+						editor.undoManager.add();
+						editor.setContent( postData.content ? switchEditors.wpautop( postData.content ) : '' );
+					} else {
+						// Make sure the Text editor is selected
+						$( '#content-html' ).click();
+						$( '#content' ).val( postData.content );
+>>>>>>> origin/master
 					}
 
 					return true;

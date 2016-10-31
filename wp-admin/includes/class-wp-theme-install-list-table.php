@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * List Table API: WP_Theme_Install_List_Table class
  *
  * @package WordPress
@@ -14,19 +15,31 @@
  * @access private
  *
  * @see WP_Themes_List_Table
+=======
+ * Theme Installer List Table class.
+ *
+ * @package WordPress
+ * @subpackage List_Table
+ * @since 3.1.0
+ * @access private
+>>>>>>> origin/master
  */
 class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 
 	public $features = array();
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	public function ajax_user_can() {
 		return current_user_can( 'install_themes' );
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @global array  $tabs
@@ -35,6 +48,8 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * @global string $type
 	 * @global array  $theme_field_defaults
 	 */
+=======
+>>>>>>> origin/master
 	public function prepare_items() {
 		include( ABSPATH . 'wp-admin/includes/theme-install.php' );
 
@@ -58,7 +73,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		// These are the tabs which are shown on the page,
 		$tabs = array();
 		$tabs['dashboard'] = __( 'Search' );
+<<<<<<< HEAD
 		if ( 'search' === $tab )
+=======
+		if ( 'search' == $tab )
+>>>>>>> origin/master
 			$tabs['search']	= __( 'Search Results' );
 		$tabs['upload'] = __( 'Upload' );
 		$tabs['featured'] = _x( 'Featured', 'themes' );
@@ -72,7 +91,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		$tabs = apply_filters( 'install_themes_tabs', $tabs );
 
 		/**
+<<<<<<< HEAD
 		 * Filters tabs not associated with a menu item on the Install Themes screen.
+=======
+		 * Filter tabs not associated with a menu item on the Install Themes screen.
+>>>>>>> origin/master
 		 *
 		 * @since 2.8.0
 		 *
@@ -124,7 +147,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Filters API request arguments for each Install Themes screen tab.
+=======
+		 * Filter API request arguments for each Install Themes screen tab.
+>>>>>>> origin/master
 		 *
 		 * The dynamic portion of the hook name, `$tab`, refers to the theme install
 		 * tabs. Default tabs are 'dashboard', 'search', 'upload', 'featured',
@@ -153,25 +180,35 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
+=======
+>>>>>>> origin/master
 	public function no_items() {
 		_e( 'No themes match your request.' );
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @global array $tabs
 	 * @global string $tab
 	 * @return array
 	 */
+=======
+>>>>>>> origin/master
 	protected function get_views() {
 		global $tabs, $tab;
 
 		$display_tabs = array();
 		foreach ( (array) $tabs as $action => $text ) {
+<<<<<<< HEAD
 			$class = ( $action === $tab ) ? ' class="current"' : '';
+=======
+			$class = ( $action == $tab ) ? ' class="current"' : '';
+>>>>>>> origin/master
 			$href = self_admin_url('theme-install.php?tab=' . $action);
 			$display_tabs['theme-install-'.$action] = "<a href='$href'$class>$text</a>";
 		}
@@ -179,9 +216,12 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		return $display_tabs;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
+=======
+>>>>>>> origin/master
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
 ?>
@@ -208,9 +248,12 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		$this->tablenav( 'bottom' );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
+=======
+>>>>>>> origin/master
 	public function display_rows() {
 		$themes = $this->items;
 		foreach ( $themes as $theme ) {
@@ -226,8 +269,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	/**
 	 * Prints a theme from the WordPress.org API.
 	 *
+<<<<<<< HEAD
 	 * @global array $themes_allowedtags
 	 *
+=======
+>>>>>>> origin/master
 	 * @param object $theme An object that contains theme data returned by the WordPress.org API.
 	 *
 	 * Example theme data:
@@ -241,7 +287,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 *     public 'rating' => float 80
 	 *     public 'num_ratings' => int 1
 	 *     public 'homepage' => string 'http://wordpress.org/themes/magazine-basic'
+<<<<<<< HEAD
 	 *     public 'description' => string 'A basic magazine style layout with a fully customizable layout through a back-end interface. Designed by <a href="http://bavotasan.com">c.bavota</a> of <a href="http://tinkerpriestmedia.com">Tinker Priest Media</a>.'
+=======
+	 *     public 'description' => string 'A basic magazine style layout with a fully customizable layout through a backend interface. Designed by <a href="http://bavotasan.com">c.bavota</a> of <a href="http://tinkerpriestmedia.com">Tinker Priest Media</a>.'
+>>>>>>> origin/master
 	 *     public 'download_link' => string 'http://wordpress.org/themes/download/magazine-basic.1.1.zip'
 	 */
 	public function single_row( $theme ) {
@@ -290,7 +340,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		$actions[] = '<a class="install-theme-preview" href="' . esc_url( $preview_url ) . '" title="' . esc_attr( sprintf( __( 'Preview %s' ), $name ) ) . '">' . __( 'Preview' ) . '</a>';
 
 		/**
+<<<<<<< HEAD
 		 * Filters the install action links for a theme in the Install Themes list table.
+=======
+		 * Filter the install action links for a theme in the Install Themes list table.
+>>>>>>> origin/master
 		 *
 		 * @since 3.4.0
 		 *
@@ -302,7 +356,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 
 		?>
 		<a class="screenshot install-theme-preview" href="<?php echo esc_url( $preview_url ); ?>" title="<?php echo esc_attr( $preview_title ); ?>">
+<<<<<<< HEAD
 			<img src="<?php echo esc_url( $theme->screenshot_url ); ?>" width="150" alt="" />
+=======
+			<img src="<?php echo esc_url( $theme->screenshot_url ); ?>" width="150" />
+>>>>>>> origin/master
 		</a>
 
 		<h3><?php echo $name; ?></h3>
@@ -336,10 +394,17 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 					<div class="install-theme-info"></div>
 				</div>
 				<div class="wp-full-overlay-footer">
+<<<<<<< HEAD
 					<button type="button" class="collapse-sidebar button-secondary" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse Sidebar' ); ?>">
 						<span class="collapse-sidebar-arrow"></span>
 						<span class="collapse-sidebar-label"><?php _e( 'Collapse' ); ?></span>
 					</button>
+=======
+					<a href="#" class="collapse-sidebar" title="<?php esc_attr_e('Collapse Sidebar'); ?>">
+						<span class="collapse-sidebar-label"><?php _e('Collapse'); ?></span>
+						<span class="collapse-sidebar-arrow"></span>
+					</a>
+>>>>>>> origin/master
 				</div>
 			</div>
 			<div class="wp-full-overlay-main"></div>
@@ -369,8 +434,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	/**
 	 * Prints the info for a theme (to be used in the theme installer modal).
 	 *
+<<<<<<< HEAD
 	 * @global array $themes_allowedtags
 	 *
+=======
+>>>>>>> origin/master
 	 * @param object $theme - A WordPress.org Theme API object.
 	 */
 	public function install_theme_info( $theme ) {
@@ -412,7 +480,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 			<h3 class="theme-name"><?php echo $name; ?></h3>
 			<span class="theme-by"><?php printf( __( 'By %s' ), $author ); ?></span>
 			<?php if ( isset( $theme->screenshot_url ) ): ?>
+<<<<<<< HEAD
 				<img class="theme-screenshot" src="<?php echo esc_url( $theme->screenshot_url ); ?>" alt="" />
+=======
+				<img class="theme-screenshot" src="<?php echo esc_url( $theme->screenshot_url ); ?>" />
+>>>>>>> origin/master
 			<?php endif; ?>
 			<div class="theme-details">
 				<?php wp_star_rating( array( 'rating' => $theme->rating, 'type' => 'percent', 'number' => $theme->num_ratings ) ); ?>
@@ -435,10 +507,15 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * @since 3.4.0
 	 * @access public
 	 *
+<<<<<<< HEAD
 	 * @global string $tab  Current tab within Themes->Install screen
 	 * @global string $type Type of search.
 	 *
 	 * @param array $extra_args Unused.
+=======
+	 * @uses $tab Global; current tab within Themes->Install screen
+	 * @uses $type Global; type of search.
+>>>>>>> origin/master
 	 */
 	public function _js_vars( $extra_args = array() ) {
 		global $tab, $type;

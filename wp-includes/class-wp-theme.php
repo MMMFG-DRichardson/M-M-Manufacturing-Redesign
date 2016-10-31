@@ -4,6 +4,7 @@
  *
  * @package WordPress
  * @subpackage Theme
+<<<<<<< HEAD
  * @since 3.4.0
  */
 final class WP_Theme implements ArrayAccess {
@@ -18,6 +19,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @see WP_MS_Themes_List_Table
 	 */
 	public $update = false;
+=======
+ */
+
+final class WP_Theme implements ArrayAccess {
+>>>>>>> origin/master
 
 	/**
 	 * Headers for style.css files.
@@ -56,15 +62,21 @@ final class WP_Theme implements ArrayAccess {
 		'twentythirteen' => 'Twenty Thirteen',
 		'twentyfourteen' => 'Twenty Fourteen',
 		'twentyfifteen'  => 'Twenty Fifteen',
+<<<<<<< HEAD
 		'twentysixteen'  => 'Twenty Sixteen',
+=======
+>>>>>>> origin/master
 	);
 
 	/**
 	 * Renamed theme tags.
+<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access private
 	 * @var array
+=======
+>>>>>>> origin/master
 	 */
 	private static $tag_map = array(
 		'fixed-width'    => 'fixed-layout',
@@ -99,9 +111,12 @@ final class WP_Theme implements ArrayAccess {
 	 * Header name from the theme's style.css after being translated.
 	 *
 	 * Cached due to sorting functions running over the translated name.
+<<<<<<< HEAD
 	 *
 	 * @access private
 	 * @var string
+=======
+>>>>>>> origin/master
 	 */
 	private $name_translated;
 
@@ -170,9 +185,14 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Flag for whether the themes cache bucket should be persistently cached.
 	 *
+<<<<<<< HEAD
 	 * Default is false. Can be set with the {@see 'wp_cache_themes_persistently'} filter.
 	 *
 	 * @static
+=======
+	 * Default is false. Can be set with the wp_cache_themes_persistently filter.
+	 *
+>>>>>>> origin/master
 	 * @access private
 	 * @var bool
 	 */
@@ -183,7 +203,10 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * By default the bucket is not cached, so this value is useless.
 	 *
+<<<<<<< HEAD
 	 * @static
+=======
+>>>>>>> origin/master
 	 * @access private
 	 * @var bool
 	 */
@@ -192,11 +215,17 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Constructor for WP_Theme.
 	 *
+<<<<<<< HEAD
 	 * @global array $wp_theme_directories
 	 *
 	 * @param string $theme_dir Directory of the theme within the theme_root.
 	 * @param string $theme_root Theme root.
 	 * @param WP_Error|void $_child If this theme is a parent theme, the child may be passed for validation purposes.
+=======
+	 * @param string $theme_dir Directory of the theme within the theme_root.
+	 * @param string $theme_root Theme root.
+	 * @param WP_Error|null $_child If this theme is a parent theme, the child may be passed for validation purposes.
+>>>>>>> origin/master
 	 */
 	public function __construct( $theme_dir, $theme_root, $_child = null ) {
 		global $wp_theme_directories;
@@ -240,7 +269,11 @@ final class WP_Theme implements ArrayAccess {
 		} elseif ( ! file_exists( $this->theme_root . '/' . $theme_file ) ) {
 			$this->headers['Name'] = $this->stylesheet;
 			if ( ! file_exists( $this->theme_root . '/' . $this->stylesheet ) )
+<<<<<<< HEAD
 				$this->errors = new WP_Error( 'theme_not_found', sprintf( __( 'The theme directory "%s" does not exist.' ), esc_html( $this->stylesheet ) ) );
+=======
+				$this->errors = new WP_Error( 'theme_not_found', sprintf( __( 'The theme directory "%s" does not exist.' ), $this->stylesheet ) );
+>>>>>>> origin/master
 			else
 				$this->errors = new WP_Error( 'theme_no_stylesheet', __( 'Stylesheet is missing.' ) );
 			$this->template = $this->stylesheet;
@@ -268,6 +301,7 @@ final class WP_Theme implements ArrayAccess {
 		if ( ! $this->template && ! ( $this->template = $this->headers['Template'] ) ) {
 			$this->template = $this->stylesheet;
 			if ( ! file_exists( $this->theme_root . '/' . $this->stylesheet . '/index.php' ) ) {
+<<<<<<< HEAD
 				$error_message = sprintf(
 					/* translators: 1: index.php, 2: Codex URL, 3: style.css */
 					__( 'Template is missing. Standalone themes need to have a %1$s template file. <a href="%2$s">Child themes</a> need to have a Template header in the %3$s stylesheet.' ),
@@ -276,6 +310,9 @@ final class WP_Theme implements ArrayAccess {
 					'<code>style.css</code>'
 				);
 				$this->errors = new WP_Error( 'theme_no_index', $error_message );
+=======
+				$this->errors = new WP_Error( 'theme_no_index', __( 'Template is missing.' ) );
+>>>>>>> origin/master
 				$this->cache_add( 'theme', array( 'headers' => $this->headers, 'errors' => $this->errors, 'stylesheet' => $this->stylesheet, 'template' => $this->template ) );
 				return;
 			}
@@ -294,7 +331,11 @@ final class WP_Theme implements ArrayAccess {
 				$theme_root_template = $directories[ $this->template ]['theme_root'];
 			} else {
 				// Parent theme is missing.
+<<<<<<< HEAD
 				$this->errors = new WP_Error( 'theme_no_parent', sprintf( __( 'The parent theme is missing. Please install the "%s" parent theme.' ), esc_html( $this->template ) ) );
+=======
+				$this->errors = new WP_Error( 'theme_no_parent', sprintf( __( 'The parent theme is missing. Please install the "%s" parent theme.' ), $this->template ) );
+>>>>>>> origin/master
 				$this->cache_add( 'theme', array( 'headers' => $this->headers, 'errors' => $this->errors, 'stylesheet' => $this->stylesheet, 'template' => $this->template ) );
 				$this->parent = new WP_Theme( $this->template, $this->theme_root, $this );
 				return;
@@ -306,11 +347,19 @@ final class WP_Theme implements ArrayAccess {
 			// If we are a parent, then there is a problem. Only two generations allowed! Cancel things out.
 			if ( $_child instanceof WP_Theme && $_child->template == $this->stylesheet ) {
 				$_child->parent = null;
+<<<<<<< HEAD
 				$_child->errors = new WP_Error( 'theme_parent_invalid', sprintf( __( 'The "%s" theme is not a valid parent theme.' ), esc_html( $_child->template ) ) );
 				$_child->cache_add( 'theme', array( 'headers' => $_child->headers, 'errors' => $_child->errors, 'stylesheet' => $_child->stylesheet, 'template' => $_child->template ) );
 				// The two themes actually reference each other with the Template header.
 				if ( $_child->stylesheet == $this->template ) {
 					$this->errors = new WP_Error( 'theme_parent_invalid', sprintf( __( 'The "%s" theme is not a valid parent theme.' ), esc_html( $this->template ) ) );
+=======
+				$_child->errors = new WP_Error( 'theme_parent_invalid', sprintf( __( 'The "%s" theme is not a valid parent theme.' ), $_child->template ) );
+				$_child->cache_add( 'theme', array( 'headers' => $_child->headers, 'errors' => $_child->errors, 'stylesheet' => $_child->stylesheet, 'template' => $_child->template ) );
+				// The two themes actually reference each other with the Template header.
+				if ( $_child->stylesheet == $this->template ) {
+					$this->errors = new WP_Error( 'theme_parent_invalid', sprintf( __( 'The "%s" theme is not a valid parent theme.' ), $this->template ) );
+>>>>>>> origin/master
 					$this->cache_add( 'theme', array( 'headers' => $this->headers, 'errors' => $this->errors, 'stylesheet' => $this->stylesheet, 'template' => $this->template ) );
 				}
 				return;
@@ -340,11 +389,14 @@ final class WP_Theme implements ArrayAccess {
 
 	/**
 	 * __isset() magic method for properties formerly returned by current_theme_info()
+<<<<<<< HEAD
 	 *
 	 * @staticvar array $properties
 	 *
 	 * @param string $offset Property to check if set.
 	 * @return bool Whether the given property is set.
+=======
+>>>>>>> origin/master
 	 */
 	public function __isset( $offset ) {
 		static $properties = array(
@@ -357,9 +409,12 @@ final class WP_Theme implements ArrayAccess {
 
 	/**
 	 * __get() magic method for properties formerly returned by current_theme_info()
+<<<<<<< HEAD
 	 *
 	 * @param string $offset Property to get.
 	 * @return mixed Property value.
+=======
+>>>>>>> origin/master
 	 */
 	public function __get( $offset ) {
 		switch ( $offset ) {
@@ -399,32 +454,45 @@ final class WP_Theme implements ArrayAccess {
 
 	/**
 	 * Method to implement ArrayAccess for keys formerly returned by get_themes()
+<<<<<<< HEAD
 	 *
 	 * @param mixed $offset
 	 * @param mixed $value
+=======
+>>>>>>> origin/master
 	 */
 	public function offsetSet( $offset, $value ) {}
 
 	/**
 	 * Method to implement ArrayAccess for keys formerly returned by get_themes()
+<<<<<<< HEAD
 	 *
 	 * @param mixed $offset
+=======
+>>>>>>> origin/master
 	 */
 	public function offsetUnset( $offset ) {}
 
 	/**
 	 * Method to implement ArrayAccess for keys formerly returned by get_themes()
+<<<<<<< HEAD
 	 *
 	 * @staticvar array $keys
 	 *
 	 * @param mixed $offset
 	 * @return bool
+=======
+>>>>>>> origin/master
 	 */
 	public function offsetExists( $offset ) {
 		static $keys = array(
 			'Name', 'Version', 'Status', 'Title', 'Author', 'Author Name', 'Author URI', 'Description',
 			'Template', 'Stylesheet', 'Template Files', 'Stylesheet Files', 'Template Dir', 'Stylesheet Dir',
+<<<<<<< HEAD
 			'Screenshot', 'Tags', 'Theme Root', 'Theme Root URI', 'Parent Theme',
+=======
+			 'Screenshot', 'Tags', 'Theme Root', 'Theme Root URI', 'Parent Theme',
+>>>>>>> origin/master
 		);
 
 		return in_array( $offset, $keys );
@@ -437,20 +505,30 @@ final class WP_Theme implements ArrayAccess {
 	 * translated data. We are doing so now as it is safe to do. However, as
 	 * Name and Title could have been used as the key for get_themes(), both remain
 	 * untranslated for back compatibility. This means that ['Name'] is not ideal,
+<<<<<<< HEAD
 	 * and care should be taken to use `$theme::display( 'Name' )` to get a properly
 	 * translated header.
 	 *
 	 * @param mixed $offset
 	 * @return mixed
+=======
+	 * and care should be taken to use $theme->display('Name') to get a properly
+	 * translated header.
+>>>>>>> origin/master
 	 */
 	public function offsetGet( $offset ) {
 		switch ( $offset ) {
 			case 'Name' :
 			case 'Title' :
+<<<<<<< HEAD
 				/*
 				 * See note above about using translated data. get() is not ideal.
 				 * It is only for backward compatibility. Use display().
 				 */
+=======
+				// See note above about using translated data. get() is not ideal.
+				// It is only for backwards compatibility. Use display().
+>>>>>>> origin/master
 				return $this->get('Name');
 			case 'Author' :
 				return $this->display( 'Author');
@@ -496,7 +574,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @since 3.4.0
 	 * @access public
 	 *
+<<<<<<< HEAD
 	 * @return WP_Error|false WP_Error if there are errors, or false.
+=======
+	 * @return WP_Error|bool WP_Error if there are errors, or false.
+>>>>>>> origin/master
 	 */
 	public function errors() {
 		return is_wp_error( $this->errors ) ? $this->errors : false;
@@ -523,7 +605,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @since 3.4.0
 	 * @access public
 	 *
+<<<<<<< HEAD
 	 * @return WP_Theme|false Parent theme, or false if the current theme is not a child theme.
+=======
+	 * @return WP_Theme|bool Parent theme, or false if the current theme is not a child theme.
+>>>>>>> origin/master
 	 */
 	public function parent() {
 		return isset( $this->parent ) ? $this->parent : false;
@@ -534,8 +620,13 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * Cache entries keyed by the theme and the type of data.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access private
+=======
+	 * @access private
+	 * @since 3.4.0
+>>>>>>> origin/master
 	 *
 	 * @param string $key Type of data to store (theme, screenshot, headers, page_templates)
 	 * @param string $data Data to store
@@ -550,8 +641,13 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * Cache entries are keyed by the theme and the type of data.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access private
+=======
+	 * @access private
+	 * @since 3.4.0
+>>>>>>> origin/master
 	 *
 	 * @param string $key Type of data to retrieve (theme, screenshot, headers, page_templates)
 	 * @return mixed Retrieved data
@@ -563,8 +659,13 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Clears the cache for the theme.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access public
+=======
+	 * @access public
+	 * @since 3.4.0
+>>>>>>> origin/master
 	 */
 	public function cache_delete() {
 		foreach ( array( 'theme', 'screenshot', 'headers', 'page_templates' ) as $key )
@@ -585,11 +686,19 @@ final class WP_Theme implements ArrayAccess {
 	 * get_template() takes into account where WordPress actually located the theme and
 	 * whether it is actually valid.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access public
 	 *
 	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
 	 * @return string|false String on success, false on failure.
+=======
+	 * @access public
+	 * @since 3.4.0
+	 *
+	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
+	 * @return string|bool String on success, false on failure.
+>>>>>>> origin/master
 	 */
 	public function get( $header ) {
 		if ( ! isset( $this->headers[ $header ] ) )
@@ -619,13 +728,22 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Gets a theme header, formatted and translated for display.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access public
+=======
+	 * @access public
+	 * @since 3.4.0
+>>>>>>> origin/master
 	 *
 	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
 	 * @param bool $markup Optional. Whether to mark up the header. Defaults to true.
 	 * @param bool $translate Optional. Whether to translate the header. Defaults to true.
+<<<<<<< HEAD
 	 * @return string|false Processed header, false on failure.
+=======
+	 * @return string|bool Processed header, false on failure.
+>>>>>>> origin/master
 	 */
 	public function display( $header, $markup = true, $translate = true ) {
 		$value = $this->get( $header );
@@ -648,6 +766,7 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Sanitize a theme header.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access private
 	 *
@@ -657,6 +776,10 @@ final class WP_Theme implements ArrayAccess {
 	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
 	 * @param string $value Value to sanitize.
 	 * @return mixed
+=======
+	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
+	 * @param string $value Value to sanitize.
+>>>>>>> origin/master
 	 */
 	private function sanitize_header( $header, $value ) {
 		switch ( $header ) {
@@ -707,10 +830,15 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Mark up a theme header.
 	 *
+<<<<<<< HEAD
      * @since 3.4.0
 	 * @access private
 	 *
 	 * @staticvar string $comma
+=======
+	 * @access private
+	 * @since 3.4.0
+>>>>>>> origin/master
 	 *
 	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
 	 * @param string $value Value to mark up.
@@ -753,10 +881,15 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Translate a theme header.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access private
 	 *
 	 * @staticvar array $tags_list
+=======
+	 * @access private
+	 * @since 3.4.0
+>>>>>>> origin/master
 	 *
 	 * @param string $header Theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.
 	 * @param string $value Value to translate.
@@ -771,6 +904,7 @@ final class WP_Theme implements ArrayAccess {
 				$this->name_translated = translate( $value, $this->get('TextDomain' ) );
 				return $this->name_translated;
 			case 'Tags' :
+<<<<<<< HEAD
 				if ( empty( $value ) || ! function_exists( 'get_theme_feature_list' ) ) {
 					return $value;
 				}
@@ -793,6 +927,17 @@ final class WP_Theme implements ArrayAccess {
 					foreach ( $feature_list as $tags ) {
 						$tags_list += $tags;
 					}
+=======
+				if ( empty( $value ) || ! function_exists( 'get_theme_feature_list' ) )
+					return $value;
+
+				static $tags_list;
+				if ( ! isset( $tags_list ) ) {
+					$tags_list = array();
+					$feature_list = get_theme_feature_list( false ); // No API
+					foreach ( $feature_list as $tags )
+						$tags_list += $tags;
+>>>>>>> origin/master
 				}
 
 				foreach ( $value as &$tag ) {
@@ -933,7 +1078,11 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * This is typically the absolute URL to wp-content/themes. This forms the basis
 	 * for all other URLs returned by WP_Theme, so we pass it to the public function
+<<<<<<< HEAD
 	 * get_theme_root_uri() and allow it to run the {@see 'theme_root_uri'} filter.
+=======
+	 * get_theme_root_uri() and allow it to run the theme_root_uri filter.
+>>>>>>> origin/master
 	 *
 	 * @since 3.4.0
 	 * @access public
@@ -958,7 +1107,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @access public
 	 *
 	 * @param string $uri Type of URL to return, either 'relative' or an absolute URI. Defaults to absolute URI.
+<<<<<<< HEAD
 	 * @return string|false Screenshot file. False if the theme does not have a screenshot.
+=======
+	 * @return mixed Screenshot file. False if the theme does not have a screenshot.
+>>>>>>> origin/master
 	 */
 	public function get_screenshot( $uri = 'uri' ) {
 		$screenshot = $this->cache_get( 'screenshot' );
@@ -993,7 +1146,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @param int $depth Optional. How deep to search for files. Defaults to a flat scan (0 depth). -1 depth is infinite.
 	 * @param bool $search_parent Optional. Whether to return parent files. Defaults to false.
 	 * @return array Array of files, keyed by the path to the file relative to the theme's directory, with the values
+<<<<<<< HEAD
 	 * 	             being absolute paths.
+=======
+	 * 	being absolute paths.
+>>>>>>> origin/master
 	 */
 	public function get_files( $type = null, $depth = 0, $search_parent = false ) {
 		$files = (array) self::scandir( $this->get_stylesheet_directory(), $type, $depth );
@@ -1044,23 +1201,38 @@ final class WP_Theme implements ArrayAccess {
 			$page_templates += $this->parent()->get_page_templates( $post );
 
 		/**
+<<<<<<< HEAD
 		 * Filters list of page templates for a theme.
 		 *
 		 * @since 3.9.0
 		 * @since 4.4.0 Converted to allow complete control over the `$page_templates` array.
+=======
+		 * Filter list of page templates for a theme.
+		 *
+		 * This filter does not currently allow for page templates to be added.
+		 *
+		 * @since 3.9.0
+>>>>>>> origin/master
 		 *
 		 * @param array        $page_templates Array of page templates. Keys are filenames,
 		 *                                     values are translated names.
 		 * @param WP_Theme     $this           The theme object.
 		 * @param WP_Post|null $post           The post being edited, provided for context, or null.
 		 */
+<<<<<<< HEAD
 		return (array) apply_filters( 'theme_page_templates', $page_templates, $this, $post );
+=======
+		$return = apply_filters( 'theme_page_templates', $page_templates, $this, $post );
+
+		return array_intersect_assoc( $return, $page_templates );
+>>>>>>> origin/master
 	}
 
 	/**
 	 * Scans a directory for files of a certain extension.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access private
@@ -1075,6 +1247,15 @@ final class WP_Theme implements ArrayAccess {
 	 *                                         recurses to lower depths. Default empty.
 	 * @return array|false Array of files, keyed by the path to the file relative to the `$path` directory prepended
 	 *                     with `$relative_path`, with the values being absolute paths. False otherwise.
+=======
+	 * @access private
+	 *
+	 * @param string $path Absolute path to search.
+	 * @param mixed  Array of extensions to find, string of a single extension, or null for all extensions.
+	 * @param int $depth How deep to search for files. Optional, defaults to a flat scan (0 depth). -1 depth is infinite.
+	 * @param string $relative_path The basename of the absolute path. Used to control the returned path
+	 * 	for the found files, particularly when this function recurses to lower depths.
+>>>>>>> origin/master
 	 */
 	private static function scandir( $path, $extensions = null, $depth = 0, $relative_path = '' ) {
 		if ( ! is_dir( $path ) )
@@ -1153,7 +1334,11 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * @param string $check Optional. Whether to check only the 'network'-wide settings, the 'site'
 	 * 	settings, or 'both'. Defaults to 'both'.
+<<<<<<< HEAD
 	 * @param int $blog_id Optional. Ignored if only network-wide settings are checked. Defaults to current site.
+=======
+	 * @param int $blog_id Optional. Ignored if only network-wide settings are checked. Defaults to current blog.
+>>>>>>> origin/master
 	 * @return bool Whether the theme is allowed for the network. Returns true in single-site.
 	 */
 	public function is_allowed( $check = 'both', $blog_id = null ) {
@@ -1176,6 +1361,7 @@ final class WP_Theme implements ArrayAccess {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Determines the latest WordPress default theme that is installed.
 	 *
 	 * This hits the filesystem.
@@ -1201,10 +1387,19 @@ final class WP_Theme implements ArrayAccess {
 	 * @access public
 	 *
 	 * @param int $blog_id Optional. ID of the site. Defaults to the current site.
+=======
+	 * Returns array of stylesheet names of themes allowed on the site or network.
+	 *
+	 * @since 3.4.0
+	 * @access public
+	 *
+	 * @param int $blog_id Optional. Defaults to current blog.
+>>>>>>> origin/master
 	 * @return array Array of stylesheet names.
 	 */
 	public static function get_allowed( $blog_id = null ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the array of themes allowed on the network.
 		 *
 		 * Site is provided as context so that a list of network allowed themes can
@@ -1216,6 +1411,15 @@ final class WP_Theme implements ArrayAccess {
 		 * @param int   $blog_id        ID of the site.
 		 */
 		$network = (array) apply_filters( 'network_allowed_themes', self::get_allowed_on_network(), $blog_id );
+=======
+		 * Filter the array of themes allowed on the site or network.
+		 *
+		 * @since MU
+		 *
+		 * @param array $allowed_themes An array of theme stylesheet names.
+		 */
+		$network = (array) apply_filters( 'allowed_themes', self::get_allowed_on_network() );
+>>>>>>> origin/master
 		return $network + self::get_allowed_on_site( $blog_id );
 	}
 
@@ -1223,16 +1427,22 @@ final class WP_Theme implements ArrayAccess {
 	 * Returns array of stylesheet names of themes allowed on the network.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access public
 	 *
 	 * @staticvar array $allowed_themes
 	 *
+=======
+	 * @access public
+	 *
+>>>>>>> origin/master
 	 * @return array Array of stylesheet names.
 	 */
 	public static function get_allowed_on_network() {
 		static $allowed_themes;
+<<<<<<< HEAD
 		if ( ! isset( $allowed_themes ) ) {
 			$allowed_themes = (array) get_site_option( 'allowedthemes' );
 		}
@@ -1246,6 +1456,10 @@ final class WP_Theme implements ArrayAccess {
 		 */
 		$allowed_themes = apply_filters( 'allowed_themes', $allowed_themes );
 
+=======
+		if ( ! isset( $allowed_themes ) )
+			$allowed_themes = (array) get_site_option( 'allowedthemes' );
+>>>>>>> origin/master
 		return $allowed_themes;
 	}
 
@@ -1253,6 +1467,7 @@ final class WP_Theme implements ArrayAccess {
 	 * Returns array of stylesheet names of themes allowed on the site.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access public
@@ -1260,6 +1475,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @staticvar array $allowed_themes
 	 *
 	 * @param int $blog_id Optional. ID of the site. Defaults to the current site.
+=======
+	 * @access public
+	 *
+	 * @param int $blog_id Optional. Defaults to current blog.
+>>>>>>> origin/master
 	 * @return array Array of stylesheet names.
 	 */
 	public static function get_allowed_on_site( $blog_id = null ) {
@@ -1268,6 +1488,7 @@ final class WP_Theme implements ArrayAccess {
 		if ( ! $blog_id || ! is_multisite() )
 			$blog_id = get_current_blog_id();
 
+<<<<<<< HEAD
 		if ( isset( $allowed_themes[ $blog_id ] ) ) {
 			/**
 			 * Filters the array of themes allowed on the site.
@@ -1279,6 +1500,10 @@ final class WP_Theme implements ArrayAccess {
 			 */
 			return (array) apply_filters( 'site_allowed_themes', $allowed_themes[ $blog_id ], $blog_id );
 		}
+=======
+		if ( isset( $allowed_themes[ $blog_id ] ) )
+			return $allowed_themes[ $blog_id ];
+>>>>>>> origin/master
 
 		$current = $blog_id == get_current_blog_id();
 
@@ -1326,6 +1551,7 @@ final class WP_Theme implements ArrayAccess {
 			}
 		}
 
+<<<<<<< HEAD
 		/** This filter is documented in wp-includes/class-wp-theme.php */
 		return (array) apply_filters( 'site_allowed_themes', $allowed_themes[ $blog_id ], $blog_id );
 	}
@@ -1393,6 +1619,16 @@ final class WP_Theme implements ArrayAccess {
 	 * @access public
 	 *
 	 * @param array $themes Array of themes to sort, passed by reference.
+=======
+		return (array) $allowed_themes[ $blog_id ];
+	}
+
+	/**
+	 * Sort themes by name.
+	 *
+	 * @since 3.4.0
+	 * @access public
+>>>>>>> origin/master
 	 */
 	public static function sort_by_name( &$themes ) {
 		if ( 0 === strpos( get_locale(), 'en_' ) ) {
@@ -1409,6 +1645,7 @@ final class WP_Theme implements ArrayAccess {
 	 * Would choke on HTML but we don't care enough to slow it down with strip_tags().
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access private
@@ -1417,6 +1654,9 @@ final class WP_Theme implements ArrayAccess {
 	 * @param string $b Second name.
 	 * @return int Negative if `$a` falls lower in the natural order than `$b`. Zero if they fall equally.
 	 *             Greater than 0 if `$a` falls higher in the natural order than `$b`. Used with usort().
+=======
+	 * @access private
+>>>>>>> origin/master
 	 */
 	private static function _name_sort( $a, $b ) {
 		return strnatcasecmp( $a->headers['Name'], $b->headers['Name'] );
@@ -1426,6 +1666,7 @@ final class WP_Theme implements ArrayAccess {
 	 * Name sort (with translation).
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access private
@@ -1434,6 +1675,9 @@ final class WP_Theme implements ArrayAccess {
 	 * @param string $b Second name.
 	 * @return int Negative if `$a` falls lower in the natural order than `$b`. Zero if they fall equally.
 	 *             Greater than 0 if `$a` falls higher in the natural order than `$b`. Used with usort().
+=======
+	 * @access private
+>>>>>>> origin/master
 	 */
 	private static function _name_sort_i18n( $a, $b ) {
 		// Don't mark up; Do translate.

@@ -36,10 +36,17 @@ get_current_screen()->set_help_sidebar(
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 if ( ! current_user_can( 'manage_network' ) )
+<<<<<<< HEAD
 	wp_die( __( 'Sorry, you are not allowed to access this page.' ), 403 );
 
 echo '<div class="wrap">';
 echo '<h1>' . __( 'Upgrade Network' ) . '</h1>';
+=======
+	wp_die( __( 'You do not have permission to access this page.' ), 403 );
+
+echo '<div class="wrap">';
+echo '<h2>' . __( 'Upgrade Network' ) . '</h2>';
+>>>>>>> origin/master
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'show';
 
@@ -48,9 +55,12 @@ switch ( $action ) {
 		$n = ( isset($_GET['n']) ) ? intval($_GET['n']) : 0;
 
 		if ( $n < 5 ) {
+<<<<<<< HEAD
 			/**
 			 * @global string $wp_db_version
 			 */
+=======
+>>>>>>> origin/master
 			global $wp_db_version;
 			update_site_option( 'wpmu_upgrade_site', $wp_db_version );
 		}
@@ -69,11 +79,15 @@ switch ( $action ) {
 
 			echo "<li>$siteurl</li>";
 
+<<<<<<< HEAD
 			$response = wp_remote_get( $upgrade_url, array(
 				'timeout'     => 120,
 				'httpversion' => '1.1',
 				'sslverify'   => false,
 			) );
+=======
+			$response = wp_remote_get( $upgrade_url, array( 'timeout' => 120, 'httpversion' => '1.1' ) );
+>>>>>>> origin/master
 			if ( is_wp_error( $response ) ) {
 				wp_die( sprintf(
 					/* translators: 1: site url, 2: server error message */
@@ -96,7 +110,11 @@ switch ( $action ) {
 			 *
 			 * @since MU
 			 *
+<<<<<<< HEAD
 			 * @param int $blog_id The Site ID.
+=======
+			 * @param int $blog_id The id of the blog.
+>>>>>>> origin/master
 			 */
 			do_action( 'wpmu_upgrade_site', $details[ 'blog_id' ] );
 		}
@@ -115,12 +133,21 @@ switch ( $action ) {
 	default:
 		if ( get_site_option( 'wpmu_upgrade_site' ) != $GLOBALS['wp_db_version'] ) :
 		?>
+<<<<<<< HEAD
 		<h2><?php _e( 'Database Update Required' ); ?></h2>
 		<p><?php _e( 'WordPress has been updated! Before we send you on your way, we need to individually upgrade the sites in your network.' ); ?></p>
 		<?php endif; ?>
 
 		<p><?php _e( 'The database update process may take a little while, so please be patient.' ); ?></p>
 		<p><a class="button button-primary" href="upgrade.php?action=upgrade"><?php _e( 'Upgrade Network' ); ?></a></p>
+=======
+		<h3><?php _e( 'Database Upgrade Required' ); ?></h3>
+		<p><?php _e( 'WordPress has been updated! Before we send you on your way, we need to individually upgrade the sites in your network.' ); ?></p>
+		<?php endif; ?>
+
+		<p><?php _e( 'The database upgrade process may take a little while, so please be patient.' ); ?></p>
+		<p><a class="button" href="upgrade.php?action=upgrade"><?php _e( 'Upgrade Network' ); ?></a></p>
+>>>>>>> origin/master
 		<?php
 		/**
 		 * Fires before the footer on the network upgrade screen.

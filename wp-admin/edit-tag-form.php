@@ -7,8 +7,18 @@
  */
 
 // don't load directly
+<<<<<<< HEAD
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
+=======
+if ( !defined('ABSPATH') )
+	die('-1');
+
+if ( empty($tag_ID) ) { ?>
+	<div id="message" class="updated notice is-dismissible"><p><strong><?php _e( 'You did not select an item for editing.' ); ?></strong></p></div>
+<?php
+	return;
+>>>>>>> origin/master
 }
 
 // Back compat hooks
@@ -43,6 +53,7 @@ if ( 'category' == $taxonomy ) {
 	 */
 	do_action( 'edit_tag_form_pre', $tag );
 }
+<<<<<<< HEAD
 
 /**
  * Use with caution, see https://codex.wordpress.org/Function_Reference/wp_reset_vars
@@ -54,6 +65,8 @@ $wp_http_referer = remove_query_arg( array( 'action', 'message', 'tag_ID' ), $wp
 /** Also used by Edit Tags */
 require_once( ABSPATH . 'wp-admin/includes/edit-tag-messages.php' );
 
+=======
+>>>>>>> origin/master
 /**
  * Fires before the Edit Term form for all taxonomies.
  *
@@ -68,6 +81,7 @@ require_once( ABSPATH . 'wp-admin/includes/edit-tag-messages.php' );
 do_action( "{$taxonomy}_pre_edit_form", $tag, $taxonomy ); ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo $tax->labels->edit_item; ?></h1>
 
 <?php if ( $message ) : ?>
@@ -89,6 +103,10 @@ do_action( "{$taxonomy}_pre_edit_form", $tag, $taxonomy ); ?>
 
 <div id="ajax-response"></div>
 
+=======
+<h2><?php echo $tax->labels->edit_item; ?></h2>
+<div id="ajax-response"></div>
+>>>>>>> origin/master
 <form name="edittag" id="edittag" method="post" action="edit-tags.php" class="validate"
 <?php
 /**
@@ -101,6 +119,7 @@ do_action( "{$taxonomy}_pre_edit_form", $tag, $taxonomy ); ?>
  */
 do_action( "{$taxonomy}_term_edit_form_tag" );
 ?>>
+<<<<<<< HEAD
 <input type="hidden" name="action" value="editedtag"/>
 <input type="hidden" name="tag_ID" value="<?php echo esc_attr( $tag_ID ) ?>"/>
 <input type="hidden" name="taxonomy" value="<?php echo esc_attr( $taxonomy ) ?>"/>
@@ -122,6 +141,12 @@ wp_nonce_field( 'update-tag_' . $tag_ID );
  */
 do_action( "{$taxonomy}_term_edit_form_top", $tag, $taxonomy );
 ?>
+=======
+<input type="hidden" name="action" value="editedtag" />
+<input type="hidden" name="tag_ID" value="<?php echo esc_attr($tag->term_id) ?>" />
+<input type="hidden" name="taxonomy" value="<?php echo esc_attr($taxonomy) ?>" />
+<?php wp_original_referer_field(true, 'previous'); wp_nonce_field('update-tag_' . $tag_ID); ?>
+>>>>>>> origin/master
 	<table class="form-table">
 		<tr class="form-field form-required term-name-wrap">
 			<th scope="row"><label for="name"><?php _ex( 'Name', 'term name' ); ?></label></th>
@@ -133,12 +158,17 @@ do_action( "{$taxonomy}_term_edit_form_top", $tag, $taxonomy );
 			<th scope="row"><label for="slug"><?php _e( 'Slug' ); ?></label></th>
 			<?php
 			/**
+<<<<<<< HEAD
 			 * Filters the editable slug.
+=======
+			 * Filter the editable slug.
+>>>>>>> origin/master
 			 *
 			 * Note: This is a multi-use hook in that it is leveraged both for editable
 			 * post URIs and term slugs.
 			 *
 			 * @since 2.6.0
+<<<<<<< HEAD
 			 * @since 4.4.0 The `$tag` parameter was added.
 			 *
 			 * @param string         $slug The editable slug. Will be either a term slug or post URI depending
@@ -146,6 +176,13 @@ do_action( "{$taxonomy}_term_edit_form_top", $tag, $taxonomy );
 			 * @param object|WP_Post $tag  Term or WP_Post object.
 			 */
 			$slug = isset( $tag->slug ) ? apply_filters( 'editable_slug', $tag->slug, $tag ) : '';
+=======
+			 *
+			 * @param string $slug The editable slug. Will be either a term slug or post URI depending
+			 *                     upon the context in which it is evaluated.
+			 */
+			$slug = isset( $tag->slug ) ? apply_filters( 'editable_slug', $tag->slug ) : '';
+>>>>>>> origin/master
 			?>
 			<td><input name="slug" id="slug" type="text" value="<?php echo esc_attr( $slug ); ?>" size="40" />
 			<p class="description"><?php _e('The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.'); ?></p></td>

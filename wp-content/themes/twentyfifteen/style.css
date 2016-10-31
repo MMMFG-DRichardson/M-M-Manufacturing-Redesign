@@ -4,10 +4,17 @@ Theme URI: https://wordpress.org/themes/twentyfifteen/
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.
+<<<<<<< HEAD
 Version: 1.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, two-columns, left-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-logo, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+=======
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+>>>>>>> origin/master
 Text Domain: twentyfifteen
 
 This theme, like WordPress, is licensed under the GPL.
@@ -123,10 +130,13 @@ td {
 	text-align: left;
 }
 
+<<<<<<< HEAD
 fieldset {
 	min-width: inherit;
 }
 
+=======
+>>>>>>> origin/master
 blockquote:before,
 blockquote:after,
 q:before,
@@ -494,10 +504,13 @@ textarea {
 
 button,
 input {
+<<<<<<< HEAD
 	-webkit-hyphens: none;
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
+=======
+>>>>>>> origin/master
 	line-height: normal;
 }
 
@@ -888,6 +901,7 @@ a:focus {
 	content: "\f413";
 }
 
+<<<<<<< HEAD
 .social-navigation a[href*="path.com"]:before {
 	content: "\f219";
 }
@@ -896,6 +910,8 @@ a:focus {
 	content: "\f220";
 }
 
+=======
+>>>>>>> origin/master
 .secondary-toggle {
 	background-color: transparent;
 	border: 1px solid #eaeaea;
@@ -1316,6 +1332,7 @@ img.aligncenter {
 	margin-bottom: 0;
 }
 
+<<<<<<< HEAD
 .custom-logo {
 	max-height: 84px;
 	width: auto;
@@ -1325,6 +1342,8 @@ img.aligncenter {
 	margin-top: 0.545454545em;
 }
 
+=======
+>>>>>>> origin/master
 .site-description {
 	display: none;
 	font-family: "Noto Sans", sans-serif;
@@ -3098,6 +3117,7 @@ p > video {
 		line-height: 1.2069;
 	}
 
+<<<<<<< HEAD
 	.custom-logo {
 		max-height: 105px;
 	}
@@ -3106,6 +3126,8 @@ p > video {
 		margin-top: 0.482758621em;
 	}
 
+=======
+>>>>>>> origin/master
 	.site-description {
 		font-size: 14px;
 		font-size: 1.4rem;
@@ -3728,6 +3750,7 @@ p > video {
 		line-height: 1.25;
 	}
 
+<<<<<<< HEAD
 	.custom-logo {
 		max-height: 104px;
 	}
@@ -3736,6 +3759,8 @@ p > video {
 		margin-top: 0.5em;
 	}
 
+=======
+>>>>>>> origin/master
 	.site-description {
 		font-size: 16px;
 		font-size: 1.6rem;
@@ -4371,6 +4396,7 @@ p > video {
 		line-height: 1.3636;
 	}
 
+<<<<<<< HEAD
 	.custom-logo {
 		max-height: none;
 	}
@@ -4379,6 +4405,8 @@ p > video {
 		margin-top: 0.545454545em;
 	}
 
+=======
+>>>>>>> origin/master
 	.site-description {
 		font-size: 12px;
 		font-size: 1.2rem;
@@ -4998,10 +5026,13 @@ p > video {
 		line-height: 1.1667;
 	}
 
+<<<<<<< HEAD
 	.wp-custom-logo .site-title {
 		margin-top: 0.583333333em;
 	}
 
+=======
+>>>>>>> origin/master
 	.site-description {
 		font-size: 14px;
 		font-size: 1.4rem;
@@ -5540,10 +5571,13 @@ p > video {
 		line-height: 1.1852;
 	}
 
+<<<<<<< HEAD
 	.wp-custom-logo .site-title {
 		margin-top: 0.592592593em;
 	}
 
+=======
+>>>>>>> origin/master
 	.site-description {
 		font-size: 16px;
 		font-size: 1.6rem;

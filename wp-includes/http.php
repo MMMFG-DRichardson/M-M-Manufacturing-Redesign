@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Core HTTP Request API
  *
  * Standardizes the HTTP requests for WordPress. Handles cookies, gzip encoding and decoding, chunk
@@ -7,6 +8,17 @@
  *
  * @package WordPress
  * @subpackage HTTP
+=======
+ * Simple and uniform HTTP request API.
+ *
+ * Will eventually replace and standardize the WordPress HTTP requests made.
+ *
+ * @link https://core.trac.wordpress.org/ticket/4779 HTTP API Proposal
+ *
+ * @package WordPress
+ * @subpackage HTTP
+ * @since 2.7.0
+>>>>>>> origin/master
  */
 
 /**
@@ -15,6 +27,7 @@
  * @since 2.7.0
  * @access private
  *
+<<<<<<< HEAD
  * @staticvar WP_Http $http
  *
  * @return WP_Http HTTP Transport object.
@@ -25,6 +38,16 @@ function _wp_http_get_object() {
 	if ( is_null( $http ) ) {
 		$http = new WP_Http();
 	}
+=======
+ * @return WP_Http HTTP Transport object.
+ */
+function _wp_http_get_object() {
+	static $http;
+
+	if ( is_null($http) )
+		$http = new WP_Http();
+
+>>>>>>> origin/master
 	return $http;
 }
 
@@ -149,8 +172,13 @@ function wp_safe_remote_head( $url, $args = array() ) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_request($url, $args = array()) {
+<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->request( $url, $args );
+=======
+	$objFetchSite = _wp_http_get_object();
+	return $objFetchSite->request($url, $args);
+>>>>>>> origin/master
 }
 
 /**
@@ -166,8 +194,13 @@ function wp_remote_request($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_get($url, $args = array()) {
+<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->get( $url, $args );
+=======
+	$objFetchSite = _wp_http_get_object();
+	return $objFetchSite->get($url, $args);
+>>>>>>> origin/master
 }
 
 /**
@@ -183,8 +216,13 @@ function wp_remote_get($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_post($url, $args = array()) {
+<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->post( $url, $args );
+=======
+	$objFetchSite = _wp_http_get_object();
+	return $objFetchSite->post($url, $args);
+>>>>>>> origin/master
 }
 
 /**
@@ -200,8 +238,13 @@ function wp_remote_post($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_head($url, $args = array()) {
+<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->head( $url, $args );
+=======
+	$objFetchSite = _wp_http_get_object();
+	return $objFetchSite->head($url, $args);
+>>>>>>> origin/master
 }
 
 /**
@@ -213,9 +256,14 @@ function wp_remote_head($url, $args = array()) {
  * @return array The headers of the response. Empty array if incorrect parameter given.
  */
 function wp_remote_retrieve_headers( $response ) {
+<<<<<<< HEAD
 	if ( is_wp_error( $response ) || ! isset( $response['headers'] ) ) {
 		return array();
 	}
+=======
+	if ( is_wp_error($response) || ! isset($response['headers']) || ! is_array($response['headers']))
+		return array();
+>>>>>>> origin/master
 
 	return $response['headers'];
 }
@@ -225,11 +273,16 @@ function wp_remote_retrieve_headers( $response ) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @param array  $response
+=======
+ * @param array $response
+>>>>>>> origin/master
  * @param string $header Header name to retrieve value from.
  * @return string The header value. Empty string on if incorrect parameter given, or if the header doesn't exist.
  */
 function wp_remote_retrieve_header( $response, $header ) {
+<<<<<<< HEAD
 	if ( is_wp_error( $response ) || ! isset( $response['headers'] ) ) {
 		return '';
 	}
@@ -237,6 +290,13 @@ function wp_remote_retrieve_header( $response, $header ) {
 	if ( isset( $response['headers'][ $header ] ) ) {
 		return $response['headers'][$header];
 	}
+=======
+	if ( is_wp_error($response) || ! isset($response['headers']) || ! is_array($response['headers']))
+		return '';
+
+	if ( array_key_exists($header, $response['headers']) )
+		return $response['headers'][$header];
+>>>>>>> origin/master
 
 	return '';
 }
@@ -291,6 +351,7 @@ function wp_remote_retrieve_body( $response ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieve only the cookies from the raw response.
  *
  * @since 4.4.0
@@ -351,18 +412,28 @@ function wp_remote_retrieve_cookie_value( $response, $name ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Determines if there is an HTTP Transport that can process this request.
  *
  * @since 3.2.0
  *
  * @param array  $capabilities Array of capabilities to test or a wp_remote_request() $args array.
+<<<<<<< HEAD
  * @param string $url          Optional. If given, will check if the URL requires SSL and adds
  *                             that requirement to the capabilities array.
+=======
+ * @param string $url Optional. If given, will check if the URL requires SSL and adds that requirement to the capabilities array.
+>>>>>>> origin/master
  *
  * @return bool
  */
 function wp_http_supports( $capabilities = array(), $url = null ) {
+<<<<<<< HEAD
 	$http = _wp_http_get_object();
+=======
+	$objFetchSite = _wp_http_get_object();
+>>>>>>> origin/master
 
 	$capabilities = wp_parse_args( $capabilities );
 
@@ -380,7 +451,11 @@ function wp_http_supports( $capabilities = array(), $url = null ) {
 		}
 	}
 
+<<<<<<< HEAD
 	return (bool) $http->_get_first_available_transport( $capabilities );
+=======
+	return (bool) $objFetchSite->_get_first_available_transport( $capabilities );
+>>>>>>> origin/master
 }
 
 /**
@@ -446,7 +521,11 @@ function get_allowed_http_origins() {
  * @since 3.4.0
  *
  * @param null|string $origin Origin URL. If not provided, the value of get_http_origin() is used.
+<<<<<<< HEAD
  * @return string Origin URL if allowed, empty string if not.
+=======
+ * @return bool|null True if the origin is allowed. False otherwise.
+>>>>>>> origin/master
  */
 function is_allowed_http_origin( $origin = null ) {
 	$origin_arg = $origin;
@@ -462,8 +541,13 @@ function is_allowed_http_origin( $origin = null ) {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $origin     Origin URL if allowed, empty string if not.
 	 * @param string $origin_arg Original origin string passed into is_allowed_http_origin function.
+=======
+	 * @param string $origin Result of check for allowed origin.
+	 * @param string $origin_arg original origin string passed into is_allowed_http_origin function.
+>>>>>>> origin/master
 	 */
 	return apply_filters( 'allowed_http_origin', $origin, $origin_arg );
 }
@@ -478,8 +562,13 @@ function is_allowed_http_origin( $origin = null ) {
  *
  * @since 3.4.0
  *
+<<<<<<< HEAD
  * @return string|false Returns the origin URL if headers are sent. Returns false
  *                      if headers are not sent.
+=======
+ * @return bool|string Returns the origin URL if headers are sent. Returns false
+ * if headers are not sent.
+>>>>>>> origin/master
  */
 function send_origin_headers() {
 	$origin = get_http_origin();
@@ -526,6 +615,7 @@ function wp_http_validate_url( $url ) {
 
 	$parsed_home = @parse_url( get_option( 'home' ) );
 
+<<<<<<< HEAD
 	if ( isset( $parsed_home['host'] ) ) {
 		$same_host = ( strtolower( $parsed_home['host'] ) === strtolower( $parsed_url['host'] ) || 'localhost' === strtolower( $parsed_url['host'] ) );
 	} else {
@@ -535,6 +625,13 @@ function wp_http_validate_url( $url ) {
 	if ( ! $same_host ) {
 		$host = trim( $parsed_url['host'], '.' );
 		if ( preg_match( '#^(([1-9]?\d|1\d\d|25[0-5]|2[0-4]\d)\.){3}([1-9]?\d|1\d\d|25[0-5]|2[0-4]\d)$#', $host ) ) {
+=======
+	$same_host = strtolower( $parsed_home['host'] ) === strtolower( $parsed_url['host'] );
+
+	if ( ! $same_host ) {
+		$host = trim( $parsed_url['host'], '.' );
+		if ( preg_match( '#^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$#', $host ) ) {
+>>>>>>> origin/master
 			$ip = $host;
 		} else {
 			$ip = gethostbyname( $host );
@@ -543,7 +640,11 @@ function wp_http_validate_url( $url ) {
 		}
 		if ( $ip ) {
 			$parts = array_map( 'intval', explode( '.', $ip ) );
+<<<<<<< HEAD
 			if ( 127 === $parts[0] || 10 === $parts[0] || 0 === $parts[0]
+=======
+			if ( 127 === $parts[0] || 10 === $parts[0]
+>>>>>>> origin/master
 				|| ( 172 === $parts[0] && 16 <= $parts[1] && 31 >= $parts[1] )
 				|| ( 192 === $parts[0] && 168 === $parts[1] )
 			) {
@@ -555,9 +656,15 @@ function wp_http_validate_url( $url ) {
 				 *
 				 * @since 3.6.0
 				 *
+<<<<<<< HEAD
 				 * @param bool   false Whether HTTP request is external or not.
 				 * @param string $host IP of the requested host.
 				 * @param string $url  URL of the requested host.
+=======
+				 * @param bool false Whether HTTP request is external or not.
+				 * @param string $host IP of the requested host.
+				 * @param string $url URL of the requested host.
+>>>>>>> origin/master
 				 */
 				if ( ! apply_filters( 'http_request_host_is_external', false, $host, $url ) )
 					return false;
@@ -581,11 +688,19 @@ function wp_http_validate_url( $url ) {
 /**
  * Whitelists allowed redirect hosts for safe HTTP requests as well.
  *
+<<<<<<< HEAD
  * Attached to the {@see 'http_request_host_is_external'} filter.
  *
  * @since 3.6.0
  *
  * @param bool   $is_external
+=======
+ * Attached to the http_request_host_is_external filter.
+ *
+ * @since 3.6.0
+ *
+ * @param bool $is_external
+>>>>>>> origin/master
  * @param string $host
  * @return bool
  */
@@ -598,6 +713,7 @@ function allowed_http_request_hosts( $is_external, $host ) {
 /**
  * Whitelists any domain in a multisite installation for safe HTTP requests.
  *
+<<<<<<< HEAD
  * Attached to the {@see 'http_request_host_is_external'} filter.
  *
  * @since 3.6.0
@@ -606,6 +722,13 @@ function allowed_http_request_hosts( $is_external, $host ) {
  * @staticvar array $queried
  *
  * @param bool   $is_external
+=======
+ * Attached to the http_request_host_is_external filter.
+ *
+ * @since 3.6.0
+ *
+ * @param bool $is_external
+>>>>>>> origin/master
  * @param string $host
  * @return bool
  */
@@ -621,6 +744,7 @@ function ms_allowed_http_request_hosts( $is_external, $host ) {
 	$queried[ $host ] = (bool) $wpdb->get_var( $wpdb->prepare( "SELECT domain FROM $wpdb->blogs WHERE domain = %s LIMIT 1", $host ) );
 	return $queried[ $host ];
 }
+<<<<<<< HEAD
 
 /**
  * A wrapper for PHP's parse_url() function that handles edgecases in < PHP 5.4.7
@@ -667,3 +791,5 @@ function wp_parse_url( $url ) {
 
 	return $parts;
 }
+=======
+>>>>>>> origin/master

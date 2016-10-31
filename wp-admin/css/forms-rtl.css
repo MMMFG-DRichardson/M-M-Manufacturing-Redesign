@@ -16,6 +16,10 @@ input[type="datetime-local"],
 input[type="email"],
 input[type="month"],
 input[type="number"],
+<<<<<<< HEAD
+=======
+input[type="password"],
+>>>>>>> origin/master
 input[type="search"],
 input[type="radio"],
 input[type="tel"],
@@ -44,6 +48,10 @@ input[type="datetime-local"]:focus,
 input[type="email"]:focus,
 input[type="month"]:focus,
 input[type="number"]:focus,
+<<<<<<< HEAD
+=======
+input[type="password"]:focus,
+>>>>>>> origin/master
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="text"]:focus,
@@ -65,12 +73,15 @@ input[type="url"] {
 	direction: ltr;
 }
 
+<<<<<<< HEAD
 /* Vertically align the number selector with the input. */
 input[type="number"] {
 	height: 28px;
 	line-height: 1;
 }
 
+=======
+>>>>>>> origin/master
 input[type="checkbox"],
 input[type="radio"] {
 	border: 1px solid #b4b9be;
@@ -131,20 +142,32 @@ input[type="radio"]:checked:before {
 	display: inline-block;
 	vertical-align: middle;
 	width: 16px;
+<<<<<<< HEAD
 	font: normal 21px/1 dashicons;
+=======
+	font: normal 21px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 input[type="checkbox"]:checked:before {
+<<<<<<< HEAD
 	content: "\f147";
+=======
+	content: '\f147';
+>>>>>>> origin/master
 	margin: -3px -4px 0 0;
 	color: #1e8cbe;
 }
 
 input[type="radio"]:checked:before {
+<<<<<<< HEAD
 	content: "\2022";
+=======
+	content: '\2022';
+>>>>>>> origin/master
 	text-indent: -9999px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
@@ -199,7 +222,10 @@ textarea {
 	overflow: auto;
 	padding: 2px 6px;
 	line-height: 1.4;
+<<<<<<< HEAD
 	resize: vertical;
+=======
+>>>>>>> origin/master
 }
 
 .wp-admin input[type="file"] {
@@ -232,6 +258,7 @@ textarea[readonly] {
 	background-color: #eee;
 }
 
+<<<<<<< HEAD
 ::-webkit-input-placeholder {
 	color: #72777c;
 }
@@ -271,6 +298,20 @@ textarea[readonly] {
 	color: #dc3232;
 	margin: 0 -29px 0 6px;
 	vertical-align: middle;
+=======
+:-moz-placeholder,
+.wp-core-ui :-moz-placeholder {
+   color: #a9a9a9;
+}
+
+.form-invalid {
+	background-color: #ffebe8 !important;
+}
+
+.form-invalid input,
+.form-invalid select {
+	border-color: #c00 !important;
+>>>>>>> origin/master
 }
 
 .form-input-tip {
@@ -384,7 +425,12 @@ textarea.large-text {
 	width: 99%;
 }
 
+<<<<<<< HEAD
 input.regular-text {
+=======
+input.regular-text,
+#adduser .form-field input {
+>>>>>>> origin/master
 	width: 25em;
 }
 
@@ -397,6 +443,7 @@ input[type="number"].small-text {
 	width: 65px;
 }
 
+<<<<<<< HEAD
 input.tiny-text {
 	width: 35px;
 }
@@ -405,6 +452,8 @@ input[type="number"].tiny-text {
 	width: 45px;
 }
 
+=======
+>>>>>>> origin/master
 #doaction,
 #doaction2,
 #post-query-submit {
@@ -436,9 +485,14 @@ input[type="number"].tiny-text {
 	margin-right: 1em;
 }
 
+<<<<<<< HEAD
 button.wp-hide-pw > .dashicons {
 	position: relative;
 	top: 3px;
+=======
+#upload-form label {
+	color: #777;
+>>>>>>> origin/master
 }
 
 label,
@@ -457,9 +511,15 @@ fieldset label,
 }
 
 #misc-publishing-actions label[for="post_status"]:before {
+<<<<<<< HEAD
 	content: "\f173";
 	display: inline-block;
 	font: normal 20px/1 dashicons;
+=======
+	content: '\f173';
+	display: inline-block;
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	right: -1px;
 	padding: 0 0 0 5px;
@@ -474,6 +534,7 @@ fieldset label,
 #pass-strength-result {
 	background-color: #eee;
 	border: 1px solid #ddd;
+<<<<<<< HEAD
 	color: #23282d;
 	margin: -2px 1px 5px 5px;
 	padding: 3px 5px;
@@ -527,12 +588,41 @@ fieldset label,
 
 .pw-weak {
 	display:none;
+=======
+	float: right;
+	margin: 13px 1px 5px 5px;
+	padding: 3px 5px;
+	text-align: center;
+	width: 200px;
+	display: none;
+}
+
+#pass-strength-result.short {
+	background-color: #ffa0a0;
+	border-color: #f04040;
+}
+
+#pass-strength-result.bad {
+	background-color: #ffb78c;
+	border-color: #ff853c;
+}
+
+#pass-strength-result.good {
+	background-color: #ffec8b;
+	border-color: #fc0;
+}
+
+#pass-strength-result.strong {
+	background-color: #c3ff88;
+	border-color: #8dff1c;
+>>>>>>> origin/master
 }
 
 .indicator-hint {
 	padding-top: 8px;
 }
 
+<<<<<<< HEAD
 #pass1-text,
 .show-password #pass1 {
 	display: none;
@@ -547,6 +637,8 @@ fieldset label,
 	font-size: 12px;
 }
 
+=======
+>>>>>>> origin/master
 p.search-box {
 	float: left;
 	margin: 0;
@@ -564,6 +656,7 @@ p.search-box {
 	margin: 0 0 0 4px;
 }
 
+<<<<<<< HEAD
 .js.plugins-php .search-box .wp-filter-search {
 	margin: 0;
 	width: 280px;
@@ -574,6 +667,8 @@ p.search-box {
 	height: 32px;
 }
 
+=======
+>>>>>>> origin/master
 input[type="text"].ui-autocomplete-loading,
 input[type="email"].ui-autocomplete-loading {
 	background-image: url(../images/loading.gif);
@@ -628,7 +723,12 @@ ul#add-to-blog-users {
 .form-table,
 .form-table td,
 .form-table th,
+<<<<<<< HEAD
 .form-table td p {
+=======
+.form-table td p,
+.form-wrap label {
+>>>>>>> origin/master
 	font-size: 14px;
 }
 
@@ -642,7 +742,11 @@ ul#add-to-blog-users {
 .form-table th,
 .form-wrap label {
 	color: #23282d;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 	text-shadow: none;
 	vertical-align: baseline;
 }
@@ -666,6 +770,7 @@ ul#add-to-blog-users {
 	margin-bottom: 0;
 }
 
+<<<<<<< HEAD
 .form-table .date-time-doc {
 	margin-top: 1em;
 }
@@ -674,6 +779,8 @@ ul#add-to-blog-users {
 	margin: 1em 0;
 }
 
+=======
+>>>>>>> origin/master
 .form-table td fieldset label {
 	margin: 0.25em 0 0.5em !important;
 	display: inline-block;
@@ -727,7 +834,10 @@ table.form-table td .updated p {
 	width: 15em;
 }
 
+<<<<<<< HEAD
 #adduser .form-field input,
+=======
+>>>>>>> origin/master
 #createuser .form-field input {
 	width: 25em;
 }
@@ -769,6 +879,7 @@ table.form-table td .updated p {
 .tool-box .title {
 	margin: 8px 0;
 	font-size: 18px;
+<<<<<<< HEAD
 	font-weight: 400;
 	line-height: 24px;
 }
@@ -785,6 +896,12 @@ table.form-table td .updated p {
 	margin: 7px 0 5px;
 }
 
+=======
+	font-weight: normal;
+	line-height: 24px;
+}
+
+>>>>>>> origin/master
 /* Card styles */
 
 .card {
@@ -829,10 +946,17 @@ table.form-table td .updated p {
 	position: relative;
 	cursor: move;
 	color: #32373c;
+<<<<<<< HEAD
 	background: #e5e5e5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	border: 1px solid #b4b9be;
+=======
+	background: #e6e6e6;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #b4b4b4;
+>>>>>>> origin/master
 	font-style: normal;
 	line-height: 16px;
 	font-size: 14px;
@@ -844,7 +968,11 @@ table.form-table td .updated p {
 }
 
 .pressthis-bookmarklet:after {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: '';
+>>>>>>> origin/master
 	width: 70%;
 	height: 55%;
 	z-index: -1;
@@ -874,9 +1002,15 @@ table.form-table td .updated p {
 }
 
 .pressthis-bookmarklet span:before {
+<<<<<<< HEAD
 	color: #72777c;
 	font: normal 20px/1 dashicons;
 	content: "\f157";
+=======
+	color: #777;
+	font: normal 20px/1 'dashicons';
+	content:'\f157';
+>>>>>>> origin/master
 	position: relative;
 	display: inline-block;
 	top: 4px;
@@ -890,6 +1024,14 @@ table.form-table td .updated p {
 	vertical-align: top;
 }
 
+<<<<<<< HEAD
+=======
+.pressthis-js-toggle .dashicons {
+	margin: 5px 7px 6px 8px;
+	color: #777;
+}
+
+>>>>>>> origin/master
 /* to override the button class being applied */
 .pressthis-js-toggle.button.button {
 	margin-right: 10px;
@@ -900,15 +1042,25 @@ table.form-table td .updated p {
 
 .pressthis-js-toggle .dashicons {
 	margin: 5px 7px 6px 8px;
+<<<<<<< HEAD
 	color: #555d66;
+=======
+	color: #777;
+>>>>>>> origin/master
 }
 
 /*------------------------------------------------------------------------------
   20.0 - Settings
 ------------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 .timezone-info code {
 	white-space: nowrap;
+=======
+#utc-time, #local-time {
+	padding-right: 25px;
+	font-style: italic;
+>>>>>>> origin/master
 }
 
 .defaultavatarpicker .avatar {
@@ -916,11 +1068,14 @@ table.form-table td .updated p {
 	vertical-align: middle;
 }
 
+<<<<<<< HEAD
 .options-general-php .date-time-text {
 	display: inline-block;
 	min-width: 10em;
 }
 
+=======
+>>>>>>> origin/master
 .options-general-php input.small-text {
 	width: 56px;
 }
@@ -942,10 +1097,13 @@ table.form-table td .updated p {
   21.0 - Network Admin
 ------------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 .setup-php textarea {
 	max-width: 100%;
 }
 
+=======
+>>>>>>> origin/master
 .form-field #site-address {
 	max-width: 25em;
 }
@@ -966,11 +1124,14 @@ table.form-table td .updated p {
 	margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
 #search-users,
 #search-sites {
 	max-width: 100%;
 }
 
+=======
+>>>>>>> origin/master
 /*------------------------------------------------------------------------------
    Credentials check dialog for Install and Updates
 ------------------------------------------------------------------------------*/
@@ -980,14 +1141,19 @@ table.form-table td .updated p {
 }
 
 .request-filesystem-credentials-dialog .notification-dialog {
+<<<<<<< HEAD
 	top: 10%;
 	max-height: 85%;
+=======
+	top: 15%;
+>>>>>>> origin/master
 }
 
 .request-filesystem-credentials-dialog-content {
 	margin: 25px;
 }
 
+<<<<<<< HEAD
 #request-filesystem-credentials-title {
     font-size: 1.3em;
     margin: 1em 0;
@@ -999,6 +1165,8 @@ table.form-table td .updated p {
 	font-weight: 600;
 }
 
+=======
+>>>>>>> origin/master
 .request-filesystem-credentials-form input[type="text"],
 .request-filesystem-credentials-form input[type="password"] {
 	display: block;
@@ -1038,10 +1206,13 @@ table.form-table td .updated p {
 	margin-left: 10px;
 }
 
+<<<<<<< HEAD
 .request-filesystem-credentials-dialog #auth-keys-desc {
 	margin-bottom: 0;
 }
 
+=======
+>>>>>>> origin/master
 #request-filesystem-credentials-dialog .button:not(:last-child) {
 	margin-left: 10px;
 }
@@ -1054,6 +1225,7 @@ table.form-table td .updated p {
 	display: inline;
 }
 
+<<<<<<< HEAD
 .request-filesystem-credentials-dialog .ftp-username,
 .request-filesystem-credentials-dialog .ftp-password {
 	float: none;
@@ -1091,6 +1263,8 @@ table.form-table td .updated p {
 	clear: both;
 }
 
+=======
+>>>>>>> origin/master
 
 /* =Media Queries
 -------------------------------------------------------------- */
@@ -1110,23 +1284,31 @@ table.form-table td .updated p {
 		padding: 6px 10px;
 	}
 
+<<<<<<< HEAD
 	input[type="number"] {
 		height: 40px;
 	}
 
+=======
+>>>>>>> origin/master
 	input.code {
 		padding-bottom: 5px;
 		padding-top: 10px;
 	}
 
+<<<<<<< HEAD
 	input[type="checkbox"],
 	.widefat th input[type="checkbox"],
 	.widefat thead td input[type="checkbox"],
 	.widefat tfoot td input[type="checkbox"] {
+=======
+	input[type="checkbox"], .widefat th input[type="checkbox"] {
+>>>>>>> origin/master
 		-webkit-appearance: none;
 		padding: 10px;
 	}
 
+<<<<<<< HEAD
 	.widefat th input[type="checkbox"],
 	.widefat thead td input[type="checkbox"],
 	.widefat tfoot td input[type="checkbox"] {
@@ -1138,6 +1320,14 @@ table.form-table td .updated p {
 	.widefat thead td input[type="checkbox"]:before,
 	.widefat tfoot td input[type="checkbox"]:before {
 		font: normal 30px/1 dashicons;
+=======
+	.widefat th input[type="checkbox"] {
+		margin-bottom: 8px;
+	}
+
+	input[type="checkbox"]:checked:before, .widefat th input[type="checkbox"]:before {
+		font: normal 30px/1 'Dashicons';
+>>>>>>> origin/master
 		margin: -3px -5px;
 	}
 
@@ -1174,7 +1364,10 @@ table.form-table td .updated p {
 		font-size: 14px;
 	}
 
+<<<<<<< HEAD
 	#adduser .form-field input,
+=======
+>>>>>>> origin/master
 	#createuser .form-field input {
 		width: 100%;
 	}
@@ -1186,13 +1379,18 @@ table.form-table td .updated p {
 	}
 
 	.form-table th,
+<<<<<<< HEAD
 	.form-table td,
 	.label-responsive {
+=======
+	.form-table td {
+>>>>>>> origin/master
 		display: block;
 		width: auto;
 		vertical-align: middle;
 	}
 
+<<<<<<< HEAD
 	.label-responsive {
 		margin: 0.5em 0;
 	}
@@ -1201,6 +1399,8 @@ table.form-table td .updated p {
 		margin-bottom: 0;
 	}
 
+=======
+>>>>>>> origin/master
 	.form-table .color-palette td {
 		display: table-cell;
 		width: 15px;
@@ -1233,11 +1433,14 @@ table.form-table td .updated p {
 		box-sizing: border-box;
 	}
 
+<<<<<<< HEAD
 	.form-table .form-required.form-invalid td:after {
 		float: left;
 		margin: -30px 0 0 3px;
 	}
 
+=======
+>>>>>>> origin/master
 	#wpbody .form-table td select {
 		height: 40px;
 	}
@@ -1286,10 +1489,15 @@ table.form-table td .updated p {
 	}
 
 	.form-table span.description {
+<<<<<<< HEAD
 		display: inline;
 		padding: 4px 0 0;
 		line-height: 1.4em;
 		font-size: 14px;
+=======
+		padding: 4px 0 0;
+		line-height: 1.4em;
+>>>>>>> origin/master
 	}
 
 	.form-table th {
@@ -1299,6 +1507,7 @@ table.form-table td .updated p {
 	}
 
 	.form-table td {
+<<<<<<< HEAD
 		margin-bottom: 0;
 		padding-bottom: 6px;
 		padding-top: 4px;
@@ -1315,6 +1524,12 @@ table.form-table td .updated p {
 		width: 96%;
 	}
 
+=======
+		padding-top: 8px;
+		padding-right: 0;
+	}
+
+>>>>>>> origin/master
 	.form-table input.regular-text {
 		width: 100%;
 	}
@@ -1327,16 +1542,29 @@ table.form-table td .updated p {
 		display: block;
 	}
 
+<<<<<<< HEAD
+=======
+	#utc-time {
+		margin-top: 10px;
+	}
+
+>>>>>>> origin/master
 	#utc-time,
 	#local-time {
 		display: block;
 		float: none;
+<<<<<<< HEAD
 		margin-top: 0.5em;
+=======
+		padding: 0;
+		line-height: 2;
+>>>>>>> origin/master
 	}
 
 	.form-field #domain {
 		max-width: none;
 	}
+<<<<<<< HEAD
 
 	/* New Password */
 	.wp-pwd {
@@ -1375,6 +1603,8 @@ table.form-table td .updated p {
 		max-width: 60px;
 		margin: 0;
 	}
+=======
+>>>>>>> origin/master
 }
 
 @media only screen and (max-width: 768px) {
@@ -1395,18 +1625,32 @@ table.form-table td .updated p {
 		max-width: 400px;
 		width: auto;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 }
 
 @media only screen and (max-height: 480px) {
 	/*  Request Credentials */
+<<<<<<< HEAD
 	.request-filesystem-credentials-dialog .notification-dialog{
 		width: 100%;
 		height: 100%;
 		max-height: 100%;
+=======
+	.request-filesystem-credentials-dialog	.notification-dialog{
+		width: 100%;
+		height: 100%;
+>>>>>>> origin/master
 		position: fixed;
 		top: 0;
 		margin: 0;
 		right: 0;
+<<<<<<< HEAD
+=======
+		overflow-y: auto;
+>>>>>>> origin/master
 	}
 }
 
@@ -1418,9 +1662,12 @@ table.form-table td .updated p {
 	}
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 320px) {
 	.options-general-php .date-time-text.date-time-custom-text {
 		min-width: 0;
 		margin-left: 0.5em;
 	}
 }
+=======
+>>>>>>> origin/master

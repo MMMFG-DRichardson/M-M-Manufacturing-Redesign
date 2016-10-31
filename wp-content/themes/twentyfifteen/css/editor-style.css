@@ -15,6 +15,10 @@ Description: Used to style the TinyMCE editor.
  * 6.0 - Galleries
  * 7.0 - Audio / Video
  * 8.0 - RTL
+<<<<<<< HEAD
+=======
+ * 9.0 - Media Queries
+>>>>>>> origin/master
  */
 
 
@@ -238,11 +242,14 @@ li > ol {
 	margin: 0 0 0 23px;
 }
 
+<<<<<<< HEAD
 blockquote > ul,
 blockquote > ol {
 	margin-left: 28px;
 }
 
+=======
+>>>>>>> origin/master
 dl {
 	margin: 0 0 28px;
 }
@@ -301,7 +308,11 @@ table td,
 img {
 	border: 0;
 	height: auto;
+<<<<<<< HEAD
 	max-width: 100%;
+=======
+	max-width: 660px;
+>>>>>>> origin/master
 	vertical-align: middle;
 }
 
@@ -351,7 +362,11 @@ a {
 	color: #707070;
 	font-family: "Noto Sans", sans-serif;
 	margin: 0 0 28px 0;
+<<<<<<< HEAD
 	max-width: 100%;
+=======
+	max-width: 660px;
+>>>>>>> origin/master
 	padding: 0;
 	text-align: inherit;
 }
@@ -480,3 +495,21 @@ body.rtl {
 .rtl table caption {
 	text-align: right;
 }
+<<<<<<< HEAD
+=======
+
+
+/**
+ * 9.0 Media Queries
+ */
+
+@media screen and (max-width: 740px) {
+	body, img, .wp-caption {
+		max-width: 100%;
+	}
+
+	img, .wp-caption {
+		width: auto !important;
+	}
+}
+>>>>>>> origin/master

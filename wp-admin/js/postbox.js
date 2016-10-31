@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* global ajaxurl, postBoxL10n */
+=======
+/* global ajaxurl */
+>>>>>>> origin/master
 
 var postboxes;
 
@@ -6,6 +10,7 @@ var postboxes;
 	var $document = $( document );
 
 	postboxes = {
+<<<<<<< HEAD
 		handle_click : function () {
 			var $el = $( this ),
 				p = $el.parent( '.postbox' ),
@@ -51,11 +56,39 @@ var postboxes;
 			this.init( page, args );
 
 			$handles.on( 'click.postboxes', this.handle_click );
+=======
+		add_postbox_toggles : function(page, args) {
+			var self = this;
+
+			self.init(page, args);
+
+			$('.postbox .hndle, .postbox .handlediv').bind('click.postboxes', function() {
+				var p = $(this).parent('.postbox'), id = p.attr('id');
+
+				if ( 'dashboard_browser_nag' == id )
+					return;
+
+				p.toggleClass('closed');
+
+				if ( page != 'press-this' )
+					self.save_state(page);
+
+				if ( id ) {
+					if ( !p.hasClass('closed') && $.isFunction(postboxes.pbshow) )
+						self.pbshow(id);
+					else if ( p.hasClass('closed') && $.isFunction(postboxes.pbhide) )
+						self.pbhide(id);
+				}
+
+				$document.trigger( 'postbox-toggled', p );
+			});
+>>>>>>> origin/master
 
 			$('.postbox .hndle a').click( function(e) {
 				e.stopPropagation();
 			});
 
+<<<<<<< HEAD
 			$( '.postbox a.dismiss' ).on( 'click.postboxes', function( e ) {
 				var hide_id = $(this).parents('.postbox').attr('id') + '-hide';
 				e.preventDefault();
@@ -80,6 +113,29 @@ var postboxes;
 				}
 				postboxes.save_state( page );
 				postboxes._mark_area();
+=======
+			$( '.postbox a.dismiss' ).bind( 'click.postboxes', function() {
+				var hide_id = $(this).parents('.postbox').attr('id') + '-hide';
+				$( '#' + hide_id ).prop('checked', false).triggerHandler('click');
+				return false;
+			});
+
+			$('.hide-postbox-tog').bind('click.postboxes', function() {
+				var boxId = $(this).val(),
+					$postbox = $( '#' + boxId );
+
+				if ( $(this).prop('checked') ) {
+					$postbox.show();
+					if ( $.isFunction( postboxes.pbshow ) )
+						self.pbshow( boxId );
+				} else {
+					$postbox.hide();
+					if ( $.isFunction( postboxes.pbhide ) )
+						self.pbhide( boxId );
+				}
+				self.save_state(page);
+				self._mark_area();
+>>>>>>> origin/master
 				$document.trigger( 'postbox-toggled', $postbox );
 			});
 
@@ -87,15 +143,24 @@ var postboxes;
 				var n = parseInt($(this).val(), 10);
 
 				if ( n ) {
+<<<<<<< HEAD
 					postboxes._pb_edit(n);
 					postboxes.save_order( page );
+=======
+					self._pb_edit(n);
+					self.save_order(page);
+>>>>>>> origin/master
 				}
 			});
 		},
 
 		init : function(page, args) {
+<<<<<<< HEAD
 			var isMobile = $( document.body ).hasClass( 'mobile' ),
 				$handleButtons = $( '.postbox .handlediv' );
+=======
+			var isMobile = $(document.body).hasClass('mobile');
+>>>>>>> origin/master
 
 			$.extend( this, args || {} );
 			$('#wpbody-content').css('overflow','hidden');
@@ -109,6 +174,7 @@ var postboxes;
 				distance: 2,
 				tolerance: 'pointer',
 				forcePlaceholderSize: true,
+<<<<<<< HEAD
 				helper: function( event, element ) {
 					// `helper: 'clone'` is equivalent to `return element.clone();`
 					// Cloning a checked radio and then inserting that clone next to the original
@@ -129,6 +195,13 @@ var postboxes;
 
 					if ( $el.find( '#dashboard_browser_nag' ).is( ':visible' ) && 'dashboard_browser_nag' != this.firstChild.id ) {
 						$el.sortable('cancel');
+=======
+				helper: 'clone',
+				opacity: 0.65,
+				stop: function() {
+					if ( $(this).find('#dashboard_browser_nag').is(':visible') && 'dashboard_browser_nag' != this.firstChild.id ) {
+						$(this).sortable('cancel');
+>>>>>>> origin/master
 						return;
 					}
 
@@ -139,7 +212,10 @@ var postboxes;
 						$(ui.sender).sortable('cancel');
 
 					postboxes._mark_area();
+<<<<<<< HEAD
 					$document.trigger( 'postbox-moved', ui.item );
+=======
+>>>>>>> origin/master
 				}
 			});
 
@@ -149,6 +225,7 @@ var postboxes;
 			}
 
 			this._mark_area();
+<<<<<<< HEAD
 
 			// Set the handle buttons `aria-expanded` attribute initial value on page load.
 			$handleButtons.each( function () {
@@ -167,6 +244,13 @@ var postboxes;
 
 			closed = $( '.postbox' ).filter( '.closed' ).map( function() { return this.id; } ).get().join( ',' );
 			hidden = $( '.postbox' ).filter( ':hidden' ).map( function() { return this.id; } ).get().join( ',' );
+=======
+		},
+
+		save_state : function(page) {
+			var closed = $('.postbox').filter('.closed').map(function() { return this.id; }).get().join(','),
+				hidden = $('.postbox').filter(':hidden').map(function() { return this.id; }).get().join(',');
+>>>>>>> origin/master
 
 			$.post(ajaxurl, {
 				action: 'closed-postboxes',
@@ -198,6 +282,7 @@ var postboxes;
 			$( '#dashboard-widgets .meta-box-sortables:visible' ).each( function() {
 				var t = $(this);
 
+<<<<<<< HEAD
 				if ( visible == 1 || t.children('.postbox:visible').length ) {
 					t.removeClass('empty-container');
 				}
@@ -205,6 +290,12 @@ var postboxes;
 					t.addClass('empty-container');
 					t.attr('data-emptyString', postBoxL10n.postBoxEmptyString);
 				}
+=======
+				if ( visible == 1 || t.children('.postbox:visible').length )
+					t.removeClass('empty-container');
+				else
+					t.addClass('empty-container');
+>>>>>>> origin/master
 			});
 
 			if ( side.length ) {

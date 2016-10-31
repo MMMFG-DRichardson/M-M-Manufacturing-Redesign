@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> origin/master
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -23,7 +28,11 @@ tinymce.PluginManager.add('image', function(editor) {
 		}
 
 		img.onload = function() {
+<<<<<<< HEAD
 			done(Math.max(img.width, img.clientWidth), Math.max(img.height, img.clientHeight));
+=======
+			done(img.clientWidth, img.clientHeight);
+>>>>>>> origin/master
 		};
 
 		img.onerror = function() {
@@ -83,7 +92,11 @@ tinymce.PluginManager.add('image', function(editor) {
 	}
 
 	function showDialog(imageList) {
+<<<<<<< HEAD
 		var win, data = {}, dom = editor.dom, imgElm, figureElm;
+=======
+		var win, data = {}, dom = editor.dom, imgElm = editor.selection.getNode();
+>>>>>>> origin/master
 		var width, height, imageListCtrl, classListCtrl, imageDimensions = editor.settings.image_dimensions !== false;
 
 		function recalcSize() {
@@ -120,8 +133,11 @@ tinymce.PluginManager.add('image', function(editor) {
 		}
 
 		function onSubmitForm() {
+<<<<<<< HEAD
 			var figureElm, oldImg;
 
+=======
+>>>>>>> origin/master
 			function waitLoad(imgElm) {
 				function selectImage() {
 					imgElm.onload = imgElm.onerror = null;
@@ -152,7 +168,11 @@ tinymce.PluginManager.add('image', function(editor) {
 			recalcSize();
 
 			data = tinymce.extend(data, win.toJSON());
+<<<<<<< HEAD
 			var wpcaption = data.wpcaption; // WP
+=======
+			var caption = data.caption; // WP
+>>>>>>> origin/master
 
 			if (!data.alt) {
 				data.alt = '';
@@ -183,13 +203,20 @@ tinymce.PluginManager.add('image', function(editor) {
 				width: data.width,
 				height: data.height,
 				style: data.style,
+<<<<<<< HEAD
 				caption: data.caption,
+=======
+>>>>>>> origin/master
 				"class": data["class"]
 			};
 
 			editor.undoManager.transact(function() {
 				// WP
+<<<<<<< HEAD
 				var eventData = { node: imgElm, data: data, wpcaption: wpcaption };
+=======
+				var eventData = { node: imgElm, data: data, caption: caption };
+>>>>>>> origin/master
 
 				editor.fire( 'wpImageFormSubmit', { imgData: eventData } );
 
@@ -223,6 +250,7 @@ tinymce.PluginManager.add('image', function(editor) {
 					dom.setAttribs(imgElm, data);
 				}
 
+<<<<<<< HEAD
 				editor.editorUpload.uploadImagesAuto();
 
 				if (data.caption === false) {
@@ -259,6 +287,8 @@ tinymce.PluginManager.add('image', function(editor) {
 					return;
 				}
 
+=======
+>>>>>>> origin/master
 				waitLoad(imgElm);
 			});
 		}
@@ -306,6 +336,7 @@ tinymce.PluginManager.add('image', function(editor) {
 			}
 		}
 
+<<<<<<< HEAD
 		imgElm = editor.selection.getNode();
 		figureElm = dom.getParent(imgElm, 'figure.image');
 		if (figureElm) {
@@ -320,18 +351,33 @@ tinymce.PluginManager.add('image', function(editor) {
 			width = dom.getAttrib(imgElm, 'width');
 			height = dom.getAttrib(imgElm, 'height');
 
+=======
+		width = dom.getAttrib(imgElm, 'width');
+		height = dom.getAttrib(imgElm, 'height');
+
+		if (imgElm.nodeName == 'IMG' && !imgElm.getAttribute('data-mce-object') && !imgElm.getAttribute('data-mce-placeholder')) {
+>>>>>>> origin/master
 			data = {
 				src: dom.getAttrib(imgElm, 'src'),
 				alt: dom.getAttrib(imgElm, 'alt'),
 				title: dom.getAttrib(imgElm, 'title'),
 				"class": dom.getAttrib(imgElm, 'class'),
 				width: width,
+<<<<<<< HEAD
 				height: height,
 				caption: !!figureElm
+=======
+				height: height
+>>>>>>> origin/master
 			};
 
 			// WP
 			editor.fire( 'wpLoadImageData', { imgData: { data: data, node: imgElm } } );
+<<<<<<< HEAD
+=======
+		} else {
+			imgElm = null;
+>>>>>>> origin/master
 		}
 
 		if (imageList) {
@@ -356,7 +402,10 @@ tinymce.PluginManager.add('image', function(editor) {
 					win.find('#src').value(e.control.value()).fire('change');
 				},
 				onPostRender: function() {
+<<<<<<< HEAD
 					/*eslint consistent-this: 0*/
+=======
+>>>>>>> origin/master
 					imageListCtrl = this;
 				}
 			};
@@ -420,10 +469,13 @@ tinymce.PluginManager.add('image', function(editor) {
 
 		generalFormItems.push(classListCtrl);
 
+<<<<<<< HEAD
 		if (editor.settings.image_caption && tinymce.Env.ceFalse) {
 			generalFormItems.push({name: 'caption', type: 'checkbox', label: 'Caption'});
 		}
 
+=======
+>>>>>>> origin/master
 		// WP
 		editor.fire( 'wpLoadImageForm', { data: generalFormItems } );
 
@@ -602,6 +654,7 @@ tinymce.PluginManager.add('image', function(editor) {
 		}
 	}
 
+<<<<<<< HEAD
 	editor.on('preInit', function() {
 		function hasImageClass(node) {
 			var className = node.attr('class');
@@ -631,11 +684,17 @@ tinymce.PluginManager.add('image', function(editor) {
 		editor.serializer.addNodeFilter('figure', toggleContentEditableState(false));
 	});
 
+=======
+>>>>>>> origin/master
 	editor.addButton('image', {
 		icon: 'image',
 		tooltip: 'Insert/edit image',
 		onclick: createImageList(showDialog),
+<<<<<<< HEAD
 		stateSelector: 'img:not([data-mce-object],[data-mce-placeholder]),figure.image'
+=======
+		stateSelector: 'img:not([data-mce-object],[data-mce-placeholder])'
+>>>>>>> origin/master
 	});
 
 	editor.addMenuItem('image', {

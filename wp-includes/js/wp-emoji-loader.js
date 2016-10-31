@@ -1,5 +1,9 @@
 ( function( window, document, settings ) {
+<<<<<<< HEAD
 	var src, ready, ii, tests;
+=======
+	var src;
+>>>>>>> origin/master
 
 	/**
 	 * Detect if the browser supports rendering emoji or flag emoji. Flag emoji are a single glyph
@@ -7,14 +11,22 @@
 	 *
 	 * @since 4.2.0
 	 *
+<<<<<<< HEAD
 	 * @param type {String} Whether to test for support of "simple", "flag", "diversity" or "unicode8" emoji.
+=======
+	 * @param type {String} Whether to test for support of "simple" or "flag" emoji.
+>>>>>>> origin/master
 	 * @return {Boolean} True if the browser can render emoji, false if it cannot.
 	 */
 	function browserSupportsEmoji( type ) {
 		var canvas = document.createElement( 'canvas' ),
+<<<<<<< HEAD
 			context = canvas.getContext && canvas.getContext( '2d' ),
 			stringFromCharCode = String.fromCharCode,
 			flag, flag2, tonedata, tone, tone2;
+=======
+			context = canvas.getContext && canvas.getContext( '2d' );
+>>>>>>> origin/master
 
 		if ( ! context || ! context.fillText ) {
 			return false;
@@ -28,6 +40,7 @@
 		context.textBaseline = 'top';
 		context.font = '600 32px Arial';
 
+<<<<<<< HEAD
 		switch ( type ) {
 			case 'flag':
 				/*
@@ -105,6 +118,29 @@
 		}
 
 		return false;
+=======
+		if ( type === 'flag' ) {
+			/*
+			 * This works because the image will be one of three things:
+			 * - Two empty squares, if the browser doesn't render emoji
+			 * - Two squares with 'G' and 'B' in them, if the browser doesn't render flag emoji
+			 * - The British flag
+			 *
+			 * The first two will encode to small images (1-2KB data URLs), the third will encode
+			 * to a larger image (4-5KB data URL).
+			 */
+			context.fillText( String.fromCharCode( 55356, 56812, 55356, 56807 ), 0, 0 );
+			return canvas.toDataURL().length > 3000;
+		} else {
+			/*
+			 * This creates a smiling emoji, and checks to see if there is any image data in the
+			 * center pixel. In browsers that don't support emoji, the character will be rendered
+			 * as an empty square, so the center pixel will be blank.
+			 */
+			context.fillText( String.fromCharCode( 55357, 56835 ), 0, 0 );
+			return context.getImageData( 16, 16, 1, 1 ).data[0] !== 0;
+		}
+>>>>>>> origin/master
 	}
 
 	function addScript( src ) {
@@ -115,6 +151,7 @@
 		document.getElementsByTagName( 'head' )[0].appendChild( script );
 	}
 
+<<<<<<< HEAD
 	tests = Array( 'simple', 'flag', 'unicode8', 'diversity', 'unicode9' );
 
 	settings.supports = {
@@ -156,6 +193,14 @@
 			} );
 		}
 
+=======
+	settings.supports = {
+		simple: browserSupportsEmoji( 'simple' ),
+		flag:   browserSupportsEmoji( 'flag' )
+	};
+
+	if ( ! settings.supports.simple || ! settings.supports.flag ) {
+>>>>>>> origin/master
 		src = settings.source || {};
 
 		if ( src.concatemoji ) {

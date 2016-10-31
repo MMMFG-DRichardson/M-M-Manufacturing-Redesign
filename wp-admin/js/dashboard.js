@@ -67,8 +67,12 @@ jQuery(document).ready( function($) {
 
 		$( '#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]' ).prop( 'disabled' , false );
 
+<<<<<<< HEAD
 		t = $('#quick-press').submit( function( e ) {
 			e.preventDefault();
+=======
+		t = $('#quick-press').submit( function() {
+>>>>>>> origin/master
 			$('#dashboard_quick_press #publishing-action .spinner').show();
 			$('#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]').prop('disabled', true);
 
@@ -88,6 +92,11 @@ jQuery(document).ready( function($) {
 					latestPost.css('background', 'none');
 				}, 1000);
 			}
+<<<<<<< HEAD
+=======
+
+			return false;
+>>>>>>> origin/master
 		} );
 
 		$('#publish').click( function() { act.val( 'post-quickpress-publish' ); } );
@@ -123,7 +132,11 @@ jQuery(document).ready( function($) {
 	};
 	quickPressLoad();
 
+<<<<<<< HEAD
 	$( '.meta-box-sortables' ).sortable( 'option', 'containment', '#wpwrap' );
+=======
+	$( '.meta-box-sortables' ).sortable( 'option', 'containment', 'document' );
+>>>>>>> origin/master
 
 	function autoResizeTextarea() {
 		if ( document.documentMode && document.documentMode < 9 ) {

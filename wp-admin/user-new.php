@@ -10,6 +10,7 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( is_multisite() ) {
+<<<<<<< HEAD
 	if ( ! current_user_can( 'create_users' ) && ! current_user_can( 'promote_users' ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -26,6 +27,28 @@ if ( is_multisite() ) {
 }
 
 if ( is_multisite() ) {
+=======
+	if ( ! current_user_can( 'create_users' ) && ! current_user_can( 'promote_users' ) )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+} elseif ( ! current_user_can( 'create_users' ) ) {
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+}
+
+if ( is_multisite() ) {
+	function admin_created_user_email( $text ) {
+		$roles = get_editable_roles();
+		$role = $roles[ $_REQUEST['role'] ];
+		/* translators: 1: Site name, 2: site URL, 3: role */
+		return sprintf( __( 'Hi,
+You\'ve been invited to join \'%1$s\' at
+%2$s with the role of %3$s.
+If you do not want to join this site please ignore
+this email. This invitation will expire in a few days.
+
+Please click the following link to activate your user account:
+%%s' ), get_bloginfo( 'name' ), home_url(), wp_specialchars_decode( translate_user_role( $role['name'] ) ) );
+	}
+>>>>>>> origin/master
 	add_filter( 'wpmu_signup_user_notification_email', 'admin_created_user_email' );
 }
 
@@ -50,6 +73,7 @@ if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 		die();
 	}
 
+<<<<<<< HEAD
 	if ( ! current_user_can( 'promote_user', $user_details->ID ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -57,6 +81,10 @@ if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 			403
 		);
 	}
+=======
+	if ( ! current_user_can('promote_user', $user_details->ID) )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 	// Adding an existing user to this blog
 	$new_user_email = $user_details->user_email;
@@ -66,15 +94,22 @@ if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 	if ( ( $username != null && !is_super_admin( $user_id ) ) && ( array_key_exists($blog_id, get_blogs_of_user($user_id)) ) ) {
 		$redirect = add_query_arg( array('update' => 'addexisting'), 'user-new.php' );
 	} else {
+<<<<<<< HEAD
 		if ( isset( $_POST[ 'noconfirmation' ] ) && current_user_can( 'manage_network_users' ) ) {
 			add_existing_user_to_blog( array( 'user_id' => $user_id, 'role' => $_REQUEST[ 'role' ] ) );
 			$redirect = add_query_arg( array( 'update' => 'addnoconfirmation' , 'user_id' => $user_id ), 'user-new.php' );
+=======
+		if ( isset( $_POST[ 'noconfirmation' ] ) && is_super_admin() ) {
+			add_existing_user_to_blog( array( 'user_id' => $user_id, 'role' => $_REQUEST[ 'role' ] ) );
+			$redirect = add_query_arg( array('update' => 'addnoconfirmation'), 'user-new.php' );
+>>>>>>> origin/master
 		} else {
 			$newuser_key = substr( md5( $user_id ), 0, 5 );
 			add_option( 'new_user_' . $newuser_key, array( 'user_id' => $user_id, 'email' => $user_details->user_email, 'role' => $_REQUEST[ 'role' ] ) );
 
 			$roles = get_editable_roles();
 			$role = $roles[ $_REQUEST['role'] ];
+<<<<<<< HEAD
 
 			/**
 			 * Fires immediately after a user is invited to join a site, but before the notification is sent.
@@ -87,6 +122,8 @@ if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 			 */
 			do_action( 'invite_user', $user_id, $role, $newuser_key );
 
+=======
+>>>>>>> origin/master
 			/* translators: 1: Site name, 2: site URL, 3: role, 4: activation URL */
 			$message = __( 'Hi,
 
@@ -104,6 +141,7 @@ Please click the following link to confirm the invite:
 } elseif ( isset($_REQUEST['action']) && 'createuser' == $_REQUEST['action'] ) {
 	check_admin_referer( 'create-user', '_wpnonce_create-user' );
 
+<<<<<<< HEAD
 	if ( ! current_user_can( 'create_users' ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -111,6 +149,10 @@ Please click the following link to confirm the invite:
 			403
 		);
 	}
+=======
+	if ( ! current_user_can('create_users') )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 	if ( ! is_multisite() ) {
 		$user_id = edit_user();
@@ -133,18 +175,27 @@ Please click the following link to confirm the invite:
 			$add_user_errors = $user_details[ 'errors' ];
 		} else {
 			/**
+<<<<<<< HEAD
 			 * Filters the user_login, also known as the username, before it is added to the site.
+=======
+			 * Filter the user_login, also known as the username, before it is added to the site.
+>>>>>>> origin/master
 			 *
 			 * @since 2.0.3
 			 *
 			 * @param string $user_login The sanitized username.
 			 */
 			$new_user_login = apply_filters( 'pre_user_login', sanitize_user( wp_unslash( $_REQUEST['user_login'] ), true ) );
+<<<<<<< HEAD
 			if ( isset( $_POST[ 'noconfirmation' ] ) && current_user_can( 'manage_network_users' ) ) {
+=======
+			if ( isset( $_POST[ 'noconfirmation' ] ) && is_super_admin() ) {
+>>>>>>> origin/master
 				add_filter( 'wpmu_signup_user_notification', '__return_false' ); // Disable confirmation email
 				add_filter( 'wpmu_welcome_user_notification', '__return_false' ); // Disable welcome email
 			}
 			wpmu_signup_user( $new_user_login, $new_user_email, array( 'add_to_blog' => $wpdb->blogid, 'new_role' => $_REQUEST['role'] ) );
+<<<<<<< HEAD
 			if ( isset( $_POST[ 'noconfirmation' ] ) && current_user_can( 'manage_network_users' ) ) {
 				$key = $wpdb->get_var( $wpdb->prepare( "SELECT activation_key FROM {$wpdb->signups} WHERE user_login = %s AND user_email = %s", $new_user_login, $new_user_email ) );
 				$new_user = wpmu_activate_signup( $key );
@@ -153,6 +204,12 @@ Please click the following link to confirm the invite:
 				} else {
 					$redirect = add_query_arg( array( 'update' => 'addnoconfirmation', 'user_id' => $new_user['user_id'] ), 'user-new.php' );
 				}
+=======
+			if ( isset( $_POST[ 'noconfirmation' ] ) && is_super_admin() ) {
+				$key = $wpdb->get_var( $wpdb->prepare( "SELECT activation_key FROM {$wpdb->signups} WHERE user_login = %s AND user_email = %s", $new_user_login, $new_user_email ) );
+				wpmu_activate_signup( $key );
+				$redirect = add_query_arg( array('update' => 'addnoconfirmation'), 'user-new.php' );
+>>>>>>> origin/master
 			} else {
 				$redirect = add_query_arg( array('update' => 'newuserconfirmation'), 'user-new.php' );
 			}
@@ -175,9 +232,14 @@ if ( is_multisite() ) {
 	$help .= '<p>' . __('Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users.') . '</p>' .
 	'<p>' . __('New users will receive an email letting them know they&#8217;ve been added as a user for your site. This email will also contain their password. Check the box if you don&#8217;t want the user to receive a welcome email.') . '</p>';
 } else {
+<<<<<<< HEAD
 	$help .= '<p>' . __('New users are automatically assigned a password, which they can change after logging in. You can view or edit the assigned password by clicking the Show Password button. The username cannot be changed once the user has been added.') . '</p>' .
 
 	'<p>' . __('By default, new users will receive an email letting them know they&#8217;ve been added as a user for your site. This email will also contain a password reset link. Uncheck the box if you don&#8217;t want to send the new user a welcome email.') . '</p>';
+=======
+	$help .= '<p>' . __('You must assign a password to the new user, which they can change after logging in. The username, however, cannot be changed.') . '</p>' .
+	'<p>' . __('New users will receive an email letting them know they&#8217;ve been added as a user for your site. By default, this email will also contain their password. Uncheck the box if you don&#8217;t want the password to be included in the welcome email.') . '</p>';
+>>>>>>> origin/master
 }
 
 $help .= '<p>' . __('Remember to click the Add New User button at the bottom of this screen when you are finished.') . '</p>';
@@ -208,10 +270,17 @@ get_current_screen()->set_help_sidebar(
 );
 
 wp_enqueue_script('wp-ajax-response');
+<<<<<<< HEAD
 wp_enqueue_script( 'user-profile' );
 
 /**
  * Filters whether to enable user auto-complete for non-super admins in Multisite.
+=======
+wp_enqueue_script('user-profile');
+
+/**
+ * Filter whether to enable user auto-complete for non-super admins in Multisite.
+>>>>>>> origin/master
  *
  * @since 3.4.0
  *
@@ -228,6 +297,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 if ( isset($_GET['update']) ) {
 	$messages = array();
 	if ( is_multisite() ) {
+<<<<<<< HEAD
 		$edit_link = '';
 		if ( ( isset( $_GET['user_id'] ) ) ) {
 			$user_id_new = absint( $_GET['user_id'] );
@@ -236,6 +306,8 @@ if ( isset($_GET['update']) ) {
 			}
 		}
 
+=======
+>>>>>>> origin/master
 		switch ( $_GET['update'] ) {
 			case "newuserconfirmation":
 				$messages[] = __('Invitation email sent to new user. A confirmation link must be clicked before their account is created.');
@@ -244,12 +316,16 @@ if ( isset($_GET['update']) ) {
 				$messages[] = __('Invitation email sent to user. A confirmation link must be clicked for them to be added to your site.');
 				break;
 			case "addnoconfirmation":
+<<<<<<< HEAD
 				if ( empty( $edit_link ) ) {
 					$messages[] = __( 'User has been added to your site.' );
 				} else {
 					/* translators: %s: edit page url */
 					$messages[] = sprintf( __( 'User has been added to your site. <a href="%s">Edit user</a>' ), $edit_link );
 				}
+=======
+				$messages[] = __('User has been added to your site.');
+>>>>>>> origin/master
 				break;
 			case "addexisting":
 				$messages[] = __('That user is already a member of this site.');
@@ -268,13 +344,21 @@ if ( isset($_GET['update']) ) {
 }
 ?>
 <div class="wrap">
+<<<<<<< HEAD
 <h1 id="add-new-user"><?php
+=======
+<h2 id="add-new-user"> <?php
+>>>>>>> origin/master
 if ( current_user_can( 'create_users' ) ) {
 	echo _x( 'Add New User', 'user' );
 } elseif ( current_user_can( 'promote_users' ) ) {
 	echo _x( 'Add Existing User', 'user' );
 } ?>
+<<<<<<< HEAD
 </h1>
+=======
+</h2>
+>>>>>>> origin/master
 
 <?php if ( isset($errors) && is_wp_error( $errors ) ) : ?>
 	<div class="error">
@@ -305,6 +389,7 @@ if ( ! empty( $messages ) ) {
 <?php
 if ( is_multisite() ) {
 	if ( $do_both )
+<<<<<<< HEAD
 		echo '<h2 id="add-existing-user">' . __( 'Add Existing User' ) . '</h2>';
 	if ( !is_super_admin() ) {
 		echo '<p>' . __( 'Enter the email address of an existing user on this network to invite them to this site. That person will be sent an email asking them to confirm the invite.' ) . '</p>';
@@ -313,6 +398,16 @@ if ( is_multisite() ) {
 	} else {
 		echo '<p>' . __( 'Enter the email address or username of an existing user on this network to invite them to this site. That person will be sent an email asking them to confirm the invite.' ) . '</p>';
 		$label = __('Email or Username');
+=======
+		echo '<h3 id="add-existing-user">' . __('Add Existing User') . '</h3>';
+	if ( !is_super_admin() ) {
+		echo '<p>' . __( 'Enter the email address of an existing user on this network to invite them to this site. That person will be sent an email asking them to confirm the invite.' ) . '</p>';
+		$label = __('E-mail');
+		$type  = 'email';
+	} else {
+		echo '<p>' . __( 'Enter the email address or username of an existing user on this network to invite them to this site. That person will be sent an email asking them to confirm the invite.' ) . '</p>';
+		$label = __('E-mail or Username');
+>>>>>>> origin/master
 		$type  = 'text';
 	}
 ?>
@@ -339,7 +434,11 @@ if ( is_multisite() ) {
 			</select>
 		</td>
 	</tr>
+<<<<<<< HEAD
 <?php if ( current_user_can( 'manage_network_users' ) ) { ?>
+=======
+<?php if ( is_super_admin() ) { ?>
+>>>>>>> origin/master
 	<tr>
 		<th scope="row"><label for="adduser-noconfirmation"><?php _e('Skip Confirmation Email') ?></label></th>
 		<td><label for="adduser-noconfirmation"><input type="checkbox" name="noconfirmation" id="adduser-noconfirmation" value="1" /> <?php _e( 'Add the user without sending an email that requires their confirmation.' ); ?></label></td>
@@ -367,7 +466,11 @@ do_action( 'user_new_form', 'add-existing-user' );
 
 if ( current_user_can( 'create_users') ) {
 	if ( $do_both )
+<<<<<<< HEAD
 		echo '<h2 id="create-new-user">' . __( 'Add New User' ) . '</h2>';
+=======
+		echo '<h3 id="create-new-user">' . __( 'Add New User' ) . '</h3>';
+>>>>>>> origin/master
 ?>
 <p><?php _e('Create a brand new user and add them to this site.'); ?></p>
 <form method="post" name="createuser" id="createuser" class="validate" novalidate="novalidate"<?php
@@ -386,17 +489,28 @@ $new_user_lastname = $creating && isset( $_POST['last_name'] ) ? wp_unslash( $_P
 $new_user_email = $creating && isset( $_POST['email'] ) ? wp_unslash( $_POST['email'] ) : '';
 $new_user_uri = $creating && isset( $_POST['url'] ) ? wp_unslash( $_POST['url'] ) : '';
 $new_user_role = $creating && isset( $_POST['role'] ) ? wp_unslash( $_POST['role'] ) : '';
+<<<<<<< HEAD
 $new_user_send_notification = $creating && ! isset( $_POST['send_user_notification'] ) ? false : true;
+=======
+$new_user_send_password = $creating && isset( $_POST['send_password'] ) ? wp_unslash( $_POST['send_password'] ) : '';
+>>>>>>> origin/master
 $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unslash( $_POST['noconfirmation'] ) : '';
 
 ?>
 <table class="form-table">
 	<tr class="form-field form-required">
 		<th scope="row"><label for="user_login"><?php _e('Username'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
+<<<<<<< HEAD
 		<td><input name="user_login" type="text" id="user_login" value="<?php echo esc_attr( $new_user_login ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" /></td>
 	</tr>
 	<tr class="form-field form-required">
 		<th scope="row"><label for="email"><?php _e('Email'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
+=======
+		<td><input name="user_login" type="text" id="user_login" value="<?php echo esc_attr($new_user_login); ?>" aria-required="true" /></td>
+	</tr>
+	<tr class="form-field form-required">
+		<th scope="row"><label for="email"><?php _e('E-mail'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
+>>>>>>> origin/master
 		<td><input name="email" type="email" id="email" value="<?php echo esc_attr( $new_user_email ); ?>" /></td>
 	</tr>
 <?php if ( !is_multisite() ) { ?>
@@ -412,6 +526,7 @@ $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unsl
 		<th scope="row"><label for="url"><?php _e('Website') ?></label></th>
 		<td><input name="url" type="url" id="url" class="code" value="<?php echo esc_attr( $new_user_uri ); ?>" /></td>
 	</tr>
+<<<<<<< HEAD
 	<tr class="form-field form-required user-pass1-wrap">
 		<th scope="row">
 			<label for="pass1">
@@ -457,6 +572,38 @@ $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unsl
 		<th scope="row"><?php _e( 'Send User Notification' ) ?></th>
 		<td><label for="send_user_notification"><input type="checkbox" name="send_user_notification" id="send_user_notification" value="1" <?php checked( $new_user_send_notification ); ?> /> <?php _e( 'Send the new user an email about their account.' ); ?></label></td>
 	</tr>
+=======
+<?php
+/**
+ * Filter the display of the password fields.
+ *
+ * @since 1.5.1
+ *
+ * @param bool $show Whether to show the password fields. Default true.
+ */
+if ( apply_filters( 'show_password_fields', true ) ) : ?>
+	<tr class="form-field form-required">
+		<th scope="row"><label for="pass1"><?php _e('Password'); ?> <span class="description"><?php /* translators: password input field */_e('(required)'); ?></span></label></th>
+		<td>
+			<input class="hidden" value=" " /><!-- #24364 workaround -->
+			<input name="pass1" type="password" id="pass1" autocomplete="off" />
+		</td>
+	</tr>
+	<tr class="form-field form-required">
+		<th scope="row"><label for="pass2"><?php _e('Repeat Password'); ?> <span class="description"><?php /* translators: password input field */_e('(required)'); ?></span></label></th>
+		<td>
+		<input name="pass2" type="password" id="pass2" autocomplete="off" />
+		<br />
+		<div id="pass-strength-result"><?php _e('Strength indicator'); ?></div>
+		<p class="description indicator-hint"><?php echo wp_get_password_hint(); ?></p>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row"><?php _e('Send Password?') ?></th>
+		<td><label for="send_password"><input type="checkbox" name="send_password" id="send_password" value="1" <?php checked( $new_user_send_password ); ?> /> <?php _e('Send this password to the new user by email.'); ?></label></td>
+	</tr>
+<?php endif; ?>
+>>>>>>> origin/master
 <?php } // !is_multisite ?>
 	<tr class="form-field">
 		<th scope="row"><label for="role"><?php _e('Role'); ?></label></th>
@@ -469,7 +616,11 @@ $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unsl
 			</select>
 		</td>
 	</tr>
+<<<<<<< HEAD
 	<?php if ( is_multisite() && current_user_can( 'manage_network_users' ) ) { ?>
+=======
+	<?php if ( is_multisite() && is_super_admin() ) { ?>
+>>>>>>> origin/master
 	<tr>
 		<th scope="row"><label for="noconfirmation"><?php _e('Skip Confirmation Email') ?></label></th>
 		<td><label for="noconfirmation"><input type="checkbox" name="noconfirmation" id="noconfirmation" value="1" <?php checked( $new_user_ignore_pass ); ?> /> <?php _e( 'Add the user without sending an email that requires their confirmation.' ); ?></label></td>

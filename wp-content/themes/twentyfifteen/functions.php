@@ -55,11 +55,19 @@ function twentyfifteen_setup() {
 
 	/*
 	 * Make theme available for translation.
+<<<<<<< HEAD
 	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyfifteen
 	 * If you're building a theme based on twentyfifteen, use a find and replace
 	 * to change 'twentyfifteen' to the name of your theme in all the template files
 	 */
 	load_theme_textdomain( 'twentyfifteen' );
+=======
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on twentyfifteen, use a find and replace
+	 * to change 'twentyfifteen' to the name of your theme in all the template files
+	 */
+	load_theme_textdomain( 'twentyfifteen', get_template_directory() . '/languages' );
+>>>>>>> origin/master
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -103,6 +111,7 @@ function twentyfifteen_setup() {
 		'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
 	) );
 
+<<<<<<< HEAD
 	/*
 	 * Enable support for custom logo.
 	 *
@@ -114,6 +123,8 @@ function twentyfifteen_setup() {
 		'flex-height' => true,
 	) );
 
+=======
+>>>>>>> origin/master
 	$color_scheme  = twentyfifteen_get_color_scheme();
 	$default_color = trim( $color_scheme[0], '#' );
 
@@ -128,9 +139,12 @@ function twentyfifteen_setup() {
 	 * specifically font, colors, icons, and column width.
 	 */
 	add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', twentyfifteen_fonts_url() ) );
+<<<<<<< HEAD
 
 	// Indicate widget sidebars can use selective refresh in the Customizer.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+=======
+>>>>>>> origin/master
 }
 endif; // twentyfifteen_setup
 add_action( 'after_setup_theme', 'twentyfifteen_setup' );
@@ -212,7 +226,11 @@ function twentyfifteen_fonts_url() {
 		$fonts_url = add_query_arg( array(
 			'family' => urlencode( implode( '|', $fonts ) ),
 			'subset' => urlencode( $subsets ),
+<<<<<<< HEAD
 		), 'https://fonts.googleapis.com/css' );
+=======
+		), '//fonts.googleapis.com/css' );
+>>>>>>> origin/master
 	}
 
 	return $fonts_url;

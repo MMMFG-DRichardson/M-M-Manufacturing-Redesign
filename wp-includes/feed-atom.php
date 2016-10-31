@@ -27,7 +27,11 @@ do_action( 'rss_tag_pre', 'atom' );
   do_action( 'atom_ns' );
   ?>
  >
+<<<<<<< HEAD
 	<title type="text"><?php wp_title_rss(); ?></title>
+=======
+	<title type="text"><?php bloginfo_rss('name'); wp_title_rss(); ?></title>
+>>>>>>> origin/master
 	<subtitle type="text"><?php bloginfo_rss("description") ?></subtitle>
 
 	<updated><?php echo mysql2date('Y-m-d\TH:i:s\Z', get_lastpostmodified('GMT'), false); ?></updated>
@@ -78,13 +82,19 @@ do_action( 'rss_tag_pre', 'atom' );
 	 * @since 2.0.0
 	 */
 	do_action( 'atom_entry' );
+<<<<<<< HEAD
 
 	if ( get_comments_number() || comments_open() ) :
+=======
+>>>>>>> origin/master
 		?>
 		<link rel="replies" type="<?php bloginfo_rss('html_type'); ?>" href="<?php the_permalink_rss() ?>#comments" thr:count="<?php echo get_comments_number()?>"/>
 		<link rel="replies" type="application/atom+xml" href="<?php echo esc_url( get_post_comments_feed_link(0, 'atom') ); ?>" thr:count="<?php echo get_comments_number()?>"/>
 		<thr:total><?php echo get_comments_number()?></thr:total>
+<<<<<<< HEAD
 	<?php endif; ?>
+=======
+>>>>>>> origin/master
 	</entry>
 	<?php endwhile ; ?>
 </feed>

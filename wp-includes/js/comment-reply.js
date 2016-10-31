@@ -1,4 +1,5 @@
 var addComment = {
+<<<<<<< HEAD
 	moveForm: function( commId, parentId, respondId, postId ) {
 		var div, element, style, cssHidden,
 			t           = this,
@@ -12,10 +13,18 @@ var addComment = {
 		if ( ! comm || ! respond || ! cancel || ! parent || ! commentForm ) {
 			return;
 		}
+=======
+	moveForm : function(commId, parentId, respondId, postId) {
+		var t = this, div, comm = t.I(commId), respond = t.I(respondId), cancel = t.I('cancel-comment-reply-link'), parent = t.I('comment_parent'), post = t.I('comment_post_ID');
+
+		if ( ! comm || ! respond || ! cancel || ! parent )
+			return;
+>>>>>>> origin/master
 
 		t.respondId = respondId;
 		postId = postId || false;
 
+<<<<<<< HEAD
 		if ( ! t.I( 'wp-temp-form-div' ) ) {
 			div = document.createElement( 'div' );
 			div.id = 'wp-temp-form-div';
@@ -27,10 +36,23 @@ var addComment = {
 		if ( post && postId ) {
 			post.value = postId;
 		}
+=======
+		if ( ! t.I('wp-temp-form-div') ) {
+			div = document.createElement('div');
+			div.id = 'wp-temp-form-div';
+			div.style.display = 'none';
+			respond.parentNode.insertBefore(div, respond);
+		}
+
+		comm.parentNode.insertBefore(respond, comm.nextSibling);
+		if ( post && postId )
+			post.value = postId;
+>>>>>>> origin/master
 		parent.value = parentId;
 		cancel.style.display = '';
 
 		cancel.onclick = function() {
+<<<<<<< HEAD
 			var t       = addComment,
 				temp    = t.I( 'wp-temp-form-div' ),
 				respond = t.I( t.respondId );
@@ -42,11 +64,22 @@ var addComment = {
 			t.I( 'comment_parent' ).value = '0';
 			temp.parentNode.insertBefore( respond, temp );
 			temp.parentNode.removeChild( temp );
+=======
+			var t = addComment, temp = t.I('wp-temp-form-div'), respond = t.I(t.respondId);
+
+			if ( ! temp || ! respond )
+				return;
+
+			t.I('comment_parent').value = '0';
+			temp.parentNode.insertBefore(respond, temp);
+			temp.parentNode.removeChild(temp);
+>>>>>>> origin/master
 			this.style.display = 'none';
 			this.onclick = null;
 			return false;
 		};
 
+<<<<<<< HEAD
 		/*
 		 * Set initial focus to the first form focusable element.
 		 * Try/catch used just to avoid errors in IE 7- which return visibility
@@ -86,11 +119,20 @@ var addComment = {
 			}
 
 		} catch( er ) {}
+=======
+		try { t.I('comment').focus(); }
+		catch(e) {}
+>>>>>>> origin/master
 
 		return false;
 	},
 
+<<<<<<< HEAD
 	I: function( id ) {
 		return document.getElementById( id );
+=======
+	I : function(e) {
+		return document.getElementById(e);
+>>>>>>> origin/master
 	}
 };

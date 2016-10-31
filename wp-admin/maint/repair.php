@@ -16,18 +16,26 @@ header( 'Content-Type: text/html; charset=utf-8' );
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
 	<meta name="robots" content="noindex,nofollow" />
+=======
+>>>>>>> origin/master
 	<title><?php _e( 'WordPress &rsaquo; Database Repair' ); ?></title>
 	<?php
 	wp_admin_css( 'install', true );
 	?>
 </head>
 <body class="wp-core-ui">
+<<<<<<< HEAD
 <p id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'WordPress' ); ?></a></p>
+=======
+<h1 id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'WordPress' ); ?></a></h1>
+>>>>>>> origin/master
 
 <?php
 
 if ( ! defined( 'WP_ALLOW_REPAIR' ) ) {
+<<<<<<< HEAD
 
 	echo '<h1 class="screen-reader-text">' . __( 'Allow automatic database repair' ) . '</h1>';
 
@@ -73,6 +81,10 @@ if ( ! defined( 'WP_ALLOW_REPAIR' ) ) {
 
 	echo '<h1 class="screen-reader-text">' . __( 'Database repair results' ) . '</h1>';
 
+=======
+	echo '<p>' . __( 'To allow use of this page to automatically repair database problems, please add the following line to your <code>wp-config.php</code> file. Once this line is added to your config, reload this page.' ) . "</p><p><code>define('WP_ALLOW_REPAIR', true);</code></p>";
+} elseif ( isset( $_GET['repair'] ) ) {
+>>>>>>> origin/master
 	$optimize = 2 == $_GET['repair'];
 	$okay = true;
 	$problems = array();
@@ -86,7 +98,11 @@ if ( ! defined( 'WP_ALLOW_REPAIR' ) ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters additional database tables to repair.
+=======
+	 * Filter additional database tables to repair.
+>>>>>>> origin/master
 	 *
 	 * @since 3.0.0
 	 *
@@ -153,9 +169,12 @@ if ( ! defined( 'WP_ALLOW_REPAIR' ) ) {
 		echo '<p>' . __( 'Repairs complete. Please remove the following line from wp-config.php to prevent this page from being used by unauthorized users.' ) . "</p><p><code>define('WP_ALLOW_REPAIR', true);</code></p>";
 	}
 } else {
+<<<<<<< HEAD
 
 	echo '<h1 class="screen-reader-text">' . __( 'WordPress database repair' ) . '</h1>';
 
+=======
+>>>>>>> origin/master
 	if ( isset( $_GET['referrer'] ) && 'is_blog_installed' == $_GET['referrer'] )
 		echo '<p>' . __( 'One or more database tables are unavailable. To allow WordPress to attempt to repair these tables, press the &#8220;Repair Database&#8221; button. Repairing can take a while, so please be patient.' ) . '</p>';
 	else

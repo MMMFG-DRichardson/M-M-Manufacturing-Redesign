@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 if ( ! class_exists( 'SimplePie', false ) )
 	require_once( ABSPATH . WPINC . '/class-simplepie.php' );
 
@@ -22,12 +23,24 @@ class WP_Feed_Cache extends SimplePie_Cache {
 	 * @param string $filename  Unique identifier for cache object.
 	 * @param string $extension 'spi' or 'spc'.
 	 * @return WP_Feed_Cache_Transient Feed cache handler object that uses transients.
+=======
+if ( !class_exists('SimplePie') )
+	require_once( ABSPATH . WPINC . '/class-simplepie.php' );
+
+class WP_Feed_Cache extends SimplePie_Cache {
+	/**
+	 * Create a new SimplePie_Cache object
+	 *
+	 * @static
+	 * @access public
+>>>>>>> origin/master
 	 */
 	public function create($location, $filename, $extension) {
 		return new WP_Feed_Cache_Transient($location, $filename, $extension);
 	}
 }
 
+<<<<<<< HEAD
 /**
  * Core class used to implement feed cache transients.
  *
@@ -75,13 +88,24 @@ class WP_Feed_Cache_Transient {
 	 * @param string $filename  Unique identifier for cache object.
 	 * @param string $extension 'spi' or 'spc'.
 	 */
+=======
+class WP_Feed_Cache_Transient {
+	public $name;
+	public $mod_name;
+	public $lifetime = 43200; //Default lifetime in cache of 12 hours
+
+>>>>>>> origin/master
 	public function __construct($location, $filename, $extension) {
 		$this->name = 'feed_' . $filename;
 		$this->mod_name = 'feed_mod_' . $filename;
 
 		$lifetime = $this->lifetime;
 		/**
+<<<<<<< HEAD
 		 * Filters the transient lifetime of the feed cache.
+=======
+		 * Filter the transient lifetime of the feed cache.
+>>>>>>> origin/master
 		 *
 		 * @since 2.8.0
 		 *
@@ -91,6 +115,7 @@ class WP_Feed_Cache_Transient {
 		$this->lifetime = apply_filters( 'wp_feed_cache_transient_lifetime', $lifetime, $filename);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Sets the transient.
 	 *
@@ -100,6 +125,8 @@ class WP_Feed_Cache_Transient {
 	 * @param SimplePie $data Data to save.
 	 * @return true Always true.
 	 */
+=======
+>>>>>>> origin/master
 	public function save($data) {
 		if ( $data instanceof SimplePie ) {
 			$data = $data->data;
@@ -110,6 +137,7 @@ class WP_Feed_Cache_Transient {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Gets the transient.
 	 *
@@ -118,10 +146,13 @@ class WP_Feed_Cache_Transient {
 	 *
 	 * @return mixed Transient value.
 	 */
+=======
+>>>>>>> origin/master
 	public function load() {
 		return get_transient($this->name);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Gets mod transient.
 	 *
@@ -130,10 +161,13 @@ class WP_Feed_Cache_Transient {
 	 *
 	 * @return mixed Transient value.
 	 */
+=======
+>>>>>>> origin/master
 	public function mtime() {
 		return get_transient($this->mod_name);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Sets mod transient.
 	 *
@@ -142,10 +176,13 @@ class WP_Feed_Cache_Transient {
 	 *
 	 * @return bool False if value was not set and true if value was set.
 	 */
+=======
+>>>>>>> origin/master
 	public function touch() {
 		return set_transient($this->mod_name, time(), $this->lifetime);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Deletes transients.
 	 *
@@ -154,6 +191,8 @@ class WP_Feed_Cache_Transient {
 	 *
 	 * @return true Always true.
 	 */
+=======
+>>>>>>> origin/master
 	public function unlink() {
 		delete_transient($this->name);
 		delete_transient($this->mod_name);
@@ -161,6 +200,7 @@ class WP_Feed_Cache_Transient {
 	}
 }
 
+<<<<<<< HEAD
 /**
  * Core class for fetching remote files and reading local files with SimplePie.
  *
@@ -187,6 +227,10 @@ class WP_SimplePie_File extends SimplePie_File {
 	 * @param boolean      $force_fsockopen Optional. Whether to force opening internet or unix domain socket
 	 *                                      connection or not. Default false.
 	 */
+=======
+class WP_SimplePie_File extends SimplePie_File {
+
+>>>>>>> origin/master
 	public function __construct($url, $timeout = 10, $redirects = 5, $headers = null, $useragent = null, $force_fsockopen = false) {
 		$this->url = $url;
 		$this->timeout = $timeout;
@@ -226,6 +270,7 @@ class WP_SimplePie_File extends SimplePie_File {
 }
 
 /**
+<<<<<<< HEAD
  * Core class used to implement SimpliePie feed sanitization.
  *
  * Extends the SimplePie_Sanitize class to use KSES, because
@@ -251,6 +296,17 @@ class WP_SimplePie_Sanitize_KSES extends SimplePie_Sanitize {
 	 *                      URLs to absolute ones. Default empty.
 	 * @return mixed Sanitized data.
 	 */
+=======
+ * WordPress SimplePie Sanitization Class
+ *
+ * Extension of the SimplePie_Sanitize class to use KSES, because
+ * we cannot universally count on DOMDocument being available
+ *
+ * @package WordPress
+ * @since 3.5.0
+ */
+class WP_SimplePie_Sanitize_KSES extends SimplePie_Sanitize {
+>>>>>>> origin/master
 	public function sanitize( $data, $type, $base = '' ) {
 		$data = trim( $data );
 		if ( $type & SIMPLEPIE_CONSTRUCT_MAYBE_HTML ) {

@@ -1,8 +1,14 @@
 /* global inlineEditL10n, ajaxurl */
+<<<<<<< HEAD
 window.wp = window.wp || {};
 
 var inlineEditTax;
 ( function( $, wp ) {
+=======
+
+var inlineEditTax;
+(function($) {
+>>>>>>> origin/master
 inlineEditTax = {
 
 	init : function() {
@@ -23,10 +29,17 @@ inlineEditTax = {
 			}
 		});
 
+<<<<<<< HEAD
 		$( '.cancel', row ).click( function() {
 			return inlineEditTax.revert();
 		});
 		$( '.save', row ).click( function() {
+=======
+		$( 'a.cancel', row ).click( function() {
+			return inlineEditTax.revert();
+		});
+		$( 'a.save', row ).click( function() {
+>>>>>>> origin/master
 			return inlineEditTax.save(this);
 		});
 		$( 'input, select', row ).keydown( function( e ) {
@@ -55,7 +68,11 @@ inlineEditTax = {
 		}
 
 		editRow = $('#inline-edit').clone(true), rowData = $('#inline_'+id);
+<<<<<<< HEAD
 		$( 'td', editRow ).attr( 'colspan', $( 'th:visible, td:visible', '.wp-list-table.widefat:first thead' ).length );
+=======
+		$('td', editRow).attr('colspan', $('.widefat:first thead th:visible').length);
+>>>>>>> origin/master
 
 		$(t.what+id).hide().after(editRow).after('<tr class="hidden"></tr>');
 
@@ -97,9 +114,13 @@ inlineEditTax = {
 		// make ajax request
 		$.post( ajaxurl, params,
 			function(r) {
+<<<<<<< HEAD
 				var row, new_id, option_value,
 					$errorSpan = $( '#edit-' + id + ' .inline-edit-save .error' );
 
+=======
+				var row, new_id, option_value;
+>>>>>>> origin/master
 				$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 
 				if (r) {
@@ -120,6 +141,7 @@ inlineEditTax = {
 						// Update the value in the Parent dropdown.
 						$( '#parent' ).find( 'option[value=' + option_value + ']' ).text( row.find( '.row-title' ).text() );
 
+<<<<<<< HEAD
 						row.hide().fadeIn( 400, function() {
 							// Move focus back to the Quick Edit link.
 							row.find( '.editinline' ).focus();
@@ -138,6 +160,17 @@ inlineEditTax = {
 			}
 		);
 		// Prevent submitting the form when pressing Enter on a focused field.
+=======
+						row.hide().fadeIn();
+					} else {
+						$('#edit-'+id+' .inline-edit-save .error').html(r).show();
+					}
+				} else {
+					$('#edit-'+id+' .inline-edit-save .error').html(inlineEditL10n.error).show();
+				}
+			}
+		);
+>>>>>>> origin/master
 		return false;
 	},
 
@@ -148,9 +181,16 @@ inlineEditTax = {
 			$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 			$('#'+id).siblings('tr.hidden').addBack().remove();
 			id = id.substr( id.lastIndexOf('-') + 1 );
+<<<<<<< HEAD
 			// Show the taxonomy row and move focus back to the Quick Edit link.
 			$( this.what + id ).show().find( '.editinline' ).focus();
 		}
+=======
+			$(this.what+id).show();
+		}
+
+		return false;
+>>>>>>> origin/master
 	},
 
 	getId : function(o) {
@@ -160,4 +200,8 @@ inlineEditTax = {
 };
 
 $(document).ready(function(){inlineEditTax.init();});
+<<<<<<< HEAD
 })( jQuery, window.wp );
+=======
+})(jQuery);
+>>>>>>> origin/master

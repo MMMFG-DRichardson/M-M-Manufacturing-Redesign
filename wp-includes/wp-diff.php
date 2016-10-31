@@ -8,7 +8,11 @@
  * @subpackage Diff
  */
 
+<<<<<<< HEAD
 if ( ! class_exists( 'Text_Diff', false ) ) {
+=======
+if ( !class_exists( 'Text_Diff' ) ) {
+>>>>>>> origin/master
 	/** Text_Diff class */
 	require( dirname(__FILE__).'/Text/Diff.php' );
 	/** Text_Diff_Renderer class */
@@ -159,7 +163,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 				$processed_line = htmlspecialchars( $line );
 
 				/**
+<<<<<<< HEAD
 				 * Contextually filters a diffed line.
+=======
+				 * Contextually filter a diffed line.
+>>>>>>> origin/master
 				 *
 				 * Filters TextDiff processing of diffed line. By default, diffs are processed with
 				 * htmlspecialchars. Use this filter to remove or change the processing. Passes a context
@@ -458,7 +466,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Make private properties readable for backward compatibility.
+=======
+	 * Make private properties readable for backwards compatibility.
+>>>>>>> origin/master
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -473,7 +485,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Make private properties settable for backward compatibility.
+=======
+	 * Make private properties settable for backwards compatibility.
+>>>>>>> origin/master
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -489,7 +505,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Make private properties checkable for backward compatibility.
+=======
+	 * Make private properties checkable for backwards compatibility.
+>>>>>>> origin/master
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -504,7 +524,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Make private properties un-settable for backward compatibility.
+=======
+	 * Make private properties un-settable for backwards compatibility.
+>>>>>>> origin/master
 	 *
 	 * @since 4.0.0
 	 * @access public

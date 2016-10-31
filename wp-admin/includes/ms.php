@@ -28,6 +28,7 @@ function check_upload_size( $file ) {
 	$space_left = get_upload_space_available();
 
 	$file_size = filesize( $file['tmp_name'] );
+<<<<<<< HEAD
 	if ( $space_left < $file_size ) {
 		$file['error'] = sprintf( __( 'Not enough space to upload. %1$s KB needed.' ), number_format( ( $file_size - $space_left ) / KB_IN_BYTES ) );
 	}
@@ -40,12 +41,22 @@ function check_upload_size( $file ) {
 		$file['error'] = __( 'You have used your space quota. Please delete files before uploading.' );
 	}
 
+=======
+	if ( $space_left < $file_size )
+		$file['error'] = sprintf( __( 'Not enough space to upload. %1$s KB needed.' ), number_format( ($file_size - $space_left) /1024 ) );
+	if ( $file_size > ( 1024 * get_site_option( 'fileupload_maxk', 1500 ) ) )
+		$file['error'] = sprintf(__('This file is too big. Files must be less than %1$s KB in size.'), get_site_option( 'fileupload_maxk', 1500 ) );
+	if ( upload_is_user_over_quota( false ) ) {
+		$file['error'] = __( 'You have used your space quota. Please delete files before uploading.' );
+	}
+>>>>>>> origin/master
 	if ( $file['error'] != '0' && ! isset( $_POST['html-upload'] ) && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 		wp_die( $file['error'] . ' <a href="javascript:history.go(-1)">' . __( 'Back' ) . '</a>' );
 	}
 
 	return $file;
 }
+<<<<<<< HEAD
 
 /**
  * Delete a site.
@@ -56,6 +67,17 @@ function check_upload_size( $file ) {
  *
  * @param int  $blog_id Site ID.
  * @param bool $drop    True if site's database tables should be dropped. Default is false.
+=======
+add_filter( 'wp_handle_upload_prefilter', 'check_upload_size' );
+
+/**
+ * Delete a blog.
+ *
+ * @since 3.0.0
+ *
+ * @param int  $blog_id Blog ID.
+ * @param bool $drop    True if blog's table should be dropped. Default is false.
+>>>>>>> origin/master
  */
 function wpmu_delete_blog( $blog_id, $drop = false ) {
 	global $wpdb;
@@ -68,12 +90,21 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 
 	$blog = get_blog_details( $blog_id );
 	/**
+<<<<<<< HEAD
 	 * Fires before a site is deleted.
 	 *
 	 * @since MU
 	 *
 	 * @param int  $blog_id The site ID.
 	 * @param bool $drop    True if site's table should be dropped. Default is false.
+=======
+	 * Fires before a blog is deleted.
+	 *
+	 * @since MU
+	 *
+	 * @param int  $blog_id The blog ID.
+	 * @param bool $drop    True if blog's table should be dropped. Default is false.
+>>>>>>> origin/master
 	 */
 	do_action( 'delete_blog', $blog_id, $drop );
 
@@ -108,6 +139,7 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 	}
 
 	if ( $drop ) {
+<<<<<<< HEAD
 		$uploads = wp_get_upload_dir();
 
 		$tables = $wpdb->tables( 'blog' );
@@ -118,6 +150,18 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 		 *
 		 * @param array $tables  The site tables to be dropped.
 		 * @param int   $blog_id The ID of the site to drop tables for.
+=======
+		$uploads = wp_upload_dir();
+
+		$tables = $wpdb->tables( 'blog' );
+		/**
+		 * Filter the tables to drop when the blog is deleted.
+		 *
+		 * @since MU
+		 *
+		 * @param array $tables  The blog tables to be dropped.
+		 * @param int   $blog_id The ID of the blog to drop tables for.
+>>>>>>> origin/master
 		 */
 		$drop_tables = apply_filters( 'wpmu_drop_tables', $tables, $blog_id );
 
@@ -128,12 +172,20 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 		$wpdb->delete( $wpdb->blogs, array( 'blog_id' => $blog_id ) );
 
 		/**
+<<<<<<< HEAD
 		 * Filters the upload base directory to delete when the site is deleted.
+=======
+		 * Filter the upload base directory to delete when the blog is deleted.
+>>>>>>> origin/master
 		 *
 		 * @since MU
 		 *
 		 * @param string $uploads['basedir'] Uploads path without subdirectory. @see wp_upload_dir()
+<<<<<<< HEAD
 		 * @param int    $blog_id            The site ID.
+=======
+		 * @param int    $blog_id            The blog ID.
+>>>>>>> origin/master
 		 */
 		$dir = apply_filters( 'wpmu_delete_blog_upload_dir', $uploads['basedir'], $blog_id );
 		$dir = rtrim( $dir, DIRECTORY_SEPARATOR );
@@ -163,7 +215,11 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 		}
 
 		$stack = array_reverse( $stack ); // Last added dirs are deepest
+<<<<<<< HEAD
 		foreach ( (array) $stack as $dir ) {
+=======
+		foreach( (array) $stack as $dir ) {
+>>>>>>> origin/master
 			if ( $dir != $top_dir)
 			@rmdir( $dir );
 		}
@@ -182,23 +238,30 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
  *
  * @todo Merge with wp_delete_user() ?
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param int $id The user ID.
  * @return bool True if the user was deleted, otherwise false.
  */
 function wpmu_delete_user( $id ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	if ( ! is_numeric( $id ) ) {
 		return false;
 	}
 
+=======
+>>>>>>> origin/master
 	$id = (int) $id;
 	$user = new WP_User( $id );
 
 	if ( !$user->exists() )
 		return false;
+<<<<<<< HEAD
 
 	// Global super-administrators are protected, and cannot be deleted.
 	$_super_admins = get_super_admins();
@@ -206,6 +269,8 @@ function wpmu_delete_user( $id ) {
 		return false;
 	}
 
+=======
+>>>>>>> origin/master
 	/**
 	 * Fires before a user is deleted from the network.
 	 *
@@ -272,7 +337,10 @@ function update_option_new_admin_email( $old_value, $value ) {
 	);
 	update_option( 'adminhash', $new_admin_email );
 
+<<<<<<< HEAD
 	/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
+=======
+>>>>>>> origin/master
 	$email_text = __( 'Howdy ###USERNAME###,
 
 You recently requested to have the administration email address on
@@ -291,7 +359,11 @@ All at ###SITENAME###
 ###SITEURL###' );
 
 	/**
+<<<<<<< HEAD
 	 * Filters the email text sent when the site admin email is changed.
+=======
+	 * Filter the email text sent when the site admin email is changed.
+>>>>>>> origin/master
 	 *
 	 * The following strings have a special meaning and will get replaced dynamically:
 	 * ###USERNAME###  The current user's username.
@@ -307,23 +379,38 @@ All at ###SITENAME###
 	 */
 	$content = apply_filters( 'new_admin_email_content', $email_text, $new_admin_email );
 
+<<<<<<< HEAD
 	$current_user = wp_get_current_user();
 	$content = str_replace( '###USERNAME###', $current_user->user_login, $content );
 	$content = str_replace( '###ADMIN_URL###', esc_url( self_admin_url( 'options.php?adminhash='.$hash ) ), $content );
+=======
+	$content = str_replace( '###USERNAME###', $current_user->user_login, $content );
+	$content = str_replace( '###ADMIN_URL###', esc_url( admin_url( 'options.php?adminhash='.$hash ) ), $content );
+>>>>>>> origin/master
 	$content = str_replace( '###EMAIL###', $value, $content );
 	$content = str_replace( '###SITENAME###', get_site_option( 'site_name' ), $content );
 	$content = str_replace( '###SITEURL###', network_home_url(), $content );
 
 	wp_mail( $value, sprintf( __( '[%s] New Admin Email Address' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), $content );
 }
+<<<<<<< HEAD
+=======
+add_action( 'update_option_new_admin_email', 'update_option_new_admin_email', 10, 2 );
+add_action( 'add_option_new_admin_email', 'update_option_new_admin_email', 10, 2 );
+>>>>>>> origin/master
 
 /**
  * Sends an email when an email address change is requested.
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global WP_Error $errors WP_Error object.
  * @global wpdb     $wpdb   WordPress database object.
+=======
+ * @global object $errors WP_Error object.
+ * @global object $wpdb   WordPress database object.
+>>>>>>> origin/master
  */
 function send_confirmation_on_profile_email() {
 	global $errors, $wpdb;
@@ -342,18 +429,30 @@ function send_confirmation_on_profile_email() {
 
 		if ( $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM {$wpdb->users} WHERE user_email=%s", $_POST['email'] ) ) ) {
 			$errors->add( 'user_email', __( "<strong>ERROR</strong>: The email address is already used." ), array( 'form-field' => 'email' ) );
+<<<<<<< HEAD
 			delete_user_meta( $current_user->ID, '_new_email' );
+=======
+			delete_option( $current_user->ID . '_new_email' );
+>>>>>>> origin/master
 			return;
 		}
 
 		$hash = md5( $_POST['email'] . time() . mt_rand() );
 		$new_user_email = array(
+<<<<<<< HEAD
 			'hash' => $hash,
 			'newemail' => $_POST['email']
 		);
 		update_user_meta( $current_user->ID, '_new_email', $new_user_email );
 
 		/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
+=======
+				'hash' => $hash,
+				'newemail' => $_POST['email']
+				);
+		update_option( $current_user->ID . '_new_email', $new_user_email );
+
+>>>>>>> origin/master
 		$email_text = __( 'Howdy ###USERNAME###,
 
 You recently requested to have the email address on your account changed.
@@ -371,7 +470,11 @@ All at ###SITENAME###
 ###SITEURL###' );
 
 		/**
+<<<<<<< HEAD
 		 * Filters the email text sent when a user changes emails.
+=======
+		 * Filter the email text sent when a user changes emails.
+>>>>>>> origin/master
 		 *
 		 * The following strings have a special meaning and will get replaced dynamically:
 		 * ###USERNAME###  The current user's username.
@@ -397,12 +500,17 @@ All at ###SITENAME###
 		$_POST['email'] = $current_user->user_email;
 	}
 }
+<<<<<<< HEAD
+=======
+add_action( 'personal_options_update', 'send_confirmation_on_profile_email' );
+>>>>>>> origin/master
 
 /**
  * Adds an admin notice alerting the user to check for confirmation email
  * after email address change.
  *
  * @since 3.0.0
+<<<<<<< HEAD
  *
  * @global string $pagenow
  */
@@ -416,6 +524,17 @@ function new_user_email_admin_notice() {
 
 /**
  * Check whether a site has used its allotted upload space.
+=======
+ */
+function new_user_email_admin_notice() {
+	if ( strpos( $_SERVER['PHP_SELF'], 'profile.php' ) && isset( $_GET['updated'] ) && $email = get_option( get_current_user_id() . '_new_email' ) )
+		echo "<div class='update-nag'>" . sprintf( __( "Your email address has not been updated yet. Please check your inbox at %s for a confirmation email." ), $email['newemail'] ) . "</div>";
+}
+add_action( 'admin_notices', 'new_user_email_admin_notice' );
+
+/**
+ * Check whether a blog has used its allotted upload space.
+>>>>>>> origin/master
  *
  * @since MU
  *
@@ -427,9 +546,15 @@ function upload_is_user_over_quota( $echo = true ) {
 		return false;
 
 	$space_allowed = get_space_allowed();
+<<<<<<< HEAD
 	if ( ! is_numeric( $space_allowed ) ) {
 		$space_allowed = 10; // Default space allowed is 10 MB
 	}
+=======
+	if ( empty( $space_allowed ) || !is_numeric( $space_allowed ) )
+		$space_allowed = 10; // Default space allowed is 10 MB
+
+>>>>>>> origin/master
 	$space_used = get_space_used();
 
 	if ( ( $space_allowed - $space_used ) < 0 ) {
@@ -442,7 +567,11 @@ function upload_is_user_over_quota( $echo = true ) {
 }
 
 /**
+<<<<<<< HEAD
  * Displays the amount of disk space used by the current site. Not used in core.
+=======
+ * Displays the amount of disk space used by the current blog. Not used in core.
+>>>>>>> origin/master
  *
  * @since MU
  */
@@ -453,7 +582,11 @@ function display_space_usage() {
 	$percent_used = ( $space_used / $space_allowed ) * 100;
 
 	if ( $space_allowed > 1000 ) {
+<<<<<<< HEAD
 		$space = number_format( $space_allowed / KB_IN_BYTES );
+=======
+		$space = number_format( $space_allowed / 1024 );
+>>>>>>> origin/master
 		/* translators: Gigabytes */
 		$space .= __( 'GB' );
 	} else {
@@ -467,7 +600,11 @@ function display_space_usage() {
 }
 
 /**
+<<<<<<< HEAD
  * Get the remaining upload space for this site.
+=======
+ * Get the remaining upload space for this blog.
+>>>>>>> origin/master
  *
  * @since MU
  *
@@ -475,19 +612,33 @@ function display_space_usage() {
  * @return int Max size in bytes
  */
 function fix_import_form_size( $size ) {
+<<<<<<< HEAD
 	if ( upload_is_user_over_quota( false ) ) {
 		return 0;
 	}
+=======
+	if ( upload_is_user_over_quota( false ) == true )
+		return 0;
+
+>>>>>>> origin/master
 	$available = get_upload_space_available();
 	return min( $size, $available );
 }
 
 /**
+<<<<<<< HEAD
  * Displays the site upload space quota setting form on the Edit Site Settings screen.
  *
  * @since 3.0.0
  *
  * @param int $id The ID of the site to display the setting for.
+=======
+ * Displays the edit blog upload space setting form on the Edit Blog screen.
+ *
+ * @since 3.0.0
+ *
+ * @param int $id The ID of the blog to display the setting for.
+>>>>>>> origin/master
  */
 function upload_space_setting( $id ) {
 	switch_to_blog( $id );
@@ -507,6 +658,10 @@ function upload_space_setting( $id ) {
 	</tr>
 	<?php
 }
+<<<<<<< HEAD
+=======
+add_action( 'wpmueditblogaction', 'upload_space_setting' );
+>>>>>>> origin/master
 
 /**
  * Update the status of a user in the database.
@@ -515,8 +670,11 @@ function upload_space_setting( $id ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param int    $id         The user ID.
  * @param string $pref       The column in the wp_users table to update the user's status
  *                           in (presumably user_status, spam, or deleted).
@@ -528,7 +686,11 @@ function update_user_status( $id, $pref, $value, $deprecated = null ) {
 	global $wpdb;
 
 	if ( null !== $deprecated )
+<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '3.0.2' );
+=======
+		_deprecated_argument( __FUNCTION__, '3.1' );
+>>>>>>> origin/master
 
 	$wpdb->update( $wpdb->users, array( sanitize_key( $pref ) => $value ), array( 'ID' => $id ) );
 
@@ -604,7 +766,11 @@ function format_code_lang( $code = '' ) {
 		've' => 'Venda', 'vi' => 'Vietnamese', 'vo' => 'Volapük', 'cy' => 'Welsh','wa' => 'Walloon','wo' => 'Wolof', 'xh' => 'Xhosa', 'yi' => 'Yiddish', 'yo' => 'Yoruba', 'za' => 'Zhuang; Chuang', 'zu' => 'Zulu' );
 
 	/**
+<<<<<<< HEAD
 	 * Filters the language codes.
+=======
+	 * Filter the language codes.
+>>>>>>> origin/master
 	 *
 	 * @since MU
 	 *
@@ -621,10 +787,17 @@ function format_code_lang( $code = '' ) {
  * @since 3.0.0
  *
  * @param object $term     The term.
+<<<<<<< HEAD
  * @param string $taxonomy The taxonomy for `$term`. Should be 'category' or 'post_tag', as these are
  *                         the only taxonomies which are processed by this function; anything else
  *                         will be returned untouched.
  * @return object|array Returns `$term`, after filtering the 'slug' field with sanitize_title()
+=======
+ * @param string $taxonomy The taxonomy for $term. Should be 'category' or 'post_tag', as these are
+ *                         the only taxonomies which are processed by this function; anything else
+ *                         will be returned untouched.
+ * @return object|array Returns `$term`, after filtering the 'slug' field with {@see sanitize_title()}
+>>>>>>> origin/master
  *                      if $taxonomy is 'category' or 'post_tag'.
  */
 function sync_category_tag_slugs( $term, $taxonomy ) {
@@ -637,6 +810,10 @@ function sync_category_tag_slugs( $term, $taxonomy ) {
 	}
 	return $term;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'get_term', 'sync_category_tag_slugs', 10, 2 );
+>>>>>>> origin/master
 
 /**
  * Displays an access denied message when a user tries to view a site's dashboard they
@@ -677,6 +854,10 @@ function _access_denied_splash() {
 
 	wp_die( $output, 403 );
 }
+<<<<<<< HEAD
+=======
+add_action( 'admin_page_access_denied', '_access_denied_splash', 99 );
+>>>>>>> origin/master
 
 /**
  * Checks if the current user has permissions to import new users.
@@ -691,6 +872,10 @@ function check_import_new_users( $permission ) {
 		return false;
 	return true;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'import_allow_create_users', 'check_import_new_users' );
+>>>>>>> origin/master
 // See "import_allow_fetch_attachments" and "import_attachment_size_limit" filters too.
 
 /**
@@ -730,7 +915,11 @@ function mu_dropdown_languages( $lang_files = array(), $current = '' ) {
 	uksort( $output, 'strnatcasecmp' );
 
 	/**
+<<<<<<< HEAD
 	 * Filters the languages available in the dropdown.
+=======
+	 * Filter the languages available in the dropdown.
+>>>>>>> origin/master
 	 *
 	 * @since MU
 	 *
@@ -748,6 +937,7 @@ function mu_dropdown_languages( $lang_files = array(), $current = '' ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global int    $wp_db_version The version number of the database.
  * @global string $pagenow
  *
@@ -768,6 +958,19 @@ function site_admin_notice() {
 		echo "<div class='update-nag'>" . sprintf( __( 'Thank you for Updating! Please visit the <a href="%s">Upgrade Network</a> page to update all your sites.' ), esc_url( network_admin_url( 'upgrade.php' ) ) ) . "</div>";
 	}
 }
+=======
+ * @global int $wp_db_version The version number of the database.
+ */
+function site_admin_notice() {
+	global $wp_db_version;
+	if ( !is_super_admin() )
+		return false;
+	if ( get_site_option( 'wpmu_upgrade_site' ) != $wp_db_version )
+		echo "<div class='update-nag'>" . sprintf( __( 'Thank you for Updating! Please visit the <a href="%s">Upgrade Network</a> page to update all your sites.' ), esc_url( network_admin_url( 'upgrade.php' ) ) ) . "</div>";
+}
+add_action( 'admin_notices', 'site_admin_notice' );
+add_action( 'network_admin_notices', 'site_admin_notice' );
+>>>>>>> origin/master
 
 /**
  * Avoids a collision between a site slug and a permalink slug.
@@ -802,6 +1005,10 @@ function avoid_blog_page_permalink_collision( $data, $postarr ) {
 	}
 	return $data;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'wp_insert_post_data', 'avoid_blog_page_permalink_collision', 10, 2 );
+>>>>>>> origin/master
 
 /**
  * Handles the display of choosing a user's primary site.
@@ -825,7 +1032,11 @@ function choose_primary_blog() {
 			$found = false;
 			?>
 			<select name="primary_blog" id="primary_blog">
+<<<<<<< HEAD
 				<?php foreach ( (array) $all_blogs as $blog ) {
+=======
+				<?php foreach( (array) $all_blogs as $blog ) {
+>>>>>>> origin/master
 					if ( $primary_blog == $blog->userblog_id )
 						$found = true;
 					?><option value="<?php echo $blog->userblog_id ?>"<?php selected( $primary_blog, $blog->userblog_id ); ?>><?php echo esc_url( get_home_url( $blog->userblog_id ) ) ?></option><?php
@@ -838,7 +1049,11 @@ function choose_primary_blog() {
 			}
 		} elseif ( count( $all_blogs ) == 1 ) {
 			$blog = reset( $all_blogs );
+<<<<<<< HEAD
 			echo esc_url( get_home_url( $blog->userblog_id ) );
+=======
+			echo $blog->domain;
+>>>>>>> origin/master
 			if ( $primary_blog != $blog->userblog_id ) // Set the primary blog again if it's out of sync with blog list.
 				update_user_meta( get_current_user_id(), 'primary_blog', $blog->userblog_id );
 		} else {
@@ -847,11 +1062,120 @@ function choose_primary_blog() {
 		?>
 		</td>
 	</tr>
+<<<<<<< HEAD
+=======
+	<?php if ( in_array( get_site_option( 'registration' ), array( 'all', 'blog' ) ) ) : ?>
+		<tr>
+			<th scope="row" colspan="2" class="th-full">
+				<?php
+				/** This filter is documented in wp-login.php */
+				$sign_up_url = apply_filters( 'wp_signup_location', network_site_url( 'wp-signup.php' ) );
+				?>
+				<a href="<?php echo esc_url( $sign_up_url ); ?>"><?php _e( 'Create a New Site' ); ?></a>
+			</th>
+		</tr>
+	<?php endif; ?>
+>>>>>>> origin/master
 	</table>
 	<?php
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Grants Super Admin privileges.
+ *
+ * @since 3.0.0
+ *
+ * @param int $user_id ID of the user to be granted Super Admin privileges.
+ * @return bool True on success, false on failure. This can fail when the user is
+ *              already a super admin or when the `$super_admins` global is defined.
+ */
+function grant_super_admin( $user_id ) {
+	// If global super_admins override is defined, there is nothing to do here.
+	if ( isset( $GLOBALS['super_admins'] ) ) {
+		return false;
+	}
+
+	/**
+	 * Fires before the user is granted Super Admin privileges.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param int $user_id ID of the user that is about to be granted Super Admin privileges.
+	 */
+	do_action( 'grant_super_admin', $user_id );
+
+	// Directly fetch site_admins instead of using get_super_admins()
+	$super_admins = get_site_option( 'site_admins', array( 'admin' ) );
+
+	$user = get_userdata( $user_id );
+	if ( $user && ! in_array( $user->user_login, $super_admins ) ) {
+		$super_admins[] = $user->user_login;
+		update_site_option( 'site_admins' , $super_admins );
+
+		/**
+		 * Fires after the user is granted Super Admin privileges.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param int $user_id ID of the user that was granted Super Admin privileges.
+		 */
+		do_action( 'granted_super_admin', $user_id );
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Revokes Super Admin privileges.
+ *
+ * @since 3.0.0
+ *
+ * @param int $user_id ID of the user Super Admin privileges to be revoked from.
+ * @return bool True on success, false on failure. This can fail when the user's email
+ *              is the network admin email or when the `$super_admins` global is defined.
+ */
+function revoke_super_admin( $user_id ) {
+	// If global super_admins override is defined, there is nothing to do here.
+	if ( isset( $GLOBALS['super_admins'] ) ) {
+		return false;
+	}
+
+	/**
+	 * Fires before the user's Super Admin privileges are revoked.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param int $user_id ID of the user Super Admin privileges are being revoked from.
+	 */
+	do_action( 'revoke_super_admin', $user_id );
+
+	// Directly fetch site_admins instead of using get_super_admins()
+	$super_admins = get_site_option( 'site_admins', array( 'admin' ) );
+
+	$user = get_userdata( $user_id );
+	if ( $user && 0 !== strcasecmp( $user->user_email, get_site_option( 'admin_email' ) ) ) {
+		if ( false !== ( $key = array_search( $user->user_login, $super_admins ) ) ) {
+			unset( $super_admins[$key] );
+			update_site_option( 'site_admins', $super_admins );
+
+			/**
+			 * Fires after the user's Super Admin privileges are revoked.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param int $user_id ID of the user Super Admin privileges were revoked from.
+			 */
+			do_action( 'revoked_super_admin', $user_id );
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+>>>>>>> origin/master
  * Whether or not we can edit this network from this page.
  *
  * By default editing of network is restricted to the Network Admin for that `$site_id`
@@ -859,8 +1183,11 @@ function choose_primary_blog() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param int $site_id The network/site ID to check.
  * @return bool True if network can be edited, otherwise false.
  */
@@ -873,7 +1200,11 @@ function can_edit_network( $site_id ) {
 		$result = false;
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether this network can be edited from this page.
+=======
+	 * Filter whether this network can be edited from this page.
+>>>>>>> origin/master
 	 *
 	 * @since 3.1.0
 	 *
@@ -897,6 +1228,7 @@ var tb_pathToImage = "<?php echo includes_url( 'js/thickbox/loadingAnimation.gif
 </script>
 <?php
 }
+<<<<<<< HEAD
 
 /**
  *
@@ -1111,3 +1443,5 @@ function network_edit_site_nav( $args = array() ) {
 	echo implode( '', $screen_links );
 	echo '</h2>';
 }
+=======
+>>>>>>> origin/master

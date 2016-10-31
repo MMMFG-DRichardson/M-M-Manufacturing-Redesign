@@ -1,6 +1,7 @@
 /*global ajaxurl, isRtl */
 var wpWidgets;
 (function($) {
+<<<<<<< HEAD
 	var $document = $( document );
 
 wpWidgets = {
@@ -10,6 +11,10 @@ wpWidgets = {
 	 * @var element|null
 	 */
 	hoveredSidebar: null,
+=======
+
+wpWidgets = {
+>>>>>>> origin/master
 
 	init : function() {
 		var rem, the_id,
@@ -29,13 +34,19 @@ wpWidgets = {
 			} else {
 				$wrap.addClass('closed');
 			}
+<<<<<<< HEAD
 
 			$document.triggerHandler( 'wp-pin-menu' );
+=======
+>>>>>>> origin/master
 		});
 
 		$('#widgets-left .sidebar-name').click( function() {
 			$(this).closest('.widgets-holder-wrap').toggleClass('closed');
+<<<<<<< HEAD
 			$document.triggerHandler( 'wp-pin-menu' );
+=======
+>>>>>>> origin/master
 		});
 
 		$(document.body).bind('click.widgets-toggle', function(e) {
@@ -80,9 +91,12 @@ wpWidgets = {
 				widget.removeClass( 'open' );
 				wpWidgets.close( widget );
 				e.preventDefault();
+<<<<<<< HEAD
 			} else if ( target.attr( 'id' ) === 'inactive-widgets-control-remove' ) {
 				wpWidgets.removeInactiveWidgets();
 				e.preventDefault();
+=======
+>>>>>>> origin/master
 			}
 		});
 
@@ -102,8 +116,12 @@ wpWidgets = {
 			distance: 2,
 			helper: 'clone',
 			zIndex: 100,
+<<<<<<< HEAD
 			containment: '#wpwrap',
 			refreshPositions: true,
+=======
+			containment: 'document',
+>>>>>>> origin/master
 			start: function( event, ui ) {
 				var chooser = $(this).find('.widgets-chooser');
 
@@ -127,6 +145,7 @@ wpWidgets = {
 			}
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Opens and closes previously closed Sidebars when Widgets are dragged over/out of them.
 		 */
@@ -166,22 +185,31 @@ wpWidgets = {
 			}
 		} );
 
+=======
+>>>>>>> origin/master
 		sidebars.sortable({
 			placeholder: 'widget-placeholder',
 			items: '> .widget',
 			handle: '> .widget-top > .widget-title',
 			cursor: 'move',
 			distance: 2,
+<<<<<<< HEAD
 			containment: '#wpwrap',
 			tolerance: 'pointer',
 			refreshPositions: true,
+=======
+			containment: 'document',
+>>>>>>> origin/master
 			start: function( event, ui ) {
 				var height, $this = $(this),
 					$wrap = $this.parent(),
 					inside = ui.item.children('.widget-inside');
 
 				if ( inside.css('display') === 'block' ) {
+<<<<<<< HEAD
 					ui.item.removeClass('open');
+=======
+>>>>>>> origin/master
 					inside.hide();
 					$(this).sortable('refreshPositions');
 				}
@@ -199,9 +227,12 @@ wpWidgets = {
 					$widget = ui.item,
 					id = the_id;
 
+<<<<<<< HEAD
 				// Reset the var to hold a previously closed sidebar.
 				wpWidgets.hoveredSidebar = null;
 
+=======
+>>>>>>> origin/master
 				if ( $widget.hasClass('deleting') ) {
 					wpWidgets.save( $widget, 1, 0, 1 ); // delete widget
 					$widget.remove();
@@ -233,7 +264,11 @@ wpWidgets = {
 
 					wpWidgets.save( $widget, 0, 0, 1 );
 					$widget.find('input.add_new').val('');
+<<<<<<< HEAD
 					$document.trigger( 'widget-added', [ $widget ] );
+=======
+					$( document ).trigger( 'widget-added', [ $widget ] );
+>>>>>>> origin/master
 				}
 
 				$sidebar = $widget.parent();
@@ -300,7 +335,11 @@ wpWidgets = {
 
 				if ( ui.draggable.hasClass('ui-sortable-helper') ) {
 					$('#removing-widget').show().children('span')
+<<<<<<< HEAD
 					.html( ui.draggable.find( 'div.widget-title' ).children( 'h3' ).html() );
+=======
+					.html( ui.draggable.find('div.widget-title').children('h4').html() );
+>>>>>>> origin/master
 				}
 			},
 			out: function(e,ui) {
@@ -313,7 +352,11 @@ wpWidgets = {
 		// Area Chooser
 		$( '#widgets-right .widgets-holder-wrap' ).each( function( index, element ) {
 			var $element = $( element ),
+<<<<<<< HEAD
 				name = $element.find( '.sidebar-name h2' ).text(),
+=======
+				name = $element.find( '.sidebar-name h3' ).text(),
+>>>>>>> origin/master
 				id = $element.find( '.widgets-sortables' ).attr( 'id' ),
 				li = $('<li tabindex="0">').text( $.trim( name ) );
 
@@ -390,7 +433,10 @@ wpWidgets = {
 		});
 
 		$.post( ajaxurl, data, function() {
+<<<<<<< HEAD
 			$( '#inactive-widgets-control-remove' ).prop( 'disabled' , ! $( '#wp_inactive_widgets .widget' ).length );
+=======
+>>>>>>> origin/master
 			$( '.spinner' ).removeClass( 'is-active' );
 		});
 	},
@@ -435,16 +481,20 @@ wpWidgets = {
 					});
 				} else {
 					widget.remove();
+<<<<<<< HEAD
 
 					if ( sidebarId === 'wp_inactive_widgets' ) {
 						$( '#inactive-widgets-control-remove' ).prop( 'disabled' , ! $( '#wp_inactive_widgets .widget' ).length );
 					}
+=======
+>>>>>>> origin/master
 				}
 			} else {
 				$( '.spinner' ).removeClass( 'is-active' );
 				if ( r && r.length > 2 ) {
 					$( 'div.widget-content', widget ).html( r );
 					wpWidgets.appendTitle( widget );
+<<<<<<< HEAD
 					$document.trigger( 'widget-updated', [ widget ] );
 
 					if ( sidebarId === 'wp_inactive_widgets' ) {
@@ -453,12 +503,18 @@ wpWidgets = {
 				}
 			}
 
+=======
+					$( document ).trigger( 'widget-updated', [ widget ] );
+				}
+			}
+>>>>>>> origin/master
 			if ( order ) {
 				wpWidgets.saveOrder();
 			}
 		});
 	},
 
+<<<<<<< HEAD
 	removeInactiveWidgets : function() {
 		var $element = $( '.remove-inactive-widgets' ), a, data;
 
@@ -478,6 +534,8 @@ wpWidgets = {
 		} );
 	},
 
+=======
+>>>>>>> origin/master
 	appendTitle : function(widget) {
 		var title = $('input[id*="-title"]', widget).val() || '';
 
@@ -534,7 +592,11 @@ wpWidgets = {
 		// No longer "new" widget
 		widget.find( 'input.add_new' ).val('');
 
+<<<<<<< HEAD
 		$document.trigger( 'widget-added', [ widget ] );
+=======
+		$( document ).trigger( 'widget-added', [ widget ] );
+>>>>>>> origin/master
 
 		/*
 		 * Check if any part of the sidebar is visible in the viewport. If it is, don't scroll.
@@ -574,6 +636,7 @@ wpWidgets = {
 	clearWidgetSelection: function() {
 		$( '#widgets-left' ).removeClass( 'chooser' );
 		$( '.widget-in-question' ).removeClass( 'widget-in-question' );
+<<<<<<< HEAD
 	},
 
 	/**
@@ -591,5 +654,11 @@ wpWidgets = {
 };
 
 $document.ready( function(){ wpWidgets.init(); } );
+=======
+	}
+};
+
+$(document).ready( function(){ wpWidgets.init(); } );
+>>>>>>> origin/master
 
 })(jQuery);

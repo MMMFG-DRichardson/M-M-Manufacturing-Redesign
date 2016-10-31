@@ -18,7 +18,11 @@ if ( ! is_multisite() ) {
 
 $redirect_user_admin_request = ( ( $current_blog->domain != $current_site->domain ) || ( $current_blog->path != $current_site->path ) );
 /**
+<<<<<<< HEAD
  * Filters whether to redirect the request to the User Admin in Multisite.
+=======
+ * Filter whether to redirect the request to the User Admin in Multisite.
+>>>>>>> origin/master
  *
  * @since 3.2.0
  *

@@ -8,6 +8,7 @@
  * @subpackage Administration
  */
 
+<<<<<<< HEAD
 /**
  * Declare these as global in case schema.php is included from a function.
  *
@@ -15,10 +16,19 @@
  * @global array  $wp_queries
  * @global string $charset_collate
  */
+=======
+// Declare these as global in case schema.php is included from a function.
+>>>>>>> origin/master
 global $wpdb, $wp_queries, $charset_collate;
 
 /**
  * The database character collate.
+<<<<<<< HEAD
+=======
+ * @var string
+ * @global string
+ * @name $charset_collate
+>>>>>>> origin/master
  */
 $charset_collate = $wpdb->get_charset_collate();
 
@@ -27,16 +37,30 @@ $charset_collate = $wpdb->get_charset_collate();
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $scope Optional. The tables for which to retrieve SQL. Can be all, global, ms_global, or blog tables. Defaults to all.
  * @param int $blog_id Optional. The site ID for which to retrieve SQL. Default is the current site ID.
+=======
+ * @param string $scope Optional. The tables for which to retrieve SQL. Can be all, global, ms_global, or blog tables. Defaults to all.
+ * @param int $blog_id Optional. The blog ID for which to retrieve SQL. Default is the current blog ID.
+>>>>>>> origin/master
  * @return string The SQL needed to create the requested tables.
  */
 function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	$charset_collate = $wpdb->get_charset_collate();
+=======
+	$charset_collate = '';
+
+	if ( ! empty($wpdb->charset) )
+		$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
+	if ( ! empty($wpdb->collate) )
+		$charset_collate .= " COLLATE $wpdb->collate";
+>>>>>>> origin/master
 
 	if ( $blog_id && $blog_id != $wpdb->blogid )
 		$old_blog_id = $wpdb->set_blog_id( $blog_id );
@@ -52,6 +76,7 @@ function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
 	$max_index_length = 191;
 
 	// Blog specific tables.
+<<<<<<< HEAD
 	$blog_tables = "CREATE TABLE $wpdb->termmeta (
   meta_id bigint(20) unsigned NOT NULL auto_increment,
   term_id bigint(20) unsigned NOT NULL default '0',
@@ -62,6 +87,9 @@ function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
   KEY meta_key (meta_key($max_index_length))
 ) $charset_collate;
 CREATE TABLE $wpdb->terms (
+=======
+	$blog_tables = "CREATE TABLE $wpdb->terms (
+>>>>>>> origin/master
  term_id bigint(20) unsigned NOT NULL auto_increment,
  name varchar(200) NOT NULL default '',
  slug varchar(200) NOT NULL default '',
@@ -139,7 +167,11 @@ CREATE TABLE $wpdb->links (
 ) $charset_collate;
 CREATE TABLE $wpdb->options (
   option_id bigint(20) unsigned NOT NULL auto_increment,
+<<<<<<< HEAD
   option_name varchar(191) NOT NULL default '',
+=======
+  option_name varchar(64) NOT NULL default '',
+>>>>>>> origin/master
   option_value longtext NOT NULL,
   autoload varchar(20) NOT NULL default 'yes',
   PRIMARY KEY  (option_id),
@@ -189,38 +221,62 @@ CREATE TABLE $wpdb->posts (
 	$users_single_table = "CREATE TABLE $wpdb->users (
   ID bigint(20) unsigned NOT NULL auto_increment,
   user_login varchar(60) NOT NULL default '',
+<<<<<<< HEAD
   user_pass varchar(255) NOT NULL default '',
+=======
+  user_pass varchar(64) NOT NULL default '',
+>>>>>>> origin/master
   user_nicename varchar(50) NOT NULL default '',
   user_email varchar(100) NOT NULL default '',
   user_url varchar(100) NOT NULL default '',
   user_registered datetime NOT NULL default '0000-00-00 00:00:00',
+<<<<<<< HEAD
   user_activation_key varchar(255) NOT NULL default '',
+=======
+  user_activation_key varchar(60) NOT NULL default '',
+>>>>>>> origin/master
   user_status int(11) NOT NULL default '0',
   display_name varchar(250) NOT NULL default '',
   PRIMARY KEY  (ID),
   KEY user_login_key (user_login),
+<<<<<<< HEAD
   KEY user_nicename (user_nicename),
   KEY user_email (user_email)
+=======
+  KEY user_nicename (user_nicename)
+>>>>>>> origin/master
 ) $charset_collate;\n";
 
 	// Multisite users table
 	$users_multi_table = "CREATE TABLE $wpdb->users (
   ID bigint(20) unsigned NOT NULL auto_increment,
   user_login varchar(60) NOT NULL default '',
+<<<<<<< HEAD
   user_pass varchar(255) NOT NULL default '',
+=======
+  user_pass varchar(64) NOT NULL default '',
+>>>>>>> origin/master
   user_nicename varchar(50) NOT NULL default '',
   user_email varchar(100) NOT NULL default '',
   user_url varchar(100) NOT NULL default '',
   user_registered datetime NOT NULL default '0000-00-00 00:00:00',
+<<<<<<< HEAD
   user_activation_key varchar(255) NOT NULL default '',
+=======
+  user_activation_key varchar(60) NOT NULL default '',
+>>>>>>> origin/master
   user_status int(11) NOT NULL default '0',
   display_name varchar(250) NOT NULL default '',
   spam tinyint(2) NOT NULL default '0',
   deleted tinyint(2) NOT NULL default '0',
   PRIMARY KEY  (ID),
   KEY user_login_key (user_login),
+<<<<<<< HEAD
   KEY user_nicename (user_nicename),
   KEY user_email (user_email)
+=======
+  KEY user_nicename (user_nicename)
+>>>>>>> origin/master
 ) $charset_collate;\n";
 
 	// Usermeta.
@@ -344,8 +400,12 @@ $wp_queries = wp_get_db_schema( 'all' );
  * @since 1.5.0
  *
  * @global wpdb $wpdb WordPress database abstraction object.
+<<<<<<< HEAD
  * @global int  $wp_db_version
  * @global int  $wp_current_db_version
+=======
+ * @uses $wp_db_version
+>>>>>>> origin/master
  */
 function populate_options() {
 	global $wpdb, $wp_db_version, $wp_current_db_version;
@@ -365,6 +425,7 @@ function populate_options() {
 		$uploads_use_yearmonth_folders = 1;
 	}
 
+<<<<<<< HEAD
 	// If WP_DEFAULT_THEME doesn't exist, fall back to the latest core default theme.
 	$stylesheet = $template = WP_DEFAULT_THEME;
 	$theme = wp_get_theme( WP_DEFAULT_THEME );
@@ -377,11 +438,22 @@ function populate_options() {
 		$stylesheet = $theme->get_stylesheet();
 		$template   = $theme->get_template();
 	}
+=======
+	$template = WP_DEFAULT_THEME;
+	// If default theme is a child theme, we need to get its template
+	$theme = wp_get_theme( $template );
+	if ( ! $theme->errors() )
+		$template = $theme->get_template();
+>>>>>>> origin/master
 
 	$timezone_string = '';
 	$gmt_offset = 0;
 	/* translators: default GMT offset or timezone string. Must be either a valid offset (-12 to 14)
+<<<<<<< HEAD
 	   or a valid timezone string (America/New_York). See https://secure.php.net/manual/en/timezones.php
+=======
+	   or a valid timezone string (America/New_York). See http://us3.php.net/manual/en/timezones.php
+>>>>>>> origin/master
 	   for all timezone strings supported by PHP.
 	*/
 	$offset_or_tz = _x( '0', 'default GMT offset or timezone string' );
@@ -394,7 +466,11 @@ function populate_options() {
 	'siteurl' => $guessurl,
 	'home' => $guessurl,
 	'blogname' => __('My Site'),
+<<<<<<< HEAD
 	/* translators: site tagline */
+=======
+	/* translators: blog tagline */
+>>>>>>> origin/master
 	'blogdescription' => __('Just another WordPress site'),
 	'users_can_register' => 0,
 	'admin_email' => 'you@example.com',
@@ -415,22 +491,38 @@ function populate_options() {
 	'default_ping_status' => 'open',
 	'default_pingback_flag' => 1,
 	'posts_per_page' => 10,
+<<<<<<< HEAD
 	/* translators: default date format, see https://secure.php.net/date */
 	'date_format' => __('F j, Y'),
 	/* translators: default time format, see https://secure.php.net/date */
 	'time_format' => __('g:i a'),
 	/* translators: links last updated date format, see https://secure.php.net/date */
+=======
+	/* translators: default date format, see http://php.net/date */
+	'date_format' => __('F j, Y'),
+	/* translators: default time format, see http://php.net/date */
+	'time_format' => __('g:i a'),
+	/* translators: links last updated date format, see http://php.net/date */
+>>>>>>> origin/master
 	'links_updated_date_format' => __('F j, Y g:i a'),
 	'comment_moderation' => 0,
 	'moderation_notify' => 1,
 	'permalink_structure' => '',
+<<<<<<< HEAD
 	'rewrite_rules' => '',
+=======
+	'gzipcompression' => 0,
+>>>>>>> origin/master
 	'hack_file' => 0,
 	'blog_charset' => 'UTF-8',
 	'moderation_keys' => '',
 	'active_plugins' => array(),
 	'category_base' => '',
 	'ping_sites' => 'http://rpc.pingomatic.com/',
+<<<<<<< HEAD
+=======
+	'advanced_edit' => 0,
+>>>>>>> origin/master
 	'comment_max_links' => 2,
 	'gmt_offset' => $gmt_offset,
 
@@ -438,7 +530,11 @@ function populate_options() {
 	'default_email_category' => 1,
 	'recently_edited' => '',
 	'template' => $template,
+<<<<<<< HEAD
 	'stylesheet' => $stylesheet,
+=======
+	'stylesheet' => WP_DEFAULT_THEME,
+>>>>>>> origin/master
 	'comment_whitelist' => 1,
 	'blacklist_keys' => '',
 	'comment_registration' => 0,
@@ -479,7 +575,11 @@ function populate_options() {
 	// 2.7
 	'large_size_w' => 1024,
 	'large_size_h' => 1024,
+<<<<<<< HEAD
 	'image_default_link_type' => 'none',
+=======
+	'image_default_link_type' => 'file',
+>>>>>>> origin/master
 	'image_default_size' => '',
 	'image_default_align' => '',
 	'close_comments_for_old_posts' => 0,
@@ -508,6 +608,7 @@ function populate_options() {
 
 	// 3.5
 	'link_manager_enabled' => 0,
+<<<<<<< HEAD
 
 	// 4.3.0
 	'finished_splitting_shared_terms' => 1,
@@ -516,6 +617,8 @@ function populate_options() {
 	// 4.4.0
 	'medium_large_size_w' => 768,
 	'medium_large_size_h' => 0,
+=======
+>>>>>>> origin/master
 	);
 
 	// 3.3
@@ -526,7 +629,11 @@ function populate_options() {
 
 	// 3.0 multisite
 	if ( is_multisite() ) {
+<<<<<<< HEAD
 		/* translators: site tagline */
+=======
+		/* translators: blog tagline */
+>>>>>>> origin/master
 		$options[ 'blogdescription' ] = sprintf(__('Just another %s site'), get_current_site()->site_name );
 		$options[ 'permalink_structure' ] = '/%year%/%monthnum%/%day%/%postname%/';
 	}
@@ -576,7 +683,11 @@ function populate_options() {
 		'can_compress_scripts', 'page_uris', 'update_core', 'update_plugins', 'update_themes', 'doing_cron',
 		'random_seed', 'rss_excerpt_length', 'secret', 'use_linksupdate', 'default_comment_status_page',
 		'wporg_popular_tags', 'what_to_show', 'rss_language', 'language', 'enable_xmlrpc', 'enable_app',
+<<<<<<< HEAD
 		'embed_autourls', 'default_post_edit_rows', 'gzipcompression', 'advanced_edit'
+=======
+		'embed_autourls', 'default_post_edit_rows',
+>>>>>>> origin/master
 	);
 	foreach ( $unusedoptions as $option )
 		delete_option($option);
@@ -854,6 +965,16 @@ function populate_roles_300() {
 		$role->add_cap( 'update_core' );
 		$role->add_cap( 'list_users' );
 		$role->add_cap( 'remove_users' );
+<<<<<<< HEAD
+=======
+
+		/*
+		 * Never used, will be removed. create_users or promote_users
+		 * is the capability you're looking for.
+		 */
+		$role->add_cap( 'add_users' );
+
+>>>>>>> origin/master
 		$role->add_cap( 'promote_users' );
 		$role->add_cap( 'edit_theme_options' );
 		$role->add_cap( 'delete_themes' );
@@ -881,6 +1002,7 @@ endif;
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global wpdb       $wpdb
  * @global object     $current_site
  * @global int        $wp_db_version
@@ -893,6 +1015,9 @@ endif;
  * @param string $path              Optional. The path to append to the network's domain name. Default '/'.
  * @param bool   $subdomain_install Optional. Whether the network is a subdomain install or a subdirectory install.
  *                                  Default false, meaning the network is a subdirectory install.
+=======
+ * @param int $network_id ID of network to populate.
+>>>>>>> origin/master
  * @return bool|WP_Error True on success, or WP_Error on warning (with the install otherwise successful,
  *                       so the error code must be checked) or failure.
  */
@@ -909,22 +1034,32 @@ function populate_network( $network_id = 1, $domain = '', $email = '', $site_nam
 	if ( $network_id == $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->site WHERE id = %d", $network_id ) ) )
 		$errors->add( 'siteid_exists', __( 'The network already exists.' ) );
 
+<<<<<<< HEAD
 	if ( ! is_email( $email ) )
 		$errors->add( 'invalid_email', __( 'You must provide a valid email address.' ) );
+=======
+	$site_user = get_user_by( 'email', $email );
+	if ( ! is_email( $email ) )
+		$errors->add( 'invalid_email', __( 'You must provide a valid e-mail address.' ) );
+>>>>>>> origin/master
 
 	if ( $errors->get_error_code() )
 		return $errors;
 
+<<<<<<< HEAD
 	// If a user with the provided email does not exist, default to the current user as the new network admin.
 	$site_user = get_user_by( 'email', $email );
 	if ( false === $site_user ) {
 		$site_user = wp_get_current_user();
 	}
 
+=======
+>>>>>>> origin/master
 	// Set up site tables.
 	$template = get_option( 'template' );
 	$stylesheet = get_option( 'stylesheet' );
 	$allowed_themes = array( $stylesheet => true );
+<<<<<<< HEAD
 
 	if ( $template != $stylesheet ) {
 		$allowed_themes[ $template ] = true;
@@ -940,6 +1075,12 @@ function populate_network( $network_id = 1, $domain = '', $email = '', $site_nam
 			$allowed_themes[ $core_default->get_stylesheet() ] = true;
 		}
 	}
+=======
+	if ( $template != $stylesheet )
+		$allowed_themes[ $template ] = true;
+	if ( WP_DEFAULT_THEME != $stylesheet && WP_DEFAULT_THEME != $template )
+		$allowed_themes[ WP_DEFAULT_THEME ] = true;
+>>>>>>> origin/master
 
 	if ( 1 == $network_id ) {
 		$wpdb->insert( $wpdb->site, array( 'domain' => $domain, 'path' => $path ) );
@@ -963,7 +1104,10 @@ function populate_network( $network_id = 1, $domain = '', $email = '', $site_nam
 		$site_admins = get_site_option( 'site_admins' );
 	}
 
+<<<<<<< HEAD
 	/* translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those are placeholders. */
+=======
+>>>>>>> origin/master
 	$welcome_email = __( 'Howdy USERNAME,
 
 Your new SITE_NAME site has been successfully set up at:
@@ -995,7 +1139,11 @@ We hope you enjoy your new site. Thanks!
 
 	$sitemeta = array(
 		'site_name' => $site_name,
+<<<<<<< HEAD
 		'admin_email' => $email,
+=======
+		'admin_email' => $site_user->user_email,
+>>>>>>> origin/master
 		'admin_user_id' => $site_user->ID,
 		'registration' => 'none',
 		'upload_filetypes' => implode( ' ', $upload_filetypes ),
@@ -1006,8 +1154,12 @@ We hope you enjoy your new site. Thanks!
 		'illegal_names' => array( 'www', 'web', 'root', 'admin', 'main', 'invite', 'administrator', 'files' ),
 		'wpmu_upgrade_site' => $wp_db_version,
 		'welcome_email' => $welcome_email,
+<<<<<<< HEAD
 		/* translators: %s: site link */
 		'first_post' => __( 'Welcome to %s. This is your first post. Edit or delete it, then start blogging!' ),
+=======
+		'first_post' => __( 'Welcome to <a href="SITE_URL">SITE_NAME</a>. This is your first post. Edit or delete it, then start blogging!' ),
+>>>>>>> origin/master
 		// @todo - network admins should have a method of editing the network siteurl (used for cookie hash)
 		'siteurl' => get_option( 'siteurl' ) . '/',
 		'add_new_users' => '0',
@@ -1023,7 +1175,11 @@ We hope you enjoy your new site. Thanks!
 		$sitemeta['illegal_names'][] = 'blog';
 
 	/**
+<<<<<<< HEAD
 	 * Filters meta for a network on creation.
+=======
+	 * Filter meta for a network on creation.
+>>>>>>> origin/master
 	 *
 	 * @since 3.7.0
 	 *
@@ -1080,6 +1236,7 @@ We hope you enjoy your new site. Thanks!
 
 		if ( ! $vhost_ok ) {
 			$msg = '<p><strong>' . __( 'Warning! Wildcard DNS may not be configured correctly!' ) . '</strong></p>';
+<<<<<<< HEAD
 
 			$msg .= '<p>' . sprintf(
 				/* translators: %s: host name */
@@ -1100,6 +1257,14 @@ We hope you enjoy your new site. Thanks!
 
 			$msg .= '<p>' . __( 'You can still use your site but any subdomain you create may not be accessible. If you know your DNS is correct, ignore this message.' ) . '</p>';
 
+=======
+			$msg .= '<p>' . sprintf( __( 'The installer attempted to contact a random hostname (<code>%1$s</code>) on your domain.' ), $hostname );
+			if ( ! empty ( $errstr ) )
+				$msg .= ' ' . sprintf( __( 'This resulted in an error message: %s' ), '<code>' . $errstr . '</code>' );
+			$msg .= '</p>';
+			$msg .= '<p>' . __( 'To use a subdomain configuration, you must have a wildcard entry in your DNS. This usually means adding a <code>*</code> hostname record pointing at your web server in your DNS configuration tool.' ) . '</p>';
+			$msg .= '<p>' . __( 'You can still use your site but any subdomain you create may not be accessible. If you know your DNS is correct, ignore this message.' ) . '</p>';
+>>>>>>> origin/master
 			return new WP_Error( 'no_wildcard_dns', $msg );
 		}
 	}

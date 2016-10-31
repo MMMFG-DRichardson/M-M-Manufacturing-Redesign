@@ -72,7 +72,11 @@ function translations_api( $type, $args = null ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the Translation Install API response results.
+=======
+	 * Filter the Translation Install API response results.
+>>>>>>> origin/master
 	 *
 	 * @since 4.0.0
 	 *
@@ -94,7 +98,11 @@ function translations_api( $type, $args = null ) {
  *               in an error, an empty array will be returned.
  */
 function wp_get_available_translations() {
+<<<<<<< HEAD
 	if ( ! wp_installing() && false !== ( $translations = get_site_transient( 'available_translations' ) ) ) {
+=======
+	if ( ! defined( 'WP_INSTALLING' ) && false !== ( $translations = get_site_transient( 'available_translations' ) ) ) {
+>>>>>>> origin/master
 		return $translations;
 	}
 
@@ -124,8 +132,11 @@ function wp_get_available_translations() {
  *
  * @since 4.0.0
  *
+<<<<<<< HEAD
  * @global string $wp_local_package
  *
+=======
+>>>>>>> origin/master
  * @param array $languages Array of available languages (populated via the Translation API).
  */
 function wp_install_language_form( $languages ) {

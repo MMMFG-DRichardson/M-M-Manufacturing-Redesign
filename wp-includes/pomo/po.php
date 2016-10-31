@@ -2,23 +2,35 @@
 /**
  * Class for working with PO files
  *
+<<<<<<< HEAD
  * @version $Id: po.php 1158 2015-11-20 04:31:23Z dd32 $
+=======
+ * @version $Id: po.php 718 2012-10-31 00:32:02Z nbachiyski $
+>>>>>>> origin/master
  * @package pomo
  * @subpackage po
  */
 
 require_once dirname(__FILE__) . '/translations.php';
 
+<<<<<<< HEAD
 if ( ! defined( 'PO_MAX_LINE_LEN' ) ) {
 	define('PO_MAX_LINE_LEN', 79);
 }
+=======
+define('PO_MAX_LINE_LEN', 79);
+>>>>>>> origin/master
 
 ini_set('auto_detect_line_endings', 1);
 
 /**
  * Routines for working with PO files
  */
+<<<<<<< HEAD
 if ( ! class_exists( 'PO', false ) ):
+=======
+if ( !class_exists( 'PO' ) ):
+>>>>>>> origin/master
 class PO extends Gettext_Translations {
 
 	var $comments_before_headers = '';
@@ -99,7 +111,11 @@ class PO extends Gettext_Translations {
 	 * @param string $string the string to format
 	 * @return string the poified string
 	 */
+<<<<<<< HEAD
 	public static function poify($string) {
+=======
+	function poify($string) {
+>>>>>>> origin/master
 		$quote = '"';
 		$slash = '\\';
 		$newline = "\n";
@@ -130,8 +146,13 @@ class PO extends Gettext_Translations {
 	 * @param string $string PO-formatted string
 	 * @return string enascaped string
 	 */
+<<<<<<< HEAD
 	public static function unpoify($string) {
 		$escapes = array('t' => "\t", 'n' => "\n", 'r' => "\r", '\\' => '\\');
+=======
+	function unpoify($string) {
+		$escapes = array('t' => "\t", 'n' => "\n", '\\' => '\\');
+>>>>>>> origin/master
 		$lines = array_map('trim', explode("\n", $string));
 		$lines = array_map(array('PO', 'trim_quotes'), $lines);
 		$unpoified = '';
@@ -151,10 +172,13 @@ class PO extends Gettext_Translations {
 				}
 			}
 		}
+<<<<<<< HEAD
 
 		// Standardise the line endings on imported content, technically PO files shouldn't contain \r
 		$unpoified = str_replace( array( "\r\n", "\r" ), "\n", $unpoified );
 
+=======
+>>>>>>> origin/master
 		return $unpoified;
 	}
 
@@ -166,7 +190,11 @@ class PO extends Gettext_Translations {
 	 * @param string $string prepend lines in this string
 	 * @param string $with prepend lines with this string
 	 */
+<<<<<<< HEAD
 	public static function prepend_each_line($string, $with) {
+=======
+	function prepend_each_line($string, $with) {
+>>>>>>> origin/master
 		$php_with = var_export($with, true);
 		$lines = explode("\n", $string);
 		// do not prepend the string on the last empty line, artefact by explode
@@ -186,7 +214,11 @@ class PO extends Gettext_Translations {
 	 * @param string $char character to denote a special PO comment,
 	 * 	like :, default is a space
 	 */
+<<<<<<< HEAD
 	public static function comment_block($text, $char=' ') {
+=======
+	function comment_block($text, $char=' ') {
+>>>>>>> origin/master
 		$text = wordwrap($text, PO_MAX_LINE_LEN - 3);
 		return PO::prepend_each_line($text, "#$char ");
 	}
@@ -199,30 +231,46 @@ class PO extends Gettext_Translations {
 	 * @return false|string PO-style formatted string for the entry or
 	 * 	false if the entry is empty
 	 */
+<<<<<<< HEAD
 	public static function export_entry(&$entry) {
 		if ( null === $entry->singular || '' === $entry->singular ) return false;
+=======
+	function export_entry(&$entry) {
+		if (is_null($entry->singular)) return false;
+>>>>>>> origin/master
 		$po = array();
 		if (!empty($entry->translator_comments)) $po[] = PO::comment_block($entry->translator_comments);
 		if (!empty($entry->extracted_comments)) $po[] = PO::comment_block($entry->extracted_comments, '.');
 		if (!empty($entry->references)) $po[] = PO::comment_block(implode(' ', $entry->references), ':');
 		if (!empty($entry->flags)) $po[] = PO::comment_block(implode(", ", $entry->flags), ',');
+<<<<<<< HEAD
 		if ($entry->context) $po[] = 'msgctxt '.PO::poify($entry->context);
 		$po[] = 'msgid '.PO::poify($entry->singular);
 		if (!$entry->is_plural) {
 			$translation = empty($entry->translations)? '' : $entry->translations[0];
 			$translation = PO::match_begin_and_end_newlines( $translation, $entry->singular );
+=======
+		if (!is_null($entry->context)) $po[] = 'msgctxt '.PO::poify($entry->context);
+		$po[] = 'msgid '.PO::poify($entry->singular);
+		if (!$entry->is_plural) {
+			$translation = empty($entry->translations)? '' : $entry->translations[0];
+>>>>>>> origin/master
 			$po[] = 'msgstr '.PO::poify($translation);
 		} else {
 			$po[] = 'msgid_plural '.PO::poify($entry->plural);
 			$translations = empty($entry->translations)? array('', '') : $entry->translations;
 			foreach($translations as $i => $translation) {
+<<<<<<< HEAD
 				$translation = PO::match_begin_and_end_newlines( $translation, $entry->plural );
+=======
+>>>>>>> origin/master
 				$po[] = "msgstr[$i] ".PO::poify($translation);
 			}
 		}
 		return implode("\n", $po);
 	}
 
+<<<<<<< HEAD
 	public static function match_begin_and_end_newlines( $translation, $original ) {
 		if ( '' === $translation ) {
 			return $translation;
@@ -252,6 +300,8 @@ class PO extends Gettext_Translations {
 		return $translation;
 	}
 
+=======
+>>>>>>> origin/master
 	/**
 	 * @param string $filename
 	 * @return boolean
@@ -392,7 +442,10 @@ class PO extends Gettext_Translations {
 	/**
 	 * @staticvar string   $last_line
 	 * @staticvar boolean  $use_last_line
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> origin/master
 	 * @param     resource $f
 	 * @param     string   $action
 	 * @return boolean
@@ -437,7 +490,11 @@ class PO extends Gettext_Translations {
 	 * @param string $s
 	 * @return sring
 	 */
+<<<<<<< HEAD
 	public static function trim_quotes($s) {
+=======
+	function trim_quotes($s) {
+>>>>>>> origin/master
 		if ( substr($s, 0, 1) == '"') $s = substr($s, 1);
 		if ( substr($s, -1, 1) == '"') $s = substr($s, 0, -1);
 		return $s;

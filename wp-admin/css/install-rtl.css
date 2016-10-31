@@ -6,7 +6,11 @@ html {
 body {
 	background: #fff;
 	color: #444;
+<<<<<<< HEAD
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+=======
+	font-family: "Open Sans", sans-serif;
+>>>>>>> origin/master
 	margin: 140px auto 25px;
 	padding: 20px 20px 10px 20px;
 	max-width: 700px;
@@ -17,6 +21,7 @@ body {
 
 a {
 	color: #0073aa;
+<<<<<<< HEAD
 }
 
 a:hover,
@@ -49,6 +54,27 @@ h1, h2 {
 }
 
 h3 {
+=======
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00a0d2;
+}
+
+h1 {
+	border-bottom: 1px solid #dedede;
+	clear: both;
+	color: #666;
+	font-size: 24px;
+	margin: 30px 0;
+	padding: 0;
+	padding-bottom: 7px;
+	font-weight: normal;
+}
+
+h2 {
+>>>>>>> origin/master
 	font-size: 16px;
 }
 
@@ -74,19 +100,25 @@ abbr {
 	font-variant: normal;
 }
 
+<<<<<<< HEAD
 fieldset {
 	border: 0;
 	padding: 0;
 	margin: 0;
 }
 
+=======
+>>>>>>> origin/master
 label {
 	cursor: pointer;
 }
 
 #logo {
 	margin: 6px 0 14px 0;
+<<<<<<< HEAD
 	padding: 0 0 7px 0;
+=======
+>>>>>>> origin/master
 	border-bottom: none;
 	text-align:center
 }
@@ -97,10 +129,17 @@ label {
 	background-size: 84px;
 	background-position: center top;
 	background-repeat: no-repeat;
+<<<<<<< HEAD
 	color: #444; /* same as login.css */
 	height: 84px;
 	font-size: 20px;
 	font-weight: 400;
+=======
+	color: #999;
+	height: 84px;
+	font-size: 20px;
+	font-weight: normal;
+>>>>>>> origin/master
 	line-height: 1.3em;
 	margin: -130px auto 25px;
 	padding: 0;
@@ -111,12 +150,15 @@ label {
 	overflow: hidden;
 	display: block;
 }
+<<<<<<< HEAD
 
 #logo a:focus {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
+=======
+>>>>>>> origin/master
 .step {
 	margin: 20px 0 15px;
 }
@@ -126,6 +168,7 @@ label {
 }
 .language-chooser.wp-core-ui .step .button.button-large {
 	height: 36px;
+<<<<<<< HEAD
 	font-size: 14px;
 	line-height: 33px;
 	vertical-align: middle;
@@ -133,6 +176,14 @@ label {
 textarea {
 	border: 1px solid #ddd;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+=======
+	vertical-align: middle;
+	font-size: 14px;
+}
+textarea {
+	border: 1px solid #dfdfdf;
+	font-family: "Open Sans", sans-serif;
+>>>>>>> origin/master
 	width: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -148,6 +199,10 @@ textarea {
 .form-table td {
 	margin-bottom: 9px;
 	padding: 10px 0 10px 20px;
+<<<<<<< HEAD
+=======
+	border-bottom: 8px solid #fff;
+>>>>>>> origin/master
 	font-size: 14px;
 	vertical-align: top
 }
@@ -155,7 +210,11 @@ textarea {
 .form-table th {
 	font-size: 14px;
 	text-align: right;
+<<<<<<< HEAD
 	padding: 10px 0 10px 20px;
+=======
+	padding: 16px 0 10px 20px;
+>>>>>>> origin/master
 	width: 140px;
 	vertical-align: top;
 }
@@ -181,7 +240,11 @@ textarea {
 
 input,
 submit {
+<<<<<<< HEAD
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+=======
+	font-family: "Open Sans", sans-serif;
+>>>>>>> origin/master
 }
 
 .form-table input[type=text],
@@ -192,6 +255,7 @@ submit {
 }
 
 .form-table th p {
+<<<<<<< HEAD
 	font-weight: 400;
 }
 
@@ -199,6 +263,14 @@ submit {
 .form-table.install-success td {
 	vertical-align: middle;
 	padding: 16px 0 16px 20px;
+=======
+	font-weight: normal;
+}
+
+.form-table.install-success td {
+	vertical-align: middle;
+	padding: 16px 0 10px 20px;
+>>>>>>> origin/master
 }
 
 .form-table.install-success td p {
@@ -225,6 +297,7 @@ submit {
 	font-family: Consolas, Monaco, monospace;
 }
 
+<<<<<<< HEAD
 .wp-hide-pw > .dashicons {
 	line-height: inherit;
 }
@@ -291,6 +364,45 @@ submit {
 	border-right: 4px solid #dc3232;
 	padding: .7em .6em;
 	background-color: #fbeaea;
+=======
+#pass-strength-result {
+	background-color: #eee;
+	border-color: #ddd !important;
+	border-style: solid;
+	border-width: 1px;
+	margin: 5px 0 5px 5px;
+	padding: 5px;
+	text-align: center;
+	width: 200px;
+	display: none;
+}
+
+#pass-strength-result.bad {
+	background-color: #ffb78c;
+	border-color: #ff853c !important;
+}
+
+#pass-strength-result.good {
+	background-color: #ffec8b;
+	border-color: #ffcc00 !important;
+}
+
+#pass-strength-result.short {
+	background-color: #ffa0a0;
+	border-color: #f04040 !important;
+}
+
+#pass-strength-result.strong {
+	background-color: #c3ff88;
+	border-color: #8dff1c !important;
+}
+
+.message {
+	border: 1px solid #c00;
+	padding: 0.5em 0.7em;
+	margin: 5px 0 15px;
+	background-color: #ffebe8;
+>>>>>>> origin/master
 }
 
 /* rtl:ignore */
@@ -306,6 +418,7 @@ submit {
 	direction: ltr;
 }
 
+<<<<<<< HEAD
 #pass1-text,
 .show-password #pass1 {
 	display: none;
@@ -320,6 +433,8 @@ submit {
 	font-size: 12px;
 }
 
+=======
+>>>>>>> origin/master
 
 /* localization */
 body.rtl,
@@ -406,7 +521,11 @@ body.language-chooser {
 	color: #32373c;
 	font-size: 16px;
 	font-family: Arial, sans-serif;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 .language-chooser p {
@@ -439,6 +558,7 @@ body.language-chooser {
 
 .step .spinner {
 	display: inline-block;
+<<<<<<< HEAD
 	vertical-align: middle;
 	margin-left: 15px;
 }
@@ -446,6 +566,11 @@ body.language-chooser {
 .button-secondary.hide-if-no-js,
 .hide-if-no-js {
 	display: none;
+=======
+	margin-top: 8px;
+	margin-left: 15px;
+	vertical-align: top;
+>>>>>>> origin/master
 }
 
 /**

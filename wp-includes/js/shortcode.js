@@ -135,7 +135,11 @@ window.wp = window.wp || {};
 			// 6. an unquoted value.
 			// 7. A numeric attribute in double quotes.
 			// 8. An unquoted numeric attribute.
+<<<<<<< HEAD
 			pattern = /([\w-]+)\s*=\s*"([^"]*)"(?:\s|$)|([\w-]+)\s*=\s*'([^']*)'(?:\s|$)|([\w-]+)\s*=\s*([^\s'"]+)(?:\s|$)|"([^"]*)"(?:\s|$)|(\S+)(?:\s|$)/g;
+=======
+			pattern = /(\w+)\s*=\s*"([^"]*)"(?:\s|$)|(\w+)\s*=\s*\'([^\']*)\'(?:\s|$)|(\w+)\s*=\s*([^\s\'"]+)(?:\s|$)|"([^"]*)"(?:\s|$)|(\S+)(?:\s|$)/g;
+>>>>>>> origin/master
 
 			// Map zero-width spaces to actual spaces.
 			text = text.replace( /[\u00a0\u200b]/g, ' ' );
@@ -326,6 +330,14 @@ window.wp = window.wp || {};
 			_.each( options.attrs, function( value, attr ) {
 				text += ' ' + attr;
 
+<<<<<<< HEAD
+=======
+				// Use empty attribute notation where possible.
+				if ( '' === value ) {
+					return;
+				}
+
+>>>>>>> origin/master
 				// Convert boolean values to strings.
 				if ( _.isBoolean( value ) ) {
 					value = value ? 'true' : 'false';

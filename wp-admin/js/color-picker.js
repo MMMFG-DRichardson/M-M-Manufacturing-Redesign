@@ -124,14 +124,20 @@
 		open: function() {
 			this.element.show().iris( 'toggle' ).focus();
 			this.button.removeClass( 'hidden' );
+<<<<<<< HEAD
 			this.wrap.addClass( 'wp-picker-active' );
+=======
+>>>>>>> origin/master
 			this.toggler.addClass( 'wp-picker-open' );
 			$( 'body' ).trigger( 'click.wpcolorpicker' ).on( 'click.wpcolorpicker', this.close );
 		},
 		close: function() {
 			this.element.hide().iris( 'toggle' );
 			this.button.addClass( 'hidden' );
+<<<<<<< HEAD
 			this.wrap.removeClass( 'wp-picker-active' );
+=======
+>>>>>>> origin/master
 			this.toggler.removeClass( 'wp-picker-open' );
 			$( 'body' ).off( 'click.wpcolorpicker', this.close );
 		},

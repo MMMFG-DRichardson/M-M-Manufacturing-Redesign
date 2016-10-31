@@ -14,7 +14,11 @@ if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
 if ( ! current_user_can('manage_sites') )
+<<<<<<< HEAD
 	wp_die(__('Sorry, you are not allowed to edit this site.'));
+=======
+	wp_die(__('You do not have sufficient permissions to edit this site.'));
+>>>>>>> origin/master
 
 $wp_list_table = _get_list_table('WP_Users_List_Table');
 $wp_list_table->prepare_items();
@@ -24,10 +28,17 @@ get_current_screen()->add_help_tab( array(
 	'title'   => __('Overview'),
 	'content' =>
 		'<p>' . __('The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable.') . '</p>' .
+<<<<<<< HEAD
 		'<p>' . __('<strong>Info</strong> &mdash; The site URL is rarely edited as this can cause the site to not work properly. The Registered date and Last Updated date are displayed. Network admins can mark a site as archived, spam, deleted and mature, to remove from public listings or disable.') . '</p>' .
 		'<p>' . __('<strong>Users</strong> &mdash; This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network.') . '</p>' .
 		'<p>' . sprintf( __('<strong>Themes</strong> &mdash; This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href="%s">Network Themes</a> screen.' ), network_admin_url( 'themes.php' ) ) . '</p>' .
 		'<p>' . __('<strong>Settings</strong> &mdash; This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database.') . '</p>'
+=======
+		'<p>' . __('<strong>Info</strong> - The domain and path are rarely edited as this can cause the site to not work properly. The Registered date and Last Updated date are displayed. Network admins can mark a site as archived, spam, deleted and mature, to remove from public listings or disable.') . '</p>' .
+		'<p>' . __('<strong>Users</strong> - This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network.') . '</p>' .
+		'<p>' . sprintf( __('<strong>Themes</strong> - This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href="%s">Network Themes</a> screen.' ), network_admin_url( 'themes.php' ) ) . '</p>' .
+		'<p>' . __('<strong>Settings</strong> - This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database.') . '</p>'
+>>>>>>> origin/master
 ) );
 
 get_current_screen()->set_help_sidebar(
@@ -36,12 +47,15 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
 );
 
+<<<<<<< HEAD
 get_current_screen()->set_screen_reader_content( array(
 	'heading_views'      => __( 'Filter site users list' ),
 	'heading_pagination' => __( 'Site users list navigation' ),
 	'heading_list'       => __( 'Site users list' ),
 ) );
 
+=======
+>>>>>>> origin/master
 $_SERVER['REQUEST_URI'] = remove_query_arg( 'update', $_SERVER['REQUEST_URI'] );
 $referer = remove_query_arg( 'update', wp_get_referer() );
 
@@ -55,12 +69,17 @@ if ( ! $id )
 	wp_die( __('Invalid site ID.') );
 
 $details = get_blog_details( $id );
+<<<<<<< HEAD
 if ( ! $details ) {
 	wp_die( __( 'The requested site does not exist.' ) );
 }
 
 if ( ! can_edit_network( $details->site_id ) )
 	wp_die( __( 'Sorry, you are not allowed to access this page.' ), 403 );
+=======
+if ( ! can_edit_network( $details->site_id ) )
+	wp_die( __( 'You do not have permission to access this page.' ), 403 );
+>>>>>>> origin/master
 
 $is_main_site = is_main_site( $id );
 
@@ -80,6 +99,7 @@ if ( $action ) {
 				$password = wp_generate_password( 12, false);
 				$user_id = wpmu_create_user( esc_html( strtolower( $user['username'] ) ), $password, esc_html( $user['email'] ) );
 
+<<<<<<< HEAD
 				if ( false === $user_id ) {
 		 			$update = 'err_new_dup';
 				} else {
@@ -93,6 +113,14 @@ if ( $action ) {
 					  * @param int $user_id ID of the newly created user.
 					  */
 					do_action( 'network_site_users_created_user', $user_id );
+=======
+				if ( false == $user_id ) {
+		 			$update = 'err_new_dup';
+				} else {
+					wp_new_user_notification( $user_id, $password );
+					add_user_to_blog( $id, $user_id, $_POST['new_role'] );
+					$update = 'newuser';
+>>>>>>> origin/master
 				}
 			}
 			break;
@@ -149,6 +177,7 @@ if ( $action ) {
 					$user_id = (int) $user_id;
 
 					// If the user doesn't already belong to the blog, bail.
+<<<<<<< HEAD
 					if ( ! is_user_member_of_blog( $user_id ) ) {
 						wp_die(
 							'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -156,6 +185,10 @@ if ( $action ) {
 							403
 						);
 					}
+=======
+					if ( !is_user_member_of_blog( $user_id ) )
+						wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 					$user = get_userdata( $user_id );
 					$user->set_role( $_REQUEST['new_role'] );
@@ -179,13 +212,23 @@ if ( isset( $_GET['action'] ) && 'update-site' == $_GET['action'] ) {
 
 add_screen_option( 'per_page' );
 
+<<<<<<< HEAD
 $title = sprintf( __( 'Edit Site: %s' ), esc_html( $details->blogname ) );
+=======
+$site_url_no_http = preg_replace( '#^http(s)?://#', '', get_blogaddress_by_id( $id ) );
+$title_site_url_linked = sprintf( __( 'Edit Site: %s' ), '<a href="' . get_blogaddress_by_id( $id ) . '">' . $site_url_no_http . '</a>' );
+$title = sprintf( __( 'Edit Site: %s' ), $site_url_no_http );
+>>>>>>> origin/master
 
 $parent_file = 'sites.php';
 $submenu_file = 'sites.php';
 
 /**
+<<<<<<< HEAD
  * Filters whether to show the Add Existing User form on the Multisite Users screen.
+=======
+ * Filter whether to show the Add Existing User form on the Multisite Users screen.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  *
@@ -202,6 +245,7 @@ var current_site_id = <?php echo $id; ?>;
 
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1 id="edit-site"><?php echo $title; ?></h1>
 <p class="edit-site-actions"><a href="<?php echo esc_url( get_home_url( $id, '/' ) ); ?>"><?php _e( 'Visit' ); ?></a> | <a href="<?php echo esc_url( get_admin_url( $id ) ); ?>"><?php _e( 'Dashboard' ); ?></a></p>
 <?php
@@ -210,6 +254,23 @@ network_edit_site_nav( array(
 	'blog_id'  => $id,
 	'selected' => 'site-users'
 ) );
+=======
+<h2 id="edit-site"><?php echo $title_site_url_linked ?></h2>
+<h3 class="nav-tab-wrapper">
+<?php
+$tabs = array(
+	'site-info'     => array( 'label' => __( 'Info' ),     'url' => 'site-info.php'     ),
+	'site-users'    => array( 'label' => __( 'Users' ),    'url' => 'site-users.php'    ),
+	'site-themes'   => array( 'label' => __( 'Themes' ),   'url' => 'site-themes.php'   ),
+	'site-settings' => array( 'label' => __( 'Settings' ), 'url' => 'site-settings.php' ),
+);
+foreach ( $tabs as $tab_id => $tab ) {
+	$class = ( $tab['url'] == $pagenow ) ? ' nav-tab-active' : '';
+	echo '<a href="' . $tab['url'] . '?id=' . $id .'" class="nav-tab' . $class . '">' . esc_html( $tab['label'] ) . '</a>';
+}
+?>
+</h3><?php
+>>>>>>> origin/master
 
 if ( isset($_GET['update']) ) :
 	switch($_GET['update']) {
@@ -270,7 +331,11 @@ do_action( 'network_site_users_after_list_table' );
 
 /** This filter is documented in wp-admin/network/site-users.php */
 if ( current_user_can( 'promote_users' ) && apply_filters( 'show_network_site_users_add_existing_form', true ) ) : ?>
+<<<<<<< HEAD
 <h2 id="add-existing-user"><?php _e( 'Add Existing User' ); ?></h2>
+=======
+<h3 id="add-existing-user"><?php _e( 'Add Existing User' ); ?></h3>
+>>>>>>> origin/master
 <form action="site-users.php?action=adduser" id="adduser" method="post">
 	<input type="hidden" name="id" value="<?php echo esc_attr( $id ) ?>" />
 	<table class="form-table">
@@ -292,14 +357,22 @@ if ( current_user_can( 'promote_users' ) && apply_filters( 'show_network_site_us
 
 <?php
 /**
+<<<<<<< HEAD
  * Filters whether to show the Add New User form on the Multisite Users screen.
+=======
+ * Filter whether to show the Add New User form on the Multisite Users screen.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  *
  * @param bool $bool Whether to show the Add New User form. Default true.
  */
 if ( current_user_can( 'create_users' ) && apply_filters( 'show_network_site_users_add_new_form', true ) ) : ?>
+<<<<<<< HEAD
 <h2 id="add-new-user"><?php _e( 'Add New User' ); ?></h2>
+=======
+<h3 id="add-new-user"><?php _e( 'Add New User' ); ?></h3>
+>>>>>>> origin/master
 <form action="<?php echo network_admin_url('site-users.php?action=newuser'); ?>" id="newuser" method="post">
 	<input type="hidden" name="id" value="<?php echo esc_attr( $id ) ?>" />
 	<table class="form-table">
@@ -318,7 +391,11 @@ if ( current_user_can( 'create_users' ) && apply_filters( 'show_network_site_use
 			</select></td>
 		</tr>
 		<tr class="form-field">
+<<<<<<< HEAD
 			<td colspan="2"><?php _e( 'A password reset link will be sent to the user via email.' ) ?></td>
+=======
+			<td colspan="2"><?php _e( 'Username and password will be mailed to the above email address.' ) ?></td>
+>>>>>>> origin/master
 		</tr>
 	</table>
 	<?php wp_nonce_field( 'add-user', '_wpnonce_add-new-user' ) ?>

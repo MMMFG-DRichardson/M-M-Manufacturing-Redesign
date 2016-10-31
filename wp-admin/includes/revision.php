@@ -4,7 +4,10 @@
  *
  * @package WordPress
  * @subpackage Administration
+<<<<<<< HEAD
  * @since 3.6.0
+=======
+>>>>>>> origin/master
  */
 
 /**
@@ -55,7 +58,11 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 
 	$return = array();
 
+<<<<<<< HEAD
 	foreach ( _wp_post_revision_fields( $post ) as $field => $name ) {
+=======
+	foreach ( _wp_post_revision_fields() as $field => $name ) {
+>>>>>>> origin/master
 		/**
 		 * Contextually filter a post revision field.
 		 *
@@ -80,14 +87,24 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 		);
 
 		/**
+<<<<<<< HEAD
 		 * Filters revisions text diff options.
 		 *
 		 * Filters the options passed to wp_text_diff() when viewing a post revision.
+=======
+		 * Filter revisions text diff options.
+		 *
+		 * Filter the options passed to {@see wp_text_diff()} when viewing a post revision.
+>>>>>>> origin/master
 		 *
 		 * @since 4.1.0
 		 *
 		 * @param array   $args {
+<<<<<<< HEAD
 		 *     Associative array of options to pass to wp_text_diff().
+=======
+		 *     Associative array of options to pass to {@see wp_text_diff()}.
+>>>>>>> origin/master
 		 *
 		 *     @type bool $show_split_view True for split view (two columns), false for
 		 *                                 un-split view (single column). Default true.
@@ -119,7 +136,11 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the fields displayed in the post revision diff UI.
+=======
+	 * Filter the fields displayed in the post revision diff UI.
+>>>>>>> origin/master
 	 *
 	 * @since 4.1.0
 	 *
@@ -200,7 +221,11 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 			$current_id = $revision->ID;
 		}
 
+<<<<<<< HEAD
 		$revisions_data = array(
+=======
+		$revisions[ $revision->ID ] = array(
+>>>>>>> origin/master
 			'id'         => $revision->ID,
 			'title'      => get_the_title( $post->ID ),
 			'author'     => $authors[ $revision->post_author ],
@@ -211,6 +236,7 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 			'current'    => $current,
 			'restoreUrl' => $can_restore ? $restore_link : false,
 		);
+<<<<<<< HEAD
 
 		/**
 		 * Filters the array of revisions used on the revisions screen.
@@ -235,6 +261,8 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 		 * @param WP_Post $post           The revision's parent WP_Post object.
 		 */
 		$revisions[ $revision->ID ] = apply_filters( 'wp_prepare_revision_for_js', $revisions_data, $revision, $post );
+=======
+>>>>>>> origin/master
 	}
 
 	/**

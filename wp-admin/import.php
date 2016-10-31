@@ -11,9 +11,14 @@ define('WP_LOAD_IMPORTERS', true);
 /** Load WordPress Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
+<<<<<<< HEAD
 if ( ! current_user_can( 'import' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to import content.' ) );
 }
+=======
+if ( !current_user_can('import') )
+	wp_die(__('You do not have sufficient permissions to import content in this site.'));
+>>>>>>> origin/master
 
 $title = __('Import');
 
@@ -30,12 +35,19 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
+<<<<<<< HEAD
 if ( current_user_can( 'install_plugins' ) ) {
 	// List of popular importer plugins from the WordPress.org API.
 	$popular_importers = wp_get_popular_importers();
 } else {
  	$popular_importers = array();
 }
+=======
+if ( current_user_can( 'install_plugins' ) )
+	$popular_importers = wp_get_popular_importers();
+else
+	$popular_importers = array();
+>>>>>>> origin/master
 
 // Detect and redirect invalid importers like 'movabletype', which is registered as 'mt'
 if ( ! empty( $_GET['invalid'] ) && isset( $popular_importers[ $_GET['invalid'] ] ) ) {
@@ -49,13 +61,17 @@ if ( ! empty( $_GET['invalid'] ) && isset( $popular_importers[ $_GET['invalid'] 
 
 add_thickbox();
 wp_enqueue_script( 'plugin-install' );
+<<<<<<< HEAD
 wp_enqueue_script( 'updates' );
+=======
+>>>>>>> origin/master
 
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 $parent_file = 'tools.php';
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); ?></h1>
 <?php if ( ! empty( $_GET['invalid'] ) ) : ?>
 	<div class="error">
@@ -64,11 +80,20 @@ $parent_file = 'tools.php';
 			printf( __( 'The %s importer is invalid or is not installed.' ), '<strong>' . esc_html( $_GET['invalid'] ) . '</strong>' );
 		?></p>
 	</div>
+=======
+<h2><?php echo esc_html( $title ); ?></h2>
+<?php if ( ! empty( $_GET['invalid'] ) ) : ?>
+	<div class="error"><p><strong><?php _e('ERROR:')?></strong> <?php printf( __('The <strong>%s</strong> importer is invalid or is not installed.'), esc_html( $_GET['invalid'] ) ); ?></p></div>
+>>>>>>> origin/master
 <?php endif; ?>
 <p><?php _e('If you have posts or comments in another system, WordPress can import those into this site. To get started, choose a system to import from below:'); ?></p>
 
 <?php
+<<<<<<< HEAD
 // Registered (already installed) importers. They're stored in the global $wp_importers.
+=======
+
+>>>>>>> origin/master
 $importers = get_importers();
 
 // If a popular importer is not registered, create a dummy registration that links to the plugin installer.
@@ -77,8 +102,11 @@ foreach ( $popular_importers as $pop_importer => $pop_data ) {
 		continue;
 	if ( isset( $importers[ $pop_data['importer-id'] ] ) )
 		continue;
+<<<<<<< HEAD
 
 	// Fill the array of registered (already installed) importers with data of the popular importers from the WordPress.org API.
+=======
+>>>>>>> origin/master
 	$importers[ $pop_data['importer-id'] ] = array( $pop_data['name'], $pop_data['description'], 'install' => $pop_data['plugin-slug'] );
 }
 
@@ -89,6 +117,7 @@ if ( empty( $importers ) ) {
 ?>
 <table class="widefat importers striped">
 
+<<<<<<< HEAD
 	<?php
 	foreach ( $importers as $importer_id => $data ) {
 		$plugin_slug = $action = '';
@@ -189,6 +218,45 @@ if ( empty( $importers ) ) {
 			</tr>";
 	}
 	?>
+=======
+<?php
+	foreach ($importers as $importer_id => $data) {
+		$action = '';
+		if ( isset( $data['install'] ) ) {
+			$plugin_slug = $data['install'];
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin_slug ) ) {
+				// Looks like Importer is installed, But not active
+				$plugins = get_plugins( '/' . $plugin_slug );
+				if ( !empty($plugins) ) {
+					$keys = array_keys($plugins);
+					$plugin_file = $plugin_slug . '/' . $keys[0];
+					$action = '<a href="' . esc_url(wp_nonce_url(admin_url('plugins.php?action=activate&plugin=' . $plugin_file . '&from=import'), 'activate-plugin_' . $plugin_file)) .
+											'"title="' . esc_attr__('Activate importer') . '"">' . $data[0] . '</a>';
+				}
+			}
+			if ( empty($action) ) {
+				if ( is_main_site() ) {
+					$action = '<a href="' . esc_url( network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin_slug .
+										'&from=import&TB_iframe=true&width=600&height=550' ) ) . '" class="thickbox" title="' .
+										esc_attr__('Install importer') . '">' . $data[0] . '</a>';
+				} else {
+					$action = $data[0];
+					$data[1] = sprintf( __( 'This importer is not installed. Please install importers from <a href="%s">the main site</a>.' ), get_admin_url( $current_site->blog_id, 'import.php' ) );
+				}
+			}
+		} else {
+			$action = "<a href='" . esc_url( "admin.php?import=$importer_id" ) . "' title='" . esc_attr( wptexturize( strip_tags( $data[1] ) ) ) ."'>{$data[0]}</a>";
+		}
+
+		echo "
+			<tr>
+				<td class='import-system row-title'>$action</td>
+				<td class='desc'>{$data[1]}</td>
+			</tr>";
+	}
+?>
+
+>>>>>>> origin/master
 </table>
 <?php
 }
@@ -200,7 +268,10 @@ if ( current_user_can('install_plugins') )
 </div>
 
 <?php
+<<<<<<< HEAD
 wp_print_request_filesystem_credentials_modal();
 wp_print_admin_notice_templates();
+=======
+>>>>>>> origin/master
 
 include( ABSPATH . 'wp-admin/admin-footer.php' );

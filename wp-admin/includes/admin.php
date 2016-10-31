@@ -1,10 +1,17 @@
 <?php
 /**
+<<<<<<< HEAD
  * Core Administration API
  *
  * @package WordPress
  * @subpackage Administration
  * @since 2.3.0
+=======
+ * Includes all of the WordPress Administration API files.
+ *
+ * @package WordPress
+ * @subpackage Administration
+>>>>>>> origin/master
  */
 
 if ( ! defined('WP_ADMIN') ) {
@@ -16,9 +23,12 @@ if ( ! defined('WP_ADMIN') ) {
 	load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
 }
 
+<<<<<<< HEAD
 /** WordPress Administration Hooks */
 require_once(ABSPATH . 'wp-admin/includes/admin-filters.php');
 
+=======
+>>>>>>> origin/master
 /** WordPress Bookmark Administration API */
 require_once(ABSPATH . 'wp-admin/includes/bookmark.php');
 
@@ -40,9 +50,12 @@ require_once(ABSPATH . 'wp-admin/includes/import.php');
 /** WordPress Misc Administration API */
 require_once(ABSPATH . 'wp-admin/includes/misc.php');
 
+<<<<<<< HEAD
 /** WordPress Options Administration API */
 require_once(ABSPATH . 'wp-admin/includes/options.php');
 
+=======
+>>>>>>> origin/master
 /** WordPress Plugin Administration API */
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
@@ -50,7 +63,10 @@ require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 require_once(ABSPATH . 'wp-admin/includes/post.php');
 
 /** WordPress Administration Screen API */
+<<<<<<< HEAD
 require_once(ABSPATH . 'wp-admin/includes/class-wp-screen.php');
+=======
+>>>>>>> origin/master
 require_once(ABSPATH . 'wp-admin/includes/screen.php');
 
 /** WordPress Taxonomy Administration API */
@@ -69,9 +85,12 @@ require_once(ABSPATH . 'wp-admin/includes/theme.php');
 /** WordPress User Administration API */
 require_once(ABSPATH . 'wp-admin/includes/user.php');
 
+<<<<<<< HEAD
 /** WordPress Site Icon API */
 require_once(ABSPATH . 'wp-admin/includes/class-wp-site-icon.php');
 
+=======
+>>>>>>> origin/master
 /** WordPress Update Administration API */
 require_once(ABSPATH . 'wp-admin/includes/update.php');
 
@@ -80,7 +99,10 @@ require_once(ABSPATH . 'wp-admin/includes/deprecated.php');
 
 /** WordPress Multisite support API */
 if ( is_multisite() ) {
+<<<<<<< HEAD
 	require_once(ABSPATH . 'wp-admin/includes/ms-admin-filters.php');
+=======
+>>>>>>> origin/master
 	require_once(ABSPATH . 'wp-admin/includes/ms.php');
 	require_once(ABSPATH . 'wp-admin/includes/ms-deprecated.php');
 }

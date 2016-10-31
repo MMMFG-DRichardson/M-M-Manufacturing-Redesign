@@ -81,7 +81,11 @@ abbr[title] {
 
 b,
 strong {
+<<<<<<< HEAD
 	font-weight: 700;
+=======
+	font-weight: bold;
+>>>>>>> origin/master
 }
 
 dfn {
@@ -232,7 +236,11 @@ textarea {
 }
 
 optgroup {
+<<<<<<< HEAD
 	font-weight: 700;
+=======
+	font-weight: bold;
+>>>>>>> origin/master
 }
 
 table {
@@ -245,6 +253,7 @@ th {
 	padding: 0;
 }
 
+<<<<<<< HEAD
 ::-webkit-input-placeholder {
 	color: #72777c;
 }
@@ -258,6 +267,8 @@ th {
 	color: #72777c;
 }
 
+=======
+>>>>>>> origin/master
 .clearfix:before,
 .clearfix:after {
 	content: "";
@@ -294,7 +305,11 @@ input,
 select,
 textarea {
 	color: #404040;
+<<<<<<< HEAD
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+=======
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+>>>>>>> origin/master
 	font-size: 20px;
 	font-weight: 400;
 	line-height: 1.6;
@@ -325,6 +340,10 @@ strong {
 * Pushing buttons is what I do.
 */
 
+<<<<<<< HEAD
+=======
+.button-subtle,
+>>>>>>> origin/master
 .scan-submit {
 	display: inline-block;
 	margin: 0;
@@ -341,6 +360,7 @@ strong {
 	-webkit-appearance: none;
 }
 
+<<<<<<< HEAD
 .split-button {
 	position: relative;
 	display: inline-block;
@@ -474,6 +494,69 @@ strong {
 	-webkit-box-shadow: inset 0 2px 10px #006799, 0 1px 0 #0073aa;
  	box-shadow: inset 0 2px 10px #006799, 0 1px 0 #0073aa;
 }
+=======
+.button-subtle {
+	background: none;
+	border: 0;
+	color: #0073aa;
+}
+
+.button-subtle:visited {
+	color: #0073aa;
+}
+
+.button-subtle:focus,
+.button-subtle:hover,
+.button-subtle:active,
+.edit-post-link:focus,
+.edit-post-link:hover,
+.edit-post-link:active {
+	color: #00a0d2;
+}
+
+.button-subtle:focus,
+.button-subtle:active,
+.edit-post-link:focus,
+.edit-post-link:active {
+	outline: 0;
+	text-decoration: underline;
+}
+
+.preview-button {
+	margin-left: 5px;
+}
+
+.button-reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+.button-reset:focus {
+	outline: 0;
+}
+
+.button-link {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: #0073aa;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+.button-link:hover,
+.button-link:active,
+.button-link:focus {
+	color: #00a0d2;
+	text-decoration: underline;
+}
+
+>>>>>>> origin/master
 
 /**
 * Forms
@@ -788,6 +871,10 @@ dd {
 .ac_results li {
 	padding: 6px 16px;
 	white-space: nowrap;
+<<<<<<< HEAD
+=======
+	color: #101010;
+>>>>>>> origin/master
 	text-align: right;
 }
 
@@ -849,7 +936,11 @@ dd {
 }
 
 .tagchecklist .ntdelbutton:before {
+<<<<<<< HEAD
 	content: "\f153";
+=======
+	content: '\f153';
+>>>>>>> origin/master
 	display: block;
 	margin: 2px 0;
 	height: 20px;
@@ -872,10 +963,16 @@ dd {
 	margin: 0;
 }
 
+<<<<<<< HEAD
 .press-this .tagcloud-link {
 	display: block;
 	margin: 0 16px 5px;
 	padding: 0;
+=======
+.tagcloud-link {
+	display: block;
+	padding: 0 16px;
+>>>>>>> origin/master
 	text-decoration: none;
 	outline: 0;
 }
@@ -930,7 +1027,10 @@ input[type="search"].categories-search,
 	border-bottom: 1px solid #e5e5e5;
 	font-size: 14px;
 	-webkit-appearance: none;
+<<<<<<< HEAD
 	-moz-appearance: none;
+=======
+>>>>>>> origin/master
 	appearance: none;
 }
 
@@ -942,24 +1042,42 @@ input[type="search"].categories-search,
 	}
 }
 
+<<<<<<< HEAD
 .press-this .add-cat-toggle {
+=======
+.add-cat-toggle {
+>>>>>>> origin/master
 	float: left;
 	margin-top: -45px;
 	line-height: 20px;
 	padding: 12px 10px 8px;
+<<<<<<< HEAD
 	color: #0073aa;
 }
 
 .press-this .add-cat-toggle:focus {
+=======
+}
+
+.add-cat-toggle:focus {
+>>>>>>> origin/master
 	text-decoration: none;
 	color: #00a0d2;
 }
 
+<<<<<<< HEAD
 .press-this .add-cat-toggle.is-toggled {
 	padding: 10px;
 }
 
 .press-this .add-cat-toggle.is-toggled .dashicons:before {
+=======
+.add-cat-toggle.is-toggled {
+	padding: 10px;
+}
+
+.add-cat-toggle.is-toggled .dashicons:before {
+>>>>>>> origin/master
 	content: "\f179";
 }
 
@@ -1210,16 +1328,26 @@ html {
 }
 
 .adminbar .dashicons {
+<<<<<<< HEAD
 	color: #a0a5aa; /* same as WP admin bar icons */
 }
 
 .press-this .adminbar button {
+=======
+	color: #999;
+}
+
+.adminbar button {
+>>>>>>> origin/master
 	position: absolute;
 	top: 50%;
 	left: 6px;
 	margin-top: -13px;
+<<<<<<< HEAD
 	padding: 0 10px 1px;
 	font-size: 13px;
+=======
+>>>>>>> origin/master
 }
 
 @media (max-width: 320px) {
@@ -1318,7 +1446,11 @@ html {
 }
 
 .alert:before {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: '';
+>>>>>>> origin/master
 	position: absolute;
 	top: 50%;
 	right: 30px;
@@ -1380,7 +1512,11 @@ html {
 	bottom: 0;
 	padding: 0 1.07143em;
 	background: #f7f7f7;
+<<<<<<< HEAD
 	border-color: #ddd;
+=======
+	border-color: #dedede;
+>>>>>>> origin/master
 	border: 0;
 	border-right: 1px solid #f1f1f1;
 	-webkit-border-radius: 0;
@@ -1392,15 +1528,25 @@ html {
 
 .scan-submit:hover,
 .scan-submit:focus {
+<<<<<<< HEAD
 	background: #008ec2;
 	border-color: #006799;
+=======
+	background: #2991b7;
+	border-color: #20708e;
+>>>>>>> origin/master
 	color: #fff;
 	outline: 0;
 }
 
 .scan-submit:active {
+<<<<<<< HEAD
 	background: #0073aa;
 	border-color: #006799;
+=======
+	background: #2581a2;
+	border-color: #20708e;
+>>>>>>> origin/master
 	color: #fff;
 }
 
@@ -1550,7 +1696,11 @@ html {
 
 .post-title:before {
 	/* Keeps empty container from collapsing */
+<<<<<<< HEAD
 	content: "\a0";
+=======
+	content: '\a0';
+>>>>>>> origin/master
 	display: inline-block;
 	width: 0;
 	speak: none;
@@ -1559,7 +1709,11 @@ html {
 .post-title-placeholder {
 	position: absolute;
 	border: 0;
+<<<<<<< HEAD
 	color: #82878c;
+=======
+	color: #9ea7af;
+>>>>>>> origin/master
 	z-index: -1;
 }
 
@@ -1753,9 +1907,13 @@ html {
 		-ms-transform: translateY(0);
 		transform: translateY(0);
 		-webkit-transition: -webkit-transform .3s ease-in-out;
+<<<<<<< HEAD
 		transition: -webkit-transform .3s ease-in-out;
 		transition: transform .3s ease-in-out;
 		transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+=======
+		transition: transform .3s ease-in-out;
+>>>>>>> origin/master
 	}
 	.press-this-actions.is-hidden {
 		-webkit-transform: translateY(100%);
@@ -1835,12 +1993,29 @@ html {
 	}
 }
 
+<<<<<<< HEAD
 .publish-button .saving-draft,
 .publish-button.is-saving .publish {
 	display: none;
 }
 
 .publish-button.is-saving .saving-draft {
+=======
+.edit-post-link {
+	font-size: 13px;
+	display: inline-block;
+	text-decoration: none;
+	padding: 0 10px;
+}
+
+.draft-button.is-hidden,
+.draft-button .saving-draft,
+.draft-button.is-saving .save-draft {
+	display: none;
+}
+
+.draft-button.is-saving .saving-draft {
+>>>>>>> origin/master
 	display: inline;
 }
 
@@ -1959,9 +2134,13 @@ html {
 		-ms-transform: translateX(100%);
 		transform: translateX(100%);
 		-webkit-transition: -webkit-transform .3s ease-in-out;
+<<<<<<< HEAD
 		transition: -webkit-transform .3s ease-in-out;
 		transition: transform .3s ease-in-out;
 		transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+=======
+		transition: transform .3s ease-in-out;
+>>>>>>> origin/master
 	}
 
 	.options-panel.is-hidden {
@@ -2039,16 +2218,23 @@ html {
 	white-space: nowrap;
 	overflow: hidden;
 	-webkit-transition: -webkit-transform .3s ease-in-out;
+<<<<<<< HEAD
 	transition: -webkit-transform .3s ease-in-out;
 	transition: transform .3s ease-in-out;
 	transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+=======
+	transition: transform .3s ease-in-out;
+>>>>>>> origin/master
 }
 
 .post-options .post-option:focus {
 	outline: 0;
 	-webkit-box-shadow: inset -5px 0 0 #00a0d2;
 	box-shadow: inset -5px 0 0 #00a0d2;
+<<<<<<< HEAD
 	border-color: #e5e5e5;
+=======
+>>>>>>> origin/master
 }
 
 .is-off-screen > .post-option {
@@ -2072,7 +2258,11 @@ html {
 	display: inline-block;
 	margin: 0 8px 0 0;
 	font-size: 14px;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 .setting-modal {
@@ -2082,9 +2272,13 @@ html {
 	width: 100%;
 	overflow: hidden;
 	-webkit-transition: -webkit-transform .3s ease-in-out;
+<<<<<<< HEAD
 	transition: -webkit-transform .3s ease-in-out;
 	transition: transform .3s ease-in-out;
 	transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+=======
+	transition: transform .3s ease-in-out;
+>>>>>>> origin/master
 }
 
 .setting-modal.is-hidden {
@@ -2105,7 +2299,11 @@ html {
 	}
 }
 
+<<<<<<< HEAD
 .press-this .modal-close {
+=======
+.modal-close {
+>>>>>>> origin/master
 	display: block;
 	width: 100%;
 	padding: 13px 14px;
@@ -2115,11 +2313,18 @@ html {
 	text-align: right;
 }
 
+<<<<<<< HEAD
 .press-this .modal-close:focus {
 	outline: 0;
 	-webkit-box-shadow: inset -5px 0 0 #00a0d2;
 	box-shadow: inset -5px 0 0 #00a0d2;
 	border-color: #e5e5e5;
+=======
+.modal-close:focus {
+	outline: 0;
+	-webkit-box-shadow: inset -5px 0 0 #00a0d2;
+	box-shadow: inset -5px 0 0 #00a0d2;
+>>>>>>> origin/master
 }
 
 .setting-title {
@@ -2127,6 +2332,7 @@ html {
 	top: -1px;
 	margin-right: 11px;
 }
+<<<<<<< HEAD
 
 /* Text editor */
 #pressthis {
@@ -2207,3 +2413,5 @@ html {
 	background-color: #ddd;
 	cursor: pointer;
 }
+=======
+>>>>>>> origin/master

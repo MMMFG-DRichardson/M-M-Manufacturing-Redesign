@@ -133,6 +133,7 @@ function twentyfifteen_header_style() {
 		if ( ! empty( $header_image ) ) :
 	?>
 		.site-header {
+<<<<<<< HEAD
 
 			/*
 			 * No shorthand so the Customizer can override individual properties.
@@ -141,6 +142,9 @@ function twentyfifteen_header_style() {
 			background-image: url(<?php header_image(); ?>);
 			background-repeat: no-repeat;
 			background-position: 50% 50%;
+=======
+			background: url(<?php header_image(); ?>) no-repeat 50% 50%;
+>>>>>>> origin/master
 			-webkit-background-size: cover;
 			-moz-background-size:    cover;
 			-o-background-size:      cover;
@@ -149,6 +153,7 @@ function twentyfifteen_header_style() {
 
 		@media screen and (min-width: 59.6875em) {
 			body:before {
+<<<<<<< HEAD
 
 				/*
 				 * No shorthand so the Customizer can override individual properties.
@@ -157,6 +162,9 @@ function twentyfifteen_header_style() {
 				background-image: url(<?php header_image(); ?>);
 				background-repeat: no-repeat;
 				background-position: 100% 50%;
+=======
+				background: url(<?php header_image(); ?>) no-repeat 100% 50%;
+>>>>>>> origin/master
 				-webkit-background-size: cover;
 				-moz-background-size:    cover;
 				-o-background-size:      cover;

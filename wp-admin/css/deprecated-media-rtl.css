@@ -3,9 +3,15 @@
 div#media-upload-header {
 	margin: 0;
 	padding: 5px 5px 0;
+<<<<<<< HEAD
 	font-weight: 600;
 	position: relative;
 	border-bottom: 1px solid #ddd;
+=======
+	font-weight: bold;
+	position: relative;
+	border-bottom: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	background: #f9f9f9;
 }
 
@@ -19,7 +25,11 @@ div#media-upload-header {
 	padding-right: 10px;
 	list-style: none;
 	font-size: 12px;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 #sidemenu a {
@@ -28,7 +38,11 @@ div#media-upload-header {
 	float: right;
 	line-height: 28px;
 	border-top: 1px solid #f9f9f9;
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
+=======
+	border-bottom: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	background-color: #f9f9f9;
 	text-decoration: none;
 	-webkit-transition: none;
@@ -46,10 +60,17 @@ div#media-upload-header {
 }
 
 #sidemenu a.current {
+<<<<<<< HEAD
 	font-weight: 400;
 	padding-right: 6px;
 	padding-left: 6px;
 	border: 1px solid #ddd;
+=======
+	font-weight: normal;
+	padding-right: 6px;
+	padding-left: 6px;
+	border: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	border-bottom-color: #f1f1f1;
 	background-color: #f1f1f1;
 	color: #000;
@@ -62,18 +83,25 @@ div#media-upload-header {
 }
 
 #media-upload .slidetoggle {
+<<<<<<< HEAD
 	border-top-color: #ddd;
+=======
+	border-top-color: #dfdfdf;
+>>>>>>> origin/master
 }
 
 #media-upload input[type="radio"] {
 	padding: 0;
 }
 
+<<<<<<< HEAD
 .media-upload-form label.form-help,
 td.help {
 	color: #72777c;
 }
 
+=======
+>>>>>>> origin/master
 form {
 	margin: 1em;
 }
@@ -89,7 +117,11 @@ th {
 .media-upload-form label.form-help, td.help {
 	font-family: sans-serif;
 	font-style: italic;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 .media-upload-form p.help {
@@ -152,8 +184,12 @@ thead.media-item-info tr {
 	border: 8px solid #fff;
 }
 
+<<<<<<< HEAD
 abbr.required,
 span.required {
+=======
+abbr.required {
+>>>>>>> origin/master
 	text-decoration: none;
 	border: none;
 }
@@ -187,7 +223,11 @@ span.required {
 #media-upload label.help {
 	font-family: sans-serif;
 	font-style: italic;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 #media-upload .ui-sortable .media-item {
@@ -276,7 +316,11 @@ span.required {
 	clear: both;
 	padding: 0 0 3px;
 	font-size: 1.6em;
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
+=======
+	border-bottom: 1px solid #DADADA;
+>>>>>>> origin/master
 }
 
 h3.media-title  {
@@ -284,7 +328,11 @@ h3.media-title  {
 }
 
 h4.media-sub-title  {
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
+=======
+	border-bottom: 1px solid #DADADA;
+>>>>>>> origin/master
 	font-size: 1.3em;
 	margin: 12px;
 	padding: 0 0 3px;
@@ -294,7 +342,11 @@ h4.media-sub-title  {
 h3.media-title,
 h4.media-sub-title {
 	font-family: Georgia,"Times New Roman",Times,serif;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 	color: #5A5A5A;
 }
 
@@ -328,7 +380,11 @@ h4.media-sub-title {
 #gallery-settings label,
 #gallery-settings legend {
 	font-size: 13px;
+<<<<<<< HEAD
 	color: #444;
+=======
+	color: #464646;
+>>>>>>> origin/master
 	margin-left: 15px;
 }
 
@@ -337,7 +393,11 @@ h4.media-sub-title {
 }
 
 #gallery-settings p.ml-submit {
+<<<<<<< HEAD
 	border-top: 1px solid #ddd;
+=======
+	border-top: 1px solid #dfdfdf;
+>>>>>>> origin/master
 }
 
 #gallery-settings select#columns {
@@ -365,6 +425,7 @@ h4.media-sub-title {
 }
 
 p.media-types {
+<<<<<<< HEAD
 	margin: 0;
 	padding: 1em;
 }
@@ -373,6 +434,11 @@ p.media-types-required-info {
 	padding-top: 0;
 }
 
+=======
+	padding: 1em;
+}
+
+>>>>>>> origin/master
 tr.not-image {
 	display: none;
 }

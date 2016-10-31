@@ -10,13 +10,21 @@
  * echo $renderer->render($diff);
  * </code>
  *
+<<<<<<< HEAD
  * Copyright 2005 Ã–rjan Persson <o@42mm.org>
+=======
+ * Copyright 2005 Örjan Persson <o@42mm.org>
+>>>>>>> origin/master
  * Copyright 2005-2010 The Horde Project (http://www.horde.org/)
  *
  * See the enclosed file COPYING for license information (LGPL). If you did
  * not receive this file, see http://opensource.org/licenses/lgpl-license.php.
  *
+<<<<<<< HEAD
  * @author  Ã–rjan Persson <o@42mm.org>
+=======
+ * @author  Örjan Persson <o@42mm.org>
+>>>>>>> origin/master
  * @package Text_Diff
  * @since   0.2.0
  */

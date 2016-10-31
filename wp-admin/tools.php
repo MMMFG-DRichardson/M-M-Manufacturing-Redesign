@@ -33,11 +33,19 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 ?>
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); ?></h1>
 
 <?php if ( current_user_can('edit_posts') ) : ?>
 <div class="card pressthis">
 	<h2><?php _e('Press This') ?></h2>
+=======
+<h2><?php echo esc_html( $title ); ?></h2>
+
+<?php if ( current_user_can('edit_posts') ) : ?>
+<div class="card pressthis">
+	<h3><?php _e('Press This') ?></h3>
+>>>>>>> origin/master
 	<p><?php _e( 'Press This is a little tool that lets you grab bits of the web and create new posts with ease.' );?></p>
 	<p><?php _e( 'Use Press This to clip text, images and videos from any web page. Then edit and add more straight from Press This before you save or publish it in a post on your site.' ); ?></p>
 
@@ -100,8 +108,13 @@ $cats = get_taxonomy('category');
 $tags = get_taxonomy('post_tag');
 if ( current_user_can($cats->cap->manage_terms) || current_user_can($tags->cap->manage_terms) ) : ?>
 <div class="card">
+<<<<<<< HEAD
 	<h2 class="title"><?php _e( 'Categories and Tags Converter' ) ?></h2>
 	<p><?php printf( __('If you want to convert your categories to tags (or vice versa), use the <a href="%s">Categories and Tags Converter</a> available from the Import screen.'), 'import.php' ); ?></p>
+=======
+    <h3 class="title"><?php _e( 'Categories and Tags Converter' ) ?></h3>
+    <p><?php printf( __('If you want to convert your categories to tags (or vice versa), use the <a href="%s">Categories and Tags Converter</a> available from the Import screen.'), 'import.php' ); ?></p>
+>>>>>>> origin/master
 </div>
 <?php
 endif;

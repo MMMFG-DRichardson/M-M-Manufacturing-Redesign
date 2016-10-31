@@ -12,7 +12,11 @@
 
 #TB_window {
 	position: fixed;
+<<<<<<< HEAD
 	background-color: #fff;
+=======
+	background: #fff;
+>>>>>>> origin/master
 	z-index: 100050; /* Above DFW. */
 	visibility: hidden;
 	text-align: left;
@@ -43,6 +47,7 @@
 	float: right;
 }
 
+<<<<<<< HEAD
 #TB_closeWindowButton {
 	position: absolute;
 	left: auto;
@@ -56,13 +61,25 @@
 	outline: none;
 	-webkit-transition: color .1s ease-in-out, background .1s ease-in-out;
 	transition: color .1s ease-in-out, background .1s ease-in-out;
+=======
+#TB_closeAjaxWindow {
+	float: right;
+}
+
+#TB_closeAjaxWindow a {
+	text-decoration: none;
+>>>>>>> origin/master
 }
 
 #TB_ajaxWindowTitle {
 	float: left;
 	font-weight: 600;
 	line-height: 29px;
+<<<<<<< HEAD
 	overflow: hidden;
+=======
+	overflow: hidden; 
+>>>>>>> origin/master
 	padding: 0 29px 0 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -71,7 +88,11 @@
 
 #TB_title {
 	background: #fcfcfc;
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
+=======
+	border-bottom: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	height: 29px;
 }
 
@@ -122,7 +143,10 @@
 }
 
 .tb-close-icon {
+<<<<<<< HEAD
 	display: block;
+=======
+>>>>>>> origin/master
 	color: #666;
 	text-align: center;
 	line-height: 29px;
@@ -134,13 +158,19 @@
 }
 
 .tb-close-icon:before {
+<<<<<<< HEAD
 	content: "\f158";
 	font: normal 20px/29px dashicons;
+=======
+	content: '\f158';
+	font: normal 20px/29px 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 #TB_closeWindowButton:hover .tb-close-icon,
 #TB_closeWindowButton:focus .tb-close-icon {
 	color: #00a0d2;
@@ -154,3 +184,8 @@
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
 }
+=======
+.tb-close-icon:hover {
+	color: #00a0d2;
+}
+>>>>>>> origin/master

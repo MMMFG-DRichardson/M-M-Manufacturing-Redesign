@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> origin/master
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -90,7 +95,11 @@ tinymce.PluginManager.add('tabfocus', function(editor) {
 			if (el.id && focusEditor) {
 				focusEditor.focus();
 			} else {
+<<<<<<< HEAD
 				tinymce.util.Delay.setTimeout(function() {
+=======
+				window.setTimeout(function() {
+>>>>>>> origin/master
 					if (!tinymce.Env.webkit) {
 						window.focus();
 					}

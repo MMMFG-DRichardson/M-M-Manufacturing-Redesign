@@ -21,7 +21,11 @@ window.wp = window.wp || {};
 		//
 		// Returns an array of all subviews.
 		all: function() {
+<<<<<<< HEAD
 			return _.flatten( _.values( this._views ) ); 
+=======
+			return _.flatten( this._views );
+>>>>>>> origin/master
 		},
 
 		// ### Get a selector's subviews

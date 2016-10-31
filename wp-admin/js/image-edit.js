@@ -8,6 +8,7 @@ var imageEdit = window.imageEdit = {
 	_view : false,
 
 	intval : function(f) {
+<<<<<<< HEAD
 		/*
 		 * Bitwise OR operator: one of the obscure ways to truncate floating point figures,
 		 * worth reminding JavaScript doesn't have a distinct "integer" type.
@@ -26,6 +27,18 @@ var imageEdit = window.imageEdit = {
 			el.removeClass( 'disabled' ).prop( 'disabled', false );
 		} else {
 			el.addClass( 'disabled' ).prop( 'disabled', true );
+=======
+		return f | 0;
+	},
+
+	setDisabled : function(el, s) {
+		if ( s ) {
+			el.removeClass('disabled');
+			$('input', el).removeAttr('disabled');
+		} else {
+			el.addClass('disabled');
+			$('input', el).prop('disabled', true);
+>>>>>>> origin/master
 		}
 	},
 
@@ -64,18 +77,26 @@ var imageEdit = window.imageEdit = {
 		var wait = $('#imgedit-wait-' + postid);
 
 		if ( toggle ) {
+<<<<<<< HEAD
 			wait.fadeIn( 'fast' );
+=======
+			wait.height( $('#imgedit-panel-' + postid).height() ).fadeIn('fast');
+>>>>>>> origin/master
 		} else {
 			wait.fadeOut('fast');
 		}
 	},
 
 	toggleHelp : function(el) {
+<<<<<<< HEAD
 		var $el = $( el );
 		$el
 			.attr( 'aria-expanded', 'false' === $el.attr( 'aria-expanded' ) ? 'true' : 'false' )
 			.parents( '.imgedit-group-top' ).toggleClass( 'imgedit-help-toggled' ).find( '.imgedit-help' ).slideToggle( 'fast' );
 
+=======
+		$( el ).parents( '.imgedit-group-top' ).toggleClass( 'imgedit-help-toggled' ).find( '.imgedit-help' ).slideToggle( 'fast' );
+>>>>>>> origin/master
 		return false;
 	},
 
@@ -83,6 +104,7 @@ var imageEdit = window.imageEdit = {
 		return $('input[name="imgedit-target-' + postid + '"]:checked', '#imgedit-save-target-' + postid).val() || 'full';
 	},
 
+<<<<<<< HEAD
 	scaleChanged : function( postid, x, el ) {
 		var w = $('#imgedit-scale-width-' + postid), h = $('#imgedit-scale-height-' + postid),
 		warn = $('#imgedit-scale-warn-' + postid), w1 = '', h1 = '';
@@ -91,6 +113,12 @@ var imageEdit = window.imageEdit = {
 			return;
 		}
 
+=======
+	scaleChanged : function(postid, x) {
+		var w = $('#imgedit-scale-width-' + postid), h = $('#imgedit-scale-height-' + postid),
+		warn = $('#imgedit-scale-warn-' + postid), w1 = '', h1 = '';
+
+>>>>>>> origin/master
 		if ( x ) {
 			h1 = ( w.val() !== '' ) ? Math.round( w.val() / this.hold.xy_ratio ) : '';
 			h.val( h1 );
@@ -181,6 +209,7 @@ var imageEdit = window.imageEdit = {
 			'rand': t.intval(Math.random() * 1000000)
 		};
 
+<<<<<<< HEAD
 		img = $( '<img id="image-preview-' + postid + '" alt="" />' )
 			.on( 'load', { history: data.history }, function( event ) {
 				var max1, max2,
@@ -201,6 +230,11 @@ var imageEdit = window.imageEdit = {
 						$( '#image-undo-' + postid ).focus();
 					}
 				}
+=======
+		img = $('<img id="image-preview-' + postid + '" />')
+			.on('load', function() {
+				var max1, max2, parent = $('#imgedit-crop-' + postid), t = imageEdit;
+>>>>>>> origin/master
 
 				parent.empty().append(img);
 
@@ -338,6 +372,7 @@ var imageEdit = window.imageEdit = {
 		var dfd, data, elem = $('#image-editor-' + postid), head = $('#media-head-' + postid),
 			btn = $('#imgedit-open-btn-' + postid), spin = btn.siblings('.spinner');
 
+<<<<<<< HEAD
 		/*
 		 * Instead of disabling the button, which causes a focus loss and makes screen
 		 * readers announce "unavailable", return if the button was already clicked.
@@ -346,6 +381,9 @@ var imageEdit = window.imageEdit = {
 			return;
 		}
 
+=======
+		btn.prop('disabled', true);
+>>>>>>> origin/master
 		spin.addClass( 'is-active' );
 
 		data = {
@@ -358,19 +396,29 @@ var imageEdit = window.imageEdit = {
 		dfd = $.ajax({
 			url:  ajaxurl,
 			type: 'post',
+<<<<<<< HEAD
 			data: data,
 			beforeSend: function() {
 				btn.addClass( 'button-activated' );
 			}
+=======
+			data: data
+>>>>>>> origin/master
 		}).done(function( html ) {
 			elem.html( html );
 			head.fadeOut('fast', function(){
 				elem.fadeIn('fast');
+<<<<<<< HEAD
 				btn.removeClass( 'button-activated' );
 				spin.removeClass( 'is-active' );
 			});
 			// Initialise the Image Editor now that everything is ready.
 			imageEdit.init( postid );
+=======
+				btn.removeAttr('disabled');
+				spin.removeClass( 'is-active' );
+			});
+>>>>>>> origin/master
 		});
 
 		return dfd;
@@ -382,8 +430,11 @@ var imageEdit = window.imageEdit = {
 		this.initCrop(postid, img, parent);
 		this.setCropSelection(postid, 0);
 		this.toggleEditor(postid, 0);
+<<<<<<< HEAD
 		// Editor is ready, move focus to the first focusable element.
 		$( '.imgedit-wrap .imgedit-help-toggle' ).eq( 0 ).focus();
+=======
+>>>>>>> origin/master
 	},
 
 	initCrop : function(postid, image, parent) {
@@ -476,10 +527,14 @@ var imageEdit = window.imageEdit = {
 		// In case we are not accessing the image editor in the context of a View, close the editor the old-skool way
 		else {
 			$('#image-editor-' + postid).fadeOut('fast', function() {
+<<<<<<< HEAD
 				$( '#media-head-' + postid ).fadeIn( 'fast', function() {
 					// Move focus back to the Edit Image button. Runs also when saving.
 					$( '#imgedit-open-btn-' + postid ).focus();
 				});
+=======
+				$('#media-head-' + postid).fadeIn('fast');
+>>>>>>> origin/master
 				$(this).empty();
 			});
 		}
@@ -503,9 +558,15 @@ var imageEdit = window.imageEdit = {
 
 	addStep : function(op, postid, nonce) {
 		var t = this, elem = $('#imgedit-history-' + postid),
+<<<<<<< HEAD
 			history = ( elem.val() !== '' ) ? JSON.parse( elem.val() ) : [],
 			undone = $( '#imgedit-undone-' + postid ),
 			pop = t.intval( undone.val() );
+=======
+		history = ( elem.val() !== '' ) ? JSON.parse( elem.val() ) : [],
+		undone = $('#imgedit-undone-' + postid),
+		pop = t.intval(undone.val());
+>>>>>>> origin/master
 
 		while ( pop > 0 ) {
 			history.pop();
@@ -566,6 +627,7 @@ var imageEdit = window.imageEdit = {
 		elem.val(pop);
 		t.refreshEditor(postid, nonce, function() {
 			var elem = $('#imgedit-history-' + postid),
+<<<<<<< HEAD
 				history = ( elem.val() !== '' ) ? JSON.parse( elem.val() ) : [];
 
 			t.setDisabled($('#image-redo-' + postid), true);
@@ -574,6 +636,12 @@ var imageEdit = window.imageEdit = {
 			if ( history.length === pop ) {
 				$( '#image-redo-' + postid ).focus();
 			}
+=======
+			history = ( elem.val() !== '' ) ? JSON.parse( elem.val() ) : [];
+
+			t.setDisabled($('#image-redo-' + postid), true);
+			t.setDisabled(button, pop < history.length);
+>>>>>>> origin/master
 		});
 	},
 
@@ -589,6 +657,7 @@ var imageEdit = window.imageEdit = {
 		t.refreshEditor(postid, nonce, function() {
 			t.setDisabled($('#image-undo-' + postid), true);
 			t.setDisabled(button, pop > 0);
+<<<<<<< HEAD
 			// When redo gets disabled, move focus to the undo button to avoid a focus loss.
 			if ( 0 === pop ) {
 				$( '#image-undo-' + postid ).focus();
@@ -597,15 +666,24 @@ var imageEdit = window.imageEdit = {
 	},
 
 	setNumSelection : function( postid, el ) {
+=======
+		});
+	},
+
+	setNumSelection : function(postid) {
+>>>>>>> origin/master
 		var sel, elX = $('#imgedit-sel-width-' + postid), elY = $('#imgedit-sel-height-' + postid),
 			x = this.intval( elX.val() ), y = this.intval( elY.val() ),
 			img = $('#image-preview-' + postid), imgh = img.height(), imgw = img.width(),
 			sizer = this.hold.sizer, x1, y1, x2, y2, ias = this.iasapi;
 
+<<<<<<< HEAD
 		if ( false === this.validateNumeric( el ) ) {
 			return;
 		}
 
+=======
+>>>>>>> origin/master
 		if ( x < 1 ) {
 			elX.val('');
 			return false;
@@ -664,7 +742,12 @@ var imageEdit = window.imageEdit = {
 			y = this.intval( $('#imgedit-crop-height-' + postid).val() ),
 			h = $('#image-preview-' + postid).height();
 
+<<<<<<< HEAD
 		if ( false === this.validateNumeric( el ) ) {
+=======
+		if ( !this.intval( $(el).val() ) ) {
+			$(el).val('');
+>>>>>>> origin/master
 			return;
 		}
 
@@ -689,6 +772,7 @@ var imageEdit = window.imageEdit = {
 				this.iasapi.update();
 			}
 		}
+<<<<<<< HEAD
 	},
 
 	validateNumeric: function( el ) {
@@ -696,6 +780,8 @@ var imageEdit = window.imageEdit = {
 			$( el ).val( '' );
 			return false;
 		}
+=======
+>>>>>>> origin/master
 	}
 };
 })(jQuery);

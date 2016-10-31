@@ -5,7 +5,11 @@
 .media-item .describe {
 	border-collapse: collapse;
 	width: 100%;
+<<<<<<< HEAD
 	border-top: 1px solid #ddd;
+=======
+	border-top: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	clear: both;
 	cursor: default;
 }
@@ -124,8 +128,13 @@
 
 .media-upload-form .media-item,
 .media-upload-form .media-item .error {
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 0 #ddd;
 	box-shadow: 0 1px 0 #ddd;
+=======
+	-webkit-box-shadow: 0 1px 0 #dfdfdf;
+	box-shadow: 0 1px 0 #dfdfdf;
+>>>>>>> origin/master
 }
 
 #media-items:empty {
@@ -242,7 +251,11 @@
 
 .find-box-head {
 	background: #fcfcfc;
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
+=======
+	border-bottom: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	height: 36px;
 	font-size: 18px;
 	font-weight: 600;
@@ -302,13 +315,17 @@
 #find-posts-close {
 	width: 36px;
 	height: 36px;
+<<<<<<< HEAD
 	border: none;
 	padding: 0;
+=======
+>>>>>>> origin/master
 	position: absolute;
 	top: 0;
 	left: 0;
 	cursor: pointer;
 	text-align: center;
+<<<<<<< HEAD
 	background: none;
 	color: #666;
 }
@@ -330,17 +347,36 @@
 
 #find-posts-close:before {
 	font: normal 20px/36px dashicons;
+=======
+	color: #666;
+}
+
+#find-posts-close:hover {
+	color: #00a0d2;
+}
+
+#find-posts-close:before {
+	font: normal 20px/36px 'dashicons';
+>>>>>>> origin/master
 	vertical-align: top;
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
 	content: "\f158";
+=======
+	content: '\f158';
+>>>>>>> origin/master
 }
 
 .find-box-buttons {
 	padding: 8px 16px;
 	background: #fcfcfc;
+<<<<<<< HEAD
 	border-top: 1px solid #ddd;
+=======
+	border-top: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -398,6 +434,11 @@ form.upgrade .hint {
 	border: 1px solid #ddd;
 	line-height: 1.8em;
 	word-spacing: 3px;
+<<<<<<< HEAD
+=======
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+>>>>>>> origin/master
 }
 
 .drag-drop #drag-drop-area {
@@ -471,10 +512,15 @@ border color while dragging a file over the uploader drop area */
 	width: auto;
 	margin-bottom: 16px;
 	padding: 0 16px;
+<<<<<<< HEAD
 	border-right: 4px solid #dd3d36;
  	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
  	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 	background-color: #fff;
+=======
+	border: 1px solid #c00;
+	background-color: #feebe8;
+>>>>>>> origin/master
 }
 
 .upload-php .mode-grid .hide-sidebar .media-sidebar {
@@ -488,15 +534,22 @@ border color while dragging a file over the uploader drop area */
 }
 
 .upload-php .mode-grid .media-sidebar .upload-error {
+<<<<<<< HEAD
 	margin: 12px 0;
 	padding: 4px 0 0;
 	border: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
+=======
+	margin: 20px 0;
+	padding: 0;
+	border: none;
+>>>>>>> origin/master
 	background: none;
 }
 
 .upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors {
+<<<<<<< HEAD
 	top: -10px;
 	left: -14px;
 	padding: 10px;
@@ -507,15 +560,33 @@ border color while dragging a file over the uploader drop area */
 	display: block;
 	font: normal 16px/1 dashicons;
 	color: #b4b9be;
+=======
+	font-size: 0;
+	top: -12px;
+	left: -10px;
+}
+
+.upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors:before {
+	content: "\f158";
+	font: normal 20px/1 dashicons;
+	color: #666;
+>>>>>>> origin/master
 }
 
 .upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors:focus:before,
 .upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors:hover:before {
+<<<<<<< HEAD
 	color: #c00;
 }
 
 .upload-php .mode-grid .media-sidebar .media-uploader-status.errors h3, /* Back-compat for pre-4.4 */
 .upload-php .mode-grid .media-sidebar .media-uploader-status.errors h2 {
+=======
+	color: #00a0d2;
+}
+
+.upload-php .mode-grid .media-sidebar .media-uploader-status.errors h3 {
+>>>>>>> origin/master
 	display: none;
 }
 
@@ -584,9 +655,15 @@ border color while dragging a file over the uploader drop area */
 	font-size: 14px;
 }
 
+<<<<<<< HEAD
 .media-frame.mode-grid.mode-edit .media-toolbar-secondary > .select-mode-toggle-button {
 	margin: 0 0 0 8px;
 	vertical-align: middle;
+=======
+.media-frame.mode-grid .media-toolbar-secondary > .media-button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+>>>>>>> origin/master
 }
 
 .media-frame.mode-grid .attachments-browser .bulk-select {
@@ -599,7 +676,11 @@ border color while dragging a file over the uploader drop area */
 }
 
 .media-frame.mode-grid .spinner {
+<<<<<<< HEAD
 	margin-top: 16px;
+=======
+	margin-top: 15px;
+>>>>>>> origin/master
 }
 
 .attachments-browser .media-toolbar-secondary > .media-button {
@@ -623,7 +704,11 @@ border color while dragging a file over the uploader drop area */
 }
 
 .media-frame.mode-grid .attachments-browser .no-media {
+<<<<<<< HEAD
 	color: #666; /* same as no plugins and no themes */
+=======
+	color: #999;
+>>>>>>> origin/master
 	font-size: 18px;
 	font-style: normal;
 	margin: 0;
@@ -646,15 +731,31 @@ border color while dragging a file over the uploader drop area */
 }
 
 .upload-php .media-modal-close .media-modal-icon:before {
+<<<<<<< HEAD
 	content: "\f335";
 	font-size: 22px;
 }
 
+=======
+	content: '\f335';
+	font-size: 22px;
+}
+
+.upload-php .media-modal-close .media-modal-icon {
+	margin: 14px;
+	width: 22px;
+}
+
+>>>>>>> origin/master
 .upload-php .media-modal-close,
 .edit-attachment-frame .edit-media-header .left,
 .edit-attachment-frame .edit-media-header .right {
 	cursor: pointer;
+<<<<<<< HEAD
 	color: #72777c;
+=======
+	color: #777;
+>>>>>>> origin/master
 	background-color: transparent;
 	height: 50px;
 	width: 50px;
@@ -664,7 +765,11 @@ border color while dragging a file over the uploader drop area */
 	border: 0;
 	border-right: 1px solid #ddd;
 	-webkit-transition: color .1s ease-in-out, background .1s ease-in-out;
+<<<<<<< HEAD
 	transition: color .1s ease-in-out, background .1s ease-in-out;
+=======
+    transition: color .1s ease-in-out, background .1s ease-in-out;
+>>>>>>> origin/master
 }
 
 .upload-php .media-modal-close {
@@ -687,7 +792,11 @@ border color while dragging a file over the uploader drop area */
 
 .edit-attachment-frame .edit-media-header .right:before,
 .edit-attachment-frame .edit-media-header .left:before {
+<<<<<<< HEAD
 	font: normal 20px/50px dashicons !important;
+=======
+	font: normal 20px/50px 'dashicons' !important;
+>>>>>>> origin/master
 	display: inline;
 	font-weight: 300;
 }
@@ -702,8 +811,11 @@ border color while dragging a file over the uploader drop area */
 	border-color: #ccc;
 	color: #000;
 	outline: none;
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
 	box-shadow: none;
+=======
+>>>>>>> origin/master
 }
 
 .upload-php .media-modal-close:focus .media-modal-icon:before,
@@ -713,12 +825,20 @@ border color while dragging a file over the uploader drop area */
 
 .edit-attachment-frame .edit-media-header .left:before,
 .rtl .edit-attachment-frame .edit-media-header .right:before {
+<<<<<<< HEAD
 	content: "\f345";
+=======
+	content: '\f341';
+>>>>>>> origin/master
 }
 
 .edit-attachment-frame .edit-media-header .right:before,
 .rtl .edit-attachment-frame .edit-media-header .left:before {
+<<<<<<< HEAD
 	content: "\f341";
+=======
+	content: '\f345';
+>>>>>>> origin/master
 }
 
 .edit-attachment-frame .edit-media-header .left.disabled,
@@ -813,7 +933,11 @@ border color while dragging a file over the uploader drop area */
 }
 
 .edit-attachment-frame .attachment-info .filename {
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 	color: #666;
 }
 
@@ -851,6 +975,7 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-wrap {
 	position: relative;
+<<<<<<< HEAD
 	padding-top: 10px;
 }
 
@@ -861,6 +986,12 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-settings legend {
 	margin-bottom: 5px;
+=======
+}
+
+.imgedit-settings p {
+	margin: 8px 0 0;
+>>>>>>> origin/master
 }
 
 .describe .imgedit-wrap .imgedit-settings {
@@ -873,11 +1004,21 @@ border color while dragging a file over the uploader drop area */
 
 .wp_attachment_holder .imgedit-wrap > div {
 	height: auto;
+<<<<<<< HEAD
 }
 
 .wp_attachment_holder .imgedit-wrap .imgedit-panel-content {
 	padding: 3px 0 0 16px;
 	float: right;
+=======
+	overflow: hidden;
+}
+
+.wp_attachment_holder .imgedit-wrap .imgedit-panel-content {
+	padding-left: 16px;
+	width: auto;
+	overflow: hidden;
+>>>>>>> origin/master
 }
 
 .wp_attachment_holder .imgedit-wrap .imgedit-settings {
@@ -893,6 +1034,7 @@ border color while dragging a file over the uploader drop area */
 .imgedit-wait {
 	position: absolute;
 	top: 0;
+<<<<<<< HEAD
 	bottom: 0;
 	width: 100%;
 	background: #fff;
@@ -917,17 +1059,36 @@ border color while dragging a file over the uploader drop area */
 	transform: translateZ(0);
 }
 
+=======
+	background: #fff url(../images/spinner.gif) no-repeat center;
+	-webkit-background-size: 20px 20px;
+	background-size: 20px 20px;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	width: 100%;
+	height: 500px;
+	display: none;
+}
+
+>>>>>>> origin/master
 .no-float {
 	float: none;
 }
 
 .media-disabled,
 .imgedit-settings .disabled {
+<<<<<<< HEAD
 	/* WCAG 1.4.3 Text or images of text that are part of an inactive user
 	   interface component ... have no contrast requirement. */
 	color: #a0a5aa;
 }
 
+=======
+	color: grey;
+}
+
+.wp_attachment_image,
+>>>>>>> origin/master
 .A1B1 {
 	overflow: hidden;
 }
@@ -947,6 +1108,7 @@ border color while dragging a file over the uploader drop area */
 }
 
 .imgedit-menu {
+<<<<<<< HEAD
 	min-width: 300px;
 	margin: 0 0 12px;
 }
@@ -972,20 +1134,57 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-menu .button:before {
 	font: normal 20px/1 dashicons;
+=======
+	margin: 0 0 12px;
+	min-width: 300px;
+}
+
+.imgedit-menu div {
+	float: right;
+	width: 32px;
+	border: 1px solid #d5d5d5;
+	background: #f1f1f1;
+	margin: 0 0 0 8px;
+	height: 32px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	line-height: 28px;
+	color: #777;
+	cursor: pointer;
+}
+
+.imgedit-menu div:before {
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	vertical-align: middle;
 }
 
+<<<<<<< HEAD
 .imgedit-menu .button.disabled {
 	border-color: #ccc;
 	background-color: #ddd;
 	color: #72777c;
+=======
+.imgedit-menu div:hover {
+	border-color: #c1c1c1;
+	background-color: #eaeaea;
+	color: #32373c;
+}
+
+.imgedit-menu div.disabled {
+	border-color: #ccc;
+	background-color: #ddd;
+	color: #777;
+>>>>>>> origin/master
 	filter: alpha(opacity=50);
 	opacity: 0.5;
 	cursor: default;
 }
 
 .imgedit-crop:before {
+<<<<<<< HEAD
 	content: "\f165";
 }
 
@@ -1011,6 +1210,33 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-redo:before {
 	content: "\f172";
+=======
+	content:'\f165';
+}
+
+.imgedit-rleft:before {
+	content:'\f166';
+}
+
+.imgedit-rright:before {
+	content:'\f167';
+}
+
+.imgedit-flipv:before {
+	content:'\f168';
+}
+
+.imgedit-fliph:before {
+	content:'\f169';
+}
+
+.imgedit-undo:before {
+	content:'\f171';
+}
+
+.imgedit-redo:before {
+	content:'\f172';
+>>>>>>> origin/master
 }
 
 .imgedit-crop-wrap {
@@ -1045,6 +1271,7 @@ border color while dragging a file over the uploader drop area */
 	margin: 0 3px 0 8px;
 }
 
+<<<<<<< HEAD
 .imgedit-thumbnail-preview {
 	margin: 10px 0 0 8px;
 }
@@ -1064,12 +1291,32 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-group-top h3 a, /* Back-compat for pre-4.4 */
 .imgedit-group-top h2 a {
+=======
+.imgedit-applyto img {
+	margin: 0 0 0 8px;
+}
+
+.imgedit-group-top {
+	margin: 5px 0;
+}
+
+#poststuff .imgedit-group-top h3 {
+	padding: 0;
+}
+
+.imgedit-group-top h3 a {
+>>>>>>> origin/master
 	text-decoration: none;
 }
 
 .imgedit-applyto .imgedit-label {
+<<<<<<< HEAD
 	display: block;
 	padding: .5em 0 0;
+=======
+	padding: 2px 0 0;
+	display: block;
+>>>>>>> origin/master
 }
 
 .imgedit-help {
@@ -1077,6 +1324,7 @@ border color while dragging a file over the uploader drop area */
 	font-style: italic;
 }
 
+<<<<<<< HEAD
 /* higher specificity than buttons */
 .image-editor .imgedit-settings .imgedit-help-toggle,
 .image-editor .imgedit-settings .imgedit-help-toggle:hover,
@@ -1102,6 +1350,10 @@ border color while dragging a file over the uploader drop area */
 	outline: none;
 	-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
+=======
+a.imgedit-help-toggle {
+	text-decoration: none;
+>>>>>>> origin/master
 }
 
 .form-table td.imgedit-response {
@@ -1109,7 +1361,11 @@ border color while dragging a file over the uploader drop area */
 }
 
 .imgedit-submit {
+<<<<<<< HEAD
 	margin: 8px 0 0;
+=======
+	margin: 8px 0;
+>>>>>>> origin/master
 }
 
 .imgedit-submit-btn {
@@ -1118,8 +1374,11 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-wrap .nowrap {
 	white-space: nowrap;
+<<<<<<< HEAD
 	font-size: 12px;
 	line-height: inherit;
+=======
+>>>>>>> origin/master
 }
 
 span.imgedit-scale-warn {
@@ -1130,6 +1389,7 @@ span.imgedit-scale-warn {
 	vertical-align: middle;
 }
 
+<<<<<<< HEAD
 .imgedit-save-target {
 	margin: 8px 0;
 }
@@ -1158,6 +1418,11 @@ span.imgedit-scale-warn {
 
 .imgedit-settings .imgedit-scale .button {
 	margin-bottom: 0;
+=======
+.imgedit-group {
+	margin-bottom: 8px;
+	padding: 2px 10px;
+>>>>>>> origin/master
 }
 
 audio, video {
@@ -1179,7 +1444,11 @@ audio, video {
 @media print,
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 120dpi) {
+<<<<<<< HEAD
 	.imgedit-wait:before {
+=======
+	.imgedit-wait {
+>>>>>>> origin/master
 		background-image: url(../images/spinner-2x.gif);
 	}
 }
@@ -1203,6 +1472,7 @@ audio, video {
 	.media-upload-form .media-item .error {
 		padding: 10px 12px 10px 0;
 	}
+<<<<<<< HEAD
 
 	.imgedit-settings .imgedit-scale input[type="text"],
 	.imgedit-settings .imgedit-crop-ratio input[type="text"],
@@ -1215,6 +1485,8 @@ audio, video {
 	.imgedit-applyto .imgedit-label {
 		vertical-align: middle;
 	}
+=======
+>>>>>>> origin/master
 }
 
 /**

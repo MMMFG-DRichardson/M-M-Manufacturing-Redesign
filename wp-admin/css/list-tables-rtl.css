@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .response-links {
 	display: block;
 	margin-bottom: 1em;
@@ -120,6 +121,82 @@
 .column-response .post-com-count-no-pending,
 .column-comments .post-com-count-no-pending {
 	display: none;
+=======
+/* List table styles */
+.post-com-count-wrapper {
+	min-width: 22px;
+}
+
+.post-com-count {
+	background: none;
+	height: 1.3em;
+	line-height: 1.1em;
+	display: block;
+	text-decoration: none;
+	padding: 0 0 6px;
+	cursor: pointer;
+	background-position: center -80px;
+	background-repeat: no-repeat;
+	color: #fff;
+}
+
+.post-com-count:after {		/* draw bubble connector using CSS! */
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	margin-right: 8px;
+	border-top: 5px solid #b4b9be;
+	border-left: 5px solid transparent;
+}
+
+.post-com-count span {
+	font-size: 11px;
+	font-weight: 600;
+	height: 1.4em;
+	line-height: 1.4em;
+	min-width: 0.7em;
+	padding: 0 6px;
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #b4b9be;
+	color: #fff;
+}
+
+.post-com-count:hover {
+	background-position: center -3px;
+}
+
+.post-com-count:hover span {
+	background-color: #00a0d2;
+}
+
+.post-com-count:hover:after {
+	border-top: 5px solid #00a0d2;
+}
+
+strong .post-com-count {
+	background-position: center -55px;
+}
+
+strong .post-com-count span {
+	background-color: #0073aa;
+}
+
+strong .post-com-count:after {
+	border-top: 5px solid #0073aa;
+}
+
+.column-response .post-com-count {
+	float: right;
+	margin-left: 5px;
+	text-align: center;
+}
+
+.response-links {
+	float: right;
+>>>>>>> origin/master
 }
 
 /* comments */
@@ -142,7 +219,11 @@
 
 #submitted-on,
 .submitted-on {
+<<<<<<< HEAD
 	color: #555d66;
+=======
+	color: #777;
+>>>>>>> origin/master
 }
 
 /* reply to comments */
@@ -152,8 +233,12 @@
 
 #replysubmit {
 	margin: 0;
+<<<<<<< HEAD
 	padding: 5px 7px 10px;
 	overflow: hidden;
+=======
+	padding: 0 5px 3px;
+>>>>>>> origin/master
 	text-align: center;
 }
 
@@ -167,6 +252,7 @@
 	text-align: center;
 }
 
+<<<<<<< HEAD
 #replyrow.inline-edit-row fieldset.comment-reply {
 	font-size: inherit;
 	line-height: inherit;
@@ -188,6 +274,16 @@
 
 #edithead .inside,
 #commentsdiv #edithead .inside {
+=======
+#replyrow h5 {
+	margin: .2em 0 0;
+	padding: 0 5px;
+	line-height: 1.4em;
+	font-size: 1em;
+}
+
+#edithead .inside {
+>>>>>>> origin/master
 	float: right;
 	padding: 3px 5px 2px 0;
 	margin: 0;
@@ -222,9 +318,19 @@
 	vertical-align: text-top;
 }
 
+<<<<<<< HEAD
 #the-comment-list tr.undo,
 #the-comment-list div.undo {
 	background-color: #f5f5f5;
+=======
+#the-comment-list .attachment-80x60 {
+	padding: 4px 8px;
+}
+
+#the-comment-list tr.undo,
+#the-comment-list div.undo {
+	background-color: #f4f4f4;
+>>>>>>> origin/master
 }
 
 #the-comment-list .unapproved th,
@@ -278,8 +384,13 @@ th .comment-grey-bubble {
 }
 
 th .comment-grey-bubble:before {
+<<<<<<< HEAD
 	content: "\f101";
 	font: normal 20px/.5 dashicons;
+=======
+	content: '\f101';
+	font: normal 20px/.5 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	display: inline-block;
 	padding: 0;
@@ -316,7 +427,11 @@ table.fixed {
 }
 
 .fixed .column-posts {
+<<<<<<< HEAD
 	width: 74px;
+=======
+    width: 74px;
+>>>>>>> origin/master
 }
 
 .fixed .column-comment .comment-author {
@@ -340,7 +455,11 @@ table.fixed {
 }
 
 .fixed .column-comments {
+<<<<<<< HEAD
 	width: 5.5em;
+=======
+	width: 4em;
+>>>>>>> origin/master
 	padding: 8px 0;
 	text-align: right;
 }
@@ -349,6 +468,7 @@ table.fixed {
 	padding-right: 3px;
 }
 
+<<<<<<< HEAD
 td.column-title strong,
 td.plugin-title strong {
 	display: block;
@@ -380,6 +500,14 @@ table.media .column-title .has-media-icon ~ .row-actions {
 
 table.media .column-title .filename {
 	margin-bottom: 0.2em;
+=======
+.fixed .column-comments a {
+	float: right;
+}
+
+.fixed .column-icon {
+	width: 80px;
+>>>>>>> origin/master
 }
 
 /* @todo: pick a consistent list table selector */
@@ -399,10 +527,13 @@ table.media .column-title .filename {
 	width: 20%;
 }
 
+<<<<<<< HEAD
 #comments-form .fixed .column-date {
 	width: 14%;
 }
 
+=======
+>>>>>>> origin/master
 #commentsdiv.postbox .inside {
 	margin: 0;
 	padding: 0;
@@ -434,8 +565,12 @@ table.media .column-title .filename {
 	border: 0 none;
 }
 
+<<<<<<< HEAD
 #commentsdiv .comments-box thead th,
 #commentsdiv .comments-box thead td {
+=======
+#commentsdiv .comments-box thead th {
+>>>>>>> origin/master
 	background: transparent;
 	padding: 0 7px 4px;
 	font-style: italic;
@@ -445,6 +580,7 @@ table.media .column-title .filename {
 	border-bottom: 0 none;
 }
 
+<<<<<<< HEAD
 #commentsdiv #edithead .inside input {
 	width: 160px;
 }
@@ -452,6 +588,10 @@ table.media .column-title .filename {
 .sorting-indicator {
 	display: block;
 	visibility: hidden;
+=======
+.sorting-indicator {
+	display: none;
+>>>>>>> origin/master
 	width: 10px;
 	height: 4px;
 	margin-top: 8px;
@@ -459,8 +599,14 @@ table.media .column-title .filename {
 }
 
 .sorting-indicator:before {
+<<<<<<< HEAD
 	content: "\f142";
 	font: normal 20px/1 dashicons;
+=======
+	background: none;
+	content: '\f142';
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	display: inline-block;
 	padding: 0;
@@ -482,6 +628,7 @@ table.media .column-title .filename {
 }
 
 th.sorted.asc .sorting-indicator:before,
+<<<<<<< HEAD
 th.desc:hover span.sorting-indicator:before,
 th.desc a:focus span.sorting-indicator:before {
 	content: "\f142";
@@ -547,6 +694,15 @@ th.asc a:focus span.sorting-indicator:before {
 
 .wp-list-table .is-expanded .toggle-row:before {
 	content: "\f142";
+=======
+th.desc:hover span.sorting-indicator:before {
+	content: '\f142';
+}
+
+th.sorted.desc .sorting-indicator:before,
+th.asc:hover span.sorting-indicator:before {
+	content: '\f140';
+>>>>>>> origin/master
 }
 
 tr.wp-locked .locked-indicator {
@@ -557,10 +713,17 @@ tr.wp-locked .locked-indicator {
 
 tr.wp-locked .locked-indicator:before {
 	color: #82878c;
+<<<<<<< HEAD
 	content: "\f160";
 	display: inline-block;
 	float: right;
 	font: normal 20px/1 dashicons;
+=======
+	content: '\f160';
+	display: inline-block;
+	float: right;
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	vertical-align: middle;
 	margin-right: 0;
@@ -612,7 +775,11 @@ th.sortable a,
 th.sorted a {
 	display: block;
 	overflow: hidden;
+<<<<<<< HEAD
 	padding: 8px;
+=======
+	padding: 7px 10px 8px 7px;
+>>>>>>> origin/master
 }
 
 .fixed .column-comments.sortable a,
@@ -626,6 +793,7 @@ th.sorted a span {
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
 th.sorted .sorting-indicator,
 th.desc:hover span.sorting-indicator,
 th.desc a:focus span.sorting-indicator,
@@ -653,6 +821,31 @@ th.asc a:focus span.sorting-indicator {
 }
 
 .tablenav #table-paging {
+=======
+th.sorted.asc .sorting-indicator,
+th.desc:hover span.sorting-indicator {
+	display: block;
+	background-position: 100% 0;
+}
+
+th.sorted.desc .sorting-indicator,
+th.asc:hover span.sorting-indicator {
+	display: block;
+	background-position: -7px 0;
+}
+
+/* Bulk Actions */
+.tablenav-pages a {
+	font-weight: 600;
+	margin-left: 1px;
+	padding: 0 2px;
+}
+.tablenav-pages .current-page {
+	padding-top: 0;
+	text-align: center;
+}
+.tablenav-pages .next-page {
+>>>>>>> origin/master
 	margin-right: 2px;
 }
 
@@ -674,10 +867,19 @@ th.asc a:focus span.sorting-indicator {
 
 .tablenav .tablenav-pages {
 	float: left;
+<<<<<<< HEAD
 	height: 28px;
 	margin-top: 3px;
 	cursor: default;
 	color: #555;
+=======
+	display: block;
+	cursor: default;
+	height: 30px;
+	color: #555;
+	line-height: 30px;
+	font-size: 12px;
+>>>>>>> origin/master
 }
 
 .tablenav .no-pages,
@@ -691,6 +893,7 @@ th.asc a:focus span.sorting-indicator {
 	padding: 3px 6px;
 }
 
+<<<<<<< HEAD
 .tablenav .tablenav-pages a,
 .tablenav-pages-navspan {
 	display: inline-block;
@@ -709,10 +912,19 @@ th.asc a:focus span.sorting-indicator {
 	border-color: #ddd; /* same as disabled buttons */
 	background: #f7f7f7; /* same as disabled buttons */
 	color: #a0a5aa; /* same as disabled buttons */
+=======
+.tablenav .tablenav-pages a {
+	padding: 0 10px 3px;
+	background: #eee;
+	background: rgba( 0, 0, 0, 0.05 );
+	font-size: 16px;
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 .tablenav .tablenav-pages a:hover,
 .tablenav .tablenav-pages a:focus {
+<<<<<<< HEAD
 	border-color: #5b9dd9;
 	color: #fff;
 	background: #00a0d2;
@@ -729,6 +941,26 @@ th.asc a:focus span.sorting-indicator {
 	display: inline-block;
 	margin-top: 5px;
 	margin-left: 0;
+=======
+	color: #fff;
+	background: #00a0d2;
+}
+
+.tablenav .tablenav-pages a.disabled,
+.tablenav .tablenav-pages a.disabled:hover,
+.tablenav .tablenav-pages a.disabled:focus,
+.tablenav .tablenav-pages a.disabled:active {
+	color: #a0a5aa;
+	background: #eee;
+	background: rgba( 0, 0, 0, 0.05 );
+}
+
+.tablenav .displaying-num {
+	margin-left: 2px;
+	color: #777;
+	font-size: 12px;
+	font-style: italic;
+>>>>>>> origin/master
 }
 
 .tablenav .actions {
@@ -765,13 +997,18 @@ classes exist in paginate_links() but not seen in list table output. */
 
 .tablenav .view-switch {
 	float: left;
+<<<<<<< HEAD
 	margin: 0 5px;
 	padding-top: 3px;
+=======
+	margin: 5px 8px 0 16px;
+>>>>>>> origin/master
 }
 
 .wp-filter .view-switch {
 	display: inline-block;
 	vertical-align: middle;
+<<<<<<< HEAD
 	padding: 12px 0;
 	margin: 0 2px 0 8px;
 }
@@ -795,12 +1032,44 @@ classes exist in paginate_links() but not seen in list table output. */
 	font: normal 20px/1 dashicons;
 	speak: none;
 	vertical-align: middle;
+=======
+	padding: 15px 0;
+	margin: 0 0 0 20px;
+}
+
+.view-switch a {
+	text-decoration: none;
+}
+
+.view-switch > a {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+}
+
+.view-switch > a:before {
+	color: #b4b9be;
+	display: inline-block;
+	float: right;
+	font: normal 20px/1 'dashicons';
+	speak: none;
+	vertical-align: middle;
+	margin-right: 0;
+>>>>>>> origin/master
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 .view-switch a:hover:before,
 .view-switch a:focus:before {
+=======
+.view-switch > .view-list:before {
+	content: '\f163';
+}
+
+.view-switch a:hover:before {
+>>>>>>> origin/master
 	color: #727272;
 }
 
@@ -808,6 +1077,7 @@ classes exist in paginate_links() but not seen in list table output. */
 	color: #0073aa;
 }
 
+<<<<<<< HEAD
 .view-switch .view-list:before {
 	content: "\f163";
 }
@@ -818,6 +1088,18 @@ classes exist in paginate_links() but not seen in list table output. */
 
 .view-switch .view-grid:before {
 	content: "\f509";
+=======
+.view-switch > a + a {
+	margin-right: 5px;
+}
+
+.view-switch > .view-excerpt:before {
+	content: '\f164';
+}
+
+.view-switch > .view-grid:before {
+	content: '\f509';
+>>>>>>> origin/master
 }
 
 .filter {
@@ -877,6 +1159,7 @@ p.pagenav {
 .row-actions {
 	color: #ddd;
 	font-size: 13px;
+<<<<<<< HEAD
 	padding: 2px 0 0;
 	position: relative;
 	right: -9999em;
@@ -898,6 +1181,17 @@ tr:hover .row-actions,
 .row-actions.visible,
 .comment-item:hover .row-actions {
 	position: static;
+=======
+	visibility: hidden;
+	padding: 2px 0 0;
+}
+
+tr:hover .row-actions,
+.mobile .row-actions,
+.row-actions.visible,
+div.comment-item:hover .row-actions {
+	visibility: visible;
+>>>>>>> origin/master
 }
 
 /* deprecated */
@@ -931,6 +1225,14 @@ tr.inline-edit-row td,
 	padding: 0 0.5em;
 }
 
+<<<<<<< HEAD
+=======
+#wpbody-content .quick-edit-row-page fieldset.inline-edit-col-right .inline-edit-col {
+	border-width: 0 1px 0 0;
+	border-style: none solid none none;
+}
+
+>>>>>>> origin/master
 #wpbody-content .quick-edit-row-post .inline-edit-col-left {
 	width: 40%;
 }
@@ -974,6 +1276,17 @@ tr.inline-edit-row td,
 	line-height: 2.5;
 }
 
+<<<<<<< HEAD
+=======
+.inline-edit-row fieldset .inline-edit-group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+>>>>>>> origin/master
 .inline-edit-row p.submit {
 	clear: both;
 	padding: 0.5em;
@@ -987,6 +1300,7 @@ tr.inline-edit-row td,
 }
 
 /*	Positioning */
+<<<<<<< HEAD
 
 /* Needs higher specificity for the padding */
 #the-list .inline-edit-row .inline-edit-legend {
@@ -1000,6 +1314,13 @@ tr.inline-edit-row td,
 	padding: 0.2em 0.5em;
 }
 
+=======
+.inline-edit-row h4 {
+	margin: .2em 0;
+	padding: 0;
+	line-height: 2.5;
+}
+>>>>>>> origin/master
 .inline-edit-row fieldset span.title,
 .inline-edit-row fieldset span.checkbox-title {
 	margin: 0;
@@ -1013,6 +1334,7 @@ tr.inline-edit-row td,
 	line-height: 2.5;
 }
 
+<<<<<<< HEAD
 .inline-edit-row fieldset.inline-edit-date label {
 	display: inline-block;
 	margin: 0;
@@ -1020,6 +1342,8 @@ tr.inline-edit-row td,
 	vertical-align: baseline;
 }
 
+=======
+>>>>>>> origin/master
 .inline-edit-row fieldset label.inline-edit-tags {
 	margin-top: 0;
 }
@@ -1029,6 +1353,7 @@ tr.inline-edit-row td,
 	width: auto;
 }
 
+<<<<<<< HEAD
 .inline-edit-row fieldset label span.title,
 .inline-edit-row fieldset.inline-edit-date legend {
 	display: block;
@@ -1050,6 +1375,18 @@ tr.inline-edit-row td,
 .inline-edit-row fieldset .timestamp-wrap {
 	display: block;
 	margin-right: 6em;
+=======
+.inline-edit-row fieldset label span.title {
+	display: block;
+	float: right;
+	width: 5em;
+	line-height: 2.5;
+}
+
+.inline-edit-row fieldset label span.input-text-wrap {
+	display: block;
+	margin-right: 5em;
+>>>>>>> origin/master
 }
 
 .quick-edit-row-post fieldset.inline-edit-col-right label span.title {
@@ -1089,7 +1426,11 @@ tr.inline-edit-row td,
 }
 
 /*	Styling */
+<<<<<<< HEAD
 .inline-edit-row .inline-edit-legend {
+=======
+.inline-edit-row h4 {
+>>>>>>> origin/master
 	text-transform: uppercase;
 }
 
@@ -1207,16 +1548,37 @@ ul.cat-checklist {
 	margin-top: 4px;
 }
 
+<<<<<<< HEAD
 .updates-table .plugin-title p {
 	margin-top: 0;
 }
 
 .plugins thead td.check-column,
 .plugins tfoot td.check-column,
+=======
+#update-plugins-table tbody td p {
+	margin-top: 0;
+}
+
+#update-plugins-table tbody td p strong {
+	font-size: 14px;
+}
+
+.plugins thead th.check-column,
+.plugins tfoot th.check-column,
+>>>>>>> origin/master
 .plugins .inactive th.check-column {
 	padding-right: 6px;
 }
 
+<<<<<<< HEAD
+=======
+#update-plugins-table thead th.check-column,
+#update-plugins-table tfoot th.check-column {
+	padding-top: 11px;
+}
+
+>>>>>>> origin/master
 .plugins,
 .plugins th,
 .plugins td {
@@ -1271,6 +1633,13 @@ ul.cat-checklist {
 	border-bottom: 0;
 }
 
+<<<<<<< HEAD
+=======
+.plugin-update-tr td {
+	border-top: 0;
+}
+
+>>>>>>> origin/master
 .plugins .inactive td,
 .plugins .inactive th,
 .plugins .active td,
@@ -1305,22 +1674,42 @@ ul.cat-checklist {
 	box-shadow: none;
 }
 
+<<<<<<< HEAD
+=======
+.plugins .active.update td,
+.plugins .active.update th,
+tr.active.update + tr.plugin-update-tr .plugin-update {
+	background-color: #fef7f1;
+}
+
+>>>>>>> origin/master
 .plugins .active th.check-column,
 .plugin-update-tr.active td {
 	border-right: 4px solid #00a0d2;
 }
 
+<<<<<<< HEAD
+=======
+.plugins .active.update th.check-column,
+.plugins .active.update + .plugin-update-tr .plugin-update {
+	border-right: 4px solid #d54e21;
+}
+
+>>>>>>> origin/master
 #wpbody-content .plugins .plugin-title,
 #wpbody-content .plugins .theme-title {
 	padding-left: 12px;
 	white-space:nowrap;
 }
 
+<<<<<<< HEAD
 .updates-table-screenshot {
 	float:right;
 	padding: 0 0 5px 10px;
 }
 
+=======
+>>>>>>> origin/master
 .plugins .inactive .plugin-title strong {
 	font-weight: 400;
 }
@@ -1343,6 +1732,7 @@ ul.cat-checklist {
 	border-top-width: 1px;
 }
 
+<<<<<<< HEAD
 .plugins .plugin-update-tr .plugin-update {
 	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
 	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
@@ -1373,6 +1763,47 @@ ul.cat-checklist {
 
 .plugin-card .updating-message:before {
 	content: "\f463";
+=======
+.plugin-update-tr .update-message {
+	font-size: 13px;
+	font-weight: normal;
+	margin: 6px 12px 12px;
+	padding: 6px 12px;
+	margin: 0 31px 8px 10px;
+	background-color: #f7f7f7;
+	background-color: rgba(0,0,0,0.03);
+}
+
+.plugin-update-tr .update-message:before,
+.plugin-card .update-now:before,
+.plugin-card .install-now:before {
+	color: #d54e21;
+	display: inline-block;
+	font: normal 20px/1 'dashicons';
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	vertical-align: top;
+}
+
+.plugin-update-tr .update-message:before,
+.plugin-card .update-now:before {
+	content: '\f463';
+}
+
+.plugin-update-tr .update-message:before {
+	margin: 0 -2px 0 8px;
+}
+
+.plugin-card .update-now:before,
+.plugin-card .install-now:before {
+	margin: 3px -2px 0 5px;
+}
+
+.plugin-update-tr .updating-message:before,
+.plugin-card .updating-message:before {
+	content: '\f463';
+>>>>>>> origin/master
 	-webkit-animation: rotation 2s infinite linear;
 	animation: rotation 2s infinite linear;
 }
@@ -1399,6 +1830,7 @@ ul.cat-checklist {
 	}
 }
 
+<<<<<<< HEAD
 .plugin-card .updated-message:before {
 	color: #79ba49;
 	content: "\f147";
@@ -1409,6 +1841,35 @@ ul.cat-checklist {
 }
 
 .plugin-install-php h3 {
+=======
+.plugin-update-tr .updated-message:before,
+.plugin-card .updated-message:before {
+	color: #79ba49;
+	content: '\f147';
+}
+
+.plugins .plugin-update-tr .plugin-update {
+	padding: 0;
+	border: none;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+/* update notices for active plugins */
+tr.active + tr.plugin-update-tr .plugin-update {
+	background-color: #f7fcfe;
+}
+
+tr.active + tr.plugin-update-tr:not(.updated) .plugin-update .update-message {
+	background-color: #fcf3ef;
+}
+
+.plugin-install-php h3 {
+	clear: both;
+}
+
+.plugin-install-php h4 {
+>>>>>>> origin/master
 	margin: 2.5em 0 8px;
 }
 
@@ -1433,7 +1894,11 @@ ul.cat-checklist {
 	width: -webkit-calc( 50% - 8px );
 	width: calc( 50% - 8px );
 	background-color: #fff;
+<<<<<<< HEAD
 	border: 1px solid #ddd;
+=======
+	border: 1px solid #dedede;
+>>>>>>> origin/master
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -1474,6 +1939,17 @@ ul.cat-checklist {
 	}
 }
 
+<<<<<<< HEAD
+=======
+@media screen and ( max-width: 782px ) {
+	.plugin-card {
+		margin-right: 0;
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+>>>>>>> origin/master
 .plugin-card-top {
 	position: relative;
 	padding: 20px 20px 10px;
@@ -1485,7 +1961,11 @@ div.action-links,
 	margin: 0; /* Override existing margins */
 }
 
+<<<<<<< HEAD
 .plugin-card h3 {
+=======
+.plugin-card h4 {
+>>>>>>> origin/master
 	margin: 0 0 12px;
 	font-size: 18px;
 	line-height: 1.3;
@@ -1520,7 +2000,11 @@ div.action-links,
 	clear: both;
 	padding: 12px 20px;
 	background-color: #fafafa;
+<<<<<<< HEAD
 	border-top: 1px solid #ddd;
+=======
+	border-top: 1px solid #dedede;
+>>>>>>> origin/master
 	overflow: hidden;
 }
 
@@ -1528,6 +2012,7 @@ div.action-links,
 	display: inline;
 }
 
+<<<<<<< HEAD
 .plugin-card-update-failed .update-now {
 	font-weight: 600;
 }
@@ -1543,6 +2028,8 @@ div.action-links,
 	display: none;
 }
 
+=======
+>>>>>>> origin/master
 .plugin-card .column-rating {
 	line-height: 23px;
 }
@@ -1570,7 +2057,11 @@ div.action-links,
 }
 
 .plugin-card .column-compatibility span:before {
+<<<<<<< HEAD
 	font: normal 20px/.5 dashicons;
+=======
+	font: normal 20px/.5 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	display: inline-block;
 	padding: 0;
@@ -1585,11 +2076,19 @@ div.action-links,
 }
 
 .plugin-card .compatibility-incompatible:before {
+<<<<<<< HEAD
 	content: "\f158";
 }
 
 .plugin-card .compatibility-compatible:before {
 	content: "\f147";
+=======
+	content: '\f158';
+}
+
+.plugin-card .compatibility-compatible:before {
+	content: '\f147';
+>>>>>>> origin/master
 }
 
 .plugin-icon {
@@ -1601,8 +2100,18 @@ div.action-links,
 	margin: 0 0 20px 20px;
 }
 
+<<<<<<< HEAD
 .no-plugin-results {
 	color: #666; /* same as no themes and no media */
+=======
+.plugin-icon img {
+	width: 128px;
+	height: 128px;
+}
+
+.no-plugin-results {
+	color: #999;
+>>>>>>> origin/master
 	font-size: 18px;
 	font-style: normal;
 	margin: 0;
@@ -1612,6 +2121,7 @@ div.action-links,
 
 /* ms */
 /* Background Color for Site Status */
+<<<<<<< HEAD
 .wp-list-table .site-deleted,
 .wp-list-table tr.site-deleted {
 	background: #ff8573;
@@ -1625,10 +2135,22 @@ div.action-links,
 	background: #ffebe8;
 }
 .wp-list-table .site-mature,
+=======
+.wp-list-table tr.site-deleted {
+	background: #ff8573;
+}
+.wp-list-table tr.site-spammed {
+	background: #faafaa;
+}
+.wp-list-table tr.site-archived {
+	background: #ffebe8;
+}
+>>>>>>> origin/master
 .wp-list-table tr.site-mature {
 	background: #fecac2;
 }
 
+<<<<<<< HEAD
 .sites.fixed .column-lastupdated,
 .sites.fixed .column-registered {
 	width: 20%;
@@ -1638,6 +2160,8 @@ div.action-links,
 	width: 80px;
 }
 
+=======
+>>>>>>> origin/master
 /* =Media Queries
 -------------------------------------------------------------- */
 
@@ -1671,10 +2195,13 @@ div.action-links,
 	.plugin-card .desc p:first-of-type {
 		margin-top: 0;
 	}
+<<<<<<< HEAD
 
 	.fixed .column-date {
 		width: 14%;
 	}
+=======
+>>>>>>> origin/master
 }
 
 @media screen and ( max-width: 782px ) {
@@ -1705,12 +2232,15 @@ div.action-links,
 		display: none;
 	}
 
+<<<<<<< HEAD
 	.view-switch a {
 		width: 36px;
 		height: 36px;
 		line-height: 33px;
 	}
 
+=======
+>>>>>>> origin/master
 	/* Pagination */
 	.tablenav.top .displaying-num {
 		display: none;
@@ -1719,6 +2249,7 @@ div.action-links,
 	.tablenav.bottom .displaying-num {
 		position: absolute;
 		left: 0;
+<<<<<<< HEAD
 		top: 11px;
 		margin: 0;
 		font-size: 14px;
@@ -1727,6 +2258,14 @@ div.action-links,
 	.tablenav .tablenav-pages {
 		width: 100%;
 		height: auto;
+=======
+		top: 10px;
+		font-size: 14px;
+	}
+
+	.tablenav-pages {
+		width: 100%;
+>>>>>>> origin/master
 		text-align: center;
 		margin: 0 0 25px;
 	}
@@ -1744,6 +2283,7 @@ div.action-links,
 		height: 0;
 	}
 
+<<<<<<< HEAD
 	.tablenav-pages .pagination-links {
 		font-size: 16px;
 	}
@@ -1761,6 +2301,21 @@ div.action-links,
 	.tablenav-pages .pagination-links .current-page {
 		padding: 8px 9px 9px;
 		font-size: 16px;
+=======
+	.tablenav-pages .pagination-links .paging-input {
+		font-size: 18px;
+	}
+
+	.tablenav-pages .pagination-links a {
+		padding: 8px 20px 11px;
+		font-size: 18px;
+		background: rgba(0, 0, 0, 0.05);
+	}
+
+	.tablenav-pages .pagination-links .current-page {
+		padding: 10px;
+		font-size: 14px;
+>>>>>>> origin/master
 	}
 
 	/* WP List Table Adjustments: General */
@@ -1772,6 +2327,7 @@ div.action-links,
 		font-size: 14px;
 	}
 
+<<<<<<< HEAD
 	.wp-list-table th.column-primary ~ th,
 	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-primary ~ td:not(.check-column) {
 		display: none;
@@ -1833,10 +2389,27 @@ div.action-links,
 		display: none !important;
 	}
 
+=======
+	/* Columns to hide */
+	.fixed .column-date,
+	.fixed .column-author,
+	.column-categories,
+	.column-tags,
+	.tags .column-description,
+	.media .column-parent,
+	.users .column-email,
+	.users .column-name,
+	.sites .column-registered,
+	.sites .column-users {
+		display: none;
+	}
+
+>>>>>>> origin/master
 	.fixed .column-comment .comment-author {
 		display: block;
 	}
 
+<<<<<<< HEAD
 	#the-comment-list .is-expanded td {
 		-webkit-box-shadow: none;
 		box-shadow: none;
@@ -1909,6 +2482,19 @@ div.action-links,
 	.widefat thead td.check-column,
 	.widefat tfoot td.check-column {
 		padding-top: 10px;
+=======
+	/* Posts */
+	.column-title {
+		width: 85%;
+	}
+
+	.fixed .column-comments, .widefat .check-column {
+		width: 35px
+	}
+
+	.widefat thead .check-column, .widefat tfoot .check-column {
+		padding: 10px 0 10px;
+>>>>>>> origin/master
 	}
 
 	.widefat * {
@@ -1952,8 +2538,12 @@ div.action-links,
 		font-size: 16px;
 	}
 
+<<<<<<< HEAD
 	.inline-edit-row fieldset label span.title,
 	.inline-edit-row fieldset.inline-edit-date legend {
+=======
+	.inline-edit-row fieldset label span.title {
+>>>>>>> origin/master
 		float: none;
 	}
 
@@ -1965,8 +2555,12 @@ div.action-links,
 		padding: 0;
 	}
 
+<<<<<<< HEAD
 	.inline-edit-row fieldset label span.input-text-wrap,
 	.inline-edit-row fieldset .timestamp-wrap {
+=======
+	.inline-edit-row fieldset label span.input-text-wrap {
+>>>>>>> origin/master
 		margin-right: 0;
 	}
 
@@ -1984,6 +2578,7 @@ div.action-links,
 		margin: 0 0 0 6px;
 	}
 
+<<<<<<< HEAD
 	#edithead .inside,
 	#commentsdiv #edithead .inside {
 		float: none;
@@ -2012,6 +2607,43 @@ div.action-links,
 	#wpbody-content .updates-table .plugin-title {
 		width: auto;
 		white-space: normal;
+=======
+	#bulk-titles div {
+		margin: 0.8em 0.3em;
+	}
+
+	#bulk-titles div a {
+		height: 22px;
+	}
+
+	/* Taxonomies */
+	.tags .column-posts {
+		width: 74px;
+	}
+
+	.tags .column-slug {
+		width: 30%;
+	}
+
+	/* Comments */
+	.comments .column-response {
+		width: 35%;
+	}
+
+	/* Users */
+	.users .column-role {
+		width: 35%;
+	}
+
+	/* Network admin sites */
+	.sites .column-blogname {
+		width: 55%;
+	}
+
+	/* Updates */
+	#wpbody-content #update-themes-table .plugin-title {
+		width: auto;
+>>>>>>> origin/master
 	}
 
 	/* Links */
@@ -2023,6 +2655,7 @@ div.action-links,
 		overflow: hidden;
 	}
 
+<<<<<<< HEAD
 	/* List tables that don't toggle rows */
 	.comments-box .toggle-row,
 	.wp-list-table.plugins .toggle-row {
@@ -2044,6 +2677,51 @@ div.action-links,
 	#wpbody-content .wp-list-table.plugins .theme-title {
 		padding-left: 12px;
 		white-space: normal;
+=======
+	/* Plugin/Theme Management Page */
+	.wp-list-table.plugins {
+		position: relative;
+		margin-top: 35px;
+		margin-bottom: 50px;
+	}
+
+	.wp-list-table.plugins thead .column-description,
+	#wpbody-content .wp-list-table.plugins tfoot .column-description,
+	.wp-list-table.plugins th#description {
+		display: none;
+	}
+
+	#wpbody-content .wp-list-table.plugins,
+	#wpbody-content .wp-list-table.plugins thead,
+	#wpbody-content .wp-list-table.plugins tbody,
+	#wpbody-content .wp-list-table.plugins tr,
+	#wpbody-content .wp-list-table.plugins .column-description,
+	#wpbody-content .wp-list-table.plugins .plugin-title,
+	#wpbody-content .wp-list-table.plugins .theme-title,
+	#wpbody-content .wp-list-table.plugins .plugin-update,
+	#wpbody-content .wp-list-table.plugins .manage-column.column-name {
+		display: block;
+		width: auto;
+	}
+
+	.wp-list-table.plugins thead,
+	.wp-list-table.plugins tfoot {
+		position: absolute;
+		top: -35px;
+		right: 0;
+		left: 0;
+		width: auto;
+		height: 35px;
+	}
+
+	.wp-list-table.plugins tfoot {
+		bottom: -35px;
+		top: auto;
+	}
+
+	.active, .inactive {
+		padding-top: 0;
+>>>>>>> origin/master
 	}
 
 	.wp-list-table.plugins .plugin-title,
@@ -2052,6 +2730,7 @@ div.action-links,
 		padding-bottom: 4px;
 	}
 
+<<<<<<< HEAD
 	.plugins #the-list tr > td:not(:last-child),
 	.plugins #the-list .update th,
 	.plugins #the-list .update td,
@@ -2063,15 +2742,28 @@ div.action-links,
 
 	.plugins #the-list tr td {
 		border-top: none;
+=======
+	.plugins tr.active + tr.inactive th.check-column,
+	.plugins tr.active + tr.inactive td,
+	.wp-list-table.plugins .plugin-title,
+	.wp-list-table.plugins .theme-title,
+	.wp-list-table.plugins tbody th {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+>>>>>>> origin/master
 	}
 
 	.plugins tbody {
 		padding: 1px 0 0;
 	}
 
+<<<<<<< HEAD
 	.plugins tr.active + tr.inactive th.check-column,
 	.plugins tr.active + tr.inactive td.column-description,
 	.plugins .plugin-update-tr:before {
+=======
+	.plugins tr.active + tr.inactive td.column-description {
+>>>>>>> origin/master
 		-webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 		box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	}
@@ -2081,6 +2773,7 @@ div.action-links,
 		border-top: none;
 	}
 
+<<<<<<< HEAD
 	/* mimic the checkbox th */
 	.plugins .plugin-update-tr:before {
 		content: "";
@@ -2107,12 +2800,69 @@ div.action-links,
 
 	.plugins .plugin-update-tr .update-message {
 		margin-right: 0;
+=======
+	.wp-list-table.plugins .column-description {
+		padding-top: 0;
+	}
+
+	.wp-list-table.plugins .manage-column.column-name,
+	.wp-list-table.plugins .column-description,
+	.wp-list-table.plugins .plugin-title,
+	.wp-list-table.plugins .theme-title {
+		padding-left: 12px;
+		padding-right: 46px;
+	}
+
+	.wp-list-table.plugins tr {
+		position: relative;
+	}
+
+	.wp-list-table.plugins th.check-column,
+	.wp-list-table.plugins tr.update th.check-column {
+		position: absolute;
+		height: auto;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		padding-right: 2px;
+		padding-top: 18px;
+	}
+
+	.wp-list-table.plugins thead th.check-column,
+	.wp-list-table.plugins tfoot th.check-column {
+		padding-right: 3px;
+		padding-top: 11px;
+		background: none;
+	}
+
+	.widefat tbody th.check-column input[type="checkbox"] {
+		margin-top: -3px;
+		margin-right: 8px;
+	}
+
+	.wp-list-table.plugins .active .check-column input,
+	.wp-list-table.plugins .update .check-column input {
+		margin-right: 5px;
+	}
+
+	.wp-list-table.plugins thead .check-column input,
+	.wp-list-table.plugins tfoot .check-column input {
+		margin-top: -6px;
+	}
+
+	.wp-list-table.plugins .active th.check-column {
+		background: none;
+>>>>>>> origin/master
 	}
 
 	.wp-list-table.plugins .plugin-title strong,
 	.wp-list-table.plugins .theme-title strong {
 		font-size: 1.4em;
+<<<<<<< HEAD
 		line-height: 1.5;
+=======
+		line-height: 1.6em;
+>>>>>>> origin/master
 	}
 
 	/* Add New plugins page */
@@ -2146,6 +2896,7 @@ div.action-links,
 		-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
 		box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
 	}
+<<<<<<< HEAD
 
 	.plugin-card {
 		margin-right: 0;
@@ -2163,5 +2914,16 @@ div.action-links,
 		float: right;
 		width: 100%;
 		padding-top: 0.5em;
+=======
+}
+
+/* Smartphone */
+@media screen and (max-width: 600px) {
+	/* Remove slug column from taxonomy list page
+	   and role column from users list page */
+	.tags .column-slug,
+	.users .column-role {
+		display: none;
+>>>>>>> origin/master
 	}
 }

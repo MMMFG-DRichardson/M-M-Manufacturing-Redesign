@@ -141,7 +141,11 @@
 					settings.mainInterval = settings.minimalInterval;
 				}
 
+<<<<<<< HEAD
 				// 'screenId' can be added from settings on the front end where the JS global 'pagenow' is not set
+=======
+				// 'screenId' can be added from settings on the front-end where the JS global 'pagenow' is not set
+>>>>>>> origin/master
 				if ( ! settings.screenId ) {
 					settings.screenId = options.screenId || 'front';
 				}
@@ -389,6 +393,10 @@
 
 				if ( response.nonces_expired ) {
 					$document.trigger( 'heartbeat-nonces-expired' );
+<<<<<<< HEAD
+=======
+					return;
+>>>>>>> origin/master
 				}
 
 				// Change the interval from PHP

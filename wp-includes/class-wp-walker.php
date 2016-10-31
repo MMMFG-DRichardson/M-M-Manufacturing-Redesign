@@ -127,11 +127,20 @@ class Walker {
 	 * @param int    $depth             Depth of current element.
 	 * @param array  $args              An array of arguments.
 	 * @param string $output            Passed by reference. Used to append additional content.
+<<<<<<< HEAD
 	 */
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
 		if ( ! $element ) {
 			return;
 		}
+=======
+	 * @return null Null on failure with no changes to parameters.
+	 */
+	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
+
+		if ( !$element )
+			return;
+>>>>>>> origin/master
 
 		$id_field = $this->db_fields['id'];
 		$id       = $element->$id_field;
@@ -139,7 +148,11 @@ class Walker {
 		//display this element
 		$this->has_children = ! empty( $children_elements[ $id ] );
 		if ( isset( $args[0] ) && is_array( $args[0] ) ) {
+<<<<<<< HEAD
 			$args[0]['has_children'] = $this->has_children; // Back-compat.
+=======
+			$args[0]['has_children'] = $this->has_children; // Backwards compatibility.
+>>>>>>> origin/master
 		}
 
 		$cb_args = array_merge( array(&$output, $element, $depth), $args);
@@ -148,7 +161,11 @@ class Walker {
 		// descend only when the depth is right and there are childrens for this element
 		if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
 
+<<<<<<< HEAD
 			foreach ( $children_elements[ $id ] as $child ){
+=======
+			foreach( $children_elements[ $id ] as $child ){
+>>>>>>> origin/master
 
 				if ( !isset($newlevel) ) {
 					$newlevel = true;
@@ -187,6 +204,7 @@ class Walker {
 	 * @param int   $max_depth The maximum hierarchical depth.
 	 * @return string The hierarchical item output.
 	 */
+<<<<<<< HEAD
 	public function walk( $elements, $max_depth ) {
 		$args = array_slice(func_get_args(), 2);
 		$output = '';
@@ -195,6 +213,18 @@ class Walker {
 		if ( $max_depth < -1 || empty( $elements ) ) {
 			return $output;
 		}
+=======
+	public function walk( $elements, $max_depth) {
+
+		$args = array_slice(func_get_args(), 2);
+		$output = '';
+
+		if ($max_depth < -1) //invalid parameter
+			return $output;
+
+		if (empty($elements)) //nothing to walk
+			return $output;
+>>>>>>> origin/master
 
 		$parent_field = $this->db_fields['parent'];
 
@@ -215,7 +245,11 @@ class Walker {
 		$top_level_elements = array();
 		$children_elements  = array();
 		foreach ( $elements as $e) {
+<<<<<<< HEAD
 			if ( empty( $e->$parent_field ) )
+=======
+			if ( 0 == $e->$parent_field )
+>>>>>>> origin/master
 				$top_level_elements[] = $e;
 			else
 				$children_elements[ $e->$parent_field ][] = $e;
@@ -250,7 +284,11 @@ class Walker {
 		if ( ( $max_depth == 0 ) && count( $children_elements ) > 0 ) {
 			$empty_array = array();
 			foreach ( $children_elements as $orphans )
+<<<<<<< HEAD
 				foreach ( $orphans as $op )
+=======
+				foreach( $orphans as $op )
+>>>>>>> origin/master
 					$this->display_element( $op, $empty_array, 1, 0, $args, $output );
 		 }
 
@@ -269,6 +307,7 @@ class Walker {
 	 *
  	 * @since 2.7.0
 	 *
+<<<<<<< HEAD
 	 * @param array $elements
 	 * @param int   $max_depth The maximum hierarchical depth.
 	 * @param int   $page_num The specific page number, beginning with 1.
@@ -279,6 +318,17 @@ class Walker {
 		if ( empty( $elements ) || $max_depth < -1 ) {
 			return '';
 		}
+=======
+ 	 * @param int $max_depth The maximum hierarchical depth.
+ 	 * @param int $page_num  The specific page number, beginning with 1.
+ 	 * @return string XHTML of the specified page of elements
+ 	 */
+	public function paged_walk( $elements, $max_depth, $page_num, $per_page ) {
+
+		/* sanity check */
+		if ( empty($elements) || $max_depth < -1 )
+			return '';
+>>>>>>> origin/master
 
 		$args = array_slice( func_get_args(), 4 );
 		$output = '';
@@ -374,13 +424,18 @@ class Walker {
 		if ( $end >= $total_top && count( $children_elements ) > 0 ) {
 			$empty_array = array();
 			foreach ( $children_elements as $orphans )
+<<<<<<< HEAD
 				foreach ( $orphans as $op )
+=======
+				foreach( $orphans as $op )
+>>>>>>> origin/master
 					$this->display_element( $op, $empty_array, 1, 0, $args, $output );
 		}
 
 		return $output;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Calculates the total number of root elements.
 	 *
@@ -391,6 +446,10 @@ class Walker {
 	 * @return int Number of root elements.
 	 */
 	public function get_number_of_root_elements( $elements ){
+=======
+	public function get_number_of_root_elements( $elements ){
+
+>>>>>>> origin/master
 		$num = 0;
 		$parent_field = $this->db_fields['parent'];
 
@@ -401,6 +460,7 @@ class Walker {
 		return $num;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Unset all the children for a given top level element.
 	 *
@@ -411,6 +471,13 @@ class Walker {
 		if ( ! $e || ! $children_elements ) {
 			return;
 		}
+=======
+	// Unset all the children for a given top level element.
+	public function unset_children( $e, &$children_elements ){
+
+		if ( !$e || !$children_elements )
+			return;
+>>>>>>> origin/master
 
 		$id_field = $this->db_fields['id'];
 		$id = $e->$id_field;
@@ -419,7 +486,13 @@ class Walker {
 			foreach ( (array) $children_elements[$id] as $child )
 				$this->unset_children( $child, $children_elements );
 
+<<<<<<< HEAD
 		unset( $children_elements[ $id ] );
+=======
+		if ( isset($children_elements[$id]) )
+			unset( $children_elements[$id] );
+
+>>>>>>> origin/master
 	}
 
 } // Walker

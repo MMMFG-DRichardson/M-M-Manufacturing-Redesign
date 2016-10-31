@@ -15,9 +15,14 @@ if ( ! isset( $_GET['inline'] ) )
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
+<<<<<<< HEAD
 if ( ! current_user_can( 'upload_files' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to upload files.' ), 403 );
 }
+=======
+if (!current_user_can('upload_files'))
+	wp_die(__('You do not have permission to upload files.'));
+>>>>>>> origin/master
 
 wp_enqueue_script('plupload-handlers');
 wp_enqueue_script('image-edit');
@@ -32,6 +37,7 @@ $ID = isset($ID) ? (int) $ID : 0;
 $post_id = isset($post_id)? (int) $post_id : 0;
 
 // Require an ID for the edit screen.
+<<<<<<< HEAD
 if ( isset( $action ) && $action == 'edit' && !$ID ) {
 	wp_die(
 		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -46,6 +52,14 @@ if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_post' , $_REQU
 		'<p>' . __( 'Sorry, you are not allowed to edit this item.' ) . '</p>',
 		403
 	);
+=======
+if ( isset($action) && $action == 'edit' && !$ID ) {
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+}
+
+if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_post' , $_REQUEST['post_id'] ) ) {
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 }
 
 // Upload type: image, video, file, ..?
@@ -53,7 +67,11 @@ if ( isset($_GET['type']) ) {
 	$type = strval($_GET['type']);
 } else {
 	/**
+<<<<<<< HEAD
 	 * Filters the default media upload type in the legacy (pre-3.5.0) media popup.
+=======
+	 * Filter the default media upload type in the legacy (pre-3.5.0) media popup.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *
@@ -68,7 +86,11 @@ if ( isset($_GET['tab']) ) {
 	$tab = strval($_GET['tab']);
 } else {
 	/**
+<<<<<<< HEAD
 	 * Filters the default tab in the legacy (pre-3.5.0) media popup.
+=======
+	 * Filter the default tab in the legacy (pre-3.5.0) media popup.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *

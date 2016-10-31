@@ -200,9 +200,15 @@
 	color: #555;
 	border-color: #cccccc;
 	background: #f7f7f7;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 0 #cccccc;
 	box-shadow: 0 1px 0 #cccccc;
  	vertical-align: top;
+=======
+	-webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba( 0, 0, 0, 0.08 );
+	box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba( 0, 0, 0, 0.08 );
+	vertical-align: top;
+>>>>>>> origin/master
 }
 
 .ui-button:active,
@@ -212,8 +218,14 @@
 
 /* Remove the dotted border on :focus and the extra padding in Firefox */
 .ui-button::-moz-focus-inner {
+<<<<<<< HEAD
 	border-width: 0;
 	border-style: none;
+=======
+	border-width: 1px 0;
+	border-style: solid none;
+	border-color: transparent;
+>>>>>>> origin/master
 	padding: 0;
 }
 
@@ -225,19 +237,34 @@
 }
 
 .ui-button:focus {
+<<<<<<< HEAD
 	border-color: #5b9dd9;
 	-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
+=======
+	-webkit-box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba( 30, 140, 190, 0.8 );
+	box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba( 30, 140, 190, 0.8 );
+>>>>>>> origin/master
 }
 
 .ui-button:active {
 	background: #eee;
 	border-color: #999;
+<<<<<<< HEAD
 	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 	-webkit-transform: translateY(1px);
 	-ms-transform: translateY(1px);
 	transform: translateY(1px);
+=======
+	color: #32373c;
+	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+>>>>>>> origin/master
 }
 
 .ui-button[disabled],
@@ -249,16 +276,24 @@
 	box-shadow: none !important;
 	text-shadow: 0 1px 0 #fff !important;
 	cursor: default;
+<<<<<<< HEAD
 	-webkit-transform: none !important;
 	-ms-transform: none !important;
 	transform: none !important;
+=======
+>>>>>>> origin/master
 }
 
 @media screen and ( max-width: 782px ) {
 
 	.ui-button {
+<<<<<<< HEAD
 		padding: 6px 14px;
 		line-height: normal;
+=======
+		padding: 10px 14px;
+		line-height: 1;
+>>>>>>> origin/master
 		font-size: 14px;
 		vertical-align: middle;
 		height: auto;
@@ -307,7 +342,11 @@
 }
 
 .ui-dialog-titlebar-close:before {
+<<<<<<< HEAD
 	font: normal 20px/1 dashicons;
+=======
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	vertical-align: top;
 	speak: none;
 	-webkit-font-smoothing: antialiased;

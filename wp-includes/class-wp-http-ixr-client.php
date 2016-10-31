@@ -46,9 +46,12 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 		$this->timeout = $timeout;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	public function query() {
 		$args = func_get_args();
 		$method = array_shift($args);
@@ -64,6 +67,7 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 		);
 
 		// Merge Custom headers ala #8145
+<<<<<<< HEAD
 		foreach ( $this->headers as $header => $value ) {
 			$args['headers'][$header] = $value;
 		}
@@ -85,6 +89,17 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 		if ( $this->debug ) {
 			echo '<pre class="ixr_request">' . htmlspecialchars($xml) . "\n</pre>\n\n";
 		}
+=======
+		foreach ( $this->headers as $header => $value )
+			$args['headers'][$header] = $value;
+
+		if ( $this->timeout !== false )
+			$args['timeout'] = $this->timeout;
+
+		// Now send the request
+		if ( $this->debug )
+			echo '<pre class="ixr_request">' . htmlspecialchars($xml) . "\n</pre>\n\n";
+>>>>>>> origin/master
 
 		$response = wp_remote_post($url, $args);
 
@@ -100,9 +115,14 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 			return false;
 		}
 
+<<<<<<< HEAD
 		if ( $this->debug ) {
 			echo '<pre class="ixr_response">' . htmlspecialchars( wp_remote_retrieve_body( $response ) ) . "\n</pre>\n\n";
 		}
+=======
+		if ( $this->debug )
+			echo '<pre class="ixr_response">' . htmlspecialchars( wp_remote_retrieve_body( $response ) ) . "\n</pre>\n\n";
+>>>>>>> origin/master
 
 		// Now parse what we've got back
 		$this->message = new IXR_Message( wp_remote_retrieve_body( $response ) );

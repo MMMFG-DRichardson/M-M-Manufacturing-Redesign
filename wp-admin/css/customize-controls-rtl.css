@@ -20,7 +20,11 @@ body {
 }
 
 #customize-controls .description {
+<<<<<<< HEAD
 	color: #555;
+=======
+	color: #666666;
+>>>>>>> origin/master
 }
 
 #customize-header-actions .button-primary {
@@ -41,11 +45,19 @@ body {
 	border-bottom: 1px solid #ddd;
 }
 
+<<<<<<< HEAD
+=======
+#customize-header-actions .secondary-actions {
+	display: none;
+}
+
+>>>>>>> origin/master
 #customize-controls .wp-full-overlay-sidebar-content {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 
+<<<<<<< HEAD
 #customize-controls .customize-info {
 	border: none;
 	border-top: 1px solid #ddd;
@@ -73,10 +85,33 @@ body {
 }
 
 #customize-controls .customize-info .preview-notice {
+=======
+#customize-info {
+	border: none;
+	border-top: 1px solid #ddd;
+}
+
+#customize-info .accordion-section-title {
+	background-color: #fff;
+	color: #666666;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #eeeeee;
+}
+
+#customize-info.open .accordion-section-title:after,
+#customize-info .accordion-section-title:hover:after,
+#customize-info .accordion-section-title:focus:after {
+	color: #555555;
+}
+
+#customize-info .preview-notice {
+>>>>>>> origin/master
 	font-size: 13px;
 	line-height: 24px;
 }
 
+<<<<<<< HEAD
 #customize-controls .control-section .customize-section-title h3,
 #customize-controls .control-section h3.customize-section-title,
 #customize-controls .customize-info .panel-title {
@@ -145,6 +180,23 @@ body {
 
 #customize-controls .current-panel .control-section > h3.accordion-section-title {
 	padding-left: 30px;
+=======
+#customize-info .theme-name {
+	font-size: 20px;
+	font-weight: 200;
+	line-height: 24px;
+	display: block;
+}
+
+#customize-info .theme-screenshot {
+	width: 258px;
+}
+
+#customize-info .theme-description {
+	margin-top: 1em;
+	color: #666666;
+	line-height: 20px;
+>>>>>>> origin/master
 }
 
 #customize-theme-controls .control-section {
@@ -152,6 +204,7 @@ body {
 }
 
 #customize-theme-controls .accordion-section-title {
+<<<<<<< HEAD
 	color: #555;
 	background-color: #fff;
 	border-bottom: 1px solid #eee;
@@ -171,6 +224,25 @@ body {
 #customize-controls .control-section .accordion-section-title:hover,
 #customize-controls .control-section.open .accordion-section-title,
 #customize-controls .control-section .accordion-section-title:focus {
+=======
+	color: #555555;
+	background-color: #fff;
+	border-bottom: 1px solid #eeeeee;
+}
+
+#customize-theme-controls .accordion-section-content {
+	color: #555555;
+	background: #fff;
+}
+
+#customize-info.open .accordion-section-title,
+#customize-info .accordion-section-title:hover,
+#customize-info .accordion-section-title:focus,
+#customize-theme-controls .control-section:hover > .accordion-section-title,
+#customize-theme-controls .control-section .accordion-section-title:hover,
+#customize-theme-controls .control-section.open .accordion-section-title,
+#customize-theme-controls .control-section .accordion-section-title:focus {
+>>>>>>> origin/master
 	color: #23282d;
 	background: #f5f5f5;
 }
@@ -186,6 +258,7 @@ body {
 #customize-theme-controls .control-section .accordion-section-title:hover:after,
 #customize-theme-controls .control-section.open .accordion-section-title:after,
 #customize-theme-controls .control-section .accordion-section-title:focus:after {
+<<<<<<< HEAD
 	color: #23282d;
 }
 
@@ -195,6 +268,18 @@ body {
 
 #customize-theme-controls .control-section.open .accordion-section-title {
 	border-bottom-color: #eee !important;
+=======
+	color: #555;
+}
+
+#customize-info.open,
+#customize-theme-controls .control-section.open {
+	border-bottom: 1px solid #eeeeee;
+}
+
+#customize-theme-controls .control-section.open .accordion-section-title {
+	border-bottom-color: #eeeeee !important;
+>>>>>>> origin/master
 }
 
 #customize-theme-controls .control-section:last-of-type.open,
@@ -202,6 +287,7 @@ body {
 	border-bottom-color: #ddd;
 }
 
+<<<<<<< HEAD
 #customize-theme-controls > ul {
 	margin: 0;
 }
@@ -272,23 +358,66 @@ h3.customize-section-title {
 .section-open #customize-info,
 .section-open #customize-theme-controls {
 	right: -100%;
+=======
+#customize-theme-controls > ul,
+#customize-theme-controls .accordion-section-content {
+	margin: 0;
+}
+
+.control-section.control-panel > .accordion-section-title {
+	padding-left: 54px;
+}
+
+.control-section.control-panel > .accordion-section-title:after {
+	content: "\f341";
+	background: #f5f5f5;
+	color: #555;
+	width: 38px;
+	height: 100%;
+	margin: -11px 0 -11px -10px; /* compensate for positioning */
+	line-height: 45px;
+	padding-right: 5px;
+	border-right: 1px solid #eee;
+	z-index: 0;
+}
+
+#customize-theme-controls .control-section.control-panel > h3.accordion-section-title:focus:after,
+#customize-theme-controls .control-section.control-panel > h3.accordion-section-title:hover:after {
+	background: #ddd;
+	color: #000;
+	border: 1px solid #d9d9d9;
+	border-left: none;
+	margin-top: -12px;
+	line-height: 44px;
+	z-index: 1;
+>>>>>>> origin/master
 }
 
 .accordion-sub-container.control-panel-content {
 	display: none;
 	position: absolute;
+<<<<<<< HEAD
 	right: 100%;
 	top: 0;
 	width: 100%;
+=======
+	right: 300px;
+	top: 0;
+	width: 300px;
+	border-top: 1px solid #ddd;
+>>>>>>> origin/master
 	-webkit-transition: right ease-in-out .18s;
 	transition: right ease-in-out .18s;
 }
 
+<<<<<<< HEAD
 .ios .accordion-sub-container.control-panel-content {
 	-webkit-transition: right 0s;
 	transition: right 0s;
 }
 
+=======
+>>>>>>> origin/master
 .accordion-sub-container.control-panel-content.animating {
 	display: block;
 }
@@ -297,6 +426,10 @@ h3.customize-section-title {
 	width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.customize-overlay-close,
+>>>>>>> origin/master
 .customize-controls-close {
 	display: block;
 	position: absolute;
@@ -318,6 +451,7 @@ h3.customize-section-title {
 	box-sizing: content-box;
 }
 
+<<<<<<< HEAD
 .customize-panel-back,
 .customize-section-back {
 	display: block;
@@ -331,21 +465,46 @@ h3.customize-section-title {
 	border-left: 1px solid #ddd;
 	-webkit-box-shadow: none;
 	box-shadow: none;
+=======
+.customize-overlay-close {
+	right: auto;
+	left: 0;
+	border-left: 0;
+	border-right: 1px solid #ddd;
+}
+
+.control-panel-back {
+	display: block;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	right: -48px;
+	width: 45px;
+	height: 45px;
+	padding-left: 2px;
+	background: #eee;
+	border-left: 1px solid #ddd;
+>>>>>>> origin/master
 	cursor: pointer;
 	-webkit-transition: right .18s ease-in-out, color .1s ease-in-out, background .1s ease-in-out;
 	transition: right .18s ease-in-out, color .1s ease-in-out, background .1s ease-in-out;
 }
 
+<<<<<<< HEAD
 .customize-section-back {
 	height: 74px;
 }
 
 .ios .customize-panel-back,
 .ios .customize-section-back {
+=======
+.ios .control-panel-back {
+>>>>>>> origin/master
 	-webkit-transition: right 0s;
 	transition: right 0s;
 }
 
+<<<<<<< HEAD
 .ios .customize-panel-back {
 	display: none;
 }
@@ -365,6 +524,18 @@ h3.customize-section-title {
 
 .customize-controls-close:focus,
 .customize-controls-close:hover,
+=======
+.collapsed .control-panel-back {
+	display: none;
+}
+
+.customize-overlay-close:focus,
+.customize-overlay-close:hover,
+.customize-controls-close:focus,
+.customize-controls-close:hover,
+.control-panel-back:focus,
+.control-panel-back:hover,
+>>>>>>> origin/master
 .customize-controls-preview-toggle:focus,
 .customize-controls-preview-toggle:hover {
 	background: #ddd;
@@ -375,6 +546,7 @@ h3.customize-section-title {
 	box-shadow: none;
 }
 
+<<<<<<< HEAD
 .customize-panel-back:hover,
 .customize-panel-back:focus,
 .customize-section-back:hover,
@@ -386,6 +558,9 @@ h3.customize-section-title {
 	box-shadow: none;
 }
 
+=======
+.customize-overlay-close:before,
+>>>>>>> origin/master
 .customize-controls-close:before {
 	font: normal 22px/45px dashicons;
 	content: "\f335";
@@ -394,6 +569,7 @@ h3.customize-section-title {
 	right: 13px;
 }
 
+<<<<<<< HEAD
 .customize-panel-back:before,
 .customize-section-back:before {
 	font: normal 20px/72px dashicons;
@@ -402,6 +578,24 @@ h3.customize-section-title {
 	right: 13px;
 }
 
+=======
+.control-panel-back:before {
+	font: normal 20px/45px dashicons;
+	content: "\f345";
+	position: relative;
+	top: 1px;
+	right: 13px;
+}
+
+.in-sub-panel .control-panel-back {
+	right: 0;
+}
+
+.current-panel > .accordion-section-title {
+	height: 22px;
+}
+
+>>>>>>> origin/master
 .wp-full-overlay-sidebar .wp-full-overlay-header {
 	-webkit-transition: padding ease-in-out .18s;
 	transition: padding ease-in-out .18s;
@@ -427,8 +621,13 @@ h3.customize-section-title {
 
 .in-sub-panel #customize-info,
 .in-sub-panel #customize-theme-controls > ul > .accordion-section {
+<<<<<<< HEAD
 	right: -100%;
 	width: 100%;
+=======
+	right: -300px;
+	width: 300px;
+>>>>>>> origin/master
 }
 
 .in-sub-panel #customize-theme-controls .accordion-section.current-panel {
@@ -455,6 +654,7 @@ h3.customize-section-title {
 	transition: right 0s;
 }
 
+<<<<<<< HEAD
 .wp-full-overlay.section-open #customize-controls .wp-full-overlay-sidebar-content {
 	visibility: hidden;
 	overflow-y: hidden;
@@ -466,19 +666,39 @@ h3.customize-section-title {
 
 .wp-full-overlay.section-open .wp-full-overlay-sidebar-content .accordion-section.open .accordion-section-content {
 	overflow-y: auto;
+=======
+.control-section.control-panel .accordion-section-title .panel-title {
+	font-size: 20px;
+	font-weight: 200;
+	line-height: 24px;
+	display: block;
+	border: none;
+}
+
+.control-section.control-panel .preview-notice {
+	font-size: 13px;
+	line-height: 24px;
+>>>>>>> origin/master
 }
 
 p.customize-section-description {
 	font-style: normal;
+<<<<<<< HEAD
 	margin-top: 22px;
 	margin-bottom: 0;
+=======
+>>>>>>> origin/master
 }
 
 .customize-control {
 	width: 100%;
 	float: right;
 	clear: both;
+<<<<<<< HEAD
 	margin-bottom: 12px;
+=======
+	margin-bottom: 8px;
+>>>>>>> origin/master
 }
 
 .customize-control select,
@@ -494,7 +714,11 @@ p.customize-section-description {
 .customize-control input[type="search"],
 .customize-control input[type="tel"],
 .customize-control input[type="url"] {
+<<<<<<< HEAD
 	width: 100%;
+=======
+	width: 98%;
+>>>>>>> origin/master
 	line-height: 18px;
 	margin: 0;
 }
@@ -524,7 +748,11 @@ p.customize-section-description {
 	font-size: 14px;
 	line-height: 24px;
 	font-weight: 600;
+<<<<<<< HEAD
 	margin-bottom: 4px;
+=======
+	margin-bottom: 5px;
+>>>>>>> origin/master
 }
 
 .customize-control-description {
@@ -535,10 +763,15 @@ p.customize-section-description {
 }
 
 .customize-control-color .color-picker,
+<<<<<<< HEAD
+=======
+.customize-control-checkbox label,
+>>>>>>> origin/master
 .customize-control-upload div {
 	line-height: 28px;
 }
 
+<<<<<<< HEAD
 .customize-control-radio label,
 .customize-control-checkbox label,
 .customize-control-nav_menu_auto_add label {
@@ -554,6 +787,10 @@ p.customize-section-description {
 .customize-control-nav_menu_auto_add input {
 	margin-left: 4px;
 	margin-right: -24px;
+=======
+.customize-control-checkbox input {
+	margin-left: 5px;
+>>>>>>> origin/master
 }
 
 .customize-control-radio {
@@ -569,6 +806,17 @@ p.customize-section-description {
 	margin-top: 7px;
 }
 
+<<<<<<< HEAD
+=======
+.customize-control-radio label {
+	line-height: 32px;
+}
+
+.customize-control-radio input {
+	margin-left: 5px;
+}
+
+>>>>>>> origin/master
 .customize-control .attachment-thumb.type-icon {
 	float: right;
 	margin: 10px;
@@ -576,7 +824,11 @@ p.customize-section-description {
 }
 
 .customize-control .attachment-title {
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight: bold;
+>>>>>>> origin/master
 	margin: 0;
 	padding: 5px 10px;
 }
@@ -611,6 +863,7 @@ p.customize-section-description {
 #customize-preview iframe {
 	width: 100%;
 	height: 100%;
+<<<<<<< HEAD
 	position: absolute;
 }
 #customize-preview iframe + iframe {
@@ -662,14 +915,47 @@ p.customize-section-description {
 
 .customize-control-text.has-error input {
 	outline: 2px solid #dc3232;
+=======
+}
+
+.wp-full-overlay-sidebar {
+	background: #eeeeee;
+	border-left: 1px solid #ddd;
+}
+
+.collapse-sidebar {
+	background-color: transparent !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+
+.collapse-sidebar:active,
+.collapse-sidebar:active .collapse-sidebar-label,
+.collapse-sidebar:active .collapse-sidebar-arrow:before {
+	text-shadow: none;
+}
+
+.collapsed .collapse-sidebar-arrow:before {
+	color: #82878c;
+>>>>>>> origin/master
 }
 
 /* Style for custom settings */
 
+<<<<<<< HEAD
 /**
  * Dropdowns
  */
 
+=======
+/*
+ * Dropdowns
+ */
+>>>>>>> origin/master
 .accordion-section .dropdown {
 	float: right;
 	display: block;
@@ -685,26 +971,41 @@ p.customize-section-description {
 	line-height: 16px;
 	margin-left: 16px;
 	padding: 4px 5px;
+<<<<<<< HEAD
 	border: 2px solid #eee;
+=======
+	border: 2px solid #eeeeee;
+>>>>>>> origin/master
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
 }
 
+<<<<<<< HEAD
 /* @todo maybe no more used? */
+=======
+>>>>>>> origin/master
 .customize-control .dropdown-arrow {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	width: 20px;
+<<<<<<< HEAD
 	background: #eee;
+=======
+	background: #eeeeee;
+>>>>>>> origin/master
 }
 
 .customize-control .dropdown-arrow:after {
 	content: "\f140";
+<<<<<<< HEAD
 	font: normal 20px/1 dashicons;
+=======
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	display: block;
 	padding: 0;
@@ -719,7 +1020,11 @@ p.customize-section-description {
 
 .customize-control .dropdown-status {
 	color: #32373c;
+<<<<<<< HEAD
 	background: #eee;
+=======
+	background: #eeeeee;
+>>>>>>> origin/master
 	display: none;
 	max-width: 112px;
 }
@@ -739,7 +1044,11 @@ p.customize-section-description {
 }
 
 .customize-control-color .dropdown .dropdown-content {
+<<<<<<< HEAD
 	background-color: #555;
+=======
+	background-color: #555555;
+>>>>>>> origin/master
 	border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -751,21 +1060,40 @@ p.customize-section-description {
  * iOS can't scroll iframes,
  * instead it expands the iframe size to match the size of the content
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 .ios .wp-full-overlay {
 	position: relative;
 }
 
+<<<<<<< HEAD
+=======
+.ios #customize-preview {
+	position: relative;
+}
+
+>>>>>>> origin/master
 .ios #customize-controls .wp-full-overlay-sidebar-content {
 	-webkit-overflow-scrolling: touch;
 }
 
+<<<<<<< HEAD
 /* Media controls */
 
 .customize-control .attachment-media-view .actions {
 	margin-top: 8px;
 }
 
+=======
+/** Media controls **/
+
+.customize-control-media .current,
+.customize-control-upload .current,
+.customize-control-image .current,
+.customize-control-background .current,
+>>>>>>> origin/master
 .customize-control-header .current {
 	margin-bottom: 8px;
 }
@@ -789,9 +1117,24 @@ p.customize-section-description {
 	display: block;
 }
 
+<<<<<<< HEAD
 .customize-control .attachment-media-view .remove-button,
 .customize-control .attachment-media-view .default-button,
 .customize-control .attachment-media-view .upload-button,
+=======
+.customize-control-media .remove-button,
+.customize-control-media .default-button,
+.customize-control-media .upload-button,
+.customize-control-upload .remove-button,
+.customize-control-upload .default-button,
+.customize-control-upload .upload-button,
+.customize-control-image .remove-button,
+.customize-control-image .default-button,
+.customize-control-image .upload-button,
+.customize-control-background .remove-button,
+.customize-control-background .default-button,
+.customize-control-background .upload-button,
+>>>>>>> origin/master
 .customize-control-header button.new,
 .customize-control-header button.remove {
 	white-space: normal;
@@ -799,17 +1142,44 @@ p.customize-section-description {
 	height: auto;
 }
 
+<<<<<<< HEAD
 .customize-control .attachment-media-view .thumbnail,
 .customize-control-header .current .container {
 	overflow: hidden;
 }
 
 .customize-control .attachment-media-view .placeholder,
+=======
+.customize-control-media .current .container,
+.customize-control-upload .current .container,
+.customize-control-image .current .container,
+.customize-control-background .current .container,
+.customize-control-header .current .container {
+	overflow: hidden;
+	-webkit-border-radius: 2px;
+	border: 1px solid #eee;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.customize-control-media .current .container,
+.customize-control-upload .current .container,
+.customize-control-background .current .container,
+.customize-control-image .current .container {
+	min-height: 40px;
+}
+
+.customize-control-media .placeholder,
+.customize-control-upload .placeholder,
+.customize-control-image .placeholder,
+.customize-control-background .placeholder,
+>>>>>>> origin/master
 .customize-control-header .placeholder {
 	width: 100%;
 	position: relative;
 	text-align: center;
 	cursor: default;
+<<<<<<< HEAD
 	border: 1px dashed #b4b9be;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -818,6 +1188,14 @@ p.customize-section-description {
 	line-height: 20px;
 }
 
+=======
+}
+
+.customize-control-media .inner,
+.customize-control-upload .inner,
+.customize-control-image .inner,
+.customize-control-background .inner,
+>>>>>>> origin/master
 .customize-control-header .inner {
 	display: none;
 	position: absolute;
@@ -828,10 +1206,29 @@ p.customize-section-description {
 	overflow: hidden;
 }
 
+<<<<<<< HEAD
 .customize-control-header .inner,
 .customize-control-header .inner .dashicons {
 	line-height: 20px;
 	top: 8px;
+=======
+.customize-control-media .inner,
+.customize-control-upload .inner,
+.customize-control-background .inner,
+.customize-control-image .inner {
+	display: block;
+	min-height: 40px;
+}
+
+.customize-control-media .inner,
+.customize-control-upload .inner,
+.customize-control-image .inner,
+.customize-control-background .inner,
+.customize-control-header .inner,
+.customize-control-header .inner .dashicons {
+	line-height: 20px;
+	top: 10px;
+>>>>>>> origin/master
 }
 
 .customize-control-header .list .inner,
@@ -869,6 +1266,7 @@ p.customize-section-description {
 /* Header control: overlay "close" button */
 
 .customize-control-header .uploaded .header-view .close {
+<<<<<<< HEAD
 	font-size: 20px;
 	color: #fff;
 	background: #555;
@@ -885,6 +1283,31 @@ p.customize-section-description {
 .customize-control-header .header-view:hover .close,
 .customize-control-header .header-view .close:focus {
 	left: 10px;
+=======
+	font-size: 2em;
+	color: grey;
+	position: absolute;
+	visibility: hidden;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.customize-control-header .uploaded .header-view .close:hover {
+ color: black;
+ text-shadow:
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff,
+    1px 1px 0 #fff,
+    -1px 1px 0 #fff;
+}
+
+.customize-control-header .header-view:hover .close {
+	visibility: visible;
+>>>>>>> origin/master
 }
 
 /* Header control: randomiz(s)er */
@@ -927,6 +1350,17 @@ p.customize-section-description {
 	100% { color: #d4b146; }
 }
 
+<<<<<<< HEAD
+=======
+.customize-control-media .actions,
+.customize-control-upload .actions,
+.customize-control-image .actions,
+.customize-control-background .actions,
+.customize-control-header .actions {
+	margin-bottom: 32px;
+}
+
+>>>>>>> origin/master
 .customize-control-header .choice {
 	position: relative;
 	display: block;
@@ -937,6 +1371,7 @@ p.customize-section-description {
 	margin-bottom: 0;
 }
 
+<<<<<<< HEAD
 .customize-control .attachment-media-view .thumbnail-image img,
 .customize-control-header img {
 	max-width: 100%;
@@ -944,12 +1379,39 @@ p.customize-section-description {
 
 .customize-control .attachment-media-view .remove-button,
 .customize-control .attachment-media-view .default-button,
+=======
+.customize-control-media img,
+.customize-control-upload img,
+.customize-control-image img,
+.customize-control-background img,
+.customize-control-header img {
+	width: 100%;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.customize-control-media .remove-button,
+.customize-control-media .default-button,
+.customize-control-upload .remove-button,
+.customize-control-upload .default-button,
+.customize-control-image .remove-button,
+.customize-control-image .default-button,
+.customize-control-background .remove-button,
+.customize-control-background .default-button,
+>>>>>>> origin/master
 .customize-control-header .remove {
 	float: right;
 	margin-left: 3px;
 }
 
+<<<<<<< HEAD
 .customize-control .attachment-media-view .upload-button,
+=======
+.customize-control-media .upload-button,
+.customize-control-upload .upload-button,
+.customize-control-image .upload-button,
+.customize-control-background .upload-button,
+>>>>>>> origin/master
 .customize-control-header .new {
 	float: left;
 }
@@ -957,7 +1419,10 @@ p.customize-section-description {
 /**
  * Themes
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 @-webkit-keyframes customize-reload {
 	0%   { opacity: 0; }
 	100% { opacity: 1; }
@@ -981,7 +1446,11 @@ p.customize-section-description {
 
 #customize-theme-controls .control-section-themes .accordion-section-title:hover,
 #customize-theme-controls .control-section-themes .accordion-section-title:focus {
+<<<<<<< HEAD
 	color: #555;
+=======
+	color: #555555;
+>>>>>>> origin/master
 	background-color: #fff;
 }
 
@@ -997,9 +1466,14 @@ p.customize-section-description {
 	padding-left: 100px; /* Space for the button */
 }
 
+<<<<<<< HEAD
 .control-section-themes .accordion-section-title span.customize-action,
 #customize-controls .customize-section-title span.customize-action {
 	font-size: 13px;
+=======
+.control-section-themes .accordion-section-title span {
+	font-size: small;
+>>>>>>> origin/master
 	display: block;
 	font-weight: 400;
 }
@@ -1010,22 +1484,31 @@ p.customize-section-description {
 	left: 10px;
 	top: 50%;
 	margin-top: -14px;
+<<<<<<< HEAD
 	font-weight: 400;
 }
 
 .control-section-themes .accordion-section-title:before {
 	display: none;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 .customize-themes-panel {
 	display: none;
 	padding: 0 8px;
 	background: #f1f1f1;
+<<<<<<< HEAD
+=======
+	box-sizing: border-box;
+>>>>>>> origin/master
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .customize-themes-panel .accordion-section-title:first-child {
 	margin-top: 0;
 }
@@ -1034,6 +1517,8 @@ p.customize-section-description {
 	font-size: 14px;
 	font-weight: 600;
 }
+=======
+>>>>>>> origin/master
 
 .customize-themes-panel > h2 {
 	padding: 15px 8px 0 8px;
@@ -1052,6 +1537,7 @@ p.customize-section-description {
 	margin-bottom: 8px;
 }
 
+<<<<<<< HEAD
 #customize-theme-controls .themes.accordion-section-content {
 	position: relative;
 	right: 0;
@@ -1059,6 +1545,8 @@ p.customize-section-description {
 	width: 100%;
 }
 
+=======
+>>>>>>> origin/master
 .wp-customizer .theme-browser .themes {
 	padding-bottom: 8px;
 }
@@ -1175,6 +1663,7 @@ body.cheatin {
 	box-shadow: 0 1px 3px rgba(0,0,0,0.13);
 }
 
+<<<<<<< HEAD
 body.cheatin h1 {
 	border-bottom: 1px solid #ddd;
 	clear: both;
@@ -1186,12 +1675,15 @@ body.cheatin h1 {
 	padding-bottom: 7px;
 }
 
+=======
+>>>>>>> origin/master
 body.cheatin p {
 	font-size: 14px;
 	line-height: 1.5;
 	margin: 25px 0 20px;
 }
 
+<<<<<<< HEAD
 /**
  * Widgets and Menus common styles
  */
@@ -1452,12 +1944,18 @@ body.adding-widget .add-new-widget:before,
 }
 
 
+=======
+>>>>>>> origin/master
 /* Responsive */
 .customize-controls-preview-toggle {
 	display: none;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 782px) {
+=======
+@media only screen and (max-width: 780px) {
+>>>>>>> origin/master
 	.wp-customizer .theme:not(.active):hover .theme-actions,
 	.wp-customizer .theme:not(.active):focus .theme-actions {
 		display: block;
@@ -1466,6 +1964,7 @@ body.adding-widget .add-new-widget:before,
 	.wp-customizer .theme-browser .theme.active .theme-name span {
 		display: inline;
 	}
+<<<<<<< HEAD
 
 	.customize-control-radio label,
 	.customize-control-checkbox label,
@@ -1483,6 +1982,8 @@ body.adding-widget .add-new-widget:before,
 	.customize-control input[type="checkbox"] + label {
 		line-height: 32px;
 	}
+=======
+>>>>>>> origin/master
 }
 
 @media screen and ( max-width: 640px ) {
@@ -1494,12 +1995,15 @@ body.adding-widget .add-new-widget:before,
 		margin-right: 0;
 	}
 
+<<<<<<< HEAD
 	/* when the sidebar is collapsed and switching to responsive view,
 	   bring it back see ticket #35220 */
 	.wp-full-overlay.collapsed #customize-controls {
 		margin-right: 0;
 	}
 
+=======
+>>>>>>> origin/master
 	.wp-full-overlay-sidebar .wp-full-overlay-sidebar-content {
 		bottom: 0;
 	}
@@ -1511,11 +2015,18 @@ body.adding-widget .add-new-widget:before,
 		right: 48px;
 		line-height: 45px;
 		font-size: 14px;
+<<<<<<< HEAD
 		padding: 0 12px;
 		margin: 0;
 		height: 45px;
 		background: #eee;
 		border: 0;
+=======
+		padding: 0 12px 0 12px;
+		margin: 0;
+		height: 45px;
+		background: #eee;
+>>>>>>> origin/master
 		border-left: 1px solid #ddd;
 		color: #444;
 		cursor: pointer;
@@ -1541,7 +2052,11 @@ body.adding-widget .add-new-widget:before,
 	}
 
 	.customize-controls-preview-toggle .controls:before {
+<<<<<<< HEAD
 		content: "\f540";
+=======
+		content: "\f100";
+>>>>>>> origin/master
 	}
 
 	.preview-only #customize-controls {
@@ -1568,6 +2083,7 @@ body.adding-widget .add-new-widget:before,
 		margin-bottom: 4px;
 	}
 
+<<<<<<< HEAD
 	#customize-header-actions .button-primary {
 		margin-top: 6px;
 	}
@@ -1625,5 +2141,17 @@ body.adding-widget .add-new-widget:before,
 
 	#available-widgets-list {
 		top: 140px;
+=======
+	.adding-widget #customize-header-actions .primary-actions {
+		display: none;
+	}
+
+	.adding-widget #customize-header-actions .secondary-actions {
+		display: block;
+	}
+
+	#customize-header-actions .button-primary {
+		margin-top: 6px;
+>>>>>>> origin/master
 	}
 }

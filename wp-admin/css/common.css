@@ -71,13 +71,26 @@
 
 /* 2 columns main area */
 
+<<<<<<< HEAD
 #col-left {
 	float: left;
+=======
+#col-container,
+#col-left,
+#col-right {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
+#col-left {
+>>>>>>> origin/master
 	width: 35%;
 }
 
 #col-right {
 	float: right;
+<<<<<<< HEAD
 	width: 65%;
 }
 
@@ -87,6 +100,14 @@
 
 #col-right .col-wrap {
 	padding: 0 0 0 6px;
+=======
+	clear: right;
+	width: 65%;
+}
+
+.col-wrap {
+	padding: 0 7px;
+>>>>>>> origin/master
 }
 
 /* utility classes */
@@ -110,6 +131,7 @@
 	clear: both;
 }
 
+<<<<<<< HEAD
 /* modern clearfix */
 .wp-clearfix:after {
 	content: "";
@@ -117,6 +139,8 @@
 	clear: both;
 }
 
+=======
+>>>>>>> origin/master
 /* Hide visually but not from screen readers */
 .screen-reader-text,
 .screen-reader-text span,
@@ -129,7 +153,10 @@
 	overflow: hidden;
 	clip: rect(0 0 0 0);
 	border: 0;
+<<<<<<< HEAD
 	word-wrap: normal !important; /* many screen reader and browser combinations announce broken words as they would appear visually */
+=======
+>>>>>>> origin/master
 }
 
 .screen-reader-shortcut {
@@ -147,7 +174,11 @@
 	font-weight: 600;
 	padding: 15px 23px 14px;
 	background: #f1f1f1;
+<<<<<<< HEAD
 	color: #0073aa;
+=======
+	color: #21759b;
+>>>>>>> origin/master
 	z-index: 100000;
 	line-height: normal;
 	-webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
@@ -208,10 +239,20 @@ body {
 	padding: 0;
 }
 
+<<<<<<< HEAD
 body {
 	background: #f1f1f1;
 	color: #444;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+=======
+html {
+	background: #f1f1f1;
+}
+
+body {
+	color: #444;
+	font-family: "Open Sans", sans-serif;
+>>>>>>> origin/master
 	font-size: 13px;
 	line-height: 1.4em;
 	min-width: 600px;
@@ -264,6 +305,7 @@ a:active {
 	color: #00a0d2;
 }
 
+<<<<<<< HEAD
 a:focus,
 a:focus .media-icon img,
 .wp-person a:focus .gravatar {
@@ -273,6 +315,15 @@ a:focus .media-icon img,
 		0 0 2px 1px rgba(30, 140, 190, .8);
 	box-shadow:
 		0 0 0 1px #5b9dd9,
+=======
+a:focus {
+	color: #124964;
+    -webkit-box-shadow:
+    	0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+    box-shadow:
+    	0 0 0 1px #5b9dd9,
+>>>>>>> origin/master
 		0 0 2px 1px rgba(30, 140, 190, .8);
 }
 
@@ -296,7 +347,11 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: '';
+>>>>>>> origin/master
 	content: none;
 }
 
@@ -326,24 +381,40 @@ h6 {
 }
 
 h1 {
+<<<<<<< HEAD
 	color: #23282d;
+=======
+>>>>>>> origin/master
 	font-size: 2em;
 	margin: .67em 0;
 }
 
+<<<<<<< HEAD
 h2,
+=======
+h2 {
+	color: #23282d;
+	font-size: 1.5em;
+	margin: .83em 0;
+	font-weight: 400;
+}
+
+>>>>>>> origin/master
 h3 {
 	color: #23282d;
 	font-size: 1.3em;
 	margin: 1em 0;
 }
 
+<<<<<<< HEAD
 .update-core-php h2 {
 	margin-top: 2em;
 }
 
 .update-php h2,
 .update-messages h2,
+=======
+>>>>>>> origin/master
 h4 {
 	font-size: 1em;
 	margin: 1.33em 0;
@@ -436,8 +507,13 @@ code {
 
 .subsubsub a .count,
 .subsubsub a.current .count {
+<<<<<<< HEAD
 	color: #555d66; /* #f1f1f1 background */
 	font-weight: 400;
+=======
+	color: #999;
+	font-weight: normal;
+>>>>>>> origin/master
 }
 
 .subsubsub a.current {
@@ -473,6 +549,7 @@ code {
 	padding: 8px 10px;
 }
 
+<<<<<<< HEAD
 .widefat thead th,
 .widefat thead td {
 	border-bottom: 1px solid #e1e1e1;
@@ -480,6 +557,13 @@ code {
 
 .widefat tfoot th,
 .widefat tfoot td {
+=======
+.widefat thead th {
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.widefat tfoot th {
+>>>>>>> origin/master
 	border-top: 1px solid #e1e1e1;
 	border-bottom: none;
 }
@@ -500,18 +584,26 @@ code {
 	line-height: 1.5em;
 }
 
+<<<<<<< HEAD
 .widefat th,
 .widefat thead td,
 .widefat tfoot td {
+=======
+.widefat th {
+>>>>>>> origin/master
 	text-align: left;
 	line-height: 1.3em;
 	font-size: 14px;
 }
 
+<<<<<<< HEAD
 .widefat th input,
 .updates-table td input,
 .widefat thead td input,
 .widefat tfoot td input {
+=======
+.widefat th input {
+>>>>>>> origin/master
 	margin: 0 0 0 8px;
 	padding: 0;
 	vertical-align: text-top;
@@ -523,10 +615,18 @@ code {
 	vertical-align: top;
 }
 
+<<<<<<< HEAD
+=======
+.widefat th input[type=checkbox] {
+	margin-top: -1px;
+}
+
+>>>>>>> origin/master
 .widefat tbody th.check-column {
 	padding: 9px 0 22px;
 }
 
+<<<<<<< HEAD
 .widefat thead td.check-column,
 .widefat tbody th.check-column,
 .updates-table tbody td.check-column,
@@ -538,6 +638,20 @@ code {
 .widefat tfoot td.check-column {
 	padding-top: 4px;
 	vertical-align: middle;
+=======
+.widefat.media .check-column {
+	padding-top: 8px;
+}
+
+.widefat thead th.check-column,
+.widefat tbody th.check-column,
+.widefat tfoot th.check-column {
+	padding: 11px 0 0 3px;
+}
+
+.widefat thead th.check-column {
+	padding-top: 10px;
+>>>>>>> origin/master
 }
 
 .update-php div.updated,
@@ -565,6 +679,7 @@ code {
 	margin: 10px 20px 0 2px;
 }
 
+<<<<<<< HEAD
 .wrap > h2:first-child, /* Back-compat for pre-4.4 */
 .wrap [class$="icon32"] + h2, /* Back-compat for pre-4.4 */
 .postbox .inside h2, /* Back-compat for pre-4.4 */
@@ -572,11 +687,27 @@ code {
 	font-size: 23px;
 	font-weight: 400;
 	margin: 0;
+=======
+.attention {
+	color: #00a0d2;
+}
+
+.wrap h2,
+.subtitle {
+	font-weight: normal;
+	margin: 0;
+}
+
+.wrap h2 {
+	font-size: 23px;
+	font-weight: 400;
+>>>>>>> origin/master
 	padding: 9px 15px 4px 0;
 	line-height: 29px;
 }
 
 .subtitle {
+<<<<<<< HEAD
 	margin: 0;
 	padding-left: 25px;
 	color: #555d66;
@@ -589,12 +720,22 @@ code {
 .wrap .add-new-h2:active, /* deprecated */
 .wrap .page-title-action,
 .wrap .page-title-action:active {
+=======
+	color: #777;
+	font-size: 14px;
+	padding-left: 25px;
+}
+
+.wrap .add-new-h2,
+.wrap .add-new-h2:active {
+>>>>>>> origin/master
 	margin-left: 4px;
 	padding: 4px 8px;
 	position: relative;
 	top: -3px;
 	text-decoration: none;
 	border: none;
+<<<<<<< HEAD
 	border: 1px solid #ccc;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
@@ -611,10 +752,22 @@ code {
 .wrap .add-new-h2:hover, /* deprecated */
 .wrap .page-title-action:hover {
 	border-color: #008EC2;
+=======
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #e0e0e0;
+	text-shadow: none;
+	font-weight: 600;
+	font-size: 13px;
+}
+
+.wrap .add-new-h2:hover {
+>>>>>>> origin/master
 	background: #00a0d2;
 	color: #fff;
 }
 
+<<<<<<< HEAD
 /* lower specificity: color needs to be overridden by :hover and :active */
 .page-title-action:focus {
 	color: #124964;
@@ -627,6 +780,9 @@ code {
 }
 
 .wrap h1.long-header {
+=======
+.wrap h2.long-header {
+>>>>>>> origin/master
 	padding-right: 0;
 }
 
@@ -654,7 +810,10 @@ div#widgets-right .widget-top:hover,
 }
 
 .striped > tbody > :nth-child(odd),
+<<<<<<< HEAD
 ul.striped > :nth-child(odd),
+=======
+>>>>>>> origin/master
 .alternate {
 	background-color: #f9f9f9;
 }
@@ -664,6 +823,14 @@ ul.striped > :nth-child(odd),
 	border-right-color: #99d;
 }
 
+<<<<<<< HEAD
+=======
+.media-upload-form label.form-help,
+td.help {
+	color: #9a9a9a;
+}
+
+>>>>>>> origin/master
 /* Helper classes for plugins to leverage the active WordPress color scheme */
 
 .highlight {
@@ -696,7 +863,11 @@ ul.striped > :nth-child(odd),
 }
 
 .wp-ui-text-icon {
+<<<<<<< HEAD
 	color: #82878c; /* same as new icons */
+=======
+	color: #999;
+>>>>>>> origin/master
 }
 
 /* For emoji replacement images */
@@ -729,9 +900,13 @@ img.emoji {
 .side-info,
 #your-profile #rich_editing,
 .widefat thead th,
+<<<<<<< HEAD
 .widefat thead td,
 .widefat tfoot th,
 .widefat tfoot td {
+=======
+.widefat tfoot th {
+>>>>>>> origin/master
 	line-height: 1.4em;
 }
 
@@ -758,34 +933,58 @@ img.emoji {
 }
 
 /* @todo can we combine these into a class or use an existing dashicon one? */
+<<<<<<< HEAD
 .welcome-panel .welcome-panel-close:before,
+=======
+#welcome-panel.welcome-panel .welcome-panel-close:before,
+>>>>>>> origin/master
 .tagchecklist span a:before,
 #bulk-titles div a:before,
 .notice-dismiss:before {
 	background: none;
 	color: #b4b9be;
+<<<<<<< HEAD
 	content: "\f153";
 	display: block;
 	font: normal 16px/20px dashicons;
+=======
+	content: '\f153';
+	display: block !important;
+	font: normal 16px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	height: 20px;
 	text-align: center;
 	width: 20px;
+<<<<<<< HEAD
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 .welcome-panel .welcome-panel-close:before {
+=======
+	-webkit-font-smoothing: antialiased !important;
+}
+
+#welcome-panel.welcome-panel .welcome-panel-close:before {
+>>>>>>> origin/master
 	margin: 0;
 }
 
 .tagchecklist span a:before,
 #bulk-titles div a:before {
+<<<<<<< HEAD
 	margin: 1px 0;
 }
 
 .welcome-panel .welcome-panel-close:hover:before,
 .welcome-panel .welcome-panel-close:focus:before,
+=======
+	margin: 2px 0;
+}
+
+#welcome-panel.welcome-panel .welcome-panel-close:hover:before,
+>>>>>>> origin/master
 .tagchecklist span a:hover:before,
 #bulk-titles div a:hover:before {
 	color: #c00;
@@ -840,7 +1039,10 @@ hr {
 }
 
 abbr.required,
+<<<<<<< HEAD
 span.required,
+=======
+>>>>>>> origin/master
 .file-error,
 .widget-control-remove:hover,
 .row-actions .delete a:hover,
@@ -894,10 +1096,13 @@ span.required,
 	padding: 6px 10px 8px;
 }
 
+<<<<<<< HEAD
 .misc-pub-filename {
 	word-wrap: break-word;
 }
 
+=======
+>>>>>>> origin/master
 #minor-publishing-actions {
 	padding: 10px 10px 0 10px;
 	text-align: right;
@@ -915,6 +1120,29 @@ span.required,
 	margin-left: 18px;
 }
 
+<<<<<<< HEAD
+=======
+.side-info {
+	margin: 0;
+	padding: 4px;
+	font-size: 11px;
+}
+
+.side-info h5 {
+	padding-bottom: 7px;
+	font-size: 14px;
+	margin: 12px 2px 5px;
+	border-bottom: 1px solid #dadada;
+}
+
+.side-info ul {
+	margin: 0;
+	padding-left: 18px;
+	list-style: square;
+	color: #666;
+}
+
+>>>>>>> origin/master
 .approve,
 .unapproved .unapprove {
 	display: none;
@@ -939,7 +1167,11 @@ th.action-links {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 12px 0 25px;
+<<<<<<< HEAD
 	padding: 0 10px;
+=======
+	padding: 0 20px;
+>>>>>>> origin/master
 	width: 100%;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
@@ -967,7 +1199,11 @@ th.action-links {
 	padding: 4px 10px;
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
+<<<<<<< HEAD
 	background: #72777c;
+=======
+	background: #777;
+>>>>>>> origin/master
 	color: #fff;
 	font-size: 14px;
 	font-weight: 600;
@@ -1058,15 +1294,26 @@ th.action-links {
 	margin: 0 5px 0 0;
 	width: 16px;
 	height: 16px;
+<<<<<<< HEAD
 	color: #72777c;
 	-webkit-transition: color .1s ease-in 0;
 	transition: color .1s ease-in 0;
 	font-family: dashicons;
+=======
+	color: #777;
+	-webkit-transition: color .1s ease-in 0;
+	transition: color .1s ease-in 0;
+	font-family: "dashicons";
+>>>>>>> origin/master
 	font-size: 16px;
 	line-height: 1;
 	text-align: center;
 	text-decoration: inherit;
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> origin/master
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 }
@@ -1080,6 +1327,7 @@ th.action-links {
 	color: #fff;
 }
 
+<<<<<<< HEAD
 .wp-filter .favorites-form {
 	display: none;
 	margin: 0 -20px;
@@ -1094,6 +1342,8 @@ th.action-links {
 	display: block;
 }
 
+=======
+>>>>>>> origin/master
 .filter-drawer {
 	display: none;
 	margin: 0 -20px;
@@ -1121,7 +1371,11 @@ th.action-links {
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
 	border: none;
+<<<<<<< HEAD
 	background: #72777c;
+=======
+	background: #777;
+>>>>>>> origin/master
 	color: #fff;
 }
 
@@ -1133,10 +1387,16 @@ th.action-links {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+<<<<<<< HEAD
 	position: relative;
 	float: left;
 	margin: 0 1% 0 0;
 	padding: 20px 10px 10px;
+=======
+	float: left;
+	margin: 0 1% 0 0;
+	padding: 10px;
+>>>>>>> origin/master
 	width: 24%;
 	background: #fff;
 	border: 1px solid #e5e5e5;
@@ -1144,6 +1404,7 @@ th.action-links {
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 }
 
+<<<<<<< HEAD
 .filter-group legend {
 	position: absolute;
 	top: 10px;
@@ -1156,15 +1417,34 @@ th.action-links {
 
 .filter-drawer .filter-group-feature {
 	margin: 28px 0 0;
+=======
+.filter-group h4 {
+	position: relative;
+	margin: 0;
+}
+
+.filter-drawer ol {
+	margin: 20px 0 0;
+>>>>>>> origin/master
 	list-style-type: none;
 	font-size: 12px;
 }
 
+<<<<<<< HEAD
 .filter-drawer .filter-group-feature input,
 .filter-drawer .filter-group-feature label {
 	display: inline-block;
 	margin: 7px 4px 7px 0;
 	line-height: 16px;
+=======
+.filter-drawer li {
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px 0;
+	padding-right: 25px;
+	width: 160px;
+	list-style-type: none;
+>>>>>>> origin/master
 }
 
 .filter-drawer .buttons {
@@ -1308,12 +1588,16 @@ div.error {
 	padding: 1px 12px;
 }
 
+<<<<<<< HEAD
 div[class="update-message"] { /* back-compat for pre-4.6 */
 	padding: 0.5em 12px 0.5em 0;
 }
 
 .notice p,
 .notice-title,
+=======
+.notice p,
+>>>>>>> origin/master
 div.updated p,
 div.error p,
 .form-table td .notice p {
@@ -1321,6 +1605,7 @@ div.error p,
 	padding: 2px;
 }
 
+<<<<<<< HEAD
 .error a {
 	text-decoration: underline;
 }
@@ -1344,6 +1629,8 @@ div.error p,
 	font-size: 18px;
 }
 
+=======
+>>>>>>> origin/master
 .wp-core-ui .notice.is-dismissible {
 	padding-right: 38px;
 	position: relative;
@@ -1361,6 +1648,16 @@ div.error p,
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+.notice-dismiss:before {
+	position: relative;
+	top: 0;
+	left: 0;
+	line-height: 20px;
+}
+
+>>>>>>> origin/master
 .notice-dismiss:hover:before,
 .notice-dismiss:active:before,
 .notice-dismiss:focus:before {
@@ -1371,6 +1668,10 @@ div.error p,
 	outline: none;
 	-webkit-box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, .8);
 	box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, .8);
+<<<<<<< HEAD
+=======
+	color: #c00;
+>>>>>>> origin/master
 }
 
 .ie8 .notice-dismiss:focus {
@@ -1379,6 +1680,7 @@ div.error p,
 
 .notice-success,
 div.updated {
+<<<<<<< HEAD
 	border-left-color: #46b450;
 }
 
@@ -1392,10 +1694,18 @@ div.updated {
 
 .notice-warning.notice-alt {
 	background-color: #fff8e5;
+=======
+	border-color: #7ad03a;
+}
+
+.notice-warning {
+	border-color: #ffba00;
+>>>>>>> origin/master
 }
 
 .notice-error,
 div.error {
+<<<<<<< HEAD
 	border-left-color: #dc3232;
 }
 
@@ -1424,6 +1734,13 @@ div.error {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	vertical-align: top;
+=======
+	border-color: #dd3d36;
+}
+
+.notice-info {
+	border-color: #00a0d2;
+>>>>>>> origin/master
 }
 
 .wrap .notice,
@@ -1434,6 +1751,7 @@ div.error {
 	margin: 5px 0 15px;
 }
 
+<<<<<<< HEAD
 /* Update icon. */
 .update-message p:before,
 .updating-message p:before,
@@ -1473,6 +1791,8 @@ div.error {
 	vertical-align: bottom;
 }
 
+=======
+>>>>>>> origin/master
 #update-nag,
 .update-nag {
 	display: inline-block;
@@ -1487,6 +1807,13 @@ div.error {
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
 }
 
+<<<<<<< HEAD
+=======
+.update-message {
+	color: #000;
+}
+
+>>>>>>> origin/master
 ul#dismissed-updates {
 	display: none;
 }
@@ -1518,6 +1845,7 @@ form.upgrade .hint {
 	margin-left: 2em;
 }
 
+<<<<<<< HEAD
 .button.updating-message:before,
 .button.updated-message:before,
 .button.installed:before,
@@ -1562,6 +1890,8 @@ form.upgrade .hint {
 }
 
 
+=======
+>>>>>>> origin/master
 /* @todo: this does not need its own section anymore */
 /*------------------------------------------------------------------------------
   6.0 - Admin Header
@@ -1596,6 +1926,17 @@ form.upgrade .hint {
 	margin: 0 20px 0 0;
 }
 
+<<<<<<< HEAD
+=======
+#screen-meta-links a {
+	padding: 3px 6px 3px 16px;
+}
+
+#screen-meta-links a:focus {
+	outline: none;
+}
+
+>>>>>>> origin/master
 /* screen options and help tabs revert */
 #screen-meta {
 	display: none;
@@ -1625,6 +1966,7 @@ form.upgrade .hint {
 	top: 0;
 }
 
+<<<<<<< HEAD
 #screen-meta-links .show-settings {
 	border: 0;
 	background: none;
@@ -1653,6 +1995,31 @@ form.upgrade .hint {
 	right: 0;
 	content: "\f140";
 	font: normal 20px/1 dashicons;
+=======
+#screen-meta-links a {
+	color: #777;
+}
+
+#screen-meta-links a:hover,
+#screen-meta-links a:active,
+#screen-meta-links a:focus {
+	color: #32373c;
+}
+
+#screen-meta-links a.show-settings {
+	display: block;
+	font-size: 13px;
+	height: 22px;
+	line-height: 22px;
+	text-decoration: none;
+	z-index: 1;
+}
+
+#screen-meta-links a:after {
+	right: 0;
+	content: '\f140';
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	display: inline-block;
 	padding: 0 5px 0 0;
@@ -1662,6 +2029,7 @@ form.upgrade .hint {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-decoration: none !important;
+<<<<<<< HEAD
 	color: #72777c;
 }
 
@@ -1669,6 +2037,18 @@ form.upgrade .hint {
 	content: "\f142";
 }
 
+=======
+	color: #b4b9be;
+}
+
+#screen-meta-links a.screen-meta-active:after {
+	content: '\f142';
+}
+
+#screen-meta-links a.show-settings:hover {
+	text-decoration: none;
+}
+>>>>>>> origin/master
 /* end screen options and help tabs */
 
 .toggle-arrow {
@@ -1684,6 +2064,7 @@ form.upgrade .hint {
 	background-position: bottom left;
 }
 
+<<<<<<< HEAD
 #screen-options-wrap h5, /* Back-compat for old plugins */
 #screen-options-wrap legend,
 #contextual-help-wrap h5 {
@@ -1695,6 +2076,12 @@ form.upgrade .hint {
 
 .ie8 #screen-options-wrap legend {
 	color: inherit;
+=======
+#screen-options-wrap h5,
+#contextual-help-wrap h5 {
+	margin: 8px 0;
+	font-size: 13px;
+>>>>>>> origin/master
 }
 
 .metabox-prefs label {
@@ -1703,6 +2090,7 @@ form.upgrade .hint {
 	line-height: 30px;
 }
 
+<<<<<<< HEAD
 #number-of-columns {
 	display: inline-block;
 	vertical-align: middle;
@@ -1721,12 +2109,32 @@ form.upgrade .hint {
 
 .metabox-prefs .columns-prefs label input {
 	margin: -1px 2px 0 0;
+=======
+.metabox-prefs label input[type=checkbox] {
+	margin-top: -4px;
+	margin-right: 6px;
+}
+
+.metabox-prefs label input {
+	margin: 0 5px 0 2px;
+}
+
+.metabox-prefs .columns-prefs label input {
+	margin: 0 2px;
+>>>>>>> origin/master
 }
 
 .metabox-prefs label a {
 	display: none;
 }
 
+<<<<<<< HEAD
+=======
+.metabox-prefs .screen-options {
+	padding-top: 10px;
+}
+
+>>>>>>> origin/master
 .metabox-prefs .screen-options input,
 .metabox-prefs .screen-options label {
 	margin-top: 0;
@@ -1743,6 +2151,7 @@ form.upgrade .hint {
 	padding-right: 0;
 }
 
+<<<<<<< HEAD
 .screen-options + .screen-options {
 	margin-top: 10px;
 }
@@ -1752,6 +2161,8 @@ form.upgrade .hint {
 	padding: 0;
 }
 
+=======
+>>>>>>> origin/master
 /*------------------------------------------------------------------------------
   6.2 - Help Menu
 ------------------------------------------------------------------------------*/
@@ -1872,6 +2283,7 @@ html.wp-toolbar {
 	color: #555;
 }
 
+<<<<<<< HEAD
 .widefat th,
 .widefat thead td,
 .widefat tfoot td {
@@ -1882,6 +2294,14 @@ html.wp-toolbar {
 .widefat thead tr td,
 .widefat tfoot tr th,
 .widefat tfoot tr td {
+=======
+.widefat th {
+	font-weight: normal;
+}
+
+.widefat thead tr th,
+.widefat tfoot tr th {
+>>>>>>> origin/master
 	color: #32373c;
 }
 
@@ -1899,11 +2319,14 @@ html.wp-toolbar {
 	margin: 0.6em 0;
 }
 
+<<<<<<< HEAD
 .widefat .column-comment ul {
 	list-style: initial;
 	margin-left: 2em;
 }
 
+=======
+>>>>>>> origin/master
 /* Screens with postboxes */
 .postbox-container {
 	float: left;
@@ -1922,6 +2345,7 @@ html.wp-toolbar {
 .metabox-holder .postbox-container .empty-container {
 	border: 3px dashed #b4b9be;
 	height: 250px;
+<<<<<<< HEAD
 	position: relative;
 }
 
@@ -1939,6 +2363,8 @@ html.wp-toolbar {
 	color: #ccc;
 	font-size:18px;
 	display: none;
+=======
+>>>>>>> origin/master
 }
 
 .metabox-holder.columns-1 .postbox-container .empty-container,
@@ -1982,6 +2408,7 @@ html.wp-toolbar {
 
 .hndle a {
 	font-size: 11px;
+<<<<<<< HEAD
 	font-weight: 400;
 }
 
@@ -1995,6 +2422,19 @@ html.wp-toolbar {
 
 .js .postbox .handlediv {
 	display: block;
+=======
+	font-weight: normal;
+}
+
+.postbox .handlediv {
+	float: right;
+	width: 27px;
+	height: 30px;
+}
+
+.js .postbox .handlediv {
+	cursor: pointer;
+>>>>>>> origin/master
 }
 
 .sortable-placeholder {
@@ -2055,7 +2495,11 @@ html.wp-toolbar {
 }
 
 .columns-prefs label {
+<<<<<<< HEAD
 	padding: 0 10px 0 0;
+=======
+	padding: 0 5px;
+>>>>>>> origin/master
 }
 
 /* @todo: what is this doing here */
@@ -2085,7 +2529,11 @@ html.wp-toolbar {
 	left: 0;
 	right: 0;
 	padding: 10px 20px;
+<<<<<<< HEAD
 	color: #555d66;
+=======
+	color: #777;
+>>>>>>> origin/master
 }
 
 #wpfooter p {
@@ -2111,6 +2559,7 @@ html.wp-toolbar {
 ------------------------------------------------------------------------------*/
 
 .nav-tab {
+<<<<<<< HEAD
 	float: left;
 	border: 1px solid #ccc;
 	border-bottom: none;
@@ -2153,11 +2602,37 @@ h3 .nav-tab, /* Back-compat for pre-4.4 */
 .nav-tab-active:hover,
 .nav-tab-active:focus,
 .nav-tab-active:focus:active {
+=======
+	border: 1px solid #ccc;
+	border-bottom: none;
+	background: #e4e4e4;
+	color: #555;
+	font-size: 12px;
+	line-height: 16px;
+	display: inline-block;
+	padding: 4px 14px 6px;
+	text-decoration: none;
+	margin: -4px 4px -1px 0;
+}
+
+.nav-tab:hover {
+	background-color: #fff;
+	color: #464646;
+}
+
+.nav-tab-active {
+	color: #464646;
+}
+
+.nav-tab-active,
+.nav-tab-active:hover {
+>>>>>>> origin/master
 	border-bottom: 1px solid #f1f1f1;
 	background: #f1f1f1;
 	color: #000;
 }
 
+<<<<<<< HEAD
 h1.nav-tab-wrapper, /* Back-compat for pre-4.4 */
 .wrap h2.nav-tab-wrapper, /* higher specificity to override .wrap > h2:first-child */
 h3.nav-tab-wrapper {
@@ -2182,6 +2657,23 @@ h3.nav-tab-wrapper {
 	vertical-align: top;
 }
 
+=======
+h2.nav-tab-wrapper,
+h3.nav-tab-wrapper {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 0;
+	padding-left: 10px;
+}
+
+h2 .nav-tab {
+	padding: 6px 10px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+
+>>>>>>> origin/master
 /*------------------------------------------------------------------------------
   26.0 - Misc
 ------------------------------------------------------------------------------*/
@@ -2201,8 +2693,12 @@ h3.nav-tab-wrapper {
 	margin: 4px 10px 0;
 }
 
+<<<<<<< HEAD
 .spinner.is-active,
 .loading-content .spinner {
+=======
+.spinner.is-active {
+>>>>>>> origin/master
 	visibility: visible;
 }
 
@@ -2210,22 +2706,29 @@ h3.nav-tab-wrapper {
 	margin-right: 190px;
 }
 
+<<<<<<< HEAD
 .metabox-holder .stuffbox > h3, /* Back-compat for pre-4.4 */
 .metabox-holder .postbox > h3, /* Back-compat for pre-4.4 */
 .metabox-holder h3.hndle, /* Back-compat for pre-4.4 */
 .metabox-holder h2.hndle {
+=======
+.metabox-holder h3 {
+>>>>>>> origin/master
 	font-size: 14px;
 	padding: 8px 12px;
 	margin: 0;
 	line-height: 1.4;
 }
 
+<<<<<<< HEAD
 /* Back-compat for nav-menus screen */
 .nav-menus-php .metabox-holder h3 {
 	padding: 10px 10px 11px 14px;
 	line-height: 21px;
 }
 
+=======
+>>>>>>> origin/master
 #templateside ul li a {
 	text-decoration: none;
 }
@@ -2241,7 +2744,10 @@ table .column-rating {
 	text-align: left;
 }
 
+<<<<<<< HEAD
 .attention,
+=======
+>>>>>>> origin/master
 .error-message {
 	color: red;
 	font-weight: 600;
@@ -2263,6 +2769,7 @@ body.iframe {
 
 /* - Only used once or twice in all of WP - deprecate for global style
 ------------------------------------------------------------------------------*/
+<<<<<<< HEAD
 .media-icon {
 	width: 62px; /* icon + border */
 	text-align: center;
@@ -2270,6 +2777,23 @@ body.iframe {
 
 .media-icon img {
 	border: 1px solid #e5e5e5;
+=======
+td.media-icon {
+	text-align: center;
+	width: 80px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+td.media-icon img {
+	max-width: 80px;
+	max-height: 60px;
+	width: auto;
+	height: auto;
+}
+
+td.image-icon img {
+>>>>>>> origin/master
 	border: 1px solid rgba(0, 0, 0, 0.07);
 }
 
@@ -2279,6 +2803,7 @@ body.iframe {
 	display: block;
 }
 
+<<<<<<< HEAD
 .importers {
 	font-size: 16px;
 	width: auto;
@@ -2335,6 +2860,22 @@ body.iframe {
 
 #namediv h3 label, /* Back-compat for pre-4.4 */
 #namediv h2 label {
+=======
+.importers td {
+	padding-right: 14px;
+}
+
+.importers {
+	font-size: 16px;
+	width: auto;
+}
+
+#post-body #post-body-content #namediv h3 {
+	margin-top: 0;
+}
+
+#namediv h3 label {
+>>>>>>> origin/master
 	vertical-align: baseline;
 }
 
@@ -2423,9 +2964,15 @@ div.star-holder .star-rating {
 	-webkit-font-smoothing: antialiased;
 	font-size: 20px;
 	line-height: 1;
+<<<<<<< HEAD
 	font-family: dashicons;
 	text-decoration: inherit;
 	font-weight: 400;
+=======
+	font-family: 'dashicons';
+	text-decoration: inherit;
+	font-weight: normal;
+>>>>>>> origin/master
 	font-style: normal;
 	vertical-align: top;
 	-webkit-transition: color .1s ease-in 0;
@@ -2435,11 +2982,19 @@ div.star-holder .star-rating {
 }
 
 .star-rating .star-full:before {
+<<<<<<< HEAD
 	content: "\f155";
 }
 
 .star-rating .star-half:before {
 	content: "\f459";
+=======
+	content:'\f155';
+}
+
+.star-rating .star-half:before {
+	content:'\f459';
+>>>>>>> origin/master
 }
 
 .rtl .star-rating .star-half {
@@ -2449,11 +3004,19 @@ div.star-holder .star-rating {
 }
 
 .star-rating .star-empty:before {
+<<<<<<< HEAD
 	content: "\f154";
 }
 
 div.action-links {
 	font-weight: 400;
+=======
+	content:'\f154';
+}
+
+div.action-links {
+	font-weight: normal;
+>>>>>>> origin/master
 	margin: 6px 0 0;
 }
 
@@ -2501,7 +3064,11 @@ div.action-links {
 
 #plugin-information-title h2 {
 	font-size: 1em;
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight: bold;
+>>>>>>> origin/master
 	padding: 0;
 	margin: 0;
 	max-width: 680px;
@@ -2547,8 +3114,12 @@ div.action-links {
 	position: relative;
 	right: 0;
 	left: 0;
+<<<<<<< HEAD
 	min-height: 36px;
 	font-size: 0;
+=======
+	height: 36px;
+>>>>>>> origin/master
 	z-index: 1;
 	border-bottom: 1px solid #ddd;
 	background: #f3f3f3;
@@ -2556,7 +3127,11 @@ div.action-links {
 
 #plugin-information-tabs a {
 	position: relative;
+<<<<<<< HEAD
 	display: inline-block;
+=======
+	float: left;
+>>>>>>> origin/master
 	padding: 9px 10px;
 	margin: 0;
 	height: 18px;
@@ -2568,7 +3143,11 @@ div.action-links {
 }
 
 #plugin-information-tabs a.current {
+<<<<<<< HEAD
 	margin: 0 -1px -1px;
+=======
+	margin: 0 -1px 0;
+>>>>>>> origin/master
 	background: #fff;
 	border: 1px solid #ddd;
 	border-bottom-color: #fff;
@@ -2613,7 +3192,11 @@ div.action-links {
 	left: 0;
 	margin-right: 250px; /* FYI box */
 	padding: 10px 26px;
+<<<<<<< HEAD
 	margin-bottom: -99939px; /* 60px less than the padding below to accommodate footer */
+=======
+	margin-bottom: -99930px; /* a bit less than the padding below to accommodate footer */
+>>>>>>> origin/master
 	padding-bottom: 99999px; /* equal height column trick */
 }
 
@@ -2622,12 +3205,20 @@ div.action-links {
 }
 
 #plugin-information .fyi {
+<<<<<<< HEAD
+=======
+	display: block;
+>>>>>>> origin/master
 	float: right;
 	position: relative;
 	top: 0;
 	right: 0;
 	padding: 16px;
+<<<<<<< HEAD
 	margin-bottom: -99939px; /* 60px less than the padding below to accommodate footer */
+=======
+	margin-bottom: -99930px; /* slightly less than the padding below to accommodate footer */
+>>>>>>> origin/master
 	padding-bottom: 99999px; /* equal height column trick */
 	width: 217px;
 	border-left: 1px solid #ddd;
@@ -2636,11 +3227,19 @@ div.action-links {
 }
 
 #plugin-information .fyi strong {
+<<<<<<< HEAD
 	color: #444;
 }
 
 #plugin-information .fyi h3 {
 	font-weight: 600;
+=======
+	color: #464646;
+}
+
+#plugin-information .fyi h3 {
+	font-weight: bold;
+>>>>>>> origin/master
 	text-transform: uppercase;
 	font-size: 12px;
 	color: #666;
@@ -2663,10 +3262,13 @@ div.action-links {
 	margin: 0 0 10px;
 }
 
+<<<<<<< HEAD
 #plugin-information .fyi-description {
 	margin-top: 0;
 }
 
+=======
+>>>>>>> origin/master
 #plugin-information .counter-container {
 	margin: 3px 0;
 }
@@ -2680,7 +3282,11 @@ div.action-links {
 #plugin-information .counter-back {
 	height: 17px;
 	width: 92px;
+<<<<<<< HEAD
 	background-color: #e5e5e5;
+=======
+	background-color: #ececec;
+>>>>>>> origin/master
 	float: left;
 }
 
@@ -2716,12 +3322,20 @@ div.action-links {
 }
 
 #plugin-information-footer {
+<<<<<<< HEAD
 	padding: 13px 16px;
+=======
+	padding: 15px 16px;
+>>>>>>> origin/master
 	position: absolute;
 	right: 0;
 	bottom: 0;
 	left: 0;
+<<<<<<< HEAD
 	height: 33px; /* 33+13+13+1=60 */
+=======
+	height: 28px;
+>>>>>>> origin/master
 	border-top: 1px solid #ddd;
 	background: #f3f3f3;
 }
@@ -2776,7 +3390,11 @@ div.action-links {
 	overflow: hidden; /* clearfix */
 	width: 100%;
 	margin-bottom: 20px;
+<<<<<<< HEAD
 	border-bottom: 1px solid #e5e5e5;
+=======
+	border-bottom: 1px solid #e6e6e6;
+>>>>>>> origin/master
 }
 
 #plugin-information .review-title-section {
@@ -2880,12 +3498,16 @@ div.action-links {
 }
 
 /* Thickbox for Plugin Install screen */
+<<<<<<< HEAD
 body.about-php #TB_window,
+=======
+>>>>>>> origin/master
 body.plugin-install-php #TB_window,
 body.import-php #TB_window,
 body.plugins-php #TB_window,
 body.update-core-php #TB_window,
 body.index-php #TB_window {
+<<<<<<< HEAD
 	background: #fcfcfc;
 }
 
@@ -2920,12 +3542,16 @@ body.index-php #TB_window.thickbox-loading:before {
 	background-size: 20px 20px;
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
+=======
+	background: #fcfcfc url( ../images/spinner.gif ) no-repeat center;
+>>>>>>> origin/master
 }
 
 @media print,
 	(-webkit-min-device-pixel-ratio: 1.25),
 	(min-resolution: 120dpi) {
 
+<<<<<<< HEAD
 	body.about-php #TB_window.thickbox-loading:before,
 	body.plugin-install-php #TB_window.thickbox-loading:before,
 	body.import-php #TB_window.thickbox-loading:before,
@@ -2937,6 +3563,19 @@ body.index-php #TB_window.thickbox-loading:before {
 }
 
 body.about-php #TB_title,
+=======
+	body.plugin-install-php #TB_window,
+	body.import-php #TB_window,
+	body.plugins-php #TB_window,
+	body.update-core-php #TB_window,
+	body.index-php #TB_window {
+		background: #fcfcfc url( ../images/spinner-2x.gif ) no-repeat center;
+		-webkit-background-size: 20px 20px;
+		background-size: 20px 20px;
+	}
+}
+
+>>>>>>> origin/master
 body.plugin-install-php #TB_title,
 body.import-php #TB_title,
 body.plugins-php #TB_title,
@@ -2946,7 +3585,10 @@ body.index-php #TB_title {
 	height: 1px;
 }
 
+<<<<<<< HEAD
 body.about-php #TB_ajaxWindowTitle,
+=======
+>>>>>>> origin/master
 body.plugin-install-php #TB_ajaxWindowTitle,
 body.import-php #TB_ajaxWindowTitle,
 body.plugins-php #TB_ajaxWindowTitle,
@@ -2955,6 +3597,7 @@ body.index-php #TB_ajaxWindowTitle {
 	display: none;
 }
 
+<<<<<<< HEAD
 /* only on these screens */
 .about-php #TB_closeWindowButton,
 .plugin-install-php #TB_closeWindowButton,
@@ -2980,12 +3623,47 @@ body.update-core-php #TB_closeWindowButton:hover,
 body.update-core-php #TB_closeWindowButton:focus,
 body.index-php #TB_closeWindowButton:hover,
 body.index-php #TB_closeWindowButton:focus {
+=======
+body.plugin-install-php .tb-close-icon,
+body.import-php .tb-close-icon,
+body.plugins-php .tb-close-icon,
+body.update-core-php .tb-close-icon,
+body.index-php .tb-close-icon {
+	left: auto;
+	right: -30px;
+	color: #eee;
+	-webkit-transition: color .1s ease-in-out, background .1s ease-in-out;
+	transition: color .1s ease-in-out, background .1s ease-in-out;
+}
+
+body.plugin-install-php #TB_closeWindowButton:focus,
+body.plugin-install-php #TB_closeWindowButton:focus .tb-close-icon,
+body.plugin-install-php .tb-close-icon:focus,
+body.plugin-install-php .tb-close-icon:hover,
+body.import-php #TB_closeWindowButton:focus,
+body.import-php #TB_closeWindowButton:focus .tb-close-icon,
+body.import-php .tb-close-icon:focus,
+body.import-php .tb-close-icon:hover,
+body.plugins-php #TB_closeWindowButton:focus,
+body.plugins-php #TB_closeWindowButton:focus .tb-close-icon,
+body.plugins-php .tb-close-icon:focus,
+body.plugins-php .tb-close-icon:hover,
+body.update-core-php #TB_closeWindowButton:focus,
+body.update-core-php #TB_closeWindowButton:focus .tb-close-icon,
+body.update-core-php .tb-close-icon:focus,
+body.update-core-php .tb-close-icon:hover,
+body.index-php #TB_closeWindowButton:focus,
+body.index-php #TB_closeWindowButton:focus .tb-close-icon,
+body.index-php .tb-close-icon:focus,
+body.index-php .tb-close-icon:hover {
+>>>>>>> origin/master
 	color: #00a0d2;
 	outline: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
+<<<<<<< HEAD
 body.about-php .tb-close-icon,
 body.plugin-install-php .tb-close-icon,
 body.import-php .tb-close-icon,
@@ -3006,16 +3684,33 @@ body.index-php #TB_closeWindowButton:after {
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+=======
+body.plugin-install-php .tb-close-icon:before,
+body.import-php .tb-close-icon:before,
+body.plugins-php .tb-close-icon:before,
+body.update-core-php .tb-close-icon:before,
+body.index-php .tb-close-icon:before {
+	content: "\f335";
+	font-size: 32px;
+>>>>>>> origin/master
 }
 
 /* move plugin install close icon to top on narrow screens */
 @media screen and ( max-width: 830px ) {
+<<<<<<< HEAD
 	body.about-php #TB_closeWindowButton,
 	body.plugin-install-php #TB_closeWindowButton,
 	body.import-php #TB_closeWindowButton,
 	body.plugins-php #TB_closeWindowButton,
 	body.update-core-php #TB_closeWindowButton,
 	body.index-php #TB_closeWindowButton {
+=======
+	body.plugin-install-php .tb-close-icon,
+	body.import-php .tb-close-icon,
+	body.plugins-php .tb-close-icon,
+	body.update-core-php .tb-close-icon,
+	body.index-php .tb-close-icon {
+>>>>>>> origin/master
 		right: 0;
 		top: -30px;
 	}
@@ -3026,6 +3721,7 @@ img {
 	border: none;
 }
 
+<<<<<<< HEAD
 /* Metabox collapse arrow indicators */
 .js .sidebar-name .sidebar-name-arrow:before,
 .js .meta-box-sortables .postbox .toggle-indicator:before,
@@ -3034,11 +3730,39 @@ img {
 	display: inline-block;
 	font: normal 20px/1 dashicons;
 	speak: none;
+=======
+/* Header */
+/* @todo: are these also specific to Press This? */
+#wphead {
+	border-bottom: 1px solid #dfdfdf;
+}
+
+#wphead h1 a {
+	color: #464646;
+}
+
+/* @todo: these seem misplaced */
+.js .meta-box-sortables .postbox:hover .handlediv {
+	margin-right: 0 !important;
+}
+
+/* Metabox collapse arrow indicators */
+.js .sidebar-name .sidebar-name-arrow:before,
+.js .meta-box-sortables .postbox .handlediv:before {
+	right: 12px;
+	font: normal 20px/1 'dashicons';
+	speak: none;
+	display: inline-block;
+	padding: 8px 10px;
+	top: 0;
+	position: relative;
+>>>>>>> origin/master
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-decoration: none !important;
 }
 
+<<<<<<< HEAD
 .js .widgets-holder-wrap.closed .sidebar-name-arrow:before,
 .js .meta-box-sortables .postbox.closed .handlediv .toggle-indicator:before,
 .bulk-action-notice .bulk-action-errors-collapsed .toggle-indicator:before {
@@ -3050,6 +3774,8 @@ img {
 	left: 0;
 }
 
+=======
+>>>>>>> origin/master
 .js #widgets-left .sidebar-name .sidebar-name-arrow {
 	display: none;
 }
@@ -3059,6 +3785,7 @@ img {
 	display: block;
 }
 
+<<<<<<< HEAD
 .js .postbox .handlediv .toggle-indicator:before {
 	margin-top: 4px;
 	width: 20px;
@@ -3090,6 +3817,26 @@ img {
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+=======
+/* Show the arrow only on hover */
+.js .sidebar-name .sidebar-name-arrow:before,
+.js .meta-box-sortables .postbox .handlediv:before {
+	content: '\f142';
+}
+
+.js .widgets-holder-wrap.closed .sidebar-name-arrow:before,
+.js .meta-box-sortables .postbox.closed .handlediv:before {
+	content: '\f140';
+}
+
+.error a {
+	text-decoration: underline;
+}
+
+.updated a {
+	text-decoration: none;
+	padding-bottom: 2px;
+>>>>>>> origin/master
 }
 
 /* @todo: appears to be Press This only and overridden */
@@ -3098,7 +3845,11 @@ img {
 }
 
 /* Theme/Plugin Editor */
+<<<<<<< HEAD
 .alignleft h2 {
+=======
+.alignleft h3 {
+>>>>>>> origin/master
 	margin: 0;
 }
 
@@ -3126,7 +3877,11 @@ img {
 	word-wrap: break-word;
 }
 
+<<<<<<< HEAD
 #templateside h2,
+=======
+#templateside h3,
+>>>>>>> origin/master
 #postcustomstuff p.submit {
 	margin: 0;
 }
@@ -3158,7 +3913,11 @@ img {
 
 #templateside .highlight {
 	border: none;
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight: bold;
+>>>>>>> origin/master
 }
 
 .nonessential {
@@ -3189,10 +3948,17 @@ img {
 .control-section .accordion-section-title:after,
 .accordion-section-title:after {
 	right: 0;
+<<<<<<< HEAD
 	content: "\f140";
 	border: none;
 	background: none;
 	font: normal 20px/1 dashicons;
+=======
+	content: '\f140';
+	border: none;
+	background: none;
+	font: normal 20px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	display: block;
 	padding: 0;
@@ -3204,10 +3970,15 @@ img {
 	text-decoration: none !important;
 }
 
+<<<<<<< HEAD
+=======
+.widget-action,
+>>>>>>> origin/master
 .handlediv,
 .item-edit,
 .sidebar-name-arrow,
 .accordion-section-title:after {
+<<<<<<< HEAD
 	color: #72777c;
 }
 
@@ -3241,6 +4012,30 @@ img {
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30,140,190,.8);
+=======
+	color: #a0a5aa;
+}
+
+.widget-action:hover,
+.handlediv:hover,
+.item-edit:hover,
+.sidebar-name:hover .sidebar-name-arrow,
+.accordion-section-title:hover:after {
+	color: #777;
+}
+
+.widget-top a.widget-action:after {
+	padding: 12px 12px 11px;
+}
+
+.widget-top a.widget-action:focus:after {
+	-webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+	box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+}
+
+.nav-menus-php .item-edit:before {
+	line-height: 2.1;
+>>>>>>> origin/master
 }
 
 .control-section .accordion-section-title:after,
@@ -3254,7 +4049,11 @@ img {
 #customize-info.open .accordion-section-title:after,
 .nav-menus-php .menu-item-edit-active .item-edit:before,
 .widget.open .widget-top a.widget-action:after {
+<<<<<<< HEAD
 	content: "\f142";
+=======
+	content: '\f142';
+>>>>>>> origin/master
 }
 
 /*!
@@ -3273,7 +4072,11 @@ img {
 
 /* Accordion */
 .accordion-section {
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
+=======
+	border-bottom: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	margin: 0;
 }
 
@@ -3283,7 +4086,11 @@ img {
 }
 
 .accordion-section.open:hover {
+<<<<<<< HEAD
 	border-bottom-color: #ddd;
+=======
+	border-bottom-color: #dfdfdf;
+>>>>>>> origin/master
 }
 
 .accordion-section-content {
@@ -3297,8 +4104,13 @@ img {
 	margin: 0;
 	padding: 12px 15px 15px;
 	position: relative;
+<<<<<<< HEAD
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
+=======
+	border-left: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -3355,6 +4167,7 @@ img {
 
 .control-section.open .accordion-section-title {
 	/* When expanded */
+<<<<<<< HEAD
 	border-bottom: 1px solid #ddd;
 }
 
@@ -3509,6 +4322,61 @@ img {
 /* =Media Queries
 -------------------------------------------------------------- */
 
+=======
+	border-bottom: 1px solid #dfdfdf;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+/* @todo: de-duplication */
+@media only screen and (min-width: 769px) {
+	/* categories */
+	#col-left {
+		width: 35%;
+	}
+
+	#col-right {
+		width: 65%;
+	}
+}
+
+@media only screen and (max-width: 860px) {
+
+	/* categories */
+	#col-left {
+		width: 35%;
+	}
+
+	#col-right {
+		width: 65%;
+	}
+}
+
+@media only screen and (min-width: 980px) {
+
+	/* categories */
+	#col-left {
+		width: 35%;
+	}
+
+	#col-right {
+		width: 65%;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	/* categories */
+	#col-left {
+		width: 100%;
+	}
+
+	#col-right {
+		width: 100%;
+	}
+}
+
+>>>>>>> origin/master
 /**
  * HiDPI Displays
  */
@@ -3577,6 +4445,7 @@ img {
 		margin-left: 0;
 	}
 
+<<<<<<< HEAD
 	/* categories */
 	#col-left,
 	#col-right {
@@ -3586,6 +4455,9 @@ img {
 
 	#col-left .col-wrap,
 	#col-right .col-wrap {
+=======
+	.col-wrap {
+>>>>>>> origin/master
 		padding: 0;
 	}
 
@@ -3597,6 +4469,7 @@ img {
 		display: none !important;
 	}
 
+<<<<<<< HEAD
 	.wrap .add-new-h2, /* deprecated */
 	.wrap .add-new-h2:active, /* deprecated */
 	.wrap .page-title-action,
@@ -3604,6 +4477,11 @@ img {
 		padding: 10px 15px;
 		font-size: 14px;
 		white-space: nowrap;
+=======
+	.wrap .add-new-h2, .wrap .add-new-h2:active {
+		padding: 10px 15px;
+		font-size: 14px;
+>>>>>>> origin/master
 	}
 
 	.wp-color-result {
@@ -3653,10 +4531,14 @@ img {
 		font-size: 14px;
 	}
 
+<<<<<<< HEAD
 	.metabox-holder h3.hndle, /* Back-compat for pre-4.4 */
 	.metabox-holder .stuffbox > h3, /* Back-compat for pre-4.4 */
 	.metabox-holder .postbox > h3, /* Back-compat for pre-4.4 */
 	.metabox-holder h2 {
+=======
+	.metabox-holder h3 {
+>>>>>>> origin/master
 		padding: 12px;
 	}
 
@@ -3713,6 +4595,7 @@ img {
 	#comments-form .checkforspam {
 		display: none;
 	}
+<<<<<<< HEAD
 
 	.edit-comment-author {
 		margin: 2px 0 0;
@@ -3722,6 +4605,8 @@ img {
 	.filter-drawer .filter-group-feature label {
 		line-height: 25px;
 	}
+=======
+>>>>>>> origin/master
 }
 
 /* Smartphone */
@@ -3744,6 +4629,7 @@ img {
 	div#post-body.metabox-holder.columns-1 {
 		overflow-x: hidden;
 	}
+<<<<<<< HEAD
 
 	h1.nav-tab-wrapper,
 	.wrap h2.nav-tab-wrapper,
@@ -3766,4 +4652,6 @@ img {
 		font-size: 14px;
 		text-align: left;
 	}
+=======
+>>>>>>> origin/master
 }

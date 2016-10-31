@@ -55,6 +55,7 @@
 			fallbacks = function( props ) {
 				// Generate alt fallbacks and strip tags.
 				if ( 'image' === props.type && ! props.alt ) {
+<<<<<<< HEAD
 					if ( props.caption ) {
 						props.alt = props.caption;
 					} else if ( props.title !== props.url ) {
@@ -63,6 +64,9 @@
 						props.alt = '';
 					}
 
+=======
+					props.alt = props.caption || props.title || '';
+>>>>>>> origin/master
 					props.alt = props.alt.replace( /<\/?[^>]+>/g, '' );
 					props.alt = props.alt.replace( /[\r\n]+/g, ' ' );
 				}
@@ -240,7 +244,10 @@
 			var img = {},
 				options, classes, shortcode, html;
 
+<<<<<<< HEAD
 			props.type = 'image';
+=======
+>>>>>>> origin/master
 			props = wp.media.string.props( props, attachment );
 			classes = props.classes || [];
 
@@ -657,19 +664,28 @@
 
 			settings.post.featuredImageId = id;
 
+<<<<<<< HEAD
 			wp.media.post( 'get-post-thumbnail-html', {
+=======
+			wp.media.post( 'set-post-thumbnail', {
+				json:         true,
+>>>>>>> origin/master
 				post_id:      settings.post.id,
 				thumbnail_id: settings.post.featuredImageId,
 				_wpnonce:     settings.post.nonce
 			}).done( function( html ) {
+<<<<<<< HEAD
 				if ( html == '0' ) {
 					window.alert( window.setPostThumbnailL10n.error );
 					return;
 				}
+=======
+>>>>>>> origin/master
 				$( '.inside', '#postimagediv' ).html( html );
 			});
 		},
 		/**
+<<<<<<< HEAD
 		 * Remove the featured image id, save the post thumbnail data and
 		 * set the HTML in the post meta box to no featured image.
 		 */
@@ -677,6 +693,8 @@
 			wp.media.featuredImage.set( -1 );
 		},
 		/**
+=======
+>>>>>>> origin/master
 		 * The Featured Image workflow
 		 *
 		 * @global wp.media.controller.FeaturedImage
@@ -688,7 +706,10 @@
 		 */
 		frame: function() {
 			if ( this._frame ) {
+<<<<<<< HEAD
 				wp.media.frame = this._frame;
+=======
+>>>>>>> origin/master
 				return this._frame;
 			}
 
@@ -753,8 +774,12 @@
 
 				wp.media.featuredImage.frame().open();
 			}).on( 'click', '#remove-post-thumbnail', function() {
+<<<<<<< HEAD
 				wp.media.featuredImage.remove();
 				return false;
+=======
+				wp.media.view.settings.post.featuredImageId = -1;
+>>>>>>> origin/master
 			});
 		}
 	};
@@ -1087,8 +1112,11 @@
 				workflow = this.add( id, options );
 			}
 
+<<<<<<< HEAD
 			wp.media.frame = workflow;
 
+=======
+>>>>>>> origin/master
 			return workflow.open();
 		},
 

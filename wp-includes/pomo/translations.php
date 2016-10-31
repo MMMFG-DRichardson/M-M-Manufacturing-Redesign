@@ -2,14 +2,22 @@
 /**
  * Class for a set of entries for translation and their associated headers
  *
+<<<<<<< HEAD
  * @version $Id: translations.php 1157 2015-11-20 04:30:11Z dd32 $
+=======
+ * @version $Id: translations.php 718 2012-10-31 00:32:02Z nbachiyski $
+>>>>>>> origin/master
  * @package pomo
  * @subpackage translations
  */
 
 require_once dirname(__FILE__) . '/entry.php';
 
+<<<<<<< HEAD
 if ( ! class_exists( 'Translations', false ) ):
+=======
+if ( !class_exists( 'Translations' ) ):
+>>>>>>> origin/master
 class Translations {
 	var $entries = array();
 	var $headers = array();
@@ -111,9 +119,12 @@ class Translations {
 		return 1 == $count? 0 : 1;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
+=======
+>>>>>>> origin/master
 	function get_plural_forms_count() {
 		return 2;
 	}
@@ -149,9 +160,12 @@ class Translations {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param object $other
 	 */
+=======
+>>>>>>> origin/master
 	function merge_originals_with(&$other) {
 		foreach( $other->entries as $entry ) {
 			if ( !isset( $this->entries[$entry->key()] ) )
@@ -272,7 +286,11 @@ class Gettext_Translations extends Translations {
 }
 endif;
 
+<<<<<<< HEAD
 if ( ! class_exists( 'NOOP_Translations', false ) ):
+=======
+if ( !class_exists( 'NOOP_Translations' ) ):
+>>>>>>> origin/master
 /**
  * Provides the same interface as Translations, but doesn't do anything
  */
@@ -284,6 +302,7 @@ class NOOP_Translations {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @param string $header
@@ -303,14 +322,25 @@ class NOOP_Translations {
 	 * @param string $header
 	 * @return false
 	 */
+=======
+	function set_header($header, $value) {
+	}
+
+	function set_headers($headers) {
+	}
+
+>>>>>>> origin/master
 	function get_header($header) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param Translation_Entry $entry
 	 * @return false
 	 */
+=======
+>>>>>>> origin/master
 	function translate_entry(&$entry) {
 		return false;
 	}
@@ -323,18 +353,24 @@ class NOOP_Translations {
 		return $singular;
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @param int $count
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function select_plural_form($count) {
 		return 1 == $count? 0 : 1;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
+=======
+>>>>>>> origin/master
 	function get_plural_forms_count() {
 		return 2;
 	}
@@ -349,9 +385,12 @@ class NOOP_Translations {
 			return 1 == $count? $singular : $plural;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param object $other
 	 */
+=======
+>>>>>>> origin/master
 	function merge_with(&$other) {
 	}
 }

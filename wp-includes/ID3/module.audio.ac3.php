@@ -471,4 +471,8 @@ class getid3_ac3 extends getid3_handler
 	}
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master

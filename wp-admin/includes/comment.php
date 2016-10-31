@@ -4,12 +4,16 @@
  *
  * @package WordPress
  * @subpackage Administration
+<<<<<<< HEAD
  * @since 2.3.0
+=======
+>>>>>>> origin/master
  */
 
 /**
  * Determine if a comment exists based on author and date.
  *
+<<<<<<< HEAD
  * For best performance, use `$timezone = 'gmt'`, which queries a field that is properly indexed. The default value
  * for `$timezone` is 'blog' for legacy reasons.
  *
@@ -37,6 +41,24 @@ function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
 			stripslashes( $comment_author ),
 			stripslashes( $comment_date )
 	) );
+=======
+ * @since 2.0.0
+ *
+ * @global wpdb $wpdb WordPress database abstraction object.
+ *
+ * @param string $comment_author Author of the comment
+ * @param string $comment_date Date of the comment
+ * @return mixed Comment post ID on success.
+ */
+function comment_exists($comment_author, $comment_date) {
+	global $wpdb;
+
+	$comment_author = stripslashes($comment_author);
+	$comment_date = stripslashes($comment_date);
+
+	return $wpdb->get_var( $wpdb->prepare("SELECT comment_post_ID FROM $wpdb->comments
+			WHERE comment_author = %s AND comment_date = %s", $comment_author, $comment_date) );
+>>>>>>> origin/master
 }
 
 /**
@@ -45,8 +67,14 @@ function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
  * @since 2.0.0
  */
 function edit_comment() {
+<<<<<<< HEAD
 	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) )
 		wp_die ( __( 'Sorry, you are not allowed to edit comments on this post.' ) );
+=======
+
+	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) )
+		wp_die ( __( 'You are not allowed to edit comments on this post.' ) );
+>>>>>>> origin/master
 
 	if ( isset( $_POST['newcomment_author'] ) )
 		$_POST['comment_author'] = $_POST['newcomment_author'];
@@ -86,12 +114,20 @@ function edit_comment() {
 }
 
 /**
+<<<<<<< HEAD
  * Returns a WP_Comment object based on comment ID.
+=======
+ * Returns a comment object based on comment ID.
+>>>>>>> origin/master
  *
  * @since 2.0.0
  *
  * @param int $id ID of comment to retrieve.
+<<<<<<< HEAD
  * @return WP_Comment|false Comment if found. False on failure.
+=======
+ * @return bool|object Comment if found. False on failure.
+>>>>>>> origin/master
  */
 function get_comment_to_edit( $id ) {
 	if ( !$comment = get_comment($id) )
@@ -102,7 +138,11 @@ function get_comment_to_edit( $id ) {
 
 	$comment->comment_content = format_to_edit( $comment->comment_content );
 	/**
+<<<<<<< HEAD
 	 * Filters the comment content before editing.
+=======
+	 * Filter the comment content before editing.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
@@ -167,11 +207,16 @@ function get_pending_comments_num( $post_id ) {
  * Add avatars to relevant places in admin, or try to.
  *
  * @since 2.5.0
+<<<<<<< HEAD
+=======
+ * @uses $comment
+>>>>>>> origin/master
  *
  * @param string $name User name.
  * @return string Avatar with Admin name.
  */
 function floated_admin_avatar( $name ) {
+<<<<<<< HEAD
 	$avatar = get_avatar( get_comment(), 32, 'mystery' );
 	return "$avatar $name";
 }
@@ -179,10 +224,18 @@ function floated_admin_avatar( $name ) {
 /**
  * @since 2.7.0
  */
+=======
+	global $comment;
+	$avatar = get_avatar( $comment, 32, 'mystery' );
+	return "$avatar $name";
+}
+
+>>>>>>> origin/master
 function enqueue_comment_hotkeys_js() {
 	if ( 'true' == get_user_option( 'comment_shortcuts' ) )
 		wp_enqueue_script( 'jquery-table-hotkeys' );
 }
+<<<<<<< HEAD
 
 /**
  * Display error message at bottom of comments.
@@ -194,3 +247,5 @@ function comment_footer_die( $msg ) {
 	include( ABSPATH . 'wp-admin/admin-footer.php' );
 	die;
 }
+=======
+>>>>>>> origin/master

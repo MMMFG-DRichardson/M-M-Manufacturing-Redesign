@@ -141,7 +141,11 @@ body.folded .revisions .loading-indicator {
 }
 
 .revisions-controls .author-card .date {
+<<<<<<< HEAD
 	color: #72777c;
+=======
+	color: #777;
+>>>>>>> origin/master
 }
 
 .revisions-controls .author-card.autosave {
@@ -149,7 +153,11 @@ body.folded .revisions .loading-indicator {
 }
 
 .revisions-controls .author-card .author-name {
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight: bold;
+>>>>>>> origin/master
 }
 
 .comparing-two-revisions .diff-meta-to strong {
@@ -389,7 +397,11 @@ table.diff .diff-addedline ins {
 
 .revisions-tooltip,
 .revisions-tooltip-arrow > span {
+<<<<<<< HEAD
 	border: 1px solid #ddd;
+=======
+	border: 1px solid #d7d7d7;
+>>>>>>> origin/master
 	background-color: #fff;
 }
 
@@ -453,7 +465,11 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 /* jQuery UI Slider */
 .wp-slider.ui-slider {
 	position: relative;
+<<<<<<< HEAD
 	border: 1px solid #ddd;
+=======
+	border: 1px solid #d7d7d7;
+>>>>>>> origin/master
 	text-align: right;
 	cursor: pointer;
 }
@@ -462,9 +478,14 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	height: 18px;
+<<<<<<< HEAD
 	margin-top: -5px;
 	outline: none;
 	padding: 2px;
+=======
+	margin-top: -3px;
+	outline: none;
+>>>>>>> origin/master
 	position: absolute;
 	width: 18px;
 	z-index: 2;
@@ -473,6 +494,7 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 }
 
 .wp-slider .ui-slider-handle,
+<<<<<<< HEAD
 .wp-slider .ui-slider-handle.focus {
 	background: #f7f7f7;
 	border: 1px solid #ccc;
@@ -506,16 +528,37 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 	color: #555;
 	content: "\f229";
 	font: normal 18px/1 dashicons;
+=======
+.wp-slider .ui-slider-handle.ui-state-hover,
+.wp-slider .ui-slider-handle.focus {
+	background: #00a0d2;
+	border: 1px solid #0073aa;
+	-webkit-box-shadow: inset 0 1px 0 #78c8e6, 0 1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 1px 0 #78c8e6, 0 1px 0 rgba(0,0,0,.15);
+}
+
+.wp-slider .ui-slider-handle:before {
+	background: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #fff;
+	content: "\f229";
+	font: normal 18px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 .wp-slider .ui-slider-handle:hover:before,
 .wp-slider .ui-slider-handle.ui-state-hover:before {
 	color: #23282d;
 }
 
+=======
+>>>>>>> origin/master
 .wp-slider .ui-slider-handle.from-handle:before,
 .wp-slider .ui-slider-handle.to-handle:before {
 	font-size: 20px !important;
@@ -523,6 +566,7 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 }
 
 .wp-slider .ui-slider-handle.from-handle:before {
+<<<<<<< HEAD
 	content: "\f141";
 }
 
@@ -536,6 +580,21 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 
 .rtl .wp-slider .ui-slider-handle.to-handle:before {
 	content: "\f141";
+=======
+	content: '\f139';
+}
+
+.wp-slider .ui-slider-handle.to-handle:before {
+	content: '\f141';
+}
+
+.rtl .wp-slider .ui-slider-handle.from-handle:before {
+	content: '\f141';
+}
+
+.rtl .wp-slider .ui-slider-handle.to-handle:before {
+	content: '\f139';
+>>>>>>> origin/master
 	left: -1px;
 }
 

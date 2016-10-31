@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* global plugininstallL10n, tb_click, tb_remove */
 
 /**
@@ -24,6 +25,20 @@ jQuery( document ).ready( function( $ ) {
 		tbWindow = $( '#TB_window' );
 
 		if ( tbWindow.length ) {
+=======
+/* global plugininstallL10n, tb_click */
+
+/* Plugin Browser Thickbox related JS*/
+var tb_position;
+jQuery( document ).ready( function( $ ) {
+	tb_position = function() {
+		var tbWindow = $( '#TB_window' ),
+			width = $( window ).width(),
+			H = $( window ).height() - ( ( 792 < width ) ? 60 : 20 ),
+			W = ( 792 < width ) ? 772 : width - 20;
+
+		if ( tbWindow.size() ) {
+>>>>>>> origin/master
 			tbWindow.width( W ).height( H );
 			$( '#TB_iframeContent' ).width( W ).height( H );
 			tbWindow.css({
@@ -52,6 +67,7 @@ jQuery( document ).ready( function( $ ) {
 		tb_position();
 	});
 
+<<<<<<< HEAD
 	/*
 	 * Custom events: when a Thickbox iframe has loaded and when the Thickbox
 	 * modal gets removed from the DOM.
@@ -157,6 +173,17 @@ jQuery( document ).ready( function( $ ) {
 
 		// Set title attribute on the iframe.
 		tbWindow.find( '#TB_iframeContent' ).attr( 'title', title );
+=======
+	$( '.plugin-card, .plugins .column-description' ).on( 'click', 'a.thickbox', function() {
+		tb_click.call(this);
+
+		$('#TB_title').css({'background-color':'#23282d','color':'#cfcfcf'});
+		$('#TB_ajaxWindowTitle').html( '<strong>' + plugininstallL10n.plugin_information + '</strong>&nbsp;' + $(this).data( 'title' ) );
+		$('#TB_iframeContent').attr( 'title', plugininstallL10n.plugin_information + ' ' + $(this).data( 'title' ) );
+		$('#TB_closeWindowButton').focus();
+
+		return false;
+>>>>>>> origin/master
 	});
 
 	/* Plugin install related JS */
@@ -179,6 +206,7 @@ jQuery( document ).ready( function( $ ) {
 		$( '#section-holder div.section' ).hide(); // Hide 'em all.
 		$( '#section-' + tab ).show();
 	});
+<<<<<<< HEAD
 
 	/*
 	 * When a user presses the "Upload Plugin" button, show the upload form in place
@@ -200,4 +228,6 @@ jQuery( document ).ready( function( $ ) {
 				$uploadViewToggle.attr( 'aria-expanded', $body.hasClass( 'show-upload-view' ) );
 			});
 	}
+=======
+>>>>>>> origin/master
 });

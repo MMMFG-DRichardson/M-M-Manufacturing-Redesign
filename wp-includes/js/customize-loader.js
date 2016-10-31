@@ -1,8 +1,11 @@
 /* global _wpCustomizeLoaderSettings, confirm */
+<<<<<<< HEAD
 /*
  * Expose a public API that allows the customizer to be
  * loaded on any page.
  */
+=======
+>>>>>>> origin/master
 window.wp = window.wp || {};
 
 (function( exports, $ ){
@@ -115,11 +118,15 @@ window.wp = window.wp || {};
 			this.active = true;
 			this.body.addClass('customize-loading');
 
+<<<<<<< HEAD
 			/*
 			 * Track the dirtiness state (whether the drafted changes have been published)
 			 * of the Customizer in the iframe. This is used to decide whether to display
 			 * an AYS alert if the user tries to close the window before saving changes.
 			 */
+=======
+			// Dirty state of Customizer in iframe
+>>>>>>> origin/master
 			this.saved = new api.Value( true );
 
 			this.iframe = $( '<iframe />', { 'src': src, 'title': Loader.settings.l10n.mainIframeTitle } ).appendTo( this.element );
@@ -150,6 +157,15 @@ window.wp = window.wp || {};
 			// Prompt AYS dialog when navigating away
 			$( window ).on( 'beforeunload', this.beforeunload );
 
+<<<<<<< HEAD
+=======
+			this.messenger.bind( 'activated', function( location ) {
+				if ( location ) {
+					window.location = location;
+				}
+			});
+
+>>>>>>> origin/master
 			this.messenger.bind( 'saved', function () {
 				Loader.saved( true );
 			} );

@@ -10,6 +10,7 @@
 if ( ! defined( 'WP_ADMIN' ) )
 	require_once( dirname( __FILE__ ) . '/admin.php' );
 
+<<<<<<< HEAD
 /**
  * In case admin-header.php is included in a function.
  *
@@ -23,6 +24,9 @@ if ( ! defined( 'WP_ADMIN' ) )
  * @global int       $total_update_count
  * @global string    $parent_file
  */
+=======
+// In case admin-header.php is included in a function.
+>>>>>>> origin/master
 global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow, $wp_version,
 	$update_title, $total_update_count, $parent_file;
 
@@ -36,7 +40,11 @@ $title = esc_html( strip_tags( $title ) );
 if ( is_network_admin() )
 	$admin_title = sprintf( __( 'Network Admin: %s' ), esc_html( get_current_site()->site_name ) );
 elseif ( is_user_admin() )
+<<<<<<< HEAD
 	$admin_title = sprintf( __( 'User Dashboard: %s' ), esc_html( get_current_site()->site_name ) );
+=======
+	$admin_title = sprintf( __( 'Global Dashboard: %s' ), esc_html( get_current_site()->site_name ) );
+>>>>>>> origin/master
 else
 	$admin_title = get_bloginfo( 'name' );
 
@@ -46,7 +54,11 @@ else
 	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s &#8212; WordPress' ), $title, $admin_title );
 
 /**
+<<<<<<< HEAD
  * Filters the title tag content for an admin page.
+=======
+ * Filter the title tag content for an admin page.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  *
@@ -174,7 +186,11 @@ $admin_body_class .= ' no-customize-support no-svg';
 </head>
 <?php
 /**
+<<<<<<< HEAD
  * Filters the CSS classes for the body tag in the admin.
+=======
+ * Filter the CSS classes for the body tag in the admin.
+>>>>>>> origin/master
  *
  * This filter differs from the {@see 'post_class'} and {@see 'body_class'} filters
  * in two important ways:
@@ -229,21 +245,33 @@ $current_screen->render_screen_meta();
 
 if ( is_network_admin() ) {
 	/**
+<<<<<<< HEAD
 	 * Prints network admin screen notices.
+=======
+	 * Print network admin screen notices.
+>>>>>>> origin/master
 	 *
 	 * @since 3.1.0
 	 */
 	do_action( 'network_admin_notices' );
 } elseif ( is_user_admin() ) {
 	/**
+<<<<<<< HEAD
 	 * Prints user admin screen notices.
+=======
+	 * Print user admin screen notices.
+>>>>>>> origin/master
 	 *
 	 * @since 3.1.0
 	 */
 	do_action( 'user_admin_notices' );
 } else {
 	/**
+<<<<<<< HEAD
 	 * Prints admin screen notices.
+=======
+	 * Print admin screen notices.
+>>>>>>> origin/master
 	 *
 	 * @since 3.1.0
 	 */
@@ -251,7 +279,11 @@ if ( is_network_admin() ) {
 }
 
 /**
+<<<<<<< HEAD
  * Prints generic admin screen notices.
+=======
+ * Print generic admin screen notices.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  */

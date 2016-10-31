@@ -1,5 +1,9 @@
 /* global postL10n, ajaxurl, wpAjax, setPostThumbnailL10n, postboxes, pagenow, tinymce, alert, deleteUserSetting */
+<<<<<<< HEAD
 /* global theList:true, theExtraList:true, getUserSetting, setUserSetting, commentReply */
+=======
+/* global theList:true, theExtraList:true, getUserSetting, setUserSetting */
+>>>>>>> origin/master
 
 var commentsBox, WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail, wptitlehint, makeSlugeditClickable, editPermalink;
 // Back-compat: prevent fatal errors
@@ -59,11 +63,14 @@ commentsBox = {
 		);
 
 		return false;
+<<<<<<< HEAD
 	},
 
 	load: function(total){
 		this.st = jQuery('#the-comment-list tr.comment:visible').length;
 		this.get(total);
+=======
+>>>>>>> origin/master
 	}
 };
 
@@ -73,7 +80,11 @@ WPSetThumbnailHTML = function(html){
 
 WPSetThumbnailID = function(id){
 	var field = $('input[value="_thumbnail_id"]', '#list-table');
+<<<<<<< HEAD
 	if ( field.length > 0 ) {
+=======
+	if ( field.size() > 0 ) {
+>>>>>>> origin/master
 		$('#meta\\[' + field.attr('id').match(/[0-9]+/) + '\\]\\[value\\]').text(id);
 	}
 };
@@ -131,7 +142,11 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 				}
 
 				if ( received.lock_error.avatar_src ) {
+<<<<<<< HEAD
 					avatar = $( '<img class="avatar avatar-64 photo" width="64" height="64" alt="" />' ).attr( 'src', received.lock_error.avatar_src.replace( /&amp;/g, '&' ) );
+=======
+					avatar = $('<img class="avatar avatar-64 photo" width="64" height="64" />').attr( 'src', received.lock_error.avatar_src.replace(/&amp;/g, '&') );
+>>>>>>> origin/master
 					wrap.find('div.post-locked-avatar').empty().append( avatar );
 				}
 
@@ -175,6 +190,7 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 	}
 
 	$(document).on( 'heartbeat-send.wp-refresh-nonces', function( e, data ) {
+<<<<<<< HEAD
 		var post_id,
 			$authCheck = $('#wp-auth-check-wrap');
 
@@ -182,6 +198,15 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 			if ( ( post_id = $('#post_ID').val() ) && $('#_wpnonce').val() ) {
 				data['wp-refresh-post-nonces'] = {
 					post_id: post_id
+=======
+		var nonce, post_id;
+
+		if ( check ) {
+			if ( ( post_id = $('#post_ID').val() ) && ( nonce = $('#_wpnonce').val() ) ) {
+				data['wp-refresh-post-nonces'] = {
+					post_id: post_id,
+					post_nonce: nonce
+>>>>>>> origin/master
 				};
 			}
 		}
@@ -208,15 +233,26 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 jQuery(document).ready( function($) {
 	var stamp, visibility, $submitButtons, updateVisibility, updateText,
 		sticky = '',
+<<<<<<< HEAD
 		$textarea = $('#content'),
 		$document = $(document),
+=======
+		last = 0,
+		co = $('#content'),
+		$document = $(document),
+		$editSlugWrap = $('#edit-slug-box'),
+>>>>>>> origin/master
 		postId = $('#post_ID').val() || 0,
 		$submitpost = $('#submitpost'),
 		releaseLock = true,
 		$postVisibilitySelect = $('#post-visibility-select'),
 		$timestampdiv = $('#timestampdiv'),
+<<<<<<< HEAD
 		$postStatusSelect = $('#post-status-select'),
 		isMac = window.navigator.platform ? window.navigator.platform.indexOf( 'Mac' ) !== -1 : false;
+=======
+		$postStatusSelect = $('#post-status-select');
+>>>>>>> origin/master
 
 	postboxes.add_postbox_toggles(pagenow);
 
@@ -270,6 +306,7 @@ jQuery(document).ready( function($) {
 				wp.autosave.server.suspend();
 			}
 
+<<<<<<< HEAD
 			if ( typeof commentReply !== 'undefined' ) {
 				/*
 				 * Warn the user they have an unsaved comment before submitting
@@ -286,6 +323,8 @@ jQuery(document).ready( function($) {
 				commentReply.close();
 			}
 
+=======
+>>>>>>> origin/master
 			releaseLock = false;
 			$(window).off( 'beforeunload.edit-post' );
 
@@ -333,10 +372,18 @@ jQuery(document).ready( function($) {
 
 	// This code is meant to allow tabbing from Title to Post content.
 	$('#title').on( 'keydown.editor-focus', function( event ) {
+<<<<<<< HEAD
 		var editor;
 
 		if ( event.keyCode === 9 && ! event.ctrlKey && ! event.altKey && ! event.shiftKey ) {
 			editor = typeof tinymce != 'undefined' && tinymce.get('content');
+=======
+		var editor, $textarea;
+
+		if ( event.keyCode === 9 && ! event.ctrlKey && ! event.altKey && ! event.shiftKey ) {
+			editor = typeof tinymce != 'undefined' && tinymce.get('content');
+			$textarea = $('#content');
+>>>>>>> origin/master
 
 			if ( editor && ! editor.isHidden() ) {
 				editor.focus();
@@ -382,10 +429,13 @@ jQuery(document).ready( function($) {
 		$( '.autosave-message' ).text( postL10n.savingText );
 	}).on( 'after-autosave.edit-post', function( event, data ) {
 		$( '.autosave-message' ).text( data.message );
+<<<<<<< HEAD
 
 		if ( $( document.body ).hasClass( 'post-new-php' ) ) {
 			$( '.submitbox .submitdelete' ).show();
 		}
+=======
+>>>>>>> origin/master
 	});
 
 	$(window).on( 'beforeunload.edit-post', function() {
@@ -424,7 +474,11 @@ jQuery(document).ready( function($) {
 	if ( $('#tagsdiv-post_tag').length ) {
 		window.tagBox && window.tagBox.init();
 	} else {
+<<<<<<< HEAD
 		$('.meta-box-sortables').children('div.postbox').each(function(){
+=======
+		$('#side-sortables, #normal-sortables, #advanced-sortables').children('div.postbox').each(function(){
+>>>>>>> origin/master
 			if ( this.id.indexOf('tagsdiv-') === 0 ) {
 				window.tagBox && window.tagBox.init();
 				return false;
@@ -444,8 +498,12 @@ jQuery(document).ready( function($) {
 			settingName = 'cats';
 
 		// TODO: move to jQuery 1.3+, support for multiple hierarchical taxonomies, see wp-lists.js
+<<<<<<< HEAD
 		$('a', '#' + taxonomy + '-tabs').click( function( e ) {
 			e.preventDefault();
+=======
+		$('a', '#' + taxonomy + '-tabs').click( function(){
+>>>>>>> origin/master
 			var t = $(this).attr('href');
 			$(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
 			$('#' + taxonomy + '-tabs').siblings('.tabs-panel').hide();
@@ -454,6 +512,10 @@ jQuery(document).ready( function($) {
 				deleteUserSetting( settingName );
 			else
 				setUserSetting( settingName, 'pop' );
+<<<<<<< HEAD
+=======
+			return false;
+>>>>>>> origin/master
 		});
 
 		if ( getUserSetting( settingName ) )
@@ -495,11 +557,19 @@ jQuery(document).ready( function($) {
 			addAfter: catAddAfter
 		});
 
+<<<<<<< HEAD
 		$('#' + taxonomy + '-add-toggle').click( function( e ) {
 			e.preventDefault();
 			$('#' + taxonomy + '-adder').toggleClass( 'wp-hidden-children' );
 			$('a[href="#' + taxonomy + '-all"]', '#' + taxonomy + '-tabs').click();
 			$('#new'+taxonomy).focus();
+=======
+		$('#' + taxonomy + '-add-toggle').click( function() {
+			$('#' + taxonomy + '-adder').toggleClass( 'wp-hidden-children' );
+			$('a[href="#' + taxonomy + '-all"]', '#' + taxonomy + '-tabs').click();
+			$('#new'+taxonomy).focus();
+			return false;
+>>>>>>> origin/master
 		});
 
 		$('#' + taxonomy + 'checklist, #' + taxonomy + 'checklist-pop').on( 'click', 'li.popular-category > label input[type="checkbox"]', function() {
@@ -574,6 +644,7 @@ jQuery(document).ready( function($) {
 				$('#timestamp').html(stamp);
 			} else {
 				$('#timestamp').html(
+<<<<<<< HEAD
 					'\n' + publishOn + ' <b>' +
 					postL10n.dateFormat
 						.replace( '%1$s', $( 'option[value="' + mm + '"]', '#mm' ).attr( 'data-text' ) )
@@ -581,6 +652,14 @@ jQuery(document).ready( function($) {
 						.replace( '%3$s', aa )
 						.replace( '%4$s', ( '00' + hh ).slice( -2 ) )
 						.replace( '%5$s', ( '00' + mn ).slice( -2 ) ) +
+=======
+					publishOn + ' <b>' +
+					postL10n.dateFormat.replace( '%1$s', $('option[value="' + $('#mm').val() + '"]', '#mm').text() )
+						.replace( '%2$s', jj )
+						.replace( '%3$s', aa )
+						.replace( '%4$s', hh )
+						.replace( '%5$s', mn ) +
+>>>>>>> origin/master
 						'</b> '
 				);
 			}
@@ -620,6 +699,7 @@ jQuery(document).ready( function($) {
 			return true;
 		};
 
+<<<<<<< HEAD
 		$( '#visibility .edit-visibility').click( function( e ) {
 			e.preventDefault();
 			if ( $postVisibilitySelect.is(':hidden') ) {
@@ -629,6 +709,15 @@ jQuery(document).ready( function($) {
 				} );
 				$(this).hide();
 			}
+=======
+		$( '#visibility .edit-visibility').click( function () {
+			if ( $postVisibilitySelect.is(':hidden') ) {
+				updateVisibility();
+				$postVisibilitySelect.slideDown('fast').find('input[type="radio"]').first().focus();
+				$(this).hide();
+			}
+			return false;
+>>>>>>> origin/master
 		});
 
 		$postVisibilitySelect.find('.cancel-post-visibility').click( function( event ) {
@@ -644,7 +733,11 @@ jQuery(document).ready( function($) {
 
 		$postVisibilitySelect.find('.save-post-visibility').click( function( event ) { // crazyhorse - multiple ok cancels
 			$postVisibilitySelect.slideUp('fast');
+<<<<<<< HEAD
 			$('#visibility .edit-visibility').show().focus();
+=======
+			$('#visibility .edit-visibility').show();
+>>>>>>> origin/master
 			updateText();
 
 			if ( $postVisibilitySelect.find('input:radio:checked').val() != 'public' ) {
@@ -667,9 +760,14 @@ jQuery(document).ready( function($) {
 
 		$timestampdiv.siblings('a.edit-timestamp').click( function( event ) {
 			if ( $timestampdiv.is( ':hidden' ) ) {
+<<<<<<< HEAD
 				$timestampdiv.slideDown( 'fast', function() {
 					$( 'input, select', $timestampdiv.find( '.timestamp-wrap' ) ).first().focus();
 				} );
+=======
+				$timestampdiv.slideDown('fast');
+				$('#mm').focus();
+>>>>>>> origin/master
 				$(this).hide();
 			}
 			event.preventDefault();
@@ -689,7 +787,11 @@ jQuery(document).ready( function($) {
 		$timestampdiv.find('.save-timestamp').click( function( event ) { // crazyhorse - multiple ok cancels
 			if ( updateText() ) {
 				$timestampdiv.slideUp('fast');
+<<<<<<< HEAD
 				$timestampdiv.siblings('a.edit-timestamp').show().focus();
+=======
+				$timestampdiv.siblings('a.edit-timestamp').show();
+>>>>>>> origin/master
 			}
 			event.preventDefault();
 		});
@@ -709,22 +811,34 @@ jQuery(document).ready( function($) {
 
 		$postStatusSelect.siblings('a.edit-post-status').click( function( event ) {
 			if ( $postStatusSelect.is( ':hidden' ) ) {
+<<<<<<< HEAD
 				$postStatusSelect.slideDown( 'fast', function() {
 					$postStatusSelect.find('select').focus();
 				} );
+=======
+				$postStatusSelect.slideDown('fast').find('select').focus();
+>>>>>>> origin/master
 				$(this).hide();
 			}
 			event.preventDefault();
 		});
 
 		$postStatusSelect.find('.save-post-status').click( function( event ) {
+<<<<<<< HEAD
 			$postStatusSelect.slideUp( 'fast' ).siblings( 'a.edit-post-status' ).show().focus();
+=======
+			$postStatusSelect.slideUp('fast').siblings('a.edit-post-status').show();
+>>>>>>> origin/master
 			updateText();
 			event.preventDefault();
 		});
 
 		$postStatusSelect.find('.cancel-post-status').click( function( event ) {
+<<<<<<< HEAD
 			$postStatusSelect.slideUp( 'fast' ).siblings( 'a.edit-post-status' ).show().focus();
+=======
+			$('#post-status-select').slideUp('fast').siblings( 'a.edit-post-status' ).show().focus();
+>>>>>>> origin/master
 			$('#post_status').val( $('#hidden_post_status').val() );
 			updateText();
 			event.preventDefault();
@@ -734,6 +848,7 @@ jQuery(document).ready( function($) {
 	// permalink
 	function editPermalink() {
 		var i, slug_value,
+<<<<<<< HEAD
 			$el, revert_e,
 			c = 0,
 			real_slug = $('#post_name'),
@@ -743,12 +858,22 @@ jQuery(document).ready( function($) {
 			permalinkInner = $( '#sample-permalink a' ).html(),
 			buttons = $('#edit-slug-buttons'),
 			buttonsOrig = buttons.html(),
+=======
+			c = 0,
+			e = $('#editable-post-name'),
+			revert_e = e.html(),
+			real_slug = $('#post_name'),
+			revert_slug = real_slug.val(),
+			b = $('#edit-slug-buttons'),
+			revert_b = b.html(),
+>>>>>>> origin/master
 			full = $('#editable-post-name-full');
 
 		// Deal with Twemoji in the post-name
 		full.find( 'img' ).replaceWith( function() { return this.alt; } );
 		full = full.html();
 
+<<<<<<< HEAD
 		permalink.html( permalinkInner );
 		$el = $( '#editable-post-name' );
 		revert_e = $el.html();
@@ -760,6 +885,15 @@ jQuery(document).ready( function($) {
 			if ( new_slug == $('#editable-post-name-full').text() ) {
 				buttons.children('.cancel').click();
 				return;
+=======
+		$('#view-post-btn').hide();
+		b.html('<a href="#" class="save button button-small">'+postL10n.ok+'</a> <a class="cancel" href="#">'+postL10n.cancel+'</a>');
+		b.children('.save').click(function() {
+			var new_slug = e.children('input').val();
+			if ( new_slug == $('#editable-post-name-full').text() ) {
+				b.children('.cancel').click();
+				return false;
+>>>>>>> origin/master
 			}
 			$.post(ajaxurl, {
 				action: 'sample-permalink',
@@ -776,6 +910,7 @@ jQuery(document).ready( function($) {
 					});
 				}
 
+<<<<<<< HEAD
 				buttons.html(buttonsOrig);
 				permalink.html(permalinkOrig);
 				real_slug.val(new_slug);
@@ -791,6 +926,21 @@ jQuery(document).ready( function($) {
 			permalink.html(permalinkOrig);
 			real_slug.val(revert_slug);
 			$( '.edit-slug' ).focus();
+=======
+				b.html(revert_b);
+				real_slug.val(new_slug);
+				$('#view-post-btn').show();
+			});
+			return false;
+		});
+
+		b.children('.cancel').click(function() {
+			$('#view-post-btn').show();
+			e.html(revert_e);
+			b.html(revert_b);
+			real_slug.val(revert_slug);
+			return false;
+>>>>>>> origin/master
 		});
 
 		for ( i = 0; i < full.length; ++i ) {
@@ -799,6 +949,7 @@ jQuery(document).ready( function($) {
 		}
 
 		slug_value = ( c > full.length / 4 ) ? '' : full;
+<<<<<<< HEAD
 		$el.html( '<input type="text" id="new-post-slug" value="' + slug_value + '" autocomplete="off" />' ).children( 'input' ).keydown( function( e ) {
 			var key = e.which;
 			// On enter, just save the new slug, don't save the post.
@@ -817,6 +968,51 @@ jQuery(document).ready( function($) {
 	$( '#titlediv' ).on( 'click', '.edit-slug', function() {
 		editPermalink();
 	});
+=======
+		e.html('<input type="text" id="new-post-slug" value="'+slug_value+'" />').children('input').keypress(function(e) {
+			var key = e.keyCode || 0;
+			// on enter, just save the new slug, don't save the post
+			if ( 13 == key ) {
+				b.children('.save').click();
+				return false;
+			}
+			if ( 27 == key ) {
+				b.children('.cancel').click();
+				return false;
+			}
+		} ).keyup( function() {
+			real_slug.val(this.value);
+		}).focus();
+	}
+
+	if ( $editSlugWrap.length ) {
+		$editSlugWrap.on( 'click', function( event ) {
+			var $target = $( event.target );
+
+			if ( $target.is('#editable-post-name') || $target.hasClass('edit-slug') ) {
+				editPermalink();
+			}
+		});
+	}
+
+	// word count
+	if ( typeof(wpWordCount) != 'undefined' ) {
+		$document.triggerHandler('wpcountwords', [ co.val() ]);
+
+		co.keyup( function(e) {
+			var k = e.keyCode || e.charCode;
+
+			if ( k == last )
+				return true;
+
+			if ( 13 == k || 8 == last || 46 == last )
+				$document.triggerHandler('wpcountwords', [ co.val() ]);
+
+			last = k;
+			return true;
+		});
+	}
+>>>>>>> origin/master
 
 	wptitlehint = function(id) {
 		id = id || 'title';
@@ -847,6 +1043,10 @@ jQuery(document).ready( function($) {
 	// Resize the visual and text editors
 	( function() {
 		var editor, offset, mce,
+<<<<<<< HEAD
+=======
+			$textarea = $('textarea#content'),
+>>>>>>> origin/master
 			$handle = $('#post-status-info'),
 			$postdivrich = $('#postdivrich');
 
@@ -934,6 +1134,7 @@ jQuery(document).ready( function($) {
 			}
 		});
 	}
+<<<<<<< HEAD
 
 	// Save on pressing Ctrl/Command + S in the Text editor
 	$textarea.on( 'keydown.wp-autosave', function( event ) {
@@ -1000,3 +1201,6 @@ jQuery(document).ready( function($) {
 		update();
 	} );
 } )( jQuery, new wp.utils.WordCounter() );
+=======
+});
+>>>>>>> origin/master

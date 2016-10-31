@@ -3,26 +3,39 @@
  * Classes, which help reading streams of data from files.
  * Based on the classes from Danilo Segan <danilo@kvota.net>
  *
+<<<<<<< HEAD
  * @version $Id: streams.php 1157 2015-11-20 04:30:11Z dd32 $
+=======
+ * @version $Id: streams.php 718 2012-10-31 00:32:02Z nbachiyski $
+>>>>>>> origin/master
  * @package pomo
  * @subpackage streams
  */
 
+<<<<<<< HEAD
 if ( ! class_exists( 'POMO_Reader', false ) ):
+=======
+if ( !class_exists( 'POMO_Reader' ) ):
+>>>>>>> origin/master
 class POMO_Reader {
 
 	var $endian = 'little';
 	var $_post = '';
 
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct() {
+=======
+	function POMO_Reader() {
+>>>>>>> origin/master
 		$this->is_overloaded = ((ini_get("mbstring.func_overload") & 2) != 0) && function_exists('mb_substr');
 		$this->_pos = 0;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function POMO_Reader() {
@@ -30,6 +43,8 @@ class POMO_Reader {
 	}
 
 	/**
+=======
+>>>>>>> origin/master
 	 * Sets the endianness of the file.
 	 *
 	 * @param $endian string 'big' or 'little'
@@ -111,41 +126,60 @@ class POMO_Reader {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
+=======
+
+>>>>>>> origin/master
 	function pos() {
 		return $this->_pos;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return true
 	 */
+=======
+>>>>>>> origin/master
 	function is_resource() {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return true
 	 */
+=======
+>>>>>>> origin/master
 	function close() {
 		return true;
 	}
 }
 endif;
 
+<<<<<<< HEAD
 if ( ! class_exists( 'POMO_FileReader', false ) ):
+=======
+if ( !class_exists( 'POMO_FileReader' ) ):
+>>>>>>> origin/master
 class POMO_FileReader extends POMO_Reader {
 
 	/**
 	 * @param string $filename
 	 */
+<<<<<<< HEAD
 	function __construct( $filename ) {
+=======
+	function POMO_FileReader($filename) {
+>>>>>>> origin/master
 		parent::POMO_Reader();
 		$this->_f = fopen($filename, 'rb');
 	}
 
 	/**
+<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function POMO_FileReader( $filename ) {
@@ -153,6 +187,8 @@ class POMO_FileReader extends POMO_Reader {
 	}
 
 	/**
+=======
+>>>>>>> origin/master
 	 * @param int $bytes
 	 */
 	function read($bytes) {
@@ -171,30 +207,42 @@ class POMO_FileReader extends POMO_Reader {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function is_resource() {
 		return is_resource($this->_f);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function feof() {
 		return feof($this->_f);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function close() {
 		return fclose($this->_f);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return string
 	 */
+=======
+>>>>>>> origin/master
 	function read_all() {
 		$all = '';
 		while ( !$this->feof() )
@@ -204,7 +252,11 @@ class POMO_FileReader extends POMO_Reader {
 }
 endif;
 
+<<<<<<< HEAD
 if ( ! class_exists( 'POMO_StringReader', false ) ):
+=======
+if ( !class_exists( 'POMO_StringReader' ) ):
+>>>>>>> origin/master
 /**
  * Provides file-like methods for manipulating a string instead
  * of a physical file.
@@ -213,16 +265,21 @@ class POMO_StringReader extends POMO_Reader {
 
 	var $_str = '';
 
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $str = '' ) {
+=======
+	function POMO_StringReader($str = '') {
+>>>>>>> origin/master
 		parent::POMO_Reader();
 		$this->_str = $str;
 		$this->_pos = 0;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function POMO_StringReader( $str = '' ) {
@@ -230,6 +287,8 @@ class POMO_StringReader extends POMO_Reader {
 	}
 
 	/**
+=======
+>>>>>>> origin/master
 	 * @param string $bytes
 	 * @return string
 	 */
@@ -250,16 +309,22 @@ class POMO_StringReader extends POMO_Reader {
 		return $this->_pos;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
+=======
+>>>>>>> origin/master
 	function length() {
 		return $this->strlen($this->_str);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return string
 	 */
+=======
+>>>>>>> origin/master
 	function read_all() {
 		return $this->substr($this->_str, $this->_pos, $this->strlen($this->_str));
 	}
@@ -267,21 +332,30 @@ class POMO_StringReader extends POMO_Reader {
 }
 endif;
 
+<<<<<<< HEAD
 if ( ! class_exists( 'POMO_CachedFileReader', false ) ):
+=======
+if ( !class_exists( 'POMO_CachedFileReader' ) ):
+>>>>>>> origin/master
 /**
  * Reads the contents of the file in the beginning.
  */
 class POMO_CachedFileReader extends POMO_StringReader {
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $filename ) {
+=======
+	function POMO_CachedFileReader($filename) {
+>>>>>>> origin/master
 		parent::POMO_StringReader();
 		$this->_str = file_get_contents($filename);
 		if (false === $this->_str)
 			return false;
 		$this->_pos = 0;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * PHP4 constructor.
@@ -293,10 +367,17 @@ class POMO_CachedFileReader extends POMO_StringReader {
 endif;
 
 if ( ! class_exists( 'POMO_CachedIntFileReader', false ) ):
+=======
+}
+endif;
+
+if ( !class_exists( 'POMO_CachedIntFileReader' ) ):
+>>>>>>> origin/master
 /**
  * Reads the contents of the file in the beginning.
  */
 class POMO_CachedIntFileReader extends POMO_CachedFileReader {
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
@@ -313,3 +394,10 @@ class POMO_CachedIntFileReader extends POMO_CachedFileReader {
 }
 endif;
 
+=======
+	function POMO_CachedIntFileReader($filename) {
+		parent::POMO_CachedFileReader($filename);
+	}
+}
+endif;
+>>>>>>> origin/master

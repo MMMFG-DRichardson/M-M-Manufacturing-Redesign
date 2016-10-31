@@ -11,8 +11,13 @@
  * WordPress Error class.
  *
  * Container for checking for WordPress errors and error messages. Return
+<<<<<<< HEAD
  * WP_Error and use is_wp_error() to check if this class is returned. Many
  * core WordPress functions pass this class in the event of an error and
+=======
+ * WP_Error and use {@link is_wp_error()} to check if this class is returned.
+ * Many core WordPress functions pass this class in the event of an error and
+>>>>>>> origin/master
  * if not handled properly will result in code errors.
  *
  * @package WordPress
@@ -144,7 +149,11 @@ class WP_Error {
 	 * @since 2.1.0
 	 *
 	 * @param string|int $code Optional. Error code.
+<<<<<<< HEAD
 	 * @return mixed Error data, if it exists.
+=======
+	 * @return mixed Null, if no errors.
+>>>>>>> origin/master
 	 */
 	public function get_error_data($code = '') {
 		if ( empty($code) )
@@ -152,6 +161,10 @@ class WP_Error {
 
 		if ( isset($this->error_data[$code]) )
 			return $this->error_data[$code];
+<<<<<<< HEAD
+=======
+		return null;
+>>>>>>> origin/master
 	}
 
 	/**

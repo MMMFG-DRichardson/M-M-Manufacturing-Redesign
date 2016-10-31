@@ -1,15 +1,24 @@
 /*!
+<<<<<<< HEAD
  * jQuery Migrate - v1.4.1 - 2016-05-19
  * Copyright jQuery Foundation and other contributors
+=======
+ * jQuery Migrate - v1.2.1 - 2013-05-08
+ * https://github.com/jquery/jquery-migrate
+ * Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors; Licensed MIT
+>>>>>>> origin/master
  */
 (function( jQuery, window, undefined ) {
 // See http://bugs.jquery.com/ticket/13335
 // "use strict";
 
 
+<<<<<<< HEAD
 jQuery.migrateVersion = "1.4.1";
 
 
+=======
+>>>>>>> origin/master
 var warnedAbout = {};
 
 // List of warnings already given; public read only
@@ -19,10 +28,15 @@ jQuery.migrateWarnings = [];
 // jQuery.migrateMute = false;
 
 // Show a message on the console so devs know we're active
+<<<<<<< HEAD
 if ( window.console && window.console.log ) {
 	window.console.log( "JQMIGRATE: Migrate is installed" +
 		( jQuery.migrateMute ? "" : " with logging active" ) +
 		", version " + jQuery.migrateVersion );
+=======
+if ( !jQuery.migrateMute && window.console && window.console.log ) {
+	window.console.log("JQMIGRATE: Logging is active");
+>>>>>>> origin/master
 }
 
 // Set to false to disable traces that appear with warnings
@@ -156,7 +170,11 @@ jQuery.attr = function( elem, name, value, pass ) {
 
 		// Warn only for attributes that can remain distinct from their properties post-1.9
 		if ( ruseDefault.test( lowerName ) ) {
+<<<<<<< HEAD
 			migrateWarn( "jQuery.fn.attr('" + lowerName + "') might use property instead of attribute" );
+=======
+			migrateWarn( "jQuery.fn.attr('" + lowerName + "') may use property instead of attribute" );
+>>>>>>> origin/master
 		}
 	}
 
@@ -193,16 +211,21 @@ jQuery.attrHooks.value = {
 
 var matched, browser,
 	oldInit = jQuery.fn.init,
+<<<<<<< HEAD
 	oldFind = jQuery.find,
 	oldParseJSON = jQuery.parseJSON,
 	rspaceAngle = /^\s*</,
 	rattrHashTest = /\[(\s*[-\w]+\s*)([~|^$*]?=)\s*([-\w#]*?#[-\w#]*)\s*\]/,
 	rattrHashGlob = /\[(\s*[-\w]+\s*)([~|^$*]?=)\s*([-\w#]*?#[-\w#]*)\s*\]/g,
+=======
+	oldParseJSON = jQuery.parseJSON,
+>>>>>>> origin/master
 	// Note: XSS check is done below after string is trimmed
 	rquickExpr = /^([^<]*)(<[\w\W]+>)([^>]*)$/;
 
 // $(html) "looks like html" rule change
 jQuery.fn.init = function( selector, context, rootjQuery ) {
+<<<<<<< HEAD
 	var match, ret;
 
 	if ( selector && typeof selector === "string" ) {
@@ -301,6 +324,42 @@ for ( findProp in oldFind ) {
 // Let $.parseJSON(falsy_value) return null
 jQuery.parseJSON = function( json ) {
 	if ( !json ) {
+=======
+	var match;
+
+	if ( selector && typeof selector === "string" && !jQuery.isPlainObject( context ) &&
+			(match = rquickExpr.exec( jQuery.trim( selector ) )) && match[ 0 ] ) {
+		// This is an HTML string according to the "old" rules; is it still?
+		if ( selector.charAt( 0 ) !== "<" ) {
+			migrateWarn("$(html) HTML strings must start with '<' character");
+		}
+		if ( match[ 3 ] ) {
+			migrateWarn("$(html) HTML text after last tag is ignored");
+		}
+		// Consistently reject any HTML-like string starting with a hash (#9521)
+		// Note that this may break jQuery 1.6.x code that otherwise would work.
+		if ( match[ 0 ].charAt( 0 ) === "#" ) {
+			migrateWarn("HTML string cannot start with a '#' character");
+			jQuery.error("JQMIGRATE: Invalid selector string (XSS)");
+		}
+		// Now process using loose rules; let pre-1.8 play too
+		if ( context && context.context ) {
+			// jQuery object as context; parseHTML expects a DOM object
+			context = context.context;
+		}
+		if ( jQuery.parseHTML ) {
+			return oldInit.call( this, jQuery.parseHTML( match[ 2 ], context, true ),
+					context, rootjQuery );
+		}
+	}
+	return oldInit.apply( this, arguments );
+};
+jQuery.fn.init.prototype = jQuery.fn;
+
+// Let $.parseJSON(falsy_value) return null
+jQuery.parseJSON = function( json ) {
+	if ( !json && json !== null ) {
+>>>>>>> origin/master
 		migrateWarn("jQuery.parseJSON requires a valid JSON string");
 		return null;
 	}
@@ -346,11 +405,14 @@ if ( !jQuery.browser ) {
 // Warn if the code tries to get jQuery.browser
 migrateWarnProp( jQuery, "browser", jQuery.browser, "jQuery.browser is deprecated" );
 
+<<<<<<< HEAD
 // jQuery.boxModel deprecated in 1.3, jQuery.support.boxModel deprecated in 1.7
 jQuery.boxModel = jQuery.support.boxModel = (document.compatMode === "CSS1Compat");
 migrateWarnProp( jQuery, "boxModel", jQuery.boxModel, "jQuery.boxModel is deprecated" );
 migrateWarnProp( jQuery.support, "boxModel", jQuery.support.boxModel, "jQuery.support.boxModel is deprecated" );
 
+=======
+>>>>>>> origin/master
 jQuery.sub = function() {
 	function jQuerySub( selector, context ) {
 		return new jQuerySub.fn.init( selector, context );
@@ -361,10 +423,18 @@ jQuery.sub = function() {
 	jQuerySub.fn.constructor = jQuerySub;
 	jQuerySub.sub = this.sub;
 	jQuerySub.fn.init = function init( selector, context ) {
+<<<<<<< HEAD
 		var instance = jQuery.fn.init.call( this, selector, context, rootjQuerySub );
 		return instance instanceof jQuerySub ?
 			instance :
 			jQuerySub( instance );
+=======
+		if ( context && context instanceof jQuery && !(context instanceof jQuerySub) ) {
+			context = jQuerySub( context );
+		}
+
+		return jQuery.fn.init.call( this, selector, context, rootjQuerySub );
+>>>>>>> origin/master
 	};
 	jQuerySub.fn.init.prototype = jQuerySub.fn;
 	var rootjQuerySub = jQuerySub(document);
@@ -372,6 +442,7 @@ jQuery.sub = function() {
 	return jQuerySub;
 };
 
+<<<<<<< HEAD
 // The number of elements contained in the matched element set
 jQuery.fn.size = function() {
 	migrateWarn( "jQuery.fn.size() is deprecated; use the .length property" );
@@ -423,6 +494,8 @@ jQuery.swap = function( elem, options, callback, args ) {
 	return ret;
 };
 
+=======
+>>>>>>> origin/master
 
 // Ensure that $.ajax gets the new parseJSON defined in core.js
 jQuery.ajaxSetup({
@@ -451,7 +524,17 @@ jQuery.fn.data = function( name ) {
 };
 
 
+<<<<<<< HEAD
 var rscriptType = /\/(java|ecma)script/i;
+=======
+var rscriptType = /\/(java|ecma)script/i,
+	oldSelf = jQuery.fn.andSelf || jQuery.fn.addBack;
+
+jQuery.fn.andSelf = function() {
+	migrateWarn("jQuery.fn.andSelf() replaced by jQuery.fn.addBack()");
+	return oldSelf.apply( this, arguments );
+};
+>>>>>>> origin/master
 
 // Since jQuery.clean is used internally on older versions, we only shim if it's missing
 if ( !jQuery.clean ) {
@@ -509,7 +592,10 @@ var eventAdd = jQuery.event.add,
 	oldToggle = jQuery.fn.toggle,
 	oldLive = jQuery.fn.live,
 	oldDie = jQuery.fn.die,
+<<<<<<< HEAD
 	oldLoad = jQuery.fn.load,
+=======
+>>>>>>> origin/master
 	ajaxEvents = "ajaxStart|ajaxStop|ajaxSend|ajaxComplete|ajaxError|ajaxSuccess",
 	rajaxEvent = new RegExp( "\\b(?:" + ajaxEvents + ")\\b" ),
 	rhoverHack = /(?:^|\s)hover(\.\S+|)\b/,
@@ -544,6 +630,7 @@ jQuery.event.remove = function( elem, types, handler, selector, mappedTypes ){
 	eventRemove.call( this, elem, hoverHack( types ) || "", handler, selector, mappedTypes );
 };
 
+<<<<<<< HEAD
 jQuery.each( [ "load", "unload", "error" ], function( _, name ) {
 
 	jQuery.fn[ name ] = function() {
@@ -573,6 +660,19 @@ jQuery.each( [ "load", "unload", "error" ], function( _, name ) {
 	};
 
 });
+=======
+jQuery.fn.error = function() {
+	var args = Array.prototype.slice.call( arguments, 0);
+	migrateWarn("jQuery.fn.error() is deprecated");
+	args.splice( 0, 0, "error" );
+	if ( arguments.length ) {
+		return this.bind.apply( this, args );
+	}
+	// error event should not bubble to window, although it does pre-1.7
+	this.triggerHandler.apply( this, args );
+	return this;
+};
+>>>>>>> origin/master
 
 jQuery.fn.toggle = function( fn, fn2 ) {
 
@@ -641,7 +741,11 @@ jQuery.each( ajaxEvents.split("|"),
 				// The document needs no shimming; must be !== for oldIE
 				if ( elem !== document ) {
 					jQuery.event.add( document, name + "." + jQuery.guid, function() {
+<<<<<<< HEAD
 						jQuery.event.trigger( name, Array.prototype.slice.call( arguments, 1 ), elem, true );
+=======
+						jQuery.event.trigger( name, null, elem, true );
+>>>>>>> origin/master
 					});
 					jQuery._data( this, name, jQuery.guid++ );
 				}
@@ -657,6 +761,7 @@ jQuery.each( ajaxEvents.split("|"),
 	}
 );
 
+<<<<<<< HEAD
 jQuery.event.special.ready = {
 	setup: function() {
 		if ( this === document ) {
@@ -748,5 +853,7 @@ if ( jQuery.Callbacks ) {
 	};
 
 }
+=======
+>>>>>>> origin/master
 
 })( jQuery, window );

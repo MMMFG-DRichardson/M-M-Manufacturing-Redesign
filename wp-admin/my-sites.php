@@ -13,7 +13,11 @@ if ( !is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
 if ( ! current_user_can('read') )
+<<<<<<< HEAD
 	wp_die( __( 'Sorry, you are not allowed to access this page.' ) );
+=======
+	wp_die( __( 'You do not have sufficient permissions to view this page.' ) );
+>>>>>>> origin/master
 
 $action = isset( $_POST['action'] ) ? $_POST['action'] : 'splash';
 
@@ -39,7 +43,11 @@ get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __('Overview'),
 	'content' =>
+<<<<<<< HEAD
 		'<p>' . __('This screen shows an individual user all of their sites in this network, and also allows that user to set a primary site. They can use the links under each site to visit either the front end or the dashboard for that site.') . '</p>' .
+=======
+		'<p>' . __('This screen shows an individual user all of their sites in this network, and also allows that user to set a primary site. They can use the links under each site to visit either the frontend or the dashboard for that site.') . '</p>' .
+>>>>>>> origin/master
 		'<p>' . __('Up until WordPress version 3.0, what is now called a Multisite Network had to be installed separately as WordPress MU (multi-user).') . '</p>'
 ) );
 
@@ -56,6 +64,7 @@ if ( $updated ) { ?>
 <?php } ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php
 echo esc_html( $title );
 
@@ -66,6 +75,9 @@ if ( in_array( get_site_option( 'registration' ), array( 'all', 'blog' ) ) ) {
 }
 ?></h1>
 
+=======
+<h2><?php echo esc_html( $title ); ?></h2>
+>>>>>>> origin/master
 <?php
 if ( empty( $blogs ) ) :
 	echo '<p>';
@@ -77,14 +89,22 @@ else :
 	<?php
 	choose_primary_blog();
 	/**
+<<<<<<< HEAD
 	 * Fires before the sites list on the My Sites screen.
+=======
+	 * Fires before the sites table on the My Sites screen.
+>>>>>>> origin/master
 	 *
 	 * @since 3.0.0
 	 */
 	do_action( 'myblogs_allblogs_options' );
 	?>
 	<br clear="all" />
+<<<<<<< HEAD
 	<ul class="my-sites striped">
+=======
+	<table class="widefat fixed striped">
+>>>>>>> origin/master
 	<?php
 	/**
 	 * Enable the Global Settings section on the My Sites screen.
@@ -100,6 +120,7 @@ else :
 	 */
 	$settings_html = apply_filters( 'myblogs_options', '', 'global' );
 	if ( $settings_html != '' ) {
+<<<<<<< HEAD
 		echo '<h3>' . __( 'Global Settings' ) . '</h3>';
 		echo $settings_html;
 	}
@@ -129,6 +150,53 @@ else :
 		submit_button();
 	}
 	?>
+=======
+		echo '<tr><td><h3>' . __( 'Global Settings' ) . '</h3></td><td>';
+		echo $settings_html;
+		echo '</td></tr>';
+	}
+	reset( $blogs );
+	$num = count( $blogs );
+	$cols = 1;
+	if ( $num >= 20 )
+		$cols = 4;
+	elseif ( $num >= 10 )
+		$cols = 2;
+	$num_rows = ceil( $num / $cols );
+	$split = 0;
+	for ( $i = 1; $i <= $num_rows; $i++ ) {
+		$rows[] = array_slice( $blogs, $split, $cols );
+		$split = $split + $cols;
+	}
+
+	foreach ( $rows as $row ) {
+		echo "<tr>";
+		$i = 0;
+		foreach ( $row as $user_blog ) {
+			$s = $i == 3 ? '' : 'border-right: 1px solid #ccc;';
+			echo "<td style='$s'>";
+			echo "<h3>{$user_blog->blogname}</h3>";
+			/**
+			 * Filter the row links displayed for each site on the My Sites screen.
+			 *
+			 * @since MU
+			 *
+			 * @param string $string    The HTML site link markup.
+			 * @param object $user_blog An object containing the site data.
+			 */
+			echo "<p>" . apply_filters( 'myblogs_blog_actions', "<a href='" . esc_url( get_home_url( $user_blog->userblog_id ) ). "'>" . __( 'Visit' ) . "</a> | <a href='" . esc_url( get_admin_url( $user_blog->userblog_id ) ) . "'>" . __( 'Dashboard' ) . "</a>", $user_blog ) . "</p>";
+			/** This filter is documented in wp-admin/my-sites.php */
+			echo apply_filters( 'myblogs_options', '', $user_blog );
+			echo "</td>";
+			$i++;
+		}
+		echo "</tr>";
+	}?>
+	</table>
+	<input type="hidden" name="action" value="updateblogsettings" />
+	<?php wp_nonce_field( 'update-my-sites' ); ?>
+	<?php submit_button(); ?>
+>>>>>>> origin/master
 	</form>
 <?php endif; ?>
 	</div>

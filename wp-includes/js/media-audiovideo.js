@@ -1,4 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp, _ */
+
+>>>>>>> origin/master
 var media = wp.media,
 	baseSettings = window._wpmejsSettings || {},
 	l10n = window._wpMediaViewsL10n || {};
@@ -216,6 +221,11 @@ media.view.AudioDetails = require( './views/audio-details.js' );
 media.view.VideoDetails = require( './views/video-details.js' );
 
 },{"./controllers/audio-details.js":2,"./controllers/video-details.js":3,"./models/post-media.js":4,"./views/audio-details.js":5,"./views/frame/audio-details.js":6,"./views/frame/media-details.js":7,"./views/frame/video-details.js":8,"./views/media-details.js":9,"./views/video-details.js":10}],2:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp */
+
+>>>>>>> origin/master
 /**
  * wp.media.controller.AudioDetails
  *
@@ -249,6 +259,11 @@ AudioDetails = State.extend({
 module.exports = AudioDetails;
 
 },{}],3:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp */
+
+>>>>>>> origin/master
 /**
  * wp.media.controller.VideoDetails
  *
@@ -282,6 +297,11 @@ VideoDetails = State.extend({
 module.exports = VideoDetails;
 
 },{}],4:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp, Backbone, _ */
+
+>>>>>>> origin/master
 /**
  * wp.media.model.PostMedia
  *
@@ -324,6 +344,11 @@ var PostMedia = Backbone.Model.extend({
 module.exports = PostMedia;
 
 },{}],5:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp */
+
+>>>>>>> origin/master
 /**
  * wp.media.view.AudioDetails
  *
@@ -362,6 +387,11 @@ AudioDetails = MediaDetails.extend({
 module.exports = AudioDetails;
 
 },{}],6:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp */
+
+>>>>>>> origin/master
 /**
  * wp.media.view.MediaFrame.AudioDetails
  *
@@ -438,6 +468,11 @@ AudioDetails = MediaDetails.extend({
 module.exports = AudioDetails;
 
 },{}],7:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp */
+
+>>>>>>> origin/master
 /**
  * wp.media.view.MediaFrame.MediaDetails
  *
@@ -568,6 +603,11 @@ MediaDetails = Select.extend({
 module.exports = MediaDetails;
 
 },{}],8:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp, _ */
+
+>>>>>>> origin/master
 /**
  * wp.media.view.MediaFrame.VideoDetails
  *
@@ -688,7 +728,11 @@ VideoDetails = MediaDetails.extend({
 
 			if ( -1 === content.indexOf( attachment.get( 'url' ) ) ) {
 				content += [
+<<<<<<< HEAD
 					'<track srclang="en" label="English" kind="subtitles" src="',
+=======
+					'<track srclang="en" label="English"kind="subtitles" src="',
+>>>>>>> origin/master
 					attachment.get( 'url' ),
 					'" />'
 				].join('');
@@ -703,7 +747,11 @@ VideoDetails = MediaDetails.extend({
 module.exports = VideoDetails;
 
 },{}],9:[function(require,module,exports){
+<<<<<<< HEAD
 /* global MediaElementPlayer */
+=======
+/*global wp, jQuery, _, MediaElementPlayer */
+>>>>>>> origin/master
 
 /**
  * wp.media.view.MediaDetails
@@ -728,17 +776,27 @@ MediaDetails = AttachmentDisplay.extend({
 		this.on( 'media:setting:remove', wp.media.mixin.unsetPlayers, this );
 		this.on( 'media:setting:remove', this.render );
 		this.on( 'media:setting:remove', this.setPlayer );
+<<<<<<< HEAD
 
 		AttachmentDisplay.prototype.initialize.apply( this, arguments );
 	},
 
 	events: function(){
 		return _.extend( {
+=======
+		this.events = _.extend( this.events, {
+>>>>>>> origin/master
 			'click .remove-setting' : 'removeSetting',
 			'change .content-track' : 'setTracks',
 			'click .remove-track' : 'setTracks',
 			'click .add-media-source' : 'addSource'
+<<<<<<< HEAD
 		}, AttachmentDisplay.prototype.events );
+=======
+		} );
+
+		AttachmentDisplay.prototype.initialize.apply( this, arguments );
+>>>>>>> origin/master
 	},
 
 	prepare: function() {
@@ -795,15 +853,23 @@ MediaDetails = AttachmentDisplay.extend({
 	 * @global MediaElementPlayer
 	 */
 	setPlayer : function() {
+<<<<<<< HEAD
 		var baseSettings, src;
+=======
+		var baseSettings;
+>>>>>>> origin/master
 
 		if ( this.players.length || ! this.media || this.scriptXhr ) {
 			return;
 		}
 
+<<<<<<< HEAD
 		src = this.model.get( 'src' );
 
 		if ( src && src.indexOf( 'vimeo' ) > -1 && ! ( 'Froogaloop' in window ) ) {
+=======
+		if ( this.model.get( 'src' ).indexOf( 'vimeo' ) > -1 && ! ( 'Froogaloop' in window ) ) {
+>>>>>>> origin/master
 			baseSettings = wp.media.mixin.mejsSettings;
 			this.scriptXhr = $.getScript( baseSettings.pluginPath + 'froogaloop.min.js', _.bind( this.loadPlayer, this ) );
 		} else {
@@ -876,6 +942,11 @@ MediaDetails = AttachmentDisplay.extend({
 module.exports = MediaDetails;
 
 },{}],10:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+/*globals wp */
+
+>>>>>>> origin/master
 /**
  * wp.media.view.VideoDetails
  *

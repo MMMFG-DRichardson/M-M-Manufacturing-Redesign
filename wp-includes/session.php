@@ -40,7 +40,11 @@ abstract class WP_Session_Tokens {
 	 */
 	final public static function get_instance( $user_id ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the session token manager used.
+=======
+		 * Filter the session token manager used.
+>>>>>>> origin/master
 		 *
 		 * @since 4.0.0
 		 *
@@ -108,7 +112,11 @@ abstract class WP_Session_Tokens {
 	 *
 	 * This function generates a token and stores it with the associated
 	 * expiration time (and potentially other session information via the
+<<<<<<< HEAD
 	 * {@see 'attach_session_information'} filter).
+=======
+	 * `attach_session_information` filter).
+>>>>>>> origin/master
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -118,7 +126,11 @@ abstract class WP_Session_Tokens {
 	 */
 	final public function create( $expiration ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the information attached to the newly created session.
+=======
+		 * Filter the information attached to the newly created session.
+>>>>>>> origin/master
 		 *
 		 * Could be used in the future to attach information such as
 		 * IP address or user agent to a session.
@@ -275,7 +287,10 @@ abstract class WP_Session_Tokens {
 	 * @access protected
 	 *
 	 * @param string $verifier Verifier of the session to update.
+<<<<<<< HEAD
 	 * @param array  $session  Optional. Session. Omitting this argument destroys the session.
+=======
+>>>>>>> origin/master
 	 */
 	abstract protected function update_session( $verifier, $session = null );
 

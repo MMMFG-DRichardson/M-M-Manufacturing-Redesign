@@ -16,8 +16,13 @@ if ( false ) {
 	<title>Error: PHP is not running</title>
 </head>
 <body class="wp-core-ui">
+<<<<<<< HEAD
 	<p id="logo"><a href="https://wordpress.org/">WordPress</a></p>
 	<h1>Error: PHP is not running</h1>
+=======
+	<h1 id="logo"><a href="https://wordpress.org/">WordPress</a></h1>
+	<h2>Error: PHP is not running</h2>
+>>>>>>> origin/master
 	<p>WordPress requires that your web server is running PHP. Your server does not have PHP installed, or PHP is turned off.</p>
 </body>
 </html>
@@ -52,8 +57,11 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
  * Display install header.
  *
  * @since 2.5.0
+<<<<<<< HEAD
  *
  * @param string $body_classes
+=======
+>>>>>>> origin/master
  */
 function display_header( $body_classes = '' ) {
 	header( 'Content-Type: text/html; charset=utf-8' );
@@ -69,6 +77,7 @@ function display_header( $body_classes = '' ) {
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
 	<meta name="robots" content="noindex,nofollow" />
 	<title><?php _e( 'WordPress &rsaquo; Installation' ); ?></title>
 	<?php
@@ -78,6 +87,15 @@ function display_header( $body_classes = '' ) {
 </head>
 <body class="wp-core-ui<?php echo $body_classes ?>">
 <p id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'WordPress' ); ?></a></p>
+=======
+	<title><?php _e( 'WordPress &rsaquo; Installation' ); ?></title>
+	<?php
+	wp_admin_css( 'install', true );
+	?>
+</head>
+<body class="wp-core-ui<?php echo $body_classes ?>">
+<h1 id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'WordPress' ); ?></a></h1>
+>>>>>>> origin/master
 
 <?php
 } // end display_header()
@@ -86,8 +104,11 @@ function display_header( $body_classes = '' ) {
  * Display installer setup form.
  *
  * @since 2.8.0
+<<<<<<< HEAD
  *
  * @param string|null $error
+=======
+>>>>>>> origin/master
  */
 function display_setup_form( $error = null ) {
 	global $wpdb;
@@ -107,7 +128,10 @@ function display_setup_form( $error = null ) {
 
 	if ( ! is_null( $error ) ) {
 ?>
+<<<<<<< HEAD
 <h1><?php _ex( 'Welcome', 'Howdy' ); ?></h1>
+=======
+>>>>>>> origin/master
 <p class="message"><?php echo $error; ?></p>
 <?php } ?>
 <form id="setup" method="post" action="install.php?step=2" novalidate="novalidate">
@@ -131,6 +155,7 @@ function display_setup_form( $error = null ) {
 			</td>
 		</tr>
 		<?php if ( ! $user_table ) : ?>
+<<<<<<< HEAD
 		<tr class="form-field form-required user-pass1-wrap">
 			<th scope="row">
 				<label for="pass1">
@@ -170,15 +195,32 @@ function display_setup_form( $error = null ) {
 					<input type="checkbox" name="pw_weak" class="pw-checkbox" />
 					<?php _e( 'Confirm use of weak password' ); ?>
 				</label>
+=======
+		<tr>
+			<th scope="row">
+				<label for="pass1"><?php _e('Password, twice'); ?></label>
+				<p><?php _e('A password will be automatically generated for you if you leave this blank.'); ?></p>
+			</th>
+			<td>
+				<input name="admin_password" type="password" id="pass1" size="25" value="" />
+				<p><input name="admin_password2" type="password" id="pass2" size="25" value="" /></p>
+				<div id="pass-strength-result"><?php _e('Strength indicator'); ?></div>
+				<p><?php echo wp_get_password_hint(); ?></p>
+>>>>>>> origin/master
 			</td>
 		</tr>
 		<?php endif; ?>
 		<tr>
+<<<<<<< HEAD
 			<th scope="row"><label for="admin_email"><?php _e( 'Your Email' ); ?></label></th>
+=======
+			<th scope="row"><label for="admin_email"><?php _e( 'Your E-mail' ); ?></label></th>
+>>>>>>> origin/master
 			<td><input name="admin_email" type="email" id="admin_email" size="25" value="<?php echo esc_attr( $admin_email ); ?>" />
 			<p><?php _e( 'Double-check your email address before continuing.' ); ?></p></td>
 		</tr>
 		<tr>
+<<<<<<< HEAD
 			<th scope="row"><?php has_action( 'blog_privacy_selector' ) ? _e( 'Site Visibility' ) : _e( 'Search Engine Visibility' ); ?></th>
 			<td>
 				<fieldset>
@@ -203,6 +245,13 @@ function display_setup_form( $error = null ) {
 		</tr>
 	</table>
 	<p class="step"><?php submit_button( __( 'Install WordPress' ), 'large', 'Submit', false, array( 'id' => 'submit' ) ); ?></p>
+=======
+			<th scope="row"><?php _e( 'Privacy' ); ?></th>
+			<td colspan="2"><label><input type="checkbox" name="blog_public" id="blog_public" value="1" <?php checked( $blog_public ); ?> /> <?php _e( 'Allow search engines to index this site.' ); ?></label></td>
+		</tr>
+	</table>
+	<p class="step"><input type="submit" name="Submit" value="<?php esc_attr_e( 'Install WordPress' ); ?>" class="button button-large" /></p>
+>>>>>>> origin/master
 	<input type="hidden" name="language" value="<?php echo isset( $_REQUEST['language'] ) ? esc_attr( $_REQUEST['language'] ) : ''; ?>" />
 </form>
 <?php
@@ -211,6 +260,7 @@ function display_setup_form( $error = null ) {
 // Let's check to make sure WP isn't already installed.
 if ( is_blog_installed() ) {
 	display_header();
+<<<<<<< HEAD
 	die(
 		'<h1>' . __( 'Already Installed' ) . '</h1>' .
 		'<p>' . __( 'You appear to have already installed WordPress. To reinstall please clear your old database tables first.' ) . '</p>' .
@@ -225,6 +275,11 @@ if ( is_blog_installed() ) {
  * @global string $required_mysql_version
  * @global wpdb   $wpdb
  */
+=======
+	die( '<h1>' . __( 'Already Installed' ) . '</h1><p>' . __( 'You appear to have already installed WordPress. To reinstall please clear your old database tables first.' ) . '</p><p class="step"><a href="../wp-login.php" class="button button-large">' . __( 'Log In' ) . '</a></p></body></html>' );
+}
+
+>>>>>>> origin/master
 global $wp_version, $required_php_version, $required_mysql_version;
 
 $php_version    = phpversion();
@@ -246,6 +301,7 @@ if ( !$mysql_compat || !$php_compat ) {
 
 if ( ! is_string( $wpdb->base_prefix ) || '' === $wpdb->base_prefix ) {
 	display_header();
+<<<<<<< HEAD
 	die(
 		'<h1>' . __( 'Configuration Error' ) . '</h1>' .
 		'<p>' . sprintf(
@@ -273,6 +329,11 @@ if ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
  * @global string    $wp_local_package
  * @global WP_Locale $wp_locale
  */
+=======
+	die( '<h1>' . __( 'Configuration Error' ) . '</h1><p>' . __( 'Your <code>wp-config.php</code> file has an empty database table prefix, which is not supported.' ) . '</p></body></html>' );
+}
+
+>>>>>>> origin/master
 $language = '';
 if ( ! empty( $_REQUEST['language'] ) ) {
 	$language = preg_replace( '/[^a-zA-Z_]/', '', $_REQUEST['language'] );
@@ -280,12 +341,19 @@ if ( ! empty( $_REQUEST['language'] ) ) {
 	$language = $GLOBALS['wp_local_package'];
 }
 
+<<<<<<< HEAD
 $scripts_to_print = array( 'jquery' );
 
 switch($step) {
 	case 0: // Step 0
 		if ( wp_can_install_language_pack() && empty( $language ) && ( $languages = wp_get_available_translations() ) ) {
 			$scripts_to_print[] = 'language-chooser';
+=======
+switch($step) {
+	case 0: // Step 0
+
+		if ( wp_can_install_language_pack() && empty( $language ) && ( $languages = wp_get_available_translations() ) ) {
+>>>>>>> origin/master
 			display_header( 'language-chooser' );
 			echo '<form id="setup" method="post" action="?step=1">';
 			wp_install_language_form( $languages );
@@ -304,14 +372,21 @@ switch($step) {
 			}
 		}
 
+<<<<<<< HEAD
 		$scripts_to_print[] = 'user-profile';
 
+=======
+>>>>>>> origin/master
 		display_header();
 ?>
 <h1><?php _ex( 'Welcome', 'Howdy' ); ?></h1>
 <p><?php _e( 'Welcome to the famous five-minute WordPress installation process! Just fill in the information below and you&#8217;ll be on your way to using the most extendable and powerful personal publishing platform in the world.' ); ?></p>
 
+<<<<<<< HEAD
 <h2><?php _e( 'Information needed' ); ?></h2>
+=======
+<h1><?php _e( 'Information needed' ); ?></h1>
+>>>>>>> origin/master
 <p><?php _e( 'Please provide the following information. Don&#8217;t worry, you can always change these settings later.' ); ?></p>
 
 <?php
@@ -328,8 +403,11 @@ switch($step) {
 		if ( ! empty( $wpdb->error ) )
 			wp_die( $wpdb->error->get_error_message() );
 
+<<<<<<< HEAD
 		$scripts_to_print[] = 'user-profile';
 
+=======
+>>>>>>> origin/master
 		display_header();
 		// Fill in the data we gathered
 		$weblog_title = isset( $_POST['weblog_title'] ) ? trim( wp_unslash( $_POST['weblog_title'] ) ) : '';
@@ -337,9 +415,15 @@ switch($step) {
 		$admin_password = isset($_POST['admin_password']) ? wp_unslash( $_POST['admin_password'] ) : '';
 		$admin_password_check = isset($_POST['admin_password2']) ? wp_unslash( $_POST['admin_password2'] ) : '';
 		$admin_email  = isset( $_POST['admin_email'] ) ?trim( wp_unslash( $_POST['admin_email'] ) ) : '';
+<<<<<<< HEAD
 		$public       = isset( $_POST['blog_public'] ) ? (int) $_POST['blog_public'] : 1;
 
 		// Check email address.
+=======
+		$public       = isset( $_POST['blog_public'] ) ? (int) $_POST['blog_public'] : 0;
+
+		// Check e-mail address.
+>>>>>>> origin/master
 		$error = false;
 		if ( empty( $user_name ) ) {
 			// TODO: poka-yoke
@@ -369,7 +453,11 @@ switch($step) {
 
 <h1><?php _e( 'Success!' ); ?></h1>
 
+<<<<<<< HEAD
 <p><?php _e( 'WordPress has been installed. Thank you, and enjoy!' ); ?></p>
+=======
+<p><?php _e( 'WordPress has been installed. Were you expecting more steps? Sorry to disappoint.' ); ?></p>
+>>>>>>> origin/master
 
 <table class="form-table install-success">
 	<tr>
@@ -387,12 +475,17 @@ switch($step) {
 	</tr>
 </table>
 
+<<<<<<< HEAD
 <p class="step"><a href="<?php echo esc_url( wp_login_url() ); ?>" class="button button-large"><?php _e( 'Log In' ); ?></a></p>
+=======
+<p class="step"><a href="../wp-login.php" class="button button-large"><?php _e( 'Log In' ); ?></a></p>
+>>>>>>> origin/master
 
 <?php
 		}
 		break;
 }
+<<<<<<< HEAD
 
 if ( ! wp_is_mobile() ) {
 	?>
@@ -407,5 +500,13 @@ jQuery( function( $ ) {
 	$( '.hide-if-no-js' ).removeClass( 'hide-if-no-js' );
 } );
 </script>
+=======
+if ( !wp_is_mobile() ) {
+?>
+<script type="text/javascript">var t = document.getElementById('weblog_title'); if (t){ t.focus(); }</script>
+<?php } ?>
+<?php wp_print_scripts( 'user-profile' ); ?>
+<?php wp_print_scripts( 'language-chooser' ); ?>
+>>>>>>> origin/master
 </body>
 </html>

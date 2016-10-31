@@ -3,6 +3,10 @@
 	if ( ! wp || ! wp.customize ) { return; }
 	var api = wp.customize;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	/**
 	 * wp.customize.HeaderTool.CurrentView
 	 *
@@ -63,7 +67,13 @@
 		setPlaceholder: function(_height) {
 			var height = _height || this.getHeight();
 			this.model.set('savedHeight', height);
+<<<<<<< HEAD
 			this.$el.height(height);
+=======
+			this.$el
+				.add(this.$el.find('.placeholder'))
+				.height(height);
+>>>>>>> origin/master
 		},
 
 		setButtons: function() {

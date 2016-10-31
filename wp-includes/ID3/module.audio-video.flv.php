@@ -742,4 +742,8 @@ class AVCSequenceParameterSetReader {
 	public function getHeight() {
 		return $this->height;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master

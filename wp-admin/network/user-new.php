@@ -14,7 +14,11 @@ if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
 if ( ! current_user_can('create_users') )
+<<<<<<< HEAD
 	wp_die(__('Sorry, you are not allowed to add users to this network.'));
+=======
+	wp_die(__('You do not have sufficient permissions to add users to this network.'));
+>>>>>>> origin/master
 
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
@@ -34,7 +38,11 @@ if ( isset($_REQUEST['action']) && 'add-user' == $_REQUEST['action'] ) {
 	check_admin_referer( 'add-user', '_wpnonce_add-user' );
 
 	if ( ! current_user_can( 'manage_network_users' ) )
+<<<<<<< HEAD
 		wp_die( __( 'Sorry, you are not allowed to access this page.' ), 403 );
+=======
+		wp_die( __( 'You do not have permission to access this page.' ), 403 );
+>>>>>>> origin/master
 
 	if ( ! is_array( $_POST['user'] ) )
 		wp_die( __( 'Cannot create an empty user.' ) );
@@ -51,6 +59,7 @@ if ( isset($_REQUEST['action']) && 'add-user' == $_REQUEST['action'] ) {
 		if ( ! $user_id ) {
 	 		$add_user_errors = new WP_Error( 'add_user_fail', __( 'Cannot add user.' ) );
 		} else {
+<<<<<<< HEAD
 			/**
 			  * Fires after a new user has been created via the network user-new.php page.
 			  *
@@ -60,6 +69,10 @@ if ( isset($_REQUEST['action']) && 'add-user' == $_REQUEST['action'] ) {
 			  */
 			do_action( 'network_user_new_created_user', $user_id );
 			wp_redirect( add_query_arg( array('update' => 'added', 'user_id' => $user_id ), 'user-new.php' ) );
+=======
+			wp_new_user_notification( $user_id, $password );
+			wp_redirect( add_query_arg( array('update' => 'added'), 'user-new.php' ) );
+>>>>>>> origin/master
 			exit;
 		}
 	}
@@ -67,6 +80,7 @@ if ( isset($_REQUEST['action']) && 'add-user' == $_REQUEST['action'] ) {
 
 if ( isset($_GET['update']) ) {
 	$messages = array();
+<<<<<<< HEAD
 	if ( 'added' == $_GET['update'] ) {
 		$edit_link = '';
 		if ( isset( $_GET['user_id'] ) ) {
@@ -83,6 +97,10 @@ if ( isset($_GET['update']) ) {
 			$messages[] = sprintf( __( 'User added. <a href="%s">Edit user</a>' ), $edit_link );
 		}
 	}
+=======
+	if ( 'added' == $_GET['update'] )
+		$messages[] = __('User added.');
+>>>>>>> origin/master
 }
 
 $title = __('Add New User');
@@ -91,7 +109,11 @@ $parent_file = 'users.php';
 require( ABSPATH . 'wp-admin/admin-header.php' ); ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1 id="add-new-user"><?php _e( 'Add New User' ); ?></h1>
+=======
+<h2 id="add-new-user"><?php _e('Add New User') ?></h2>
+>>>>>>> origin/master
 <?php
 if ( ! empty( $messages ) ) {
 	foreach ( $messages as $msg )
@@ -106,6 +128,7 @@ if ( isset( $add_user_errors ) && is_wp_error( $add_user_errors ) ) { ?>
 		?>
 	</div>
 <?php } ?>
+<<<<<<< HEAD
 	<form action="<?php echo network_admin_url('user-new.php?action=add-user'); ?>" id="adduser" method="post" novalidate="novalidate">
 	<table class="form-table">
 		<tr class="form-field form-required">
@@ -131,6 +154,24 @@ if ( isset( $add_user_errors ) && is_wp_error( $add_user_errors ) ) { ?>
 	wp_nonce_field( 'add-user', '_wpnonce_add-user' );
 	submit_button( __('Add User'), 'primary', 'add-user' );
 	?>
+=======
+	<form action="<?php echo network_admin_url('user-new.php?action=add-user'); ?>" id="adduser" method="post">
+	<table class="form-table">
+		<tr class="form-field form-required">
+			<th scope="row"><label for="username"><?php _e( 'Username' ) ?></label></th>
+			<td><input type="text" class="regular-text" name="user[username]" id="username" /></td>
+		</tr>
+		<tr class="form-field form-required">
+			<th scope="row"><label for="email"><?php _e( 'Email' ) ?></label></th>
+			<td><input type="text" class="regular-text" name="user[email]" id="email"/></td>
+		</tr>
+		<tr class="form-field">
+			<td colspan="2"><?php _e( 'Username and password will be mailed to the above email address.' ) ?></td>
+		</tr>
+	</table>
+	<?php wp_nonce_field( 'add-user', '_wpnonce_add-user' ); ?>
+	<?php submit_button( __('Add User'), 'primary', 'add-user' ); ?>
+>>>>>>> origin/master
 	</form>
 </div>
 <?php

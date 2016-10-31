@@ -10,11 +10,16 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! $taxnow )
+<<<<<<< HEAD
 	wp_die( __( 'Invalid taxonomy.' ) );
+=======
+	wp_die( __( 'Invalid taxonomy' ) );
+>>>>>>> origin/master
 
 $tax = get_taxonomy( $taxnow );
 
 if ( ! $tax )
+<<<<<<< HEAD
 	wp_die( __( 'Invalid taxonomy.' ) );
 
 if ( ! in_array( $tax->name, get_taxonomies( array( 'show_ui' => true ) ) ) ) {
@@ -34,6 +39,14 @@ if ( ! current_user_can( $tax->cap->manage_terms ) ) {
  *
  * @global string $post_type
  */
+=======
+	wp_die( __( 'Invalid taxonomy' ) );
+
+if ( ! current_user_can( $tax->cap->manage_terms ) )
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+
+// $post_type is set when the WP_Terms_List_Table instance is created
+>>>>>>> origin/master
 global $post_type;
 
 $wp_list_table = _get_list_table('WP_Terms_List_Table');
@@ -54,6 +67,7 @@ if ( 'post' != $post_type ) {
 
 add_screen_option( 'per_page', array( 'default' => 20, 'option' => 'edit_' . $tax->name . '_per_page' ) );
 
+<<<<<<< HEAD
 get_current_screen()->set_screen_reader_content( array(
 	'heading_pagination' => $tax->labels->items_list_navigation,
 	'heading_list'       => $tax->labels->items_list,
@@ -61,6 +75,9 @@ get_current_screen()->set_screen_reader_content( array(
 
 $location = false;
 $referer = wp_get_referer();
+=======
+$location = false;
+>>>>>>> origin/master
 
 switch ( $wp_list_table->current_action() ) {
 
@@ -68,6 +85,7 @@ case 'add-tag':
 
 	check_admin_referer( 'add-tag', '_wpnonce_add-tag' );
 
+<<<<<<< HEAD
 	if ( ! current_user_can( $tax->cap->edit_terms ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -75,14 +93,24 @@ case 'add-tag':
 			403
 		);
 	}
+=======
+	if ( !current_user_can( $tax->cap->edit_terms ) )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 	$ret = wp_insert_term( $_POST['tag-name'], $taxonomy, $_POST );
 	$location = 'edit-tags.php?taxonomy=' . $taxonomy;
 	if ( 'post' != $post_type )
 		$location .= '&post_type=' . $post_type;
 
+<<<<<<< HEAD
 	if ( $referer && false !== strpos( $referer, 'edit-tags.php' ) ) {
 		$location = $referer;
+=======
+	if ( $referer = wp_get_original_referer() ) {
+		if ( false !== strpos( $referer, 'edit-tags.php' ) )
+			$location = $referer;
+>>>>>>> origin/master
 	}
 
 	if ( $ret && !is_wp_error( $ret ) )
@@ -96,9 +124,15 @@ case 'delete':
 	$location = 'edit-tags.php?taxonomy=' . $taxonomy;
 	if ( 'post' != $post_type )
 		$location .= '&post_type=' . $post_type;
+<<<<<<< HEAD
 
 	if ( $referer && false !== strpos( $referer, 'edit-tags.php' ) ) {
 		$location = $referer;
+=======
+	if ( $referer = wp_get_referer() ) {
+		if ( false !== strpos( $referer, 'edit-tags.php' ) )
+			$location = $referer;
+>>>>>>> origin/master
 	}
 
 	if ( ! isset( $_REQUEST['tag_ID'] ) ) {
@@ -108,6 +142,7 @@ case 'delete':
 	$tag_ID = (int) $_REQUEST['tag_ID'];
 	check_admin_referer( 'delete-tag_' . $tag_ID );
 
+<<<<<<< HEAD
 	if ( ! current_user_can( $tax->cap->delete_terms ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -115,6 +150,10 @@ case 'delete':
 			403
 		);
 	}
+=======
+	if ( !current_user_can( $tax->cap->delete_terms ) )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 	wp_delete_term( $tag_ID, $taxonomy );
 
@@ -125,6 +164,7 @@ case 'delete':
 case 'bulk-delete':
 	check_admin_referer( 'bulk-tags' );
 
+<<<<<<< HEAD
 	if ( ! current_user_can( $tax->cap->delete_terms ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -132,6 +172,10 @@ case 'bulk-delete':
 			403
 		);
 	}
+=======
+	if ( !current_user_can( $tax->cap->delete_terms ) )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 	$tags = (array) $_REQUEST['delete_tags'];
 	foreach ( $tags as $tag_ID ) {
@@ -141,8 +185,14 @@ case 'bulk-delete':
 	$location = 'edit-tags.php?taxonomy=' . $taxonomy;
 	if ( 'post' != $post_type )
 		$location .= '&post_type=' . $post_type;
+<<<<<<< HEAD
 	if ( $referer && false !== strpos( $referer, 'edit-tags.php' ) ) {
 		$location = $referer;
+=======
+	if ( $referer = wp_get_referer() ) {
+		if ( false !== strpos( $referer, 'edit-tags.php' ) )
+			$location = $referer;
+>>>>>>> origin/master
 	}
 
 	$location = add_query_arg( 'message', 6, $location );
@@ -150,6 +200,7 @@ case 'bulk-delete':
 	break;
 
 case 'edit':
+<<<<<<< HEAD
 	if ( ! isset( $_REQUEST['tag_ID'] ) ) {
 		break;
 	}
@@ -162,12 +213,26 @@ case 'edit':
 	}
 
 	wp_redirect( esc_url_raw( get_edit_term_link( $term_id, $taxonomy, $post_type ) ) );
+=======
+	$title = $tax->labels->edit_item;
+
+	$tag_ID = (int) $_REQUEST['tag_ID'];
+
+	$tag = get_term( $tag_ID, $taxonomy, OBJECT, 'edit' );
+	if ( ! $tag )
+		wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
+	require_once( ABSPATH . 'wp-admin/admin-header.php' );
+	include( ABSPATH . 'wp-admin/edit-tag-form.php' );
+	include( ABSPATH . 'wp-admin/admin-footer.php' );
+
+>>>>>>> origin/master
 	exit;
 
 case 'editedtag':
 	$tag_ID = (int) $_POST['tag_ID'];
 	check_admin_referer( 'update-tag_' . $tag_ID );
 
+<<<<<<< HEAD
 	if ( ! current_user_can( $tax->cap->edit_terms ) ) {
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -175,6 +240,10 @@ case 'editedtag':
 			403
 		);
 	}
+=======
+	if ( !current_user_can( $tax->cap->edit_terms ) )
+		wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 	$tag = get_term( $tag_ID, $taxonomy );
 	if ( ! $tag )
@@ -186,8 +255,14 @@ case 'editedtag':
 	if ( 'post' != $post_type )
 		$location .= '&post_type=' . $post_type;
 
+<<<<<<< HEAD
 	if ( $referer && false !== strpos( $referer, 'edit-tags.php' ) ) {
 		$location = $referer;
+=======
+	if ( $referer = wp_get_original_referer() ) {
+		if ( false !== strpos( $referer, 'edit-tags.php' ) )
+			$location = $referer;
+>>>>>>> origin/master
 	}
 
 	if ( $ret && !is_wp_error( $ret ) )
@@ -205,6 +280,7 @@ if ( $location ) {
 	if ( ! empty( $_REQUEST['paged'] ) ) {
 		$location = add_query_arg( 'paged', (int) $_REQUEST['paged'], $location );
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Filters the taxonomy redirect destination URL.
@@ -215,6 +291,9 @@ if ( $location ) {
 	 * @param object $tax      The taxonomy object.
 	 */
 	wp_redirect( apply_filters( 'redirect_term_location', $location, $tax ) );
+=======
+	wp_redirect( $location );
+>>>>>>> origin/master
 	exit;
 }
 
@@ -257,6 +336,7 @@ if ( 'category' == $taxonomy || 'link_category' == $taxonomy || 'post_tag' == $t
 			$help = '<p>' . __( 'When adding a new tag on this screen, you&#8217;ll fill in the following fields:' ) . '</p>';
 
 		$help .= '<ul>' .
+<<<<<<< HEAD
 		'<li>' . __( '<strong>Name</strong> &mdash; The name is how it appears on your site.' ) . '</li>';
 
 		if ( ! global_terms_enabled() )
@@ -266,6 +346,17 @@ if ( 'category' == $taxonomy || 'link_category' == $taxonomy || 'post_tag' == $t
 			$help .= '<li>' . __( '<strong>Parent</strong> &mdash; Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown.' ) . '</li>';
 
 		$help .= '<li>' . __( '<strong>Description</strong> &mdash; The description is not prominent by default; however, some themes may display it.' ) . '</li>' .
+=======
+		'<li>' . __( '<strong>Name</strong> - The name is how it appears on your site.' ) . '</li>';
+
+		if ( ! global_terms_enabled() )
+			$help .= '<li>' . __( '<strong>Slug</strong> - The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.' ) . '</li>';
+
+		if ( 'category' == $taxonomy )
+			$help .= '<li>' . __( '<strong>Parent</strong> - Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown.' ) . '</li>';
+
+		$help .= '<li>' . __( '<strong>Description</strong> - The description is not prominent by default; however, some themes may display it.' ) . '</li>' .
+>>>>>>> origin/master
 		'</ul>' .
 		'<p>' . __( 'You can change the display of this screen using the Screen Options tab to set how many items are displayed per screen and to display/hide columns in the table.' ) . '</p>';
 
@@ -294,6 +385,7 @@ if ( 'category' == $taxonomy || 'link_category' == $taxonomy || 'post_tag' == $t
 
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
+<<<<<<< HEAD
 if ( ! current_user_can( $tax->cap->edit_terms ) ) {
 	wp_die(
 		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -323,6 +415,65 @@ if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
 }
 ?>
 </h1>
+=======
+if ( !current_user_can($tax->cap->edit_terms) )
+	wp_die( __('You are not allowed to edit this item.') );
+
+$messages = array();
+$messages['_item'] = array(
+	0 => '', // Unused. Messages start at index 1.
+	1 => __( 'Item added.' ),
+	2 => __( 'Item deleted.' ),
+	3 => __( 'Item updated.' ),
+	4 => __( 'Item not added.' ),
+	5 => __( 'Item not updated.' ),
+	6 => __( 'Items deleted.' )
+);
+$messages['category'] = array(
+	0 => '', // Unused. Messages start at index 1.
+	1 => __( 'Category added.' ),
+	2 => __( 'Category deleted.' ),
+	3 => __( 'Category updated.' ),
+	4 => __( 'Category not added.' ),
+	5 => __( 'Category not updated.' ),
+	6 => __( 'Categories deleted.' )
+);
+$messages['post_tag'] = array(
+	0 => '', // Unused. Messages start at index 1.
+	1 => __( 'Tag added.' ),
+	2 => __( 'Tag deleted.' ),
+	3 => __( 'Tag updated.' ),
+	4 => __( 'Tag not added.' ),
+	5 => __( 'Tag not updated.' ),
+	6 => __( 'Tags deleted.' )
+);
+
+/**
+ * Filter the messages displayed when a tag is updated.
+ *
+ * @since 3.7.0
+ *
+ * @param array $messages The messages to be displayed.
+ */
+$messages = apply_filters( 'term_updated_messages', $messages );
+
+$message = false;
+if ( isset( $_REQUEST['message'] ) && ( $msg = (int) $_REQUEST['message'] ) ) {
+	if ( isset( $messages[ $taxonomy ][ $msg ] ) )
+		$message = $messages[ $taxonomy ][ $msg ];
+	elseif ( ! isset( $messages[ $taxonomy ] ) && isset( $messages['_item'][ $msg ] ) )
+		$message = $messages['_item'][ $msg ];
+}
+
+$class = ( isset( $_REQUEST['error'] ) ) ? 'error' : 'updated';
+?>
+
+<div class="wrap nosubsub">
+<h2><?php echo esc_html( $title );
+if ( !empty($_REQUEST['s']) )
+	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( wp_unslash($_REQUEST['s']) ) ); ?>
+</h2>
+>>>>>>> origin/master
 
 <?php if ( $message ) : ?>
 <div id="message" class="<?php echo $class; ?> notice is-dismissible"><p><?php echo $message; ?></p></div>
@@ -330,21 +481,94 @@ if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
 endif; ?>
 <div id="ajax-response"></div>
 
+<<<<<<< HEAD
 <form class="search-form wp-clearfix" method="get">
+=======
+<form class="search-form" method="get">
+>>>>>>> origin/master
 <input type="hidden" name="taxonomy" value="<?php echo esc_attr($taxonomy); ?>" />
 <input type="hidden" name="post_type" value="<?php echo esc_attr($post_type); ?>" />
 
 <?php $wp_list_table->search_box( $tax->labels->search_items, 'tag' ); ?>
 
 </form>
+<<<<<<< HEAD
 
 <div id="col-container" class="wp-clearfix">
+=======
+<br class="clear" />
+
+<div id="col-container">
+
+<div id="col-right">
+<div class="col-wrap">
+<form id="posts-filter" method="post">
+<input type="hidden" name="taxonomy" value="<?php echo esc_attr($taxonomy); ?>" />
+<input type="hidden" name="post_type" value="<?php echo esc_attr($post_type); ?>" />
+
+<?php $wp_list_table->display(); ?>
+
+<br class="clear" />
+</form>
+
+<?php if ( 'category' == $taxonomy ) : ?>
+<div class="form-wrap">
+<p>
+	<?php
+	/** This filter is documented in wp-includes/category-template.php */
+	printf( __( '<strong>Note:</strong><br />Deleting a category does not delete the posts in that category. Instead, posts that were only assigned to the deleted category are set to the category <strong>%s</strong>.' ), apply_filters( 'the_category', get_cat_name( get_option( 'default_category') ) ) );
+	?>
+</p>
+<?php if ( current_user_can( 'import' ) ) : ?>
+<p><?php printf(__('Categories can be selectively converted to tags using the <a href="%s">category to tag converter</a>.'), 'import.php') ?></p>
+<?php endif; ?>
+</div>
+<?php elseif ( 'post_tag' == $taxonomy && current_user_can( 'import' ) ) : ?>
+<div class="form-wrap">
+<p><?php printf(__('Tags can be selectively converted to categories using the <a href="%s">tag to category converter</a>.'), 'import.php') ;?></p>
+</div>
+<?php endif;
+
+/**
+ * Fires after the taxonomy list table.
+ *
+ * The dynamic portion of the hook name, `$taxonomy`, refers to the taxonomy slug.
+ *
+ * @since 3.0.0
+ *
+ * @param string $taxonomy The taxonomy name.
+ */
+do_action( "after-{$taxonomy}-table", $taxonomy );
+?>
+
+</div>
+</div><!-- /col-right -->
+>>>>>>> origin/master
 
 <div id="col-left">
 <div class="col-wrap">
 
 <?php
 
+<<<<<<< HEAD
+=======
+if ( !is_null( $tax->labels->popular_items ) ) {
+	if ( current_user_can( $tax->cap->edit_terms ) )
+		$tag_cloud = wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'post_type' => $post_type, 'echo' => false, 'link' => 'edit' ) );
+	else
+		$tag_cloud = wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'echo' => false ) );
+
+	if ( $tag_cloud ) :
+	?>
+<div class="tagcloud">
+<h3><?php echo $tax->labels->popular_items; ?></h3>
+<?php echo $tag_cloud; unset( $tag_cloud ); ?>
+</div>
+<?php
+endif;
+}
+
+>>>>>>> origin/master
 if ( current_user_can($tax->cap->edit_terms) ) {
 	if ( 'category' == $taxonomy ) {
 		/**
@@ -391,7 +615,11 @@ if ( current_user_can($tax->cap->edit_terms) ) {
 ?>
 
 <div class="form-wrap">
+<<<<<<< HEAD
 <h2><?php echo $tax->labels->add_new_item; ?></h2>
+=======
+<h3><?php echo $tax->labels->add_new_item; ?></h3>
+>>>>>>> origin/master
 <form id="addtag" method="post" action="edit-tags.php" class="validate"
 <?php
 /**
@@ -436,7 +664,11 @@ do_action( "{$taxonomy}_term_new_form_tag" );
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the taxonomy parent drop-down on the Edit Term page.
+=======
+	 * Filter the taxonomy parent drop-down on the Edit Term page.
+>>>>>>> origin/master
 	 *
 	 * @since 3.7.0
 	 * @since 4.2.0 Added `$context` parameter.
@@ -540,6 +772,7 @@ if ( 'category' == $taxonomy ) {
 do_action( "{$taxonomy}_add_form", $taxonomy );
 ?>
 </form></div>
+<<<<<<< HEAD
 <?php }
 
 if ( ! is_null( $tax->labels->popular_items ) ) {
@@ -560,10 +793,14 @@ if ( ! is_null( $tax->labels->popular_items ) ) {
 }
 
 ?>
+=======
+<?php } ?>
+>>>>>>> origin/master
 
 </div>
 </div><!-- /col-left -->
 
+<<<<<<< HEAD
 <div id="col-right">
 <div class="col-wrap">
 <form id="posts-filter" method="post">
@@ -612,6 +849,8 @@ do_action( "after-{$taxonomy}-table", $taxonomy );
 </div>
 </div><!-- /col-right -->
 
+=======
+>>>>>>> origin/master
 </div><!-- /col-container -->
 </div><!-- /wrap -->
 

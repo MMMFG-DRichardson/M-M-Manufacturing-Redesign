@@ -285,7 +285,11 @@ function uploadError(fileObj, errorCode, message, uploader) {
 			wpFileError(fileObj, pluploadL10n.upload_failed);
 			break;
 		case plupload.FILE_EXTENSION_ERROR:
+<<<<<<< HEAD
 			wpFileExtensionError( uploader, fileObj, pluploadL10n.invalid_filetype );
+=======
+			wpFileError(fileObj, pluploadL10n.invalid_filetype);
+>>>>>>> origin/master
 			break;
 		case plupload.FILE_SIZE_ERROR:
 			uploadSizeError(uploader, fileObj);
@@ -340,11 +344,14 @@ function uploadSizeError( up, file, over100mb ) {
 	up.removeFile(file);
 }
 
+<<<<<<< HEAD
 function wpFileExtensionError( up, file, message ) {
 	jQuery('#media-items').append('<div id="media-item-' + file.id + '" class="media-item error"><p>' + message + '</p></div>');
 	up.removeFile(file);
 }
 
+=======
+>>>>>>> origin/master
 jQuery(document).ready(function($){
 	$('.media-upload-form').bind('click.uploader', function(e) {
 		var target = $(e.target), tr, c;
@@ -435,14 +442,24 @@ jQuery(document).ready(function($){
 
 			if ( up.features.dragdrop && ! $(document.body).hasClass('mobile') ) {
 				uploaddiv.addClass('drag-drop');
+<<<<<<< HEAD
 				$('#drag-drop-area').on('dragover.wp-uploader', function(){ // dragenter doesn't fire right :(
 					uploaddiv.addClass('drag-over');
 				}).on('dragleave.wp-uploader, drop.wp-uploader', function(){
+=======
+				$('#drag-drop-area').bind('dragover.wp-uploader', function(){ // dragenter doesn't fire right :(
+					uploaddiv.addClass('drag-over');
+				}).bind('dragleave.wp-uploader, drop.wp-uploader', function(){
+>>>>>>> origin/master
 					uploaddiv.removeClass('drag-over');
 				});
 			} else {
 				uploaddiv.removeClass('drag-drop');
+<<<<<<< HEAD
 				$('#drag-drop-area').off('.wp-uploader');
+=======
+				$('#drag-drop-area').unbind('.wp-uploader');
+>>>>>>> origin/master
 			}
 
 			if ( up.runtime === 'html4' ) {
@@ -450,10 +467,13 @@ jQuery(document).ready(function($){
 			}
 		});
 
+<<<<<<< HEAD
 		uploader.bind( 'postinit', function( up ) {
 			up.refresh();
 		});
 
+=======
+>>>>>>> origin/master
 		uploader.init();
 
 		uploader.bind('FilesAdded', function( up, files ) {

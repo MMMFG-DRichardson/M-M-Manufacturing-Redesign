@@ -20,7 +20,11 @@ case 'editattachment' :
 	check_admin_referer('media-form');
 
 	if ( !current_user_can('edit_post', $attachment_id) )
+<<<<<<< HEAD
 		wp_die ( __('Sorry, you are not allowed to edit this attachment.') );
+=======
+		wp_die ( __('You are not allowed to edit this attachment.') );
+>>>>>>> origin/master
 
 	$errors = media_upload_form_handler();
 
@@ -54,7 +58,11 @@ case 'edit' :
 	$att_id = (int) $_GET['attachment_id'];
 
 	if ( !current_user_can('edit_post', $att_id) )
+<<<<<<< HEAD
 		wp_die ( __('Sorry, you are not allowed to edit this attachment.') );
+=======
+		wp_die ( __('You are not allowed to edit this attachment.') );
+>>>>>>> origin/master
 
 	$att = get_post($att_id);
 
@@ -92,7 +100,11 @@ case 'edit' :
 	if ( isset($_GET['message']) ) {
 		switch ( $_GET['message'] ) {
 			case 'updated' :
+<<<<<<< HEAD
 				$message = __('Media file updated.');
+=======
+				$message = __('Media attachment updated.');
+>>>>>>> origin/master
 				$class = 'updated';
 				break;
 		}
@@ -103,6 +115,7 @@ case 'edit' :
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1>
 <?php
 echo esc_html( $title );
@@ -110,6 +123,15 @@ if ( current_user_can( 'upload_files' ) ) { ?>
 	<a href="media-new.php" class="page-title-action"><?php echo esc_html_x('Add New', 'file'); ?></a>
 <?php } ?>
 </h1>
+=======
+<h2>
+<?php
+echo esc_html( $title );
+if ( current_user_can( 'upload_files' ) ) { ?>
+	<a href="media-new.php" class="add-new-h2"><?php echo esc_html_x('Add New', 'file'); ?></a>
+<?php } ?>
+</h2>
+>>>>>>> origin/master
 
 <form method="post" class="media-upload-form" id="media-single-form">
 <p class="submit" style="padding-bottom: 0;">

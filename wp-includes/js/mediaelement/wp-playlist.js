@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 /* global _wpmejsSettings, MediaElementPlayer */
 
 (function ($, _, Backbone) {
 	'use strict';
+=======
+/*globals window, document, jQuery, _, Backbone, _wpmejsSettings */
+
+(function ($, _, Backbone) {
+	"use strict";
+>>>>>>> origin/master
 
 	var WPPlaylistView = Backbone.View.extend({
 		initialize : function (options) {
@@ -31,7 +38,11 @@
 			_.bindAll( this, 'bindPlayer', 'bindResetPlayer', 'setPlayer', 'ended', 'clickTrack' );
 
 			if ( ! _.isUndefined( window._wpmejsSettings ) ) {
+<<<<<<< HEAD
 				this.settings = _.clone( _wpmejsSettings );
+=======
+				this.settings = _wpmejsSettings;
+>>>>>>> origin/master
 			}
 			this.settings.success = this.bindPlayer;
 			this.setPlayer();
@@ -172,4 +183,8 @@
 
 	window.WPPlaylistView = WPPlaylistView;
 
+<<<<<<< HEAD
 }(jQuery, _, Backbone));
+=======
+}(jQuery, _, Backbone));
+>>>>>>> origin/master

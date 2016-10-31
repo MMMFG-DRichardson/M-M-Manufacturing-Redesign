@@ -1,11 +1,19 @@
 <?php
 /**
+<<<<<<< HEAD
  * Dependencies API: Styles functions
+=======
+ * BackPress Styles Procedural API
+>>>>>>> origin/master
  *
  * @since 2.6.0
  *
  * @package WordPress
+<<<<<<< HEAD
  * @subpackage Dependencies
+=======
+ * @subpackage BackPress
+>>>>>>> origin/master
  */
 
 /**
@@ -76,7 +84,11 @@ function wp_print_styles( $handles = false ) {
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @param string $handle Name of the stylesheet to add the extra styles to.
+=======
+ * @param string $handle Name of the stylesheet to add the extra styles to. Must be lowercase.
+>>>>>>> origin/master
  * @param string $data   String containing the CSS styles to be added.
  * @return bool True on success, false on failure.
  */
@@ -84,12 +96,16 @@ function wp_add_inline_style( $handle, $data ) {
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
 
 	if ( false !== stripos( $data, '</style>' ) ) {
+<<<<<<< HEAD
 		_doing_it_wrong( __FUNCTION__, sprintf(
 			/* translators: 1: <style>, 2: wp_add_inline_style() */
 			__( 'Do not pass %1$s tags to %2$s.' ),
 			'<code>&lt;style&gt;</code>',
 			'<code>wp_add_inline_style()</code>'
 		), '3.7.0' );
+=======
+		_doing_it_wrong( __FUNCTION__, __( 'Do not pass style tags to wp_add_inline_style().' ), '3.7' );
+>>>>>>> origin/master
 		$data = trim( preg_replace( '#<style[^>]*>(.*)</style>#is', '$1', $data ) );
 	}
 
@@ -100,6 +116,7 @@ function wp_add_inline_style( $handle, $data ) {
  * Register a CSS stylesheet.
  *
  * @see WP_Dependencies::add()
+<<<<<<< HEAD
  * @link https://www.w3.org/TR/CSS2/media.html#media-types List of CSS media types.
  *
  * @since 2.6.0
@@ -116,11 +133,29 @@ function wp_add_inline_style( $handle, $data ) {
  *                                 Default 'all'. Accepts media types like 'all', 'print' and 'screen', or media queries like
  *                                 '(orientation: portrait)' and '(max-width: 640px)'.
  * @return bool Whether the style has been registered. True on success, false on failure.
+=======
+ * @link http://www.w3.org/TR/CSS2/media.html#media-types List of CSS media types.
+ *
+ * @since 2.6.0
+ *
+ * @param string      $handle Name of the stylesheet.
+ * @param string|bool $src    Path to the stylesheet from the WordPress root directory. Example: '/css/mystyle.css'.
+ * @param array       $deps   An array of registered style handles this stylesheet depends on. Default empty array.
+ * @param string|bool $ver    String specifying the stylesheet version number. Used to ensure that the correct version
+ *                            is sent to the client regardless of caching. Default 'false'. Accepts 'false', 'null', or 'string'.
+ * @param string      $media  Optional. The media for which this stylesheet has been defined.
+ *                            Default 'all'. Accepts 'all', 'aural', 'braille', 'handheld', 'projection', 'print',
+ *                            'screen', 'tty', or 'tv'.
+>>>>>>> origin/master
  */
 function wp_register_style( $handle, $src, $deps = array(), $ver = false, $media = 'all' ) {
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
 
+<<<<<<< HEAD
 	return wp_styles()->add( $handle, $src, $deps, $ver, $media );
+=======
+	wp_styles()->add( $handle, $src, $deps, $ver, $media );
+>>>>>>> origin/master
 }
 
 /**
@@ -143,6 +178,7 @@ function wp_deregister_style( $handle ) {
  *
  * Registers the style if source provided (does NOT overwrite) and enqueues.
  *
+<<<<<<< HEAD
  * @see WP_Dependencies::add()
  * @see WP_Dependencies::enqueue()
  * @link https://www.w3.org/TR/CSS2/media.html#media-types List of CSS media types.
@@ -161,6 +197,25 @@ function wp_deregister_style( $handle ) {
  *                                 '(orientation: portrait)' and '(max-width: 640px)'.
  */
 function wp_enqueue_style( $handle, $src = false, $deps = array(), $ver = false, $media = 'all' ) {
+=======
+ * @see WP_Dependencies::add(), WP_Dependencies::enqueue()
+ * @link http://www.w3.org/TR/CSS2/media.html#media-types List of CSS media types.
+ *
+ * @since 2.6.0
+ *
+ * @param string      $handle Name of the stylesheet.
+ * @param string|bool $src    Path to the stylesheet from the root directory of WordPress. Example: '/css/mystyle.css'.
+ * @param array       $deps   An array of registered style handles this stylesheet depends on. Default empty array.
+ * @param string|bool $ver    String specifying the stylesheet version number, if it has one. This parameter is used
+ *                            to ensure that the correct version is sent to the client regardless of caching, and so
+ *                            should be included if a version number is available and makes sense for the stylesheet.
+ * @param string      $media  Optional. The media for which this stylesheet has been defined.
+ *                            Default 'all'. Accepts 'all', 'aural', 'braille', 'handheld', 'projection', 'print',
+ *                            'screen', 'tty', or 'tv'.
+ */
+function wp_enqueue_style( $handle, $src = false, $deps = array(), $ver = false, $media = 'all' ) {
+	global $wp_styles;
+>>>>>>> origin/master
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
 
 	$wp_styles = wp_styles();
@@ -190,6 +245,11 @@ function wp_dequeue_style( $handle ) {
 /**
  * Check whether a CSS stylesheet has been added to the queue.
  *
+<<<<<<< HEAD
+=======
+ * @global WP_Styles $wp_styles The WP_Styles object for printing styles.
+ *
+>>>>>>> origin/master
  * @since 2.8.0
  *
  * @param string $handle Name of the stylesheet.

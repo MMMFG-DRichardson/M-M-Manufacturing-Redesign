@@ -9,9 +9,12 @@
 if ( ! defined('ABSPATH') )
 	die();
 
+<<<<<<< HEAD
 /**
  * @global string $opml
  */
+=======
+>>>>>>> origin/master
 global $opml;
 
 /**

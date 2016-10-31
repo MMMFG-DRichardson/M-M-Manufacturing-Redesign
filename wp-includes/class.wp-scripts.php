@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Dependencies API: WP_Scripts class
  *
  * @since 2.6.0
@@ -140,17 +141,52 @@ class WP_Scripts extends WP_Dependencies {
 	 * @since 2.6.0
 	 * @access public
 	 */
+=======
+ * BackPress Scripts enqueue.
+ *
+ * These classes were refactored from the WordPress WP_Scripts and WordPress
+ * script enqueue API.
+ *
+ * @package BackPress
+ * @since r16
+ */
+
+/**
+ * BackPress Scripts enqueue class.
+ *
+ * @package BackPress
+ * @uses WP_Dependencies
+ * @since r16
+ */
+class WP_Scripts extends WP_Dependencies {
+	public $base_url; // Full URL with trailing slash
+	public $content_url;
+	public $default_version;
+	public $in_footer = array();
+	public $concat = '';
+	public $concat_version = '';
+	public $do_concat = false;
+	public $print_html = '';
+	public $print_code = '';
+	public $ext_handles = '';
+	public $ext_version = '';
+	public $default_dirs;
+
+>>>>>>> origin/master
 	public function __construct() {
 		$this->init();
 		add_action( 'init', array( $this, 'init' ), 0 );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Initialize the class.
 	 *
 	 * @since 3.4.0
 	 * @access public
 	 */
+=======
+>>>>>>> origin/master
 	public function init() {
 		/**
 		 * Fires when the WP_Scripts instance is initialized.
@@ -167,10 +203,13 @@ class WP_Scripts extends WP_Dependencies {
 	 *
 	 * Prints the scripts passed to it or the print queue. Also prints all necessary dependencies.
 	 *
+<<<<<<< HEAD
 	 * @since 2.1.0
 	 * @since 2.8.0 Added the `$group` parameter.
 	 * @access public
 	 *
+=======
+>>>>>>> origin/master
 	 * @param mixed $handles Optional. Scripts to be printed. (void) prints queue, (string) prints
 	 *                       that script, (array of strings) prints those scripts. Default false.
 	 * @param int   $group   Optional. If scripts were queued in groups prints this group number.
@@ -181,6 +220,7 @@ class WP_Scripts extends WP_Dependencies {
 		return $this->do_items( $handles, $group );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Prints extra scripts of a registered script.
 	 *
@@ -212,6 +252,14 @@ class WP_Scripts extends WP_Dependencies {
 	 *                       Default true.
 	 * @return bool|string|void Void if no data exists, extra scripts if `$echo` is true, true otherwise.
 	 */
+=======
+	// Deprecated since 3.3, see print_extra_script()
+	public function print_scripts_l10n( $handle, $echo = true ) {
+		_deprecated_function( __FUNCTION__, '3.3', 'print_extra_script()' );
+		return $this->print_extra_script( $handle, $echo );
+	}
+
+>>>>>>> origin/master
 	public function print_extra_script( $handle, $echo = true ) {
 		if ( !$output = $this->get_data( $handle, 'data' ) )
 			return;
@@ -228,6 +276,7 @@ class WP_Scripts extends WP_Dependencies {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Processes a script dependency.
 	 *
@@ -241,6 +290,8 @@ class WP_Scripts extends WP_Dependencies {
 	 * @param int|false $group  Optional. Group level: (int) level, (false) no groups. Default false.
 	 * @return bool True on success, false on failure.
 	 */
+=======
+>>>>>>> origin/master
 	public function do_item( $handle, $group = false ) {
 		if ( !parent::do_item($handle) )
 			return false;
@@ -273,6 +324,7 @@ class WP_Scripts extends WP_Dependencies {
 			$cond_after = "<![endif]-->\n";
 		}
 
+<<<<<<< HEAD
 		$before_handle = $this->print_inline_script( $handle, 'before', false );
 		$after_handle = $this->print_inline_script( $handle, 'after', false );
 
@@ -287,6 +339,11 @@ class WP_Scripts extends WP_Dependencies {
 		if ( $this->do_concat ) {
 			/**
 			 * Filters the script loader source.
+=======
+		if ( $this->do_concat ) {
+			/**
+			 * Filter the script loader source.
+>>>>>>> origin/master
 			 *
 			 * @since 2.2.0
 			 *
@@ -294,6 +351,7 @@ class WP_Scripts extends WP_Dependencies {
 			 * @param string $handle Script handle.
 			 */
 			$srce = apply_filters( 'script_loader_src', $src, $handle );
+<<<<<<< HEAD
 
 			if ( $this->in_default_dir( $srce ) && ( $before_handle || $after_handle ) ) {
 				$this->do_concat = false;
@@ -302,6 +360,9 @@ class WP_Scripts extends WP_Dependencies {
 				_print_scripts();
 				$this->reset();
 			} elseif ( $this->in_default_dir( $srce ) && ! $conditional ) {
+=======
+			if ( $this->in_default_dir( $srce ) && ! $conditional ) {
+>>>>>>> origin/master
 				$this->print_code .= $this->print_extra_script( $handle, false );
 				$this->concat .= "$handle,";
 				$this->concat_version .= "$handle$ver";
@@ -324,11 +385,14 @@ class WP_Scripts extends WP_Dependencies {
 			echo $cond_after;
 		}
 
+<<<<<<< HEAD
 		// A single item may alias a set of items, by having dependencies, but no source.
 		if ( ! $obj->src ) {
 			return true;
 		}
 
+=======
+>>>>>>> origin/master
 		if ( ! preg_match( '|^(https?:)?//|', $src ) && ! ( $this->content_url && 0 === strpos( $src, $this->content_url ) ) ) {
 			$src = $this->base_url . $src;
 		}
@@ -342,10 +406,17 @@ class WP_Scripts extends WP_Dependencies {
 		if ( ! $src )
 			return true;
 
+<<<<<<< HEAD
 		$tag = "{$cond_before}{$before_handle}<script type='text/javascript' src='$src'></script>\n{$after_handle}{$cond_after}";
 
 		/**
 		 * Filters the HTML script tag of an enqueued script.
+=======
+		$tag = "{$cond_before}<script type='text/javascript' src='$src'></script>\n{$cond_after}";
+
+		/** 
+		 * Filter the HTML script tag of an enqueued script.
+>>>>>>> origin/master
 		 *
 		 * @since 4.1.0
 		 *
@@ -365,6 +436,7 @@ class WP_Scripts extends WP_Dependencies {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Adds extra code to a registered script.
 	 *
 	 * @since 4.5.0
@@ -430,6 +502,11 @@ class WP_Scripts extends WP_Dependencies {
 	 * @param string $object_name
 	 * @param array $l10n
 	 * @return bool
+=======
+	 * Localizes a script
+	 *
+	 * Localizes only if the script has already been added
+>>>>>>> origin/master
 	 */
 	public function localize( $handle, $object_name, $l10n ) {
 		if ( $handle === 'jquery' )
@@ -460,6 +537,7 @@ class WP_Scripts extends WP_Dependencies {
 		return $this->add_data( $handle, 'data', $script );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Sets handle group.
 	 *
@@ -475,6 +553,11 @@ class WP_Scripts extends WP_Dependencies {
 	 */
 	public function set_group( $handle, $recursion, $group = false ) {
 		if ( isset( $this->registered[$handle]->args ) && $this->registered[$handle]->args === 1 )
+=======
+	public function set_group( $handle, $recursion, $group = false ) {
+
+		if ( $this->registered[$handle]->args === 1 )
+>>>>>>> origin/master
 			$grp = 1;
 		else
 			$grp = (int) $this->get_data( $handle, 'group' );
@@ -485,6 +568,7 @@ class WP_Scripts extends WP_Dependencies {
 		return parent::set_group( $handle, $recursion, $grp );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Determines script dependencies.
      *
@@ -503,6 +587,13 @@ class WP_Scripts extends WP_Dependencies {
 		if ( ! $recursion ) {
 			/**
 			 * Filters the list of script dependencies left to print.
+=======
+	public function all_deps( $handles, $recursion = false, $group = false ) {
+		$r = parent::all_deps( $handles, $recursion );
+		if ( ! $recursion ) {
+			/**
+			 * Filter the list of script dependencies left to print.
+>>>>>>> origin/master
 			 *
 			 * @since 2.3.0
 			 *
@@ -513,6 +604,7 @@ class WP_Scripts extends WP_Dependencies {
 		return $r;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Processes items and dependencies for the head group.
 	 *
@@ -523,11 +615,14 @@ class WP_Scripts extends WP_Dependencies {
 	 *
 	 * @return array Handles of items that have been processed.
 	 */
+=======
+>>>>>>> origin/master
 	public function do_head_items() {
 		$this->do_items(false, 0);
 		return $this->done;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Processes items and dependencies for the footer group.
 	 *
@@ -538,11 +633,14 @@ class WP_Scripts extends WP_Dependencies {
 	 *
 	 * @return array Handles of items that have been processed.
 	 */
+=======
+>>>>>>> origin/master
 	public function do_footer_items() {
 		$this->do_items(false, 1);
 		return $this->done;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Whether a handle's source is in a default directory.
 	 *
@@ -552,6 +650,8 @@ class WP_Scripts extends WP_Dependencies {
 	 * @param string $src The source of the enqueued script.
 	 * @return bool True if found, false if not.
 	 */
+=======
+>>>>>>> origin/master
 	public function in_default_dir( $src ) {
 		if ( ! $this->default_dirs ) {
 			return true;
@@ -569,12 +669,15 @@ class WP_Scripts extends WP_Dependencies {
 		return false;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Resets class properties.
 	 *
 	 * @since 2.8.0
 	 * @access public
 	 */
+=======
+>>>>>>> origin/master
 	public function reset() {
 		$this->do_concat = false;
 		$this->print_code = '';

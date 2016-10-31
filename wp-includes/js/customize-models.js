@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* global _wpCustomizeHeader */
+=======
+/* globals _wpCustomizeHeader, _ */
+>>>>>>> origin/master
 (function( $, wp ) {
 	var api = wp.customize;
 	api.HeaderTool = {};

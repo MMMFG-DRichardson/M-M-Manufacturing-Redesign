@@ -4,21 +4,33 @@
  *
  * @global string $wp_version
  */
+<<<<<<< HEAD
 $wp_version = '4.6.1';
+=======
+$wp_version = '4.2.1';
+>>>>>>> origin/master
 
 /**
  * Holds the WordPress DB revision, increments when changes are made to the WordPress DB schema.
  *
  * @global int $wp_db_version
  */
+<<<<<<< HEAD
 $wp_db_version = 37965;
+=======
+$wp_db_version = 31533;
+>>>>>>> origin/master
 
 /**
  * Holds the TinyMCE version
  *
  * @global string $tinymce_version
  */
+<<<<<<< HEAD
 $tinymce_version = '4401-20160726';
+=======
+$tinymce_version = '4109-20150406';
+>>>>>>> origin/master
 
 /**
  * Holds the required PHP version

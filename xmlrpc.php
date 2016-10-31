@@ -26,7 +26,11 @@ if ( isset($HTTP_RAW_POST_DATA) )
 	$HTTP_RAW_POST_DATA = trim($HTTP_RAW_POST_DATA);
 
 /** Include the bootstrap for setting up WordPress environment */
+<<<<<<< HEAD
 include( dirname( __FILE__ ) . '/wp-load.php' );
+=======
+include('./wp-load.php');
+>>>>>>> origin/master
 
 if ( isset( $_GET['rsd'] ) ) { // http://cyber.law.harvard.edu/blogs/gems/tech/rsd.html
 header('Content-Type: text/xml; charset=' . get_option('blog_charset'), true);
@@ -35,7 +39,11 @@ header('Content-Type: text/xml; charset=' . get_option('blog_charset'), true);
 <rsd version="1.0" xmlns="http://archipelago.phrasewise.com/rsd">
   <service>
     <engineName>WordPress</engineName>
+<<<<<<< HEAD
     <engineLink>https://wordpress.org/</engineLink>
+=======
+    <engineLink>http://wordpress.org/</engineLink>
+>>>>>>> origin/master
     <homePageLink><?php bloginfo_rss('url') ?></homePageLink>
     <apis>
       <api name="WordPress" blogID="1" preferred="true" apiLink="<?php echo site_url('xmlrpc.php', 'rpc') ?>" />
@@ -71,7 +79,11 @@ include_once(ABSPATH . WPINC . '/class-wp-xmlrpc-server.php');
 $post_default_title = "";
 
 /**
+<<<<<<< HEAD
  * Filters the class used for handling XML-RPC requests.
+=======
+ * Filter the class used for handling XML-RPC requests.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  *
@@ -88,14 +100,23 @@ exit;
 /**
  * logIO() - Writes logging info to a file.
  *
+<<<<<<< HEAD
  * @deprecated 3.4.0 Use error_log()
  * @see error_log()
+=======
+ * @deprecated 3.4.0
+ * @deprecated Use error_log()
+>>>>>>> origin/master
  *
  * @param string $io Whether input or output
  * @param string $msg Information describing logging reason.
  */
 function logIO( $io, $msg ) {
+<<<<<<< HEAD
 	_deprecated_function( __FUNCTION__, '3.4.0', 'error_log()' );
+=======
+	_deprecated_function( __FUNCTION__, '3.4', 'error_log()' );
+>>>>>>> origin/master
 	if ( ! empty( $GLOBALS['xmlrpc_logging'] ) )
 		error_log( $io . ' - ' . $msg );
 }

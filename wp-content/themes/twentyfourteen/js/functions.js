@@ -16,12 +16,20 @@
 
 	// Enable menu toggle for small screens.
 	( function() {
+<<<<<<< HEAD
 		if ( ! nav.length || ! button.length ) {
+=======
+		if ( ! nav || ! button ) {
+>>>>>>> origin/master
 			return;
 		}
 
 		// Hide button if menu is missing or empty.
+<<<<<<< HEAD
 		if ( ! menu.length || ! menu.children().length ) {
+=======
+		if ( ! menu || ! menu.children().length ) {
+>>>>>>> origin/master
 			button.hide();
 			return;
 		}
@@ -146,6 +154,7 @@
 	} );
 
 	_window.load( function() {
+<<<<<<< HEAD
 		var footerSidebar,
 			isCustomizeSelectiveRefresh = ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh );
 
@@ -153,6 +162,11 @@
 		if ( $.isFunction( $.fn.masonry ) ) {
 			footerSidebar = $( '#footer-sidebar' );
 			footerSidebar.masonry( {
+=======
+		// Arrange footer widgets vertically.
+		if ( $.isFunction( $.fn.masonry ) ) {
+			$( '#footer-sidebar' ).masonry( {
+>>>>>>> origin/master
 				itemSelector: '.widget',
 				columnWidth: function( containerWidth ) {
 					return containerWidth / 4;
@@ -161,6 +175,7 @@
 				isResizable: true,
 				isRTL: $( 'body' ).is( '.rtl' )
 			} );
+<<<<<<< HEAD
 
 			if ( isCustomizeSelectiveRefresh ) {
 
@@ -196,6 +211,8 @@
 			wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function() {
 				wp.mediaelement.initialize();
 			} );
+=======
+>>>>>>> origin/master
 		}
 
 		// Initialize Featured Content slider.

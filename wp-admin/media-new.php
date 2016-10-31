@@ -13,7 +13,11 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if (!current_user_can('upload_files'))
+<<<<<<< HEAD
 	wp_die(__('Sorry, you are not allowed to upload files.'));
+=======
+	wp_die(__('You do not have permission to upload files.'));
+>>>>>>> origin/master
 
 wp_enqueue_script('plupload-handlers');
 
@@ -25,6 +29,7 @@ if ( isset( $_REQUEST['post_id'] ) ) {
 }
 
 if ( $_POST ) {
+<<<<<<< HEAD
 	if ( isset($_POST['html-upload']) && !empty($_FILES) ) {
 		check_admin_referer('media-form');
 		// Upload File button was clicked
@@ -34,6 +39,17 @@ if ( $_POST ) {
 		}
 	}
 	wp_redirect( admin_url( 'upload.php' ) );
+=======
+	$location = 'upload.php';
+	if ( isset($_POST['html-upload']) && !empty($_FILES) ) {
+		check_admin_referer('media-form');
+		// Upload File button was clicked
+		$id = media_handle_upload( 'async-upload', $post_id );
+		if ( is_wp_error( $id ) )
+			$location .= '?message=3';
+	}
+	wp_redirect( admin_url( $location ) );
+>>>>>>> origin/master
 	exit;
 }
 
@@ -65,7 +81,11 @@ if ( get_user_setting('uploader') || isset( $_GET['browser-uploader'] ) )
 	$form_class .= ' html-uploader';
 ?>
 <div class="wrap">
+<<<<<<< HEAD
 	<h1><?php echo esc_html( $title ); ?></h1>
+=======
+	<h2><?php echo esc_html( $title ); ?></h2>
+>>>>>>> origin/master
 
 	<form enctype="multipart/form-data" method="post" action="<?php echo admin_url('media-new.php'); ?>" class="<?php echo esc_attr( $form_class ); ?>" id="file-form">
 

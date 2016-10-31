@@ -20,9 +20,12 @@ define( 'WXR_VERSION', '1.2' );
  *
  * @since 2.1.0
  *
+<<<<<<< HEAD
  * @global wpdb    $wpdb
  * @global WP_Post $post
  *
+=======
+>>>>>>> origin/master
  * @param array $args Filters defining what should be included in the export.
  */
 function export_wp( $args = array() ) {
@@ -43,6 +46,7 @@ function export_wp( $args = array() ) {
 	do_action( 'export_wp', $args );
 
 	$sitename = sanitize_key( get_bloginfo( 'name' ) );
+<<<<<<< HEAD
 	if ( ! empty( $sitename ) ) {
 		$sitename .= '.';
 	}
@@ -58,6 +62,10 @@ function export_wp( $args = array() ) {
 	 * @param string $date        Today's date, formatted.
 	 */
 	$filename = apply_filters( 'export_wp_filename', $wp_filename, $sitename, $date );
+=======
+	if ( ! empty($sitename) ) $sitename .= '.';
+	$filename = $sitename . 'wordpress.' . date( 'Y-m-d' ) . '.xml';
+>>>>>>> origin/master
 
 	header( 'Content-Description: File Transfer' );
 	header( 'Content-Disposition: attachment; filename=' . $filename );
@@ -88,7 +96,11 @@ function export_wp( $args = array() ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( 'post' == $args['content'] || 'page' == $args['content'] || 'attachment' == $args['content'] ) {
+=======
+	if ( 'post' == $args['content'] || 'page' == $args['content'] ) {
+>>>>>>> origin/master
 		if ( $args['author'] )
 			$where .= $wpdb->prepare( " AND {$wpdb->posts}.post_author = %d", $args['author'] );
 
@@ -146,9 +158,15 @@ function export_wp( $args = array() ) {
 	 * @return string
 	 */
 	function wxr_cdata( $str ) {
+<<<<<<< HEAD
 		if ( ! seems_utf8( $str ) ) {
 			$str = utf8_encode( $str );
 		}
+=======
+		if ( seems_utf8( $str ) == false )
+			$str = utf8_encode( $str );
+
+>>>>>>> origin/master
 		// $str = ent2ncr(esc_html($str));
 		$str = '<![CDATA[' . str_replace( ']]>', ']]]]><![CDATA[>', $str ) . ']]>';
 
@@ -182,7 +200,11 @@ function export_wp( $args = array() ) {
 		if ( empty( $category->name ) )
 			return;
 
+<<<<<<< HEAD
 		echo '<wp:cat_name>' . wxr_cdata( $category->name ) . "</wp:cat_name>\n";
+=======
+		echo '<wp:cat_name>' . wxr_cdata( $category->name ) . '</wp:cat_name>';
+>>>>>>> origin/master
 	}
 
 	/**
@@ -196,7 +218,11 @@ function export_wp( $args = array() ) {
 		if ( empty( $category->description ) )
 			return;
 
+<<<<<<< HEAD
 		echo '<wp:category_description>' . wxr_cdata( $category->description ) . "</wp:category_description>\n";
+=======
+		echo '<wp:category_description>' . wxr_cdata( $category->description ) . '</wp:category_description>';
+>>>>>>> origin/master
 	}
 
 	/**
@@ -210,7 +236,11 @@ function export_wp( $args = array() ) {
 		if ( empty( $tag->name ) )
 			return;
 
+<<<<<<< HEAD
 		echo '<wp:tag_name>' . wxr_cdata( $tag->name ) . "</wp:tag_name>\n";
+=======
+		echo '<wp:tag_name>' . wxr_cdata( $tag->name ) . '</wp:tag_name>';
+>>>>>>> origin/master
 	}
 
 	/**
@@ -224,7 +254,11 @@ function export_wp( $args = array() ) {
 		if ( empty( $tag->description ) )
 			return;
 
+<<<<<<< HEAD
 		echo '<wp:tag_description>' . wxr_cdata( $tag->description ) . "</wp:tag_description>\n";
+=======
+		echo '<wp:tag_description>' . wxr_cdata( $tag->description ) . '</wp:tag_description>';
+>>>>>>> origin/master
 	}
 
 	/**
@@ -238,7 +272,11 @@ function export_wp( $args = array() ) {
 		if ( empty( $term->name ) )
 			return;
 
+<<<<<<< HEAD
 		echo '<wp:term_name>' . wxr_cdata( $term->name ) . "</wp:term_name>\n";
+=======
+		echo '<wp:term_name>' . wxr_cdata( $term->name ) . '</wp:term_name>';
+>>>>>>> origin/master
 	}
 
 	/**
@@ -252,6 +290,7 @@ function export_wp( $args = array() ) {
 		if ( empty( $term->description ) )
 			return;
 
+<<<<<<< HEAD
 		echo "\t\t<wp:term_description>" . wxr_cdata( $term->description ) . "</wp:term_description>\n";
 	}
 
@@ -284,6 +323,9 @@ function export_wp( $args = array() ) {
 				printf( "\t\t<wp:termmeta>\n\t\t\t<wp:meta_key>%s</wp:meta_key>\n\t\t\t<wp:meta_value>%s</wp:meta_value>\n\t\t</wp:termmeta>\n", wxr_cdata( $meta->meta_key ), wxr_cdata( $meta->meta_value ) );
 			}
 		}
+=======
+		echo '<wp:term_description>' . wxr_cdata( $term->description ) . '</wp:term_description>';
+>>>>>>> origin/master
 	}
 
 	/**
@@ -291,8 +333,11 @@ function export_wp( $args = array() ) {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
+=======
+>>>>>>> origin/master
 	 * @param array $post_ids Array of post IDs to filter the query by. Optional.
 	 */
 	function wxr_authors_list( array $post_ids = null ) {
@@ -314,12 +359,21 @@ function export_wp( $args = array() ) {
 
 		foreach ( $authors as $author ) {
 			echo "\t<wp:author>";
+<<<<<<< HEAD
 			echo '<wp:author_id>' . intval( $author->ID ) . '</wp:author_id>';
 			echo '<wp:author_login>' . wxr_cdata( $author->user_login ) . '</wp:author_login>';
 			echo '<wp:author_email>' . wxr_cdata( $author->user_email ) . '</wp:author_email>';
 			echo '<wp:author_display_name>' . wxr_cdata( $author->display_name ) . '</wp:author_display_name>';
 			echo '<wp:author_first_name>' . wxr_cdata( $author->first_name ) . '</wp:author_first_name>';
 			echo '<wp:author_last_name>' . wxr_cdata( $author->last_name ) . '</wp:author_last_name>';
+=======
+			echo '<wp:author_id>' . $author->ID . '</wp:author_id>';
+			echo '<wp:author_login>' . $author->user_login . '</wp:author_login>';
+			echo '<wp:author_email>' . $author->user_email . '</wp:author_email>';
+			echo '<wp:author_display_name>' . wxr_cdata( $author->display_name ) . '</wp:author_display_name>';
+			echo '<wp:author_first_name>' . wxr_cdata( $author->user_firstname ) . '</wp:author_first_name>';
+			echo '<wp:author_last_name>' . wxr_cdata( $author->user_lastname ) . '</wp:author_last_name>';
+>>>>>>> origin/master
 			echo "</wp:author>\n";
 		}
 	}
@@ -335,10 +389,14 @@ function export_wp( $args = array() ) {
 			return;
 
 		foreach ( $nav_menus as $menu ) {
+<<<<<<< HEAD
 			echo "\t<wp:term>";
 			echo '<wp:term_id>' . intval( $menu->term_id ) . '</wp:term_id>';
 			echo '<wp:term_taxonomy>nav_menu</wp:term_taxonomy>';
 			echo '<wp:term_slug>' . wxr_cdata( $menu->slug ) . '</wp:term_slug>';
+=======
+			echo "\t<wp:term><wp:term_id>{$menu->term_id}</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug>{$menu->slug}</wp:term_slug>";
+>>>>>>> origin/master
 			wxr_term_name( $menu );
 			echo "</wp:term>\n";
 		}
@@ -362,12 +420,15 @@ function export_wp( $args = array() ) {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @param bool   $return_me
 	 * @param string $meta_key
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function wxr_filter_postmeta( $return_me, $meta_key ) {
 		if ( '_edit_lock' == $meta_key )
 			$return_me = true;
@@ -417,6 +478,7 @@ function export_wp( $args = array() ) {
 <?php wxr_authors_list( $post_ids ); ?>
 
 <?php foreach ( $cats as $c ) : ?>
+<<<<<<< HEAD
 	<wp:category>
 		<wp:term_id><?php echo intval( $c->term_id ); ?></wp:term_id>
 		<wp:category_nicename><?php echo wxr_cdata( $c->slug ); ?></wp:category_nicename>
@@ -445,6 +507,15 @@ function export_wp( $args = array() ) {
 		wxr_term_description( $t );
 		wxr_term_meta( $t ); ?>
 	</wp:term>
+=======
+	<wp:category><wp:term_id><?php echo $c->term_id ?></wp:term_id><wp:category_nicename><?php echo $c->slug; ?></wp:category_nicename><wp:category_parent><?php echo $c->parent ? $cats[$c->parent]->slug : ''; ?></wp:category_parent><?php wxr_cat_name( $c ); ?><?php wxr_category_description( $c ); ?></wp:category>
+<?php endforeach; ?>
+<?php foreach ( $tags as $t ) : ?>
+	<wp:tag><wp:term_id><?php echo $t->term_id ?></wp:term_id><wp:tag_slug><?php echo $t->slug; ?></wp:tag_slug><?php wxr_tag_name( $t ); ?><?php wxr_tag_description( $t ); ?></wp:tag>
+<?php endforeach; ?>
+<?php foreach ( $terms as $t ) : ?>
+	<wp:term><wp:term_id><?php echo $t->term_id ?></wp:term_id><wp:term_taxonomy><?php echo $t->taxonomy; ?></wp:term_taxonomy><wp:term_slug><?php echo $t->slug; ?></wp:term_slug><wp:term_parent><?php echo $t->parent ? $terms[$t->parent]->slug : ''; ?></wp:term_parent><?php wxr_term_name( $t ); ?><?php wxr_term_description( $t ); ?></wp:term>
+>>>>>>> origin/master
 <?php endforeach; ?>
 <?php if ( 'all' == $args['content'] ) wxr_nav_menu_terms(); ?>
 
@@ -454,9 +525,12 @@ function export_wp( $args = array() ) {
 	?>
 
 <?php if ( $post_ids ) {
+<<<<<<< HEAD
 	/**
 	 * @global WP_Query $wp_query
 	 */
+=======
+>>>>>>> origin/master
 	global $wp_query;
 
 	// Fake being in the loop.
@@ -484,7 +558,11 @@ function export_wp( $args = array() ) {
 		<description></description>
 		<content:encoded><?php
 			/**
+<<<<<<< HEAD
 			 * Filters the post content used for WXR exports.
+=======
+			 * Filter the post content used for WXR exports.
+>>>>>>> origin/master
 			 *
 			 * @since 2.5.0
 			 *
@@ -494,7 +572,11 @@ function export_wp( $args = array() ) {
 		?></content:encoded>
 		<excerpt:encoded><?php
 			/**
+<<<<<<< HEAD
 			 * Filters the post excerpt used for WXR exports.
+=======
+			 * Filter the post excerpt used for WXR exports.
+>>>>>>> origin/master
 			 *
 			 * @since 2.6.0
 			 *
@@ -502,6 +584,7 @@ function export_wp( $args = array() ) {
 			 */
 			echo wxr_cdata( apply_filters( 'the_excerpt_export', $post->post_excerpt ) );
 		?></excerpt:encoded>
+<<<<<<< HEAD
 		<wp:post_id><?php echo intval( $post->ID ); ?></wp:post_id>
 		<wp:post_date><?php echo wxr_cdata( $post->post_date ); ?></wp:post_date>
 		<wp:post_date_gmt><?php echo wxr_cdata( $post->post_date_gmt ); ?></wp:post_date_gmt>
@@ -516,12 +599,32 @@ function export_wp( $args = array() ) {
 		<wp:is_sticky><?php echo intval( $is_sticky ); ?></wp:is_sticky>
 <?php	if ( $post->post_type == 'attachment' ) : ?>
 		<wp:attachment_url><?php echo wxr_cdata( wp_get_attachment_url( $post->ID ) ); ?></wp:attachment_url>
+=======
+		<wp:post_id><?php echo $post->ID; ?></wp:post_id>
+		<wp:post_date><?php echo $post->post_date; ?></wp:post_date>
+		<wp:post_date_gmt><?php echo $post->post_date_gmt; ?></wp:post_date_gmt>
+		<wp:comment_status><?php echo $post->comment_status; ?></wp:comment_status>
+		<wp:ping_status><?php echo $post->ping_status; ?></wp:ping_status>
+		<wp:post_name><?php echo $post->post_name; ?></wp:post_name>
+		<wp:status><?php echo $post->post_status; ?></wp:status>
+		<wp:post_parent><?php echo $post->post_parent; ?></wp:post_parent>
+		<wp:menu_order><?php echo $post->menu_order; ?></wp:menu_order>
+		<wp:post_type><?php echo $post->post_type; ?></wp:post_type>
+		<wp:post_password><?php echo $post->post_password; ?></wp:post_password>
+		<wp:is_sticky><?php echo $is_sticky; ?></wp:is_sticky>
+<?php	if ( $post->post_type == 'attachment' ) : ?>
+		<wp:attachment_url><?php echo wp_get_attachment_url( $post->ID ); ?></wp:attachment_url>
+>>>>>>> origin/master
 <?php 	endif; ?>
 <?php 	wxr_post_taxonomy(); ?>
 <?php	$postmeta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d", $post->ID ) );
 		foreach ( $postmeta as $meta ) :
 			/**
+<<<<<<< HEAD
 			 * Filters whether to selectively skip post meta used for WXR exports.
+=======
+			 * Filter whether to selectively skip post meta used for WXR exports.
+>>>>>>> origin/master
 			 *
 			 * Returning a truthy value to the filter will skip the current meta
 			 * object from being exported.
@@ -536,11 +639,16 @@ function export_wp( $args = array() ) {
 				continue;
 		?>
 		<wp:postmeta>
+<<<<<<< HEAD
 			<wp:meta_key><?php echo wxr_cdata( $meta->meta_key ); ?></wp:meta_key>
+=======
+			<wp:meta_key><?php echo $meta->meta_key; ?></wp:meta_key>
+>>>>>>> origin/master
 			<wp:meta_value><?php echo wxr_cdata( $meta->meta_value ); ?></wp:meta_value>
 		</wp:postmeta>
 <?php	endforeach;
 
+<<<<<<< HEAD
 		$_comments = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_approved <> 'spam'", $post->ID ) );
 		$comments = array_map( 'get_comment', $_comments );
 		foreach ( $comments as $c ) : ?>
@@ -561,6 +669,27 @@ function export_wp( $args = array() ) {
 			foreach ( $c_meta as $meta ) :
 				/**
 				 * Filters whether to selectively skip comment meta used for WXR exports.
+=======
+		$comments = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_approved <> 'spam'", $post->ID ) );
+		foreach ( $comments as $c ) : ?>
+		<wp:comment>
+			<wp:comment_id><?php echo $c->comment_ID; ?></wp:comment_id>
+			<wp:comment_author><?php echo wxr_cdata( $c->comment_author ); ?></wp:comment_author>
+			<wp:comment_author_email><?php echo $c->comment_author_email; ?></wp:comment_author_email>
+			<wp:comment_author_url><?php echo esc_url_raw( $c->comment_author_url ); ?></wp:comment_author_url>
+			<wp:comment_author_IP><?php echo $c->comment_author_IP; ?></wp:comment_author_IP>
+			<wp:comment_date><?php echo $c->comment_date; ?></wp:comment_date>
+			<wp:comment_date_gmt><?php echo $c->comment_date_gmt; ?></wp:comment_date_gmt>
+			<wp:comment_content><?php echo wxr_cdata( $c->comment_content ) ?></wp:comment_content>
+			<wp:comment_approved><?php echo $c->comment_approved; ?></wp:comment_approved>
+			<wp:comment_type><?php echo $c->comment_type; ?></wp:comment_type>
+			<wp:comment_parent><?php echo $c->comment_parent; ?></wp:comment_parent>
+			<wp:comment_user_id><?php echo $c->user_id; ?></wp:comment_user_id>
+<?php		$c_meta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->commentmeta WHERE comment_id = %d", $c->comment_ID ) );
+			foreach ( $c_meta as $meta ) :
+				/**
+				 * Filter whether to selectively skip comment meta used for WXR exports.
+>>>>>>> origin/master
 				 *
 				 * Returning a truthy value to the filter will skip the current meta
 				 * object from being exported.
@@ -576,7 +705,11 @@ function export_wp( $args = array() ) {
 				}
 			?>
 			<wp:commentmeta>
+<<<<<<< HEAD
 				<wp:meta_key><?php echo wxr_cdata( $meta->meta_key ); ?></wp:meta_key>
+=======
+				<wp:meta_key><?php echo $meta->meta_key; ?></wp:meta_key>
+>>>>>>> origin/master
 				<wp:meta_value><?php echo wxr_cdata( $meta->meta_value ); ?></wp:meta_value>
 			</wp:commentmeta>
 <?php		endforeach; ?>

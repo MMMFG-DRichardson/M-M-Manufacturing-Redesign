@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 /*
  * Script run inside a Customizer preview frame.
  */
+=======
+>>>>>>> origin/master
 (function( exports, $ ){
 	var api = wp.customize,
 		debounce;
@@ -33,8 +36,13 @@
 	 */
 	api.Preview = api.Messenger.extend({
 		/**
+<<<<<<< HEAD
 		 * @param {object} params  - Parameters to configure the messenger.
 		 * @param {object} options - Extend any instance parameter or method with this object.
+=======
+		 * Requires params:
+		 *  - url    - the URL of preview frame
+>>>>>>> origin/master
 		 */
 		initialize: function( params, options ) {
 			var self = this;
@@ -43,6 +51,7 @@
 
 			this.body = $( document.body );
 			this.body.on( 'click.preview', 'a', function( event ) {
+<<<<<<< HEAD
 				var link, isInternalJumpLink;
 				link = $( this );
 				isInternalJumpLink = ( '#' === link.attr( 'href' ).substr( 0, 1 ) );
@@ -64,6 +73,11 @@
 				}
 				self.send( 'scroll', 0 );
 				self.send( 'url', link.prop( 'href' ) );
+=======
+				event.preventDefault();
+				self.send( 'scroll', 0 );
+				self.send( 'url', $(this).prop('href') );
+>>>>>>> origin/master
 			});
 
 			// You cannot submit forms.
@@ -84,18 +98,27 @@
 	});
 
 	$( function() {
+<<<<<<< HEAD
 		var bg, setValue;
 
 		api.settings = window._wpCustomizeSettings;
 		if ( ! api.settings ) {
 			return;
 		}
+=======
+		api.settings = window._wpCustomizeSettings;
+		if ( ! api.settings )
+			return;
+
+		var bg;
+>>>>>>> origin/master
 
 		api.preview = new api.Preview({
 			url: window.location.href,
 			channel: api.settings.channel
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Create/update a setting value.
 		 *
@@ -122,10 +145,20 @@
 
 		api.preview.bind( 'settings', function( values ) {
 			$.each( values, setValue );
+=======
+		api.preview.bind( 'settings', function( values ) {
+			$.each( values, function( id, value ) {
+				if ( api.has( id ) )
+					api( id ).set( value );
+				else
+					api.create( id, value );
+			});
+>>>>>>> origin/master
 		});
 
 		api.preview.trigger( 'settings', api.settings.values );
 
+<<<<<<< HEAD
 		$.each( api.settings._dirty, function( i, id ) {
 			var setting = api( id );
 			if ( setting ) {
@@ -136,6 +169,15 @@
 		api.preview.bind( 'setting', function( args ) {
 			var createDirty = true;
 			setValue.apply( null, args.concat( createDirty ) );
+=======
+		api.preview.bind( 'setting', function( args ) {
+			var value;
+
+			args = args.slice();
+
+			if ( value = api( args.shift() ) )
+				value.set.apply( value, args );
+>>>>>>> origin/master
 		});
 
 		api.preview.bind( 'sync', function( events ) {
@@ -146,11 +188,18 @@
 		});
 
 		api.preview.bind( 'active', function() {
+<<<<<<< HEAD
 			api.preview.send( 'nonce', api.settings.nonce );
+=======
+			if ( api.settings.nonce ) {
+				api.preview.send( 'nonce', api.settings.nonce );
+			}
+>>>>>>> origin/master
 
 			api.preview.send( 'documentTitle', document.title );
 		});
 
+<<<<<<< HEAD
 		api.preview.bind( 'saved', function( response ) {
 			api.trigger( 'saved', response );
 		} );
@@ -174,14 +223,28 @@
 			activeSections: api.settings.activeSections,
 			activeControls: api.settings.activeControls,
 			settingValidities: api.settings.settingValidities
+=======
+		api.preview.send( 'ready', {
+			activePanels: api.settings.activePanels,
+			activeSections: api.settings.activeSections,
+			activeControls: api.settings.activeControls
+>>>>>>> origin/master
 		} );
 
 		// Display a loading indicator when preview is reloading, and remove on failure.
 		api.preview.bind( 'loading-initiated', function () {
 			$( 'body' ).addClass( 'wp-customizer-unloading' );
+<<<<<<< HEAD
 		});
 		api.preview.bind( 'loading-failed', function () {
 			$( 'body' ).removeClass( 'wp-customizer-unloading' );
+=======
+			$( 'html' ).prop( 'title', api.settings.l10n.loading );
+		});
+		api.preview.bind( 'loading-failed', function () {
+			$( 'body' ).removeClass( 'wp-customizer-unloading' );
+			$( 'html' ).prop( 'title', '' );
+>>>>>>> origin/master
 		});
 
 		/* Custom Backgrounds */
@@ -224,6 +287,7 @@
 			});
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Custom Logo
 		 *
@@ -238,6 +302,8 @@
 			} );
 		} );
 
+=======
+>>>>>>> origin/master
 		api.trigger( 'preview-ready' );
 	});
 

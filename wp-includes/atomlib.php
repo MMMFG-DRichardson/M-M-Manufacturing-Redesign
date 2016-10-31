@@ -87,10 +87,14 @@ class AtomParser {
     var $feed;
     var $current;
 
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
     function __construct() {
+=======
+    function AtomParser() {
+>>>>>>> origin/master
 
         $this->feed = new AtomFeed();
         $this->current = null;
@@ -98,6 +102,7 @@ class AtomParser {
         $this->map_xmlns_func = create_function('$p,$n', '$xd = "xmlns"; if(strlen($n[0])>0) $xd .= ":{$n[0]}"; return "{$xd}=\"{$n[1]}\"";');
     }
 
+<<<<<<< HEAD
 	/**
 	 * PHP4 constructor.
 	 */
@@ -105,6 +110,8 @@ class AtomParser {
 		self::__construct();
 	}
 
+=======
+>>>>>>> origin/master
     function _p($msg) {
         if($this->debug) {
             print str_repeat(" ", $this->depth * $this->indent) . $msg ."\n";
@@ -140,8 +147,12 @@ class AtomParser {
             if($this->debug) $this->content .= $data;
 
             if(!xml_parse($parser, $data, feof($fp))) {
+<<<<<<< HEAD
                 /* translators: 1: error message, 2: line number */
                 trigger_error(sprintf(__('XML Error: %1$s at line %2$s')."\n",
+=======
+                trigger_error(sprintf(__('XML error: %s at line %d')."\n",
+>>>>>>> origin/master
                     xml_error_string(xml_get_error_code($parser)),
                     xml_get_current_line_number($parser)));
                 $ret = false;
@@ -159,7 +170,11 @@ class AtomParser {
 
     function start_element($parser, $name, $attrs) {
 
+<<<<<<< HEAD
         $tag = array_pop(explode(":", $name));
+=======
+        $tag = array_pop(split(":", $name));
+>>>>>>> origin/master
 
         switch($name) {
             case $this->NS . ':feed':
@@ -238,7 +253,11 @@ class AtomParser {
 
     function end_element($parser, $name) {
 
+<<<<<<< HEAD
         $tag = array_pop(explode(":", $name));
+=======
+        $tag = array_pop(split(":", $name));
+>>>>>>> origin/master
 
         $ccount = count($this->in_content);
 
@@ -313,7 +332,11 @@ class AtomParser {
 
     function ns_to_prefix($qname, $attr=false) {
         # split 'http://www.w3.org/1999/xhtml:div' into ('http','//www.w3.org/1999/xhtml','div')
+<<<<<<< HEAD
         $components = explode(":", $qname);
+=======
+        $components = split(":", $qname);
+>>>>>>> origin/master
 
         # grab the last one (e.g 'div')
         $name = array_pop($components);

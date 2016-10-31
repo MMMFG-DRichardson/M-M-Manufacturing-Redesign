@@ -46,7 +46,11 @@ else
 
 foreach ( (array)$cats as $cat ) :
 	/**
+<<<<<<< HEAD
 	 * Filters the OPML outline link category name.
+=======
+	 * Filter the OPML outline link category name.
+>>>>>>> origin/master
 	 *
 	 * @since 2.2.0
 	 *
@@ -60,7 +64,11 @@ foreach ( (array)$cats as $cat ) :
 	$bookmarks = get_bookmarks(array("category" => $cat->term_id));
 	foreach ( (array)$bookmarks as $bookmark ) :
 		/**
+<<<<<<< HEAD
 		 * Filters the OPML outline link title text.
+=======
+		 * Filter the OPML outline link title text.
+>>>>>>> origin/master
 		 *
 		 * @since 2.2.0
 		 *

@@ -3,7 +3,11 @@
 	position: relative;
 	font-size: 13px;
 	background: #fff;
+<<<<<<< HEAD
 	border: 1px solid #ddd;
+=======
+	border: 1px solid #dfdfdf;
+>>>>>>> origin/master
 	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.075);
 	box-shadow: 0 3px 6px rgba(0,0,0,0.075);
 }
@@ -25,8 +29,13 @@
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	color: #00a0d2;
+<<<<<<< HEAD
 	content: "\f227";
 	font: normal 20px/1.6 dashicons;
+=======
+	content: '\f227';
+	font: normal 20px/1.6 'dashicons';
+>>>>>>> origin/master
 	position: absolute;
 	top: 8px;
 	left: 15px;
@@ -62,9 +71,15 @@
 .wp-pointer-buttons a.close:before {
 	background: none;
 	color: #b4b9be;
+<<<<<<< HEAD
 	content: "\f153";
 	display: block !important;
 	font: normal 16px/1 dashicons;
+=======
+	content: '\f153';
+	display: block !important;
+	font: normal 16px/1 'dashicons';
+>>>>>>> origin/master
 	speak: none;
 	margin: 1px 0;
 	text-align: center;
@@ -149,7 +164,11 @@
 	border: 13px solid transparent;
 	border-bottom-color: #00a0d2;
 	display: block;
+<<<<<<< HEAD
 	content: " ";
+=======
+	content: ' ';
+>>>>>>> origin/master
 }
 
 .wp-pointer-bottom .wp-pointer-arrow {
@@ -165,7 +184,11 @@
 	border: 13px solid transparent;
 	border-top-color: #fff;
 	display: block;
+<<<<<<< HEAD
 	content: " ";
+=======
+	content: ' ';
+>>>>>>> origin/master
 }
 
 /* rtl:ignore */
@@ -183,7 +206,11 @@
 	border: 13px solid transparent;
 	border-right-color: #fff;
 	display: block;
+<<<<<<< HEAD
 	content: " ";
+=======
+	content: ' ';
+>>>>>>> origin/master
 }
 
 /* rtl:ignore */
@@ -201,7 +228,11 @@
 	border: 13px solid transparent;
 	border-left-color: #fff;
 	display: block;
+<<<<<<< HEAD
 	content: " ";
+=======
+	content: ' ';
+>>>>>>> origin/master
 }
 
 /* Disable pointers at responsive sizes */

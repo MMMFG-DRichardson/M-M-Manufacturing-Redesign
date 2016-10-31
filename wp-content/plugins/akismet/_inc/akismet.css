@@ -33,6 +33,7 @@
     color: #AAA;
     font-style: italic;
 }
+<<<<<<< HEAD
 table.comments td.comment p a {
     text-decoration: underline;
 }
@@ -41,6 +42,15 @@ table.comments td.comment p a:after {
     color: #aaa;
     display: inline-block; /* Show the URL without the link's underline extending under it. */
     padding: 0 1ex; /* Because it's inline block, we can't just use spaces in the content: attribute to separate it from the link text. */
+=======
+span.comment-link a {
+    text-decoration: underline;
+}
+span.comment-link:after {
+    content: " "attr(title) " ";
+    color: #aaa;
+    text-decoration: none;
+>>>>>>> origin/master
 }
 .mshot-arrow {
     width: 0;
@@ -64,6 +74,7 @@ table.comments td.comment p a:after {
     border-radius: 6px;
     -webkit-border-radius: 6px;
 }
+<<<<<<< HEAD
 .akismet-mshot {
     position: absolute;
     z-index: 100;
@@ -73,6 +84,8 @@ table.comments td.comment p a:after {
     height: 338px;
     width: 450px;
 }
+=======
+>>>>>>> origin/master
 h2.ak-header {
     padding: 30px;
     background: #649316 url('img/logo-full-2x.png') no-repeat 20px center;
@@ -373,6 +386,7 @@ h2.ak-header {
 
 .clearfix {
 	clear:both;
+<<<<<<< HEAD
 }
 
 /**
@@ -471,4 +485,6 @@ h2.ak-header {
 .akismet_activate .aa_description strong {
 	color: #FFF;
 	font-weight: normal;
+=======
+>>>>>>> origin/master
 }

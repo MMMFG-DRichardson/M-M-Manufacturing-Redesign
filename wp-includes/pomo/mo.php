@@ -2,7 +2,11 @@
 /**
  * Class for working with MO files
  *
+<<<<<<< HEAD
  * @version $Id: mo.php 1157 2015-11-20 04:30:11Z dd32 $
+=======
+ * @version $Id: mo.php 718 2012-10-31 00:32:02Z nbachiyski $
+>>>>>>> origin/master
  * @package pomo
  * @subpackage mo
  */
@@ -10,7 +14,11 @@
 require_once dirname(__FILE__) . '/translations.php';
 require_once dirname(__FILE__) . '/streams.php';
 
+<<<<<<< HEAD
 if ( ! class_exists( 'MO', false ) ):
+=======
+if ( !class_exists( 'MO' ) ):
+>>>>>>> origin/master
 class MO extends Gettext_Translations {
 
 	var $_nplurals = 2;
@@ -27,10 +35,13 @@ class MO extends Gettext_Translations {
 		return $this->import_from_reader($reader);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param string $filename
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function export_to_file($filename) {
 		$fh = fopen($filename, 'wb');
 		if ( !$fh ) return false;
@@ -39,9 +50,12 @@ class MO extends Gettext_Translations {
 		return $res;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return string|false
 	 */
+=======
+>>>>>>> origin/master
 	function export() {
 		$tmp_fh = fopen("php://temp", 'r+');
 		if ( !$tmp_fh ) return false;
@@ -50,10 +64,13 @@ class MO extends Gettext_Translations {
 		return stream_get_contents( $tmp_fh );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param Translation_Entry $entry
 	 * @return bool
 	 */
+=======
+>>>>>>> origin/master
 	function is_entry_good_for_export( $entry ) {
 		if ( empty( $entry->translations ) ) {
 			return false;
@@ -66,10 +83,13 @@ class MO extends Gettext_Translations {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param resource $fh
 	 * @return true
 	 */
+=======
+>>>>>>> origin/master
 	function export_to_file_handle($fh) {
 		$entries = array_filter( $this->entries, array( $this, 'is_entry_good_for_export' ) );
 		ksort($entries);
@@ -116,14 +136,18 @@ class MO extends Gettext_Translations {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param Translation_Entry $entry
 	 * @return string
 	 */
+=======
+>>>>>>> origin/master
 	function export_original($entry) {
 		//TODO: warnings for control characters
 		$exported = $entry->singular;
 		if ($entry->is_plural) $exported .= chr(0).$entry->plural;
+<<<<<<< HEAD
 		if ($entry->context) $exported = $entry->context . chr(4) . $exported;
 		return $exported;
 	}
@@ -140,6 +164,17 @@ class MO extends Gettext_Translations {
 	/**
 	 * @return string
 	 */
+=======
+		if (!is_null($entry->context)) $exported = $entry->context . chr(4) . $exported;
+		return $exported;
+	}
+
+	function export_translations($entry) {
+		//TODO: warnings for control characters
+		return implode(chr(0), $entry->translations);
+	}
+
+>>>>>>> origin/master
 	function export_headers() {
 		$exported = '';
 		foreach($this->headers as $header => $value) {
@@ -148,10 +183,13 @@ class MO extends Gettext_Translations {
 		return $exported;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param int $magic
 	 * @return string|false
 	 */
+=======
+>>>>>>> origin/master
 	function get_byteorder($magic) {
 		// The magic is 0x950412de
 
@@ -284,17 +322,23 @@ class MO extends Gettext_Translations {
 		return $entry;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param int $count
 	 * @return string
 	 */
+=======
+>>>>>>> origin/master
 	function select_plural_form($count) {
 		return $this->gettext_select_plural_form($count);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
+=======
+>>>>>>> origin/master
 	function get_plural_forms_count() {
 		return $this->_nplurals;
 	}

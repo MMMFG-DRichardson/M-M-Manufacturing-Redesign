@@ -1,6 +1,10 @@
 <?php
 /**
+<<<<<<< HEAD
  * Widget administration panel
+=======
+ * Widgets administration panel.
+>>>>>>> origin/master
  *
  * @package WordPress
  * @subpackage Administration
@@ -12,6 +16,7 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 /** WordPress Administration Widgets API */
 require_once(ABSPATH . 'wp-admin/includes/widgets.php');
 
+<<<<<<< HEAD
 if ( ! current_user_can( 'edit_theme_options' ) ) {
 	wp_die(
 		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
@@ -19,6 +24,10 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 		403
 	);
 }
+=======
+if ( ! current_user_can('edit_theme_options') )
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+>>>>>>> origin/master
 
 $widgets_access = get_user_setting( 'widgets_access' );
 if ( isset($_GET['widgets-access']) ) {
@@ -26,6 +35,13 @@ if ( isset($_GET['widgets-access']) ) {
 	set_user_setting( 'widgets_access', $widgets_access );
 }
 
+<<<<<<< HEAD
+=======
+function wp_widgets_access_body_class($classes) {
+	return "$classes widgets_access ";
+}
+
+>>>>>>> origin/master
 if ( 'on' == $widgets_access ) {
 	add_filter( 'admin_body_class', 'wp_widgets_access_body_class' );
 } else {
@@ -89,7 +105,11 @@ foreach ( $sidebars_widgets as $sidebar_id => $widgets ) {
 	if ( 'wp_inactive_widgets' == $sidebar_id )
 		continue;
 
+<<<<<<< HEAD
 	if ( ! is_registered_sidebar( $sidebar_id ) ) {
+=======
+	if ( !isset( $wp_registered_sidebars[ $sidebar_id ] ) ) {
+>>>>>>> origin/master
 		if ( ! empty( $widgets ) ) { // register the inactive_widgets area as sidebar
 			register_sidebar(array(
 				'name' => __( 'Inactive Sidebar (not used)' ),
@@ -152,6 +172,7 @@ if ( isset($_POST['savewidget']) || isset($_POST['removewidget']) ) {
 
 		$sidebar = array_diff( $sidebar, array($widget_id) );
 		$_POST = array('sidebar' => $sidebar_id, 'widget-' . $id_base => array(), 'the-widget-id' => $widget_id, 'delete_widget' => '1');
+<<<<<<< HEAD
 
 		/**
 		 * Fires immediately after a widget has been marked for deletion.
@@ -163,6 +184,8 @@ if ( isset($_POST['savewidget']) || isset($_POST['removewidget']) ) {
 		 * @param string $id_base    ID base for the widget.
 		 */
 		do_action( 'delete_widget', $widget_id, $sidebar_id, $id_base );
+=======
+>>>>>>> origin/master
 	}
 
 	$_POST['widget-id'] = $sidebar;
@@ -194,6 +217,7 @@ if ( isset($_POST['savewidget']) || isset($_POST['removewidget']) ) {
 	exit;
 }
 
+<<<<<<< HEAD
 // Remove inactive widgets without js
 if ( isset( $_POST['removeinactivewidgets'] ) ) {
 	check_admin_referer( 'remove-inactive-widgets', '_wpnonce_remove_inactive_widgets' );
@@ -216,6 +240,8 @@ if ( isset( $_POST['removeinactivewidgets'] ) ) {
 	exit;
 }
 
+=======
+>>>>>>> origin/master
 // Output the widget form without js
 if ( isset($_GET['editwidget']) && $_GET['editwidget'] ) {
 	$widget_id = $_GET['editwidget'];
@@ -264,9 +290,15 @@ if ( isset($_GET['editwidget']) && $_GET['editwidget'] ) {
 
 	require_once( ABSPATH . 'wp-admin/admin-header.php' ); ?>
 	<div class="wrap">
+<<<<<<< HEAD
 	<h1><?php echo esc_html( $title ); ?></h1>
 	<div class="editwidget"<?php echo $width; ?>>
 	<h2><?php printf( __( 'Widget %s' ), $name ); ?></h2>
+=======
+	<h2><?php echo esc_html( $title ); ?></h2>
+	<div class="editwidget"<?php echo $width; ?>>
+	<h3><?php printf( __( 'Widget %s' ), $name ); ?></h3>
+>>>>>>> origin/master
 
 	<form action="widgets.php" method="post">
 	<div class="widget-inside">
@@ -344,12 +376,20 @@ $errors = array(
 require_once( ABSPATH . 'wp-admin/admin-header.php' ); ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1>
+=======
+<h2>
+>>>>>>> origin/master
 <?php
 	echo esc_html( $title );
 	if ( current_user_can( 'customize' ) ) {
 		printf(
+<<<<<<< HEAD
 			' <a class="page-title-action hide-if-no-customize" href="%1$s">%2$s</a>',
+=======
+			' <a class="add-new-h2 hide-if-no-customize" href="%1$s">%2$s</a>',
+>>>>>>> origin/master
 			esc_url( add_query_arg(
 				array(
 					array( 'autofocus' => array( 'panel' => 'widgets' ) ),
@@ -357,11 +397,19 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' ); ?>
 				),
 				admin_url( 'customize.php' )
 			) ),
+<<<<<<< HEAD
 			__( 'Manage with Live Preview' )
 		);
 	}
 ?>
 </h1>
+=======
+			__( 'Manage in Customizer' )
+		);
+	}
+?>
+</h2>
+>>>>>>> origin/master
 
 <?php if ( isset($_GET['message']) && isset($messages[$_GET['message']]) ) { ?>
 <div id="message" class="updated notice is-dismissible"><p><?php echo $messages[$_GET['message']]; ?></p></div>
@@ -383,7 +431,11 @@ do_action( 'widgets_admin_page' ); ?>
 	<div id="available-widgets" class="widgets-holder-wrap">
 		<div class="sidebar-name">
 			<div class="sidebar-name-arrow"><br /></div>
+<<<<<<< HEAD
 			<h2><?php _e( 'Available Widgets' ); ?> <span id="removing-widget"><?php _ex( 'Deactivate', 'removing-widget' ); ?> <span></span></span></h2>
+=======
+			<h3><?php _e('Available Widgets'); ?> <span id="removing-widget"><?php _ex('Deactivate', 'removing-widget'); ?> <span></span></span></h3>
+>>>>>>> origin/master
 		</div>
 		<div class="widget-holder">
 			<div class="sidebar-description">
@@ -406,11 +458,15 @@ foreach ( $wp_registered_sidebars as $sidebar => $registered_sidebar ) {
 		if ( !empty( $registered_sidebar['class'] ) )
 			$wrap_class .= ' ' . $registered_sidebar['class'];
 
+<<<<<<< HEAD
 		$is_inactive_widgets = 'wp_inactive_widgets' == $registered_sidebar['id'];
+=======
+>>>>>>> origin/master
 		?>
 		<div class="<?php echo esc_attr( $wrap_class ); ?>">
 			<div class="widget-holder inactive">
 				<?php wp_list_widget_controls( $registered_sidebar['id'], $registered_sidebar['name'] ); ?>
+<<<<<<< HEAD
 
 				<?php if ( $is_inactive_widgets ) { ?>
 				<div class="remove-inactive-widgets">
@@ -435,6 +491,10 @@ foreach ( $wp_registered_sidebars as $sidebar => $registered_sidebar ) {
 			<?php if ( $is_inactive_widgets ) { ?>
 			<p class="description"><?php _e( 'This will clear all items from the inactive widgets list. You will not be able to restore any customizations.' ); ?></p>
 			<?php } ?>
+=======
+				<div class="clear"></div>
+			</div>
+>>>>>>> origin/master
 		</div>
 		<?php
 
@@ -455,12 +515,20 @@ $sidebars_count = count( $theme_sidebars );
 if ( $sidebars_count > 1 ) {
 	$split = ceil( $sidebars_count / 2 );
 } else {
+<<<<<<< HEAD
 	$single_sidebar_class = ' single-sidebar';
+=======
+	$single_sidebar_class = ' class="single-sidebar"';
+>>>>>>> origin/master
 }
 
 ?>
 <div class="widget-liquid-right">
+<<<<<<< HEAD
 <div id="widgets-right" class="wp-clearfix<?php echo $single_sidebar_class; ?>">
+=======
+<div id="widgets-right"<?php echo $single_sidebar_class; ?>>
+>>>>>>> origin/master
 <div class="sidebars-column-1">
 <?php
 

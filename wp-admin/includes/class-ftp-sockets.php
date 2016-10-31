@@ -27,14 +27,24 @@
  */
 class ftp extends ftp_base {
 
+<<<<<<< HEAD
 	function __construct($verb=FALSE, $le=FALSE) {
 		parent::__construct(true, $verb, $le);
 	}
 
+=======
+>>>>>>> origin/master
 	function ftp($verb=FALSE, $le=FALSE) {
 		$this->__construct($verb, $le);
 	}
 
+<<<<<<< HEAD
+=======
+	function __construct($verb=FALSE, $le=FALSE) {
+		parent::__construct(true, $verb, $le);
+	}
+
+>>>>>>> origin/master
 // <!-- --------------------------------------------------------------------------------------- -->
 // <!--       Private functions                                                                 -->
 // <!-- --------------------------------------------------------------------------------------- -->
@@ -131,9 +141,15 @@ class ftp extends ftp_base {
 				$this->_data_close();
 				return FALSE;
 			}
+<<<<<<< HEAD
 			$ip_port = explode(",", preg_replace("/^.+ \\(?([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},[0-9]{1,3},[0-9]+,[0-9]+)\\)?.*$/s", "\\1", $this->_message));
 			$this->_datahost=$ip_port[0].".".$ip_port[1].".".$ip_port[2].".".$ip_port[3];
 			$this->_dataport=(((int)$ip_port[4])<<8) + ((int)$ip_port[5]);
+=======
+			$ip_port = explode(",", ereg_replace("^.+ \\(?([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},[0-9]{1,3},[0-9]+,[0-9]+)\\)?.*".CRLF."$", "\\1", $this->_message));
+			$this->_datahost=$ip_port[0].".".$ip_port[1].".".$ip_port[2].".".$ip_port[3];
+            $this->_dataport=(((int)$ip_port[4])<<8) + ((int)$ip_port[5]);
+>>>>>>> origin/master
 			$this->SendMSG("Connecting to ".$this->_datahost.":".$this->_dataport);
 			if(!@socket_connect($this->_ftp_data_sock, $this->_datahost, $this->_dataport)) {
 				$this->PushError("_data_prepare","socket_connect", socket_strerror(socket_last_error($this->_ftp_data_sock)));

@@ -20,6 +20,7 @@ function twentyfourteen_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+<<<<<<< HEAD
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
 			'selector' => '.site-title a',
@@ -33,6 +34,8 @@ function twentyfourteen_customize_register( $wp_customize ) {
 		) );
 	}
 
+=======
+>>>>>>> origin/master
 	// Rename the label to "Site Title Color" because this only affects the site title in this theme.
 	$wp_customize->get_control( 'header_textcolor' )->label = __( 'Site Title Color', 'twentyfourteen' );
 
@@ -78,6 +81,7 @@ function twentyfourteen_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'twentyfourteen_customize_register' );
 
 /**
+<<<<<<< HEAD
  * Render the site title for the selective refresh partial.
  *
  * @since Twenty Fourteen 1.7
@@ -102,6 +106,8 @@ function twentyfourteen_customize_partial_blogdescription() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Sanitize the Featured Content layout value.
  *
  * @since Twenty Fourteen 1.0

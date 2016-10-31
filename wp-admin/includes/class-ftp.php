@@ -121,6 +121,13 @@ class ftp_base {
 	var $AutoAsciiExt;
 
 	/* Constructor */
+<<<<<<< HEAD
+=======
+	function ftp_base($port_mode=FALSE) {
+		$this->__construct($port_mode);
+	}
+
+>>>>>>> origin/master
 	function __construct($port_mode=FALSE, $verb=FALSE, $le=FALSE) {
 		$this->LocalEcho=$le;
 		$this->Verbose=$verb;
@@ -153,10 +160,13 @@ class ftp_base {
 		elseif(strtoupper(substr(PHP_OS, 0, 3)) === 'MAC') $this->OS_local=FTP_OS_Mac;
 	}
 
+<<<<<<< HEAD
 	function ftp_base($port_mode=FALSE) {
 		$this->__construct($port_mode);
 	}
 
+=======
+>>>>>>> origin/master
 // <!-- --------------------------------------------------------------------------------------- -->
 // <!--       Public functions                                                                  -->
 // <!-- --------------------------------------------------------------------------------------- -->
@@ -380,7 +390,11 @@ class ftp_base {
 	function pwd() {
 		if(!$this->_exec("PWD", "pwd")) return FALSE;
 		if(!$this->_checkCode()) return FALSE;
+<<<<<<< HEAD
 		return preg_replace("/^[0-9]{3} \"(.+)\".*$/s", "\\1", $this->_message);
+=======
+		return ereg_replace("^[0-9]{3} \"(.+)\".+", "\\1", $this->_message);
+>>>>>>> origin/master
 	}
 
 	function cdup() {
@@ -424,7 +438,11 @@ class ftp_base {
 		}
 		if(!$this->_exec("SIZE ".$pathname, "filesize")) return FALSE;
 		if(!$this->_checkCode()) return FALSE;
+<<<<<<< HEAD
 		return preg_replace("/^[0-9]{3} ([0-9]+).*$/s", "\\1", $this->_message);
+=======
+		return ereg_replace("^[0-9]{3} ([0-9]+)".CRLF, "\\1", $this->_message);
+>>>>>>> origin/master
 	}
 
 	function abort() {
@@ -444,7 +462,11 @@ class ftp_base {
 		}
 		if(!$this->_exec("MDTM ".$pathname, "mdtm")) return FALSE;
 		if(!$this->_checkCode()) return FALSE;
+<<<<<<< HEAD
 		$mdtm = preg_replace("/^[0-9]{3} ([0-9]+).*$/s", "\\1", $this->_message);
+=======
+		$mdtm = ereg_replace("^[0-9]{3} ([0-9]+)".CRLF, "\\1", $this->_message);
+>>>>>>> origin/master
 		$date = sscanf($mdtm, "%4d%2d%2d%2d%2d%2d");
 		$timestamp = mktime($date[3], $date[4], $date[5], $date[1], $date[2], $date[0]);
 		return $timestamp;
@@ -694,7 +716,11 @@ class ftp_base {
 		}
 		foreach($list as $k=>$v) {
 			$list[$k]=$this->parselisting($v);
+<<<<<<< HEAD
 			if( ! $list[$k] or $list[$k]["name"]=="." or $list[$k]["name"]=="..") unset($list[$k]);
+=======
+			if($list[$k]["name"]=="." or $list[$k]["name"]=="..") unset($list[$k]);
+>>>>>>> origin/master
 		}
 		$ret=true;
 		foreach($list as $el) {
@@ -727,7 +753,11 @@ class ftp_base {
 
 		foreach($list as $k=>$v) {
 			$list[$k]=$this->parselisting($v);
+<<<<<<< HEAD
 			if( ! $list[$k] or $list[$k]["name"]=="." or $list[$k]["name"]=="..") unset($list[$k]);
+=======
+			if($list[$k]["name"]=="." or $list[$k]["name"]=="..") unset($list[$k]);
+>>>>>>> origin/master
 		}
 		$ret=true;
 
@@ -818,8 +848,13 @@ class ftp_base {
 	function glob_regexp($pattern,$probe) {
 		$sensitive=(PHP_OS!='WIN32');
 		return ($sensitive?
+<<<<<<< HEAD
 			preg_match( '/' . preg_quote( $pattern, '/' ) . '/', $probe ) : 
 			preg_match( '/' . preg_quote( $pattern, '/' ) . '/i', $probe )
+=======
+			ereg($pattern,$probe):
+			eregi($pattern,$probe)
+>>>>>>> origin/master
 		);
 	}
 

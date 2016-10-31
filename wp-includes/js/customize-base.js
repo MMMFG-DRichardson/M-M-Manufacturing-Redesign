@@ -74,6 +74,7 @@ window.wp = window.wp || {};
 		}
 
 		magic = this;
+<<<<<<< HEAD
 
 		/*
 		 * If the class has a method called "instance",
@@ -82,6 +83,8 @@ window.wp = window.wp || {};
 		 *
 		 * It is also an object that has properties and methods inside it.
 		 */
+=======
+>>>>>>> origin/master
 		if ( this.instance ) {
 			magic = function() {
 				return magic.instance.apply( magic, arguments );
@@ -109,11 +112,14 @@ window.wp = window.wp || {};
 
 	api.Class.applicator = {};
 
+<<<<<<< HEAD
 	/**
 	 * Initialize a class instance.
 	 *
 	 * Override this function in a subclass as needed.
 	 */
+=======
+>>>>>>> origin/master
 	api.Class.prototype.initialize = function() {};
 
 	/*
@@ -168,10 +174,13 @@ window.wp = window.wp || {};
 	 * @constuctor
 	 */
 	api.Value = api.Class.extend({
+<<<<<<< HEAD
 		/**
 		 * @param {mixed}  initial The initial value.
 		 * @param {object} options
 		 */
+=======
+>>>>>>> origin/master
 		initialize: function( initial, options ) {
 			this._value = initial; // @todo: potentially change this to a this.set() call.
 			this.callbacks = $.Callbacks();
@@ -190,20 +199,26 @@ window.wp = window.wp || {};
 			return arguments.length ? this.set.apply( this, arguments ) : this.get();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Get the value.
 		 *
 		 * @return {mixed}
 		 */
+=======
+>>>>>>> origin/master
 		get: function() {
 			return this._value;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Set the value and trigger all bound callbacks.
 		 *
 		 * @param {object} to New value.
 		 */
+=======
+>>>>>>> origin/master
 		set: function( to ) {
 			var from = this._value;
 
@@ -246,21 +261,27 @@ window.wp = window.wp || {};
 			return value;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Bind a function to be invoked whenever the value changes.
 		 *
 		 * @param {...Function} A function, or multiple functions, to add to the callback stack.
 		 */
+=======
+>>>>>>> origin/master
 		bind: function() {
 			this.callbacks.add.apply( this.callbacks, arguments );
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Unbind a previously bound function.
 		 *
 		 * @param {...Function} A function, or multiple functions, to remove from the callback stack.
 		 */
+=======
+>>>>>>> origin/master
 		unbind: function() {
 			this.callbacks.remove.apply( this.callbacks, arguments );
 			return this;
@@ -309,12 +330,15 @@ window.wp = window.wp || {};
 	 * @mixes wp.customize.Events
 	 */
 	api.Values = api.Class.extend({
+<<<<<<< HEAD
 
 		/**
 		 * The default constructor for items of the collection.
 		 *
 		 * @type {object}
 		 */
+=======
+>>>>>>> origin/master
 		defaultConstructor: api.Value,
 
 		initialize: function( options ) {
@@ -324,6 +348,7 @@ window.wp = window.wp || {};
 			this._deferreds = {};
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Get the instance of an item from the collection if only ID is specified.
 		 *
@@ -339,6 +364,8 @@ window.wp = window.wp || {};
 		 * @return {mixed}    The item instance if only one ID was supplied.
 		 *                    A Deferred Promise object if a callback function is supplied.
 		 */
+=======
+>>>>>>> origin/master
 		instance: function( id ) {
 			if ( arguments.length === 1 )
 				return this.value( id );
@@ -346,26 +373,33 @@ window.wp = window.wp || {};
 			return this.when.apply( this, arguments );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Get the instance of an item.
 		 *
 		 * @param  {string} id The ID of the item.
 		 * @return {[type]}    [description]
 		 */
+=======
+>>>>>>> origin/master
 		value: function( id ) {
 			return this._value[ id ];
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Whether the collection has an item with the given ID.
 		 *
 		 * @param  {string}  id The ID of the item to look for.
 		 * @return {Boolean}
 		 */
+=======
+>>>>>>> origin/master
 		has: function( id ) {
 			return typeof this._value[ id ] !== 'undefined';
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Add an item to the collection.
 		 *
@@ -373,27 +407,36 @@ window.wp = window.wp || {};
 		 * @param {mixed}  value The item instance.
 		 * @return {mixed} The new item's instance.
 		 */
+=======
+>>>>>>> origin/master
 		add: function( id, value ) {
 			if ( this.has( id ) )
 				return this.value( id );
 
 			this._value[ id ] = value;
 			value.parent = this;
+<<<<<<< HEAD
 
 			// Propagate a 'change' event on an item up to the collection.
+=======
+>>>>>>> origin/master
 			if ( value.extended( api.Value ) )
 				value.bind( this._change );
 
 			this.trigger( 'add', value );
 
+<<<<<<< HEAD
 			// If a deferred object exists for this item,
 			// resolve it.
+=======
+>>>>>>> origin/master
 			if ( this._deferreds[ id ] )
 				this._deferreds[ id ].resolve();
 
 			return this._value[ id ];
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Create a new item of the collection using the collection's default constructor
 		 * and store it in the collection.
@@ -402,16 +445,21 @@ window.wp = window.wp || {};
 		 * @param  {mixed}  value Any extra arguments are passed into the item's initialize method.
 		 * @return {mixed}  The new item's instance.
 		 */
+=======
+>>>>>>> origin/master
 		create: function( id ) {
 			return this.add( id, new this.defaultConstructor( api.Class.applicator, slice.call( arguments, 1 ) ) );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Iterate over all items in the collection invoking the provided callback.
 		 *
 		 * @param  {Function} callback Function to invoke.
 		 * @param  {object}   context  Object context to invoke the function with. Optional.
 		 */
+=======
+>>>>>>> origin/master
 		each: function( callback, context ) {
 			context = typeof context === 'undefined' ? this : context;
 
@@ -420,11 +468,14 @@ window.wp = window.wp || {};
 			});
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Remove an item from the collection.
 		 *
 		 * @param  {string} id The ID of the item to remove.
 		 */
+=======
+>>>>>>> origin/master
 		remove: function( id ) {
 			var value;
 
@@ -459,18 +510,24 @@ window.wp = window.wp || {};
 			if ( $.isFunction( ids[ ids.length - 1 ] ) )
 				dfd.done( ids.pop() );
 
+<<<<<<< HEAD
 			/*
 			 * Create a stack of deferred objects for each item that is not
 			 * yet available, and invoke the supplied callback when they are.
 			 */
+=======
+>>>>>>> origin/master
 			$.when.apply( $, $.map( ids, function( id ) {
 				if ( self.has( id ) )
 					return;
 
+<<<<<<< HEAD
 				/*
 				 * The requested item is not available yet, create a deferred
 				 * object to resolve when it becomes available.
 				 */
+=======
+>>>>>>> origin/master
 				return self._deferreds[ id ] = self._deferreds[ id ] || $.Deferred();
 			})).done( function() {
 				var values = $.map( ids, function( id ) {
@@ -493,16 +550,22 @@ window.wp = window.wp || {};
 			return dfd.promise();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * A helper function to propagate a 'change' event from an item
 		 * to the collection itself.
 		 */
+=======
+>>>>>>> origin/master
 		_change: function() {
 			this.parent.trigger( 'change', this );
 		}
 	});
 
+<<<<<<< HEAD
 	// Create a global events bus on the Customizer.
+=======
+>>>>>>> origin/master
 	$.extend( api.Values.prototype, api.Events );
 
 
@@ -615,7 +678,11 @@ window.wp = window.wp || {};
 	$.support.postMessage = !! window.postMessage;
 
 	/**
+<<<<<<< HEAD
 	 * A communicator for sending data from one window to another over postMessage.
+=======
+	 * Messenger for postMessage.
+>>>>>>> origin/master
 	 *
 	 * @constuctor
 	 * @augments wp.customize.Class
@@ -694,19 +761,27 @@ window.wp = window.wp || {};
 			$( window ).off( 'message', this.receive );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Receive data from the other window.
 		 *
 		 * @param  {jQuery.Event} event Event with embedded data.
 		 */
+=======
+>>>>>>> origin/master
 		receive: function( event ) {
 			var message;
 
 			event = event.originalEvent;
 
+<<<<<<< HEAD
 			if ( ! this.targetWindow || ! this.targetWindow() ) {
 				return;
 			}
+=======
+			if ( ! this.targetWindow() )
+				return;
+>>>>>>> origin/master
 
 			// Check to make sure the origin is valid.
 			if ( this.origin() && event.origin !== this.origin() )
@@ -730,12 +805,15 @@ window.wp = window.wp || {};
 			this.trigger( message.id, message.data );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Send data to the other window.
 		 *
 		 * @param  {string} id   The event name.
 		 * @param  {object} data Data.
 		 */
+=======
+>>>>>>> origin/master
 		send: function( id, data ) {
 			var message;
 
@@ -755,6 +833,7 @@ window.wp = window.wp || {};
 	// Add the Events mixin to api.Messenger.
 	$.extend( api.Messenger.prototype, api.Events );
 
+<<<<<<< HEAD
 	/**
 	 * Notification.
 	 *
@@ -785,6 +864,10 @@ window.wp = window.wp || {};
 	 *
 	 * @return {object}
 	 */
+=======
+	// Core customize object.
+	api = $.extend( new api.Values(), api );
+>>>>>>> origin/master
 	api.get = function() {
 		var result = {};
 

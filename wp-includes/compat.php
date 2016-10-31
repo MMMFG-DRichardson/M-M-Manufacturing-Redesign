@@ -13,6 +13,7 @@ if ( !function_exists('_') ) {
 	}
 }
 
+<<<<<<< HEAD
 /**
  * Returns whether PCRE/u (PCRE_UTF8 modifier) is available for use.
  *
@@ -57,11 +58,15 @@ if ( ! function_exists( 'mb_substr' ) ) :
 	 * @param string|null $encoding Optional. Character encoding to use. Default null.
 	 * @return string Extracted substring.
 	 */
+=======
+if ( ! function_exists( 'mb_substr' ) ) :
+>>>>>>> origin/master
 	function mb_substr( $str, $start, $length = null, $encoding = null ) {
 		return _mb_substr( $str, $start, $length, $encoding );
 	}
 endif;
 
+<<<<<<< HEAD
 /**
  * Internal compat function to mimic mb_substr().
  *
@@ -144,11 +149,28 @@ if ( ! function_exists( 'mb_strlen' ) ) :
 	 * @param string|null $encoding Optional. Character encoding to use. Default null.
 	 * @return int String length of `$str`.
 	 */
+=======
+function _mb_substr( $str, $start, $length = null, $encoding = null ) {
+	// The solution below works only for UTF-8,
+	// so in case of a different charset just use built-in substr()
+	$charset = get_option( 'blog_charset' );
+	if ( ! in_array( $charset, array( 'utf8', 'utf-8', 'UTF8', 'UTF-8' ) ) ) {
+		return is_null( $length ) ? substr( $str, $start ) : substr( $str, $start, $length );
+	}
+	// Use the regex unicode support to separate the UTF-8 characters into an array
+	preg_match_all( '/./us', $str, $match );
+	$chars = is_null( $length ) ? array_slice( $match[0], $start ) : array_slice( $match[0], $start, $length );
+	return implode( '', $chars );
+}
+
+if ( ! function_exists( 'mb_strlen' ) ) :
+>>>>>>> origin/master
 	function mb_strlen( $str, $encoding = null ) {
 		return _mb_strlen( $str, $encoding );
 	}
 endif;
 
+<<<<<<< HEAD
 /**
  * Internal compat function to mimic mb_strlen().
  *
@@ -233,11 +255,27 @@ if ( !function_exists('hash_hmac') ):
  * @return string|false The hash in output determined by `$raw_output`. False if `$algo`
  *                      is unknown or invalid.
  */
+=======
+function _mb_strlen( $str, $encoding = null ) {
+	// The solution below works only for UTF-8,
+	// so in case of a different charset just use built-in strlen()
+	$charset = get_option( 'blog_charset' );
+	if ( ! in_array( $charset, array( 'utf8', 'utf-8', 'UTF8', 'UTF-8' ) ) ) {
+		return strlen( $str );
+	}
+	// Use the regex unicode support to separate the UTF-8 characters into an array
+	preg_match_all( '/./us', $str, $match );
+	return count( $match[0] );
+}
+
+if ( !function_exists('hash_hmac') ):
+>>>>>>> origin/master
 function hash_hmac($algo, $data, $key, $raw_output = false) {
 	return _hash_hmac($algo, $data, $key, $raw_output);
 }
 endif;
 
+<<<<<<< HEAD
 /**
  * Internal compat function to mimic hash_hmac().
  *
@@ -252,6 +290,8 @@ endif;
  * @return string|false The hash in output determined by `$raw_output`. False if `$algo`
  *                      is unknown or invalid.
  */
+=======
+>>>>>>> origin/master
 function _hash_hmac($algo, $data, $key, $raw_output = false) {
 	$packs = array('md5' => 'H32', 'sha1' => 'H40');
 
@@ -289,12 +329,15 @@ if ( !function_exists('json_encode') ) {
 }
 
 if ( !function_exists('json_decode') ) {
+<<<<<<< HEAD
 	/**
 	 * @global Services_JSON $wp_json
 	 * @param string $string
 	 * @param bool   $assoc_array
 	 * @return object|array
 	 */
+=======
+>>>>>>> origin/master
 	function json_decode( $string, $assoc_array = false ) {
 		global $wp_json;
 
@@ -308,11 +351,14 @@ if ( !function_exists('json_decode') ) {
 			$res = _json_decode_object_helper( $res );
 		return $res;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * @param object $data
 	 * @return array
 	 */
+=======
+>>>>>>> origin/master
 	function _json_decode_object_helper($data) {
 		if ( is_object($data) )
 			$data = get_object_vars($data);
@@ -322,6 +368,7 @@ if ( !function_exists('json_decode') ) {
 
 if ( ! function_exists( 'hash_equals' ) ) :
 /**
+<<<<<<< HEAD
  * Timing attack safe string comparison
  *
  * Compares two strings using the same time whether they're equal or not.
@@ -329,11 +376,21 @@ if ( ! function_exists( 'hash_equals' ) ) :
  * This function was added in PHP 5.6.
  *
  * Note: It can leak the length of a string when arguments of differing length are supplied.
+=======
+ * Compare two strings in constant time.
+ *
+ * This function was added in PHP 5.6.
+ * It can leak the length of a string.
+>>>>>>> origin/master
  *
  * @since 3.9.2
  *
  * @param string $a Expected string.
+<<<<<<< HEAD
  * @param string $b Actual, user supplied, string.
+=======
+ * @param string $b Actual string.
+>>>>>>> origin/master
  * @return bool Whether strings are equal.
  */
 function hash_equals( $a, $b ) {
@@ -357,6 +414,7 @@ endif;
 if ( ! defined( 'JSON_PRETTY_PRINT' ) ) {
 	define( 'JSON_PRETTY_PRINT', 128 );
 }
+<<<<<<< HEAD
 
 if ( ! function_exists( 'json_last_error_msg' ) ) :
 	/**
@@ -578,3 +636,5 @@ if ( ! function_exists( 'spl_autoload_register' ) ):
 		return $GLOBALS['_wp_spl_autoloaders'];
 	}
 endif;
+=======
+>>>>>>> origin/master

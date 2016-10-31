@@ -2,12 +2,20 @@
 /**
  * Contains Translation_Entry class
  *
+<<<<<<< HEAD
  * @version $Id: entry.php 1157 2015-11-20 04:30:11Z dd32 $
+=======
+ * @version $Id: entry.php 718 2012-10-31 00:32:02Z nbachiyski $
+>>>>>>> origin/master
  * @package pomo
  * @subpackage entry
  */
 
+<<<<<<< HEAD
 if ( ! class_exists( 'Translation_Entry', false ) ):
+=======
+if ( !class_exists( 'Translation_Entry' ) ):
+>>>>>>> origin/master
 /**
  * Translation_Entry class encapsulates a translatable string
  */
@@ -40,7 +48,11 @@ class Translation_Entry {
 	 * 	- references (array) -- places in the code this strings is used, in relative_to_root_path/file.php:linenum form
 	 * 	- flags (array) -- flags like php-format
 	 */
+<<<<<<< HEAD
 	function __construct( $args = array() ) {
+=======
+	function Translation_Entry($args=array()) {
+>>>>>>> origin/master
 		// if no singular -- empty object
 		if (!isset($args['singular'])) {
 			return;
@@ -49,13 +61,18 @@ class Translation_Entry {
 		foreach ($args as $varname => $value) {
 			$this->$varname = $value;
 		}
+<<<<<<< HEAD
 		if (isset($args['plural']) && $args['plural']) $this->is_plural = true;
+=======
+		if (isset($args['plural'])) $this->is_plural = true;
+>>>>>>> origin/master
 		if (!is_array($this->translations)) $this->translations = array();
 		if (!is_array($this->references)) $this->references = array();
 		if (!is_array($this->flags)) $this->flags = array();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function Translation_Entry( $args = array() ) {
@@ -63,11 +80,14 @@ class Translation_Entry {
 	}
 
 	/**
+=======
+>>>>>>> origin/master
 	 * Generates a unique key for this entry
 	 *
 	 * @return string|bool the key or false if the entry is empty
 	 */
 	function key() {
+<<<<<<< HEAD
 		if ( null === $this->singular || '' === $this->singular ) return false;
 
 		// Prepend context and EOT, like in MO files
@@ -81,6 +101,13 @@ class Translation_Entry {
 	/**
 	 * @param object $other
 	 */
+=======
+		if (is_null($this->singular)) return false;
+		// prepend context and EOT, like in MO files
+		return is_null($this->context)? $this->singular : $this->context.chr(4).$this->singular;
+	}
+
+>>>>>>> origin/master
 	function merge_with(&$other) {
 		$this->flags = array_unique( array_merge( $this->flags, $other->flags ) );
 		$this->references = array_unique( array_merge( $this->references, $other->references ) );

@@ -9,7 +9,11 @@
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 if ( ! current_user_can( 'manage_links' ) )
+<<<<<<< HEAD
 	wp_die( __( 'Sorry, you are not allowed to edit the links for this site.' ) );
+=======
+	wp_die( __( 'You do not have sufficient permissions to edit the links for this site.' ) );
+>>>>>>> origin/master
 
 $wp_list_table = _get_list_table('WP_Links_List_Table');
 
@@ -61,6 +65,7 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
+<<<<<<< HEAD
 get_current_screen()->set_screen_reader_content( array(
 	'heading_list' => __( 'Links list' ),
 ) );
@@ -69,10 +74,17 @@ include_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 if ( ! current_user_can('manage_links') )
 	wp_die(__('Sorry, you are not allowed to edit the links for this site.'));
+=======
+include_once( ABSPATH . 'wp-admin/admin-header.php' );
+
+if ( ! current_user_can('manage_links') )
+	wp_die(__("You do not have sufficient permissions to edit the links for this site."));
+>>>>>>> origin/master
 
 ?>
 
 <div class="wrap nosubsub">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); ?> <a href="link-add.php" class="page-title-action"><?php echo esc_html_x('Add New', 'link'); ?></a> <?php
 if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
 	/* translators: %s: search keywords */
@@ -80,6 +92,12 @@ if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
 }
 ?>
 </h1>
+=======
+<h2><?php echo esc_html( $title ); ?> <a href="link-add.php" class="add-new-h2"><?php echo esc_html_x('Add New', 'link'); ?></a> <?php
+if ( !empty($_REQUEST['s']) )
+	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( wp_unslash($_REQUEST['s']) ) ); ?>
+</h2>
+>>>>>>> origin/master
 
 <?php
 if ( isset($_REQUEST['deleted']) ) {

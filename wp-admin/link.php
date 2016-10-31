@@ -3,7 +3,11 @@
  * Manage link administration actions.
  *
  * This page is accessed by the link management pages and handles the forms and
+<<<<<<< HEAD
  * Ajax processes for link actions.
+=======
+ * AJAX processes for link actions.
+>>>>>>> origin/master
  *
  * @package WordPress
  * @subpackage Administration

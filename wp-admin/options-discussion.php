@@ -9,11 +9,36 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! current_user_can( 'manage_options' ) )
+<<<<<<< HEAD
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
+=======
+	wp_die( __( 'You do not have sufficient permissions to manage options for this site.' ) );
+>>>>>>> origin/master
 
 $title = __('Discussion Settings');
 $parent_file = 'options-general.php';
 
+<<<<<<< HEAD
+=======
+/**
+ * Output JavaScript to toggle display of additional settings if avatars are disabled.
+ *
+ * @since 4.2.0
+ */
+function options_discussion_add_js() {
+?>
+	<script>
+	(function($){
+		var parent = $( '#show_avatars' ),
+			children = $( '.avatar-settings' );
+		parent.change(function(){
+			children.toggleClass( 'hide-if-js', ! this.checked );
+		});
+	})(jQuery);
+	</script>
+<?php
+}
+>>>>>>> origin/master
 add_action( 'admin_print_footer_scripts', 'options_discussion_add_js' );
 
 get_current_screen()->add_help_tab( array(
@@ -33,7 +58,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); ?></h1>
+=======
+<h2><?php echo esc_html( $title ); ?></h2>
+>>>>>>> origin/master
 
 <form method="post" action="options.php">
 <?php settings_fields('discussion'); ?>
@@ -48,7 +77,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <br />
 <label for="default_ping_status">
 <input name="default_ping_status" type="checkbox" id="default_ping_status" value="open" <?php checked('open', get_option('default_ping_status')); ?> />
+<<<<<<< HEAD
 <?php _e('Allow link notifications from other blogs (pingbacks and trackbacks) on new articles'); ?></label>
+=======
+<?php _e('Allow link notifications from other blogs (pingbacks and trackbacks)'); ?></label>
+>>>>>>> origin/master
 <br />
 <label for="default_comment_status">
 <input name="default_comment_status" type="checkbox" id="default_comment_status" value="open" <?php checked('open', get_option('default_comment_status')); ?> />
@@ -60,7 +93,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <tr>
 <th scope="row"><?php _e('Other comment settings'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Other comment settings'); ?></span></legend>
+<<<<<<< HEAD
 <label for="require_name_email"><input type="checkbox" name="require_name_email" id="require_name_email" value="1" <?php checked('1', get_option('require_name_email')); ?> /> <?php _e('Comment author must fill out name and email'); ?></label>
+=======
+<label for="require_name_email"><input type="checkbox" name="require_name_email" id="require_name_email" value="1" <?php checked('1', get_option('require_name_email')); ?> /> <?php _e('Comment author must fill out name and e-mail'); ?></label>
+>>>>>>> origin/master
 <br />
 <label for="comment_registration">
 <input name="comment_registration" type="checkbox" id="comment_registration" value="1" <?php checked('1', get_option('comment_registration')); ?> />
@@ -78,7 +115,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <input name="thread_comments" type="checkbox" id="thread_comments" value="1" <?php checked('1', get_option('thread_comments')); ?> />
 <?php
 /**
+<<<<<<< HEAD
  * Filters the maximum depth of threaded/nested comments.
+=======
+ * Filter the maximum depth of threaded/nested comments.
+>>>>>>> origin/master
  *
  * @since 2.7.0.
  *
@@ -99,8 +140,14 @@ printf( __('Enable threaded (nested) comments %s levels deep'), $thread_comments
 ?></label>
 <br />
 <label for="page_comments">
+<<<<<<< HEAD
 <input name="page_comments" type="checkbox" id="page_comments" value="1" <?php checked( '1', get_option( 'page_comments' ) ); ?> />
 <?php
+=======
+<input name="page_comments" type="checkbox" id="page_comments" value="1" <?php checked('1', get_option('page_comments')); ?> />
+<?php
+
+>>>>>>> origin/master
 $default_comments_page = '</label><label for="default_comments_page"><select name="default_comments_page" id="default_comments_page"><option value="newest"';
 if ( 'newest' == get_option('default_comments_page') ) $default_comments_page .= ' selected="selected"';
 $default_comments_page .= '>' . __('last') . '</option><option value="oldest"';
@@ -125,8 +172,13 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 </fieldset></td>
 </tr>
 <tr>
+<<<<<<< HEAD
 <th scope="row"><?php _e('Email me whenever'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Email me whenever'); ?></span></legend>
+=======
+<th scope="row"><?php _e('E-mail me whenever'); ?></th>
+<td><fieldset><legend class="screen-reader-text"><span><?php _e('E-mail me whenever'); ?></span></legend>
+>>>>>>> origin/master
 <label for="comments_notify">
 <input name="comments_notify" type="checkbox" id="comments_notify" value="1" <?php checked('1', get_option('comments_notify')); ?> />
 <?php _e('Anyone posts a comment'); ?> </label>
@@ -151,7 +203,11 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Comment Moderation'); ?></span></legend>
 <p><label for="comment_max_links"><?php printf(__('Hold a comment in the queue if it contains %s or more links. (A common characteristic of comment spam is a large number of hyperlinks.)'), '<input name="comment_max_links" type="number" step="1" min="0" id="comment_max_links" value="' . esc_attr(get_option('comment_max_links')) . '" class="small-text" />' ); ?></label></p>
 
+<<<<<<< HEAD
 <p><label for="moderation_keys"><?php _e('When a comment contains any of these words in its content, name, URL, email, or IP, it will be held in the <a href="edit-comments.php?comment_status=moderated">moderation queue</a>. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;.'); ?></label></p>
+=======
+<p><label for="moderation_keys"><?php _e('When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be held in the <a href="edit-comments.php?comment_status=moderated">moderation queue</a>. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;.'); ?></label></p>
+>>>>>>> origin/master
 <p>
 <textarea name="moderation_keys" rows="10" cols="50" id="moderation_keys" class="large-text code"><?php echo esc_textarea( get_option( 'moderation_keys' ) ); ?></textarea>
 </p>
@@ -160,7 +216,11 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 <tr>
 <th scope="row"><?php _e('Comment Blacklist'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Comment Blacklist'); ?></span></legend>
+<<<<<<< HEAD
 <p><label for="blacklist_keys"><?php _e('When a comment contains any of these words in its content, name, URL, email, or IP, it will be put in the trash. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;.'); ?></label></p>
+=======
+<p><label for="blacklist_keys"><?php _e('When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be marked as spam. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;.'); ?></label></p>
+>>>>>>> origin/master
 <p>
 <textarea name="blacklist_keys" rows="10" cols="50" id="blacklist_keys" class="large-text code"><?php echo esc_textarea( get_option( 'blacklist_keys' ) ); ?></textarea>
 </p>
@@ -169,7 +229,11 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 <?php do_settings_fields('discussion', 'default'); ?>
 </table>
 
+<<<<<<< HEAD
 <h2 class="title"><?php _e('Avatars'); ?></h2>
+=======
+<h3 class="title"><?php _e('Avatars'); ?></h3>
+>>>>>>> origin/master
 
 <p><?php _e('An avatar is an image that follows you from weblog to weblog appearing beside your name when you comment on avatar enabled sites. Here you can enable the display of avatars for people who comment on your site.'); ?></p>
 
@@ -195,6 +259,7 @@ $show_avatars = get_option( 'show_avatars' );
 
 <?php
 $ratings = array(
+<<<<<<< HEAD
 	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
 	'G' => __('G &#8212; Suitable for all audiences'),
 	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
@@ -202,6 +267,15 @@ $ratings = array(
 	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
 	'R' => __('R &#8212; Intended for adult audiences above 17'),
 	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
+=======
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	'G' => __('G &#8212; Suitable for all audiences'),
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	'PG' => __('PG &#8212; Possibly offensive, usually for audiences 13 and above'),
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	'R' => __('R &#8212; Intended for adult audiences above 17'),
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+>>>>>>> origin/master
 	'X' => __('X &#8212; Even more mature than above')
 );
 foreach ($ratings as $key => $rating) :
@@ -216,7 +290,11 @@ endforeach;
 <th scope="row"><?php _e('Default Avatar'); ?></th>
 <td class="defaultavatarpicker"><fieldset><legend class="screen-reader-text"><span><?php _e('Default Avatar'); ?></span></legend>
 
+<<<<<<< HEAD
 <?php _e('For users without a custom avatar of their own, you can either display a generic logo or a generated one based on their email address.'); ?><br />
+=======
+<?php _e('For users without a custom avatar of their own, you can either display a generic logo or a generated one based on their e-mail address.'); ?><br />
+>>>>>>> origin/master
 
 <?php
 $avatar_defaults = array(
@@ -229,7 +307,11 @@ $avatar_defaults = array(
 	'retro' => __('Retro (Generated)')
 );
 /**
+<<<<<<< HEAD
  * Filters the default avatars.
+=======
+ * Filter the default avatars.
+>>>>>>> origin/master
  *
  * Avatars are stored in key/value pairs, where the key is option value,
  * and the name is the displayed avatar name.
@@ -239,7 +321,14 @@ $avatar_defaults = array(
  * @param array $avatar_defaults Array of default avatars.
  */
 $avatar_defaults = apply_filters( 'avatar_defaults', $avatar_defaults );
+<<<<<<< HEAD
 $default = get_option( 'avatar_default', 'mystery' );
+=======
+$default = get_option('avatar_default');
+if ( empty($default) )
+	$default = 'mystery';
+$size = 32;
+>>>>>>> origin/master
 $avatar_list = '';
 
 // Force avatars on to display these choices
@@ -248,7 +337,16 @@ add_filter( 'pre_option_show_avatars', '__return_true', 100 );
 foreach ( $avatar_defaults as $default_key => $default_name ) {
 	$selected = ($default == $default_key) ? 'checked="checked" ' : '';
 	$avatar_list .= "\n\t<label><input type='radio' name='avatar_default' id='avatar_{$default_key}' value='" . esc_attr($default_key) . "' {$selected}/> ";
+<<<<<<< HEAD
 	$avatar_list .= get_avatar( $user_email, 32, $default_key, '', array( 'force_default' => true ) );
+=======
+
+	$avatar = get_avatar( $user_email, $size, $default_key );
+	$avatar = preg_replace( "/src='(.+?)'/", "src='\$1&amp;forcedefault=1'", $avatar );
+	$avatar = preg_replace( "/srcset='(.+?) 2x'/", "srcset='\$1&amp;forcedefault=1 2x'", $avatar );
+	$avatar_list .= $avatar;
+
+>>>>>>> origin/master
 	$avatar_list .= ' ' . $default_name . '</label>';
 	$avatar_list .= '<br />';
 }
@@ -256,7 +354,11 @@ foreach ( $avatar_defaults as $default_key => $default_name ) {
 remove_filter( 'pre_option_show_avatars', '__return_true', 100 );
 
 /**
+<<<<<<< HEAD
  * Filters the HTML output of the default avatar list.
+=======
+ * Filter the HTML output of the default avatar list.
+>>>>>>> origin/master
  *
  * @since 2.6.0
  *

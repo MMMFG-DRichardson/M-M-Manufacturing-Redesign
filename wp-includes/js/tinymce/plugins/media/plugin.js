@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> origin/master
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -14,6 +19,7 @@
 
 tinymce.PluginManager.add('media', function(editor, url) {
 	var urlPatterns = [
+<<<<<<< HEAD
 		{regex: /youtu\.be\/([\w\-.]+)/, type: 'iframe', w: 560, h: 314, url: '//www.youtube.com/embed/$1', allowFullscreen: true},
 		{regex: /youtube\.com(.+)v=([^&]+)/, type: 'iframe', w: 560, h: 314, url: '//www.youtube.com/embed/$2', allowFullscreen: true},
 		{regex: /youtube.com\/embed\/([a-z0-9\-_]+(?:\?.+)?)/i, type: 'iframe', w: 560, h: 314, url: '//www.youtube.com/embed/$1', allowFullscreen: true},
@@ -21,6 +27,13 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		{regex: /vimeo\.com\/(.*)\/([0-9]+)/, type: "iframe", w: 425, h: 350, url: "//player.vimeo.com/video/$2?title=0&amp;byline=0", allowfullscreen: true},
 		{regex: /maps\.google\.([a-z]{2,3})\/maps\/(.+)msid=(.+)/, type: 'iframe', w: 425, h: 350, url: '//maps.google.com/maps/ms?msid=$2&output=embed"', allowFullscreen: false},
 		{regex: /dailymotion\.com\/video\/([^_]+)/, type: 'iframe', w: 480, h: 270, url: '//www.dailymotion.com/embed/video/$1', allowFullscreen: true}
+=======
+		{regex: /youtu\.be\/([\w\-.]+)/, type: 'iframe', w: 425, h: 350, url: '//www.youtube.com/embed/$1'},
+		{regex: /youtube\.com(.+)v=([^&]+)/, type: 'iframe', w: 425, h: 350, url: '//www.youtube.com/embed/$2'},
+		{regex: /vimeo\.com\/([0-9]+)/, type: 'iframe', w: 425, h: 350, url: '//player.vimeo.com/video/$1?title=0&byline=0&portrait=0&color=8dc7dc'},
+		{regex: /vimeo\.com\/(.*)\/([0-9]+)/, type: "iframe", w: 425, h: 350, url: "//player.vimeo.com/video/$2?title=0&amp;byline=0"},
+		{regex: /maps\.google\.([a-z]{2,3})\/maps\/(.+)msid=(.+)/, type: 'iframe', w: 425, h: 350, url: '//maps.google.com/maps/ms?msid=$2&output=embed"'}
+>>>>>>> origin/master
 	];
 
 	var embedChange = (tinymce.Env.ie && tinymce.Env.ie <= 8) ? 'onChange' : 'onInput';
@@ -177,7 +190,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 				{
 					title: 'Embed',
+<<<<<<< HEAD
 					type: "container",
+=======
+					type: "panel",
+>>>>>>> origin/master
 					layout: 'flex',
 					direction: 'column',
 					align: 'stretch',
@@ -267,7 +284,10 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 				data.source1 = url;
 				data.type = pattern.type;
+<<<<<<< HEAD
 				data.allowFullscreen = pattern.allowFullscreen;
+=======
+>>>>>>> origin/master
 				data.width = data.width || pattern.w;
 				data.height = data.height || pattern.h;
 			}
@@ -291,8 +311,12 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			});
 
 			if (data.type == "iframe") {
+<<<<<<< HEAD
 				var allowFullscreen = data.allowFullscreen ? ' allowFullscreen="1"' : '';
 				html += '<iframe src="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '"' + allowFullscreen + '></iframe>';
+=======
+				html += '<iframe src="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '"></iframe>';
+>>>>>>> origin/master
 			} else if (data.source1mime == "application/x-shockwave-flash") {
 				html += '<object data="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '" type="application/x-shockwave-flash">';
 
@@ -398,7 +422,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			return html;
 		}
 
+<<<<<<< HEAD
 		var writer = new tinymce.html.Writer(), blocked;
+=======
+		var writer = new tinymce.html.Writer();
+>>>>>>> origin/master
 
 		new tinymce.html.SaxParser({
 			validate: false,
@@ -418,8 +446,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			},
 
 			start: function(name, attrs, empty) {
+<<<<<<< HEAD
 				blocked = true;
 
+=======
+>>>>>>> origin/master
 				if (name == 'script' || name == 'noscript') {
 					return;
 				}
@@ -428,6 +459,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 					if (attrs[i].name.indexOf('on') === 0) {
 						return;
 					}
+<<<<<<< HEAD
 
 					if (attrs[i].name == 'style') {
 						attrs[i].value = editor.dom.serializeStyle(editor.dom.parseStyle(attrs[i].value), name);
@@ -440,6 +472,15 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 			end: function(name) {
 				if (blocked) {
+=======
+				}
+
+				writer.start(name, attrs, empty);
+			},
+
+			end: function(name) {
+				if (name == 'script' || name == 'noscript') {
+>>>>>>> origin/master
 					return;
 				}
 
@@ -613,6 +654,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		}
 	});
 
+<<<<<<< HEAD
 	function retainAttributesAndInnerHtml(sourceNode, targetNode) {
 		var attrName, attrValue, attribs, ai, innerHtml;
 
@@ -693,6 +735,8 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		return previewWrapper;
 	}
 
+=======
+>>>>>>> origin/master
 	editor.on('preInit', function() {
 		// Make sure that any messy HTML is retained inside these
 		var specialElements = editor.schema.getSpecialElements();
@@ -710,8 +754,14 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		});
 
 		// Converts iframe, video etc into placeholder images
+<<<<<<< HEAD
 		editor.parser.addNodeFilter('iframe,video,audio,object,embed,script', function(nodes) {
 			var i = nodes.length, node, placeHolder, videoScript;
+=======
+		editor.parser.addNodeFilter('iframe,video,audio,object,embed,script', function(nodes, name) {
+			var i = nodes.length, ai, node, placeHolder, attrName, attrValue, attribs, innerHtml;
+			var videoScript;
+>>>>>>> origin/master
 
 			while (i--) {
 				node = nodes[i];
@@ -719,10 +769,13 @@ tinymce.PluginManager.add('media', function(editor, url) {
 					continue;
 				}
 
+<<<<<<< HEAD
 				if (node.parent.attr('data-mce-object')) {
 					continue;
 				}
 
+=======
+>>>>>>> origin/master
 				if (node.name == 'script') {
 					videoScript = getVideoScriptMatch(node.attr('src'));
 					if (!videoScript) {
@@ -730,6 +783,12 @@ tinymce.PluginManager.add('media', function(editor, url) {
 					}
 				}
 
+<<<<<<< HEAD
+=======
+				placeHolder = new tinymce.html.Node('img', 1);
+				placeHolder.shortEnded = true;
+
+>>>>>>> origin/master
 				if (videoScript) {
 					if (videoScript.width) {
 						node.attr('width', videoScript.width.toString());
@@ -740,19 +799,60 @@ tinymce.PluginManager.add('media', function(editor, url) {
 					}
 				}
 
+<<<<<<< HEAD
 				if (node.name == 'iframe' && editor.settings.media_live_embeds !== false && tinymce.Env.ceFalse) {
 					placeHolder = createPreviewNode(node);
 				} else {
 					placeHolder = createPlaceholderNode(node);
 				}
 
+=======
+				// Prefix all attributes except width, height and style since we
+				// will add these to the placeholder
+				attribs = node.attributes;
+				ai = attribs.length;
+				while (ai--) {
+					attrName = attribs[ai].name;
+					attrValue = attribs[ai].value;
+
+					if (attrName !== "width" && attrName !== "height" && attrName !== "style") {
+						if (attrName == "data" || attrName == "src") {
+							attrValue = editor.convertURL(attrValue, attrName);
+						}
+
+						placeHolder.attr('data-mce-p-' + attrName, attrValue);
+					}
+				}
+
+				// Place the inner HTML contents inside an escaped attribute
+				// This enables us to copy/paste the fake object
+				innerHtml = node.firstChild && node.firstChild.value;
+				if (innerHtml) {
+					placeHolder.attr("data-mce-html", escape(innerHtml));
+					placeHolder.firstChild = null;
+				}
+
+				placeHolder.attr({
+					width: node.attr('width') || "300",
+					height: node.attr('height') || (name == "audio" ? "30" : "150"),
+					style: node.attr('style'),
+					src: tinymce.Env.transparentSrc,
+					"data-mce-object": name,
+					"class": "mce-object mce-object-" + name
+				});
+
+>>>>>>> origin/master
 				node.replace(placeHolder);
 			}
 		});
 
 		// Replaces placeholder images with real elements for video, object, iframe etc
 		editor.serializer.addAttributeFilter('data-mce-object', function(nodes, name) {
+<<<<<<< HEAD
 			var i = nodes.length, node, realElm, ai, attribs, innerHtml, innerNode, realElmName, className;
+=======
+			var i = nodes.length, node, realElm, ai, attribs, innerHtml, innerNode, realElmName;
+>>>>>>> origin/master
 
 			while (i--) {
 				node = nodes[i];
@@ -765,6 +865,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 				// Add width/height to everything but audio
 				if (realElmName != "audio" && realElmName != "script") {
+<<<<<<< HEAD
 					className = node.attr('class');
 					if (className && className.indexOf('mce-preview-object') !== -1) {
 						realElm.attr({
@@ -777,6 +878,12 @@ tinymce.PluginManager.add('media', function(editor, url) {
 							height: node.attr('height')
 						});
 					}
+=======
+					realElm.attr({
+						width: node.attr('width'),
+						height: node.attr('height')
+					});
+>>>>>>> origin/master
 				}
 
 				realElm.attr({
@@ -812,6 +919,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		});
 	});
 
+<<<<<<< HEAD
 	editor.on('click keyup', function() {
 		var selectedNode = editor.selection.getNode();
 
@@ -822,6 +930,8 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		}
 	});
 
+=======
+>>>>>>> origin/master
 	editor.on('ObjectSelected', function(e) {
 		var objectType = e.target.getAttribute('data-mce-object');
 
@@ -850,7 +960,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 	editor.addButton('media', {
 		tooltip: 'Insert/edit video',
 		onclick: showDialog,
+<<<<<<< HEAD
 		stateSelector: ['img[data-mce-object]', 'span[data-mce-object]']
+=======
+		stateSelector: ['img[data-mce-object=video]', 'img[data-mce-object=iframe]']
+>>>>>>> origin/master
 	});
 
 	editor.addMenuItem('media', {
@@ -860,6 +974,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		context: 'insert',
 		prependToContext: true
 	});
+<<<<<<< HEAD
 
 	editor.on('setContent', function() {
 		// TODO: This shouldn't be needed there should be a way to mark bogus
@@ -876,4 +991,6 @@ tinymce.PluginManager.add('media', function(editor, url) {
 	editor.addCommand('mceMedia', showDialog);
 
 	this.showDialog = showDialog;
+=======
+>>>>>>> origin/master
 });

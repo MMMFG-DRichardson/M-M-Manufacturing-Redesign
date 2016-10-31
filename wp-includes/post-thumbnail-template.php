@@ -13,6 +13,7 @@
  * Check if post has an image attached.
  *
  * @since 2.9.0
+<<<<<<< HEAD
  * @since 4.4.0 `$post` can be a post ID or WP_Post object.
  *
  * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global `$post`.
@@ -37,6 +38,27 @@ function get_post_thumbnail_id( $post = null ) {
 		return '';
 	}
 	return get_post_meta( $post->ID, '_thumbnail_id', true );
+=======
+ *
+ * @param int $post_id Optional. Post ID.
+ * @return bool Whether post has an image attached.
+ */
+function has_post_thumbnail( $post_id = null ) {
+	return (bool) get_post_thumbnail_id( $post_id );
+}
+
+/**
+ * Retrieve Post Thumbnail ID.
+ *
+ * @since 2.9.0
+ *
+ * @param int $post_id Optional. Post ID.
+ * @return int
+ */
+function get_post_thumbnail_id( $post_id = null ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	return get_post_meta( $post_id, '_thumbnail_id', true );
+>>>>>>> origin/master
 }
 
 /**
@@ -53,9 +75,14 @@ function get_post_thumbnail_id( $post = null ) {
  *
  * @see get_the_post_thumbnail()
  *
+<<<<<<< HEAD
  * @param string|array $size Optional. Image size to use. Accepts any valid image size, or
  *                           an array of width and height values in pixels (in that order).
  *                           Default 'post-thumbnail'.
+=======
+ * @param string|array $size Optional. Registered image size to use, or flat array of height
+ *                           and width values. Default 'post-thumbnail'.
+>>>>>>> origin/master
  * @param string|array $attr Optional. Query string or array of attributes. Default empty.
  */
 function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
@@ -63,6 +90,7 @@ function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Update cache for thumbnails in the current loop.
  *
  * @since 3.2.0
@@ -70,6 +98,13 @@ function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
  * @global WP_Query $wp_query
  *
  * @param WP_Query $wp_query Optional. A WP_Query instance. Defaults to the $wp_query global.
+=======
+ * Update cache for thumbnails in the current loop
+ *
+ * @since 3.2.0
+ *
+ * @param object $wp_query Optional. A WP_Query instance. Defaults to the $wp_query global.
+>>>>>>> origin/master
  */
 function update_post_thumbnail_cache( $wp_query = null ) {
 	if ( ! $wp_query )
@@ -102,6 +137,7 @@ function update_post_thumbnail_cache( $wp_query = null ) {
  * size is used by default, though a different size can be specified instead as needed.
  *
  * @since 2.9.0
+<<<<<<< HEAD
  * @since 4.4.0 `$post` can be a post ID or WP_Post object.
  *
  * @param int|WP_Post  $post Optional. Post ID or WP_Post object.  Default is global `$post`.
@@ -125,6 +161,24 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
 	 *
 	 * @param string|array $size The post thumbnail size. Image size or array of width and height
 	 *                           values (in that order). Default 'post-thumbnail'.
+=======
+ *
+ * @param int $post_id       Post ID. Default is the ID of the `$post` global.
+ * @param string|array $size Optional. Registered image size to use, or flat array of height
+ *                           and width values. Default 'post-thumbnail'.
+ * @param string|array $attr Optional. Query string or array of attributes. Default empty.
+ */
+function get_the_post_thumbnail( $post_id = null, $size = 'post-thumbnail', $attr = '' ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
+	/**
+	 * Filter the post thumbnail size.
+	 *
+	 * @since 2.9.0
+	 *
+	 * @param string $size The post thumbnail size.
+>>>>>>> origin/master
 	 */
 	$size = apply_filters( 'post_thumbnail_size', $size );
 
@@ -137,12 +191,20 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
 		 *
 		 * @since 2.9.0
 		 *
+<<<<<<< HEAD
 		 * @param int          $post_id           The post ID.
 		 * @param string       $post_thumbnail_id The post thumbnail ID.
 		 * @param string|array $size              The post thumbnail size. Image size or array of width
 		 *                                        and height values (in that order). Default 'post-thumbnail'.
 		 */
 		do_action( 'begin_fetch_post_thumbnail_html', $post->ID, $post_thumbnail_id, $size );
+=======
+		 * @param string $post_id           The post ID.
+		 * @param string $post_thumbnail_id The post thumbnail ID.
+		 * @param string $size              The post thumbnail size.
+		 */
+		do_action( 'begin_fetch_post_thumbnail_html', $post_id, $post_thumbnail_id, $size );
+>>>>>>> origin/master
 		if ( in_the_loop() )
 			update_post_thumbnail_cache();
 		$html = wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
@@ -152,17 +214,26 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
 		 *
 		 * @since 2.9.0
 		 *
+<<<<<<< HEAD
 		 * @param int          $post_id           The post ID.
 		 * @param string       $post_thumbnail_id The post thumbnail ID.
 		 * @param string|array $size              The post thumbnail size. Image size or array of width
 		 *                                        and height values (in that order). Default 'post-thumbnail'.
 		 */
 		do_action( 'end_fetch_post_thumbnail_html', $post->ID, $post_thumbnail_id, $size );
+=======
+		 * @param string $post_id           The post ID.
+		 * @param string $post_thumbnail_id The post thumbnail ID.
+		 * @param string $size              The post thumbnail size.
+		 */
+		do_action( 'end_fetch_post_thumbnail_html', $post_id, $post_thumbnail_id, $size );
+>>>>>>> origin/master
 
 	} else {
 		$html = '';
 	}
 	/**
+<<<<<<< HEAD
 	 * Filters the post thumbnail HTML.
 	 *
 	 * @since 2.9.0
@@ -250,4 +321,17 @@ function the_post_thumbnail_caption( $post = null ) {
 	 * @param string $caption Caption for the given attachment.
 	 */
 	echo apply_filters( 'the_post_thumbnail_caption', get_the_post_thumbnail_caption( $post ) );
+=======
+	 * Filter the post thumbnail HTML.
+	 *
+	 * @since 2.9.0
+	 *
+	 * @param string $html              The post thumbnail HTML.
+	 * @param string $post_id           The post ID.
+	 * @param string $post_thumbnail_id The post thumbnail ID.
+	 * @param string $size              The post thumbnail size.
+	 * @param string $attr              Query string of attributes.
+	 */
+	return apply_filters( 'post_thumbnail_html', $html, $post_id, $post_thumbnail_id, $size, $attr );
+>>>>>>> origin/master
 }

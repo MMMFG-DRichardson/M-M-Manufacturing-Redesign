@@ -14,7 +14,11 @@ window.wp = window.wp || {};
 	 */
 	revisions = wp.revisions = { model: {}, view: {}, controller: {} };
 
+<<<<<<< HEAD
 	// Link post revisions data served from the back end.
+=======
+	// Link post revisions data served from the back-end.
+>>>>>>> origin/master
 	revisions.settings = window._wpRevisionsSettings || {};
 
 	// For debugging
@@ -24,7 +28,11 @@ window.wp = window.wp || {};
 	 * wp.revisions.log
 	 *
 	 * A debugging utility for revisions. Works only when a
+<<<<<<< HEAD
 	 * debug flag is on and the browser supports it.
+=======
+	 * debug flag is on and the browser supports it.
+>>>>>>> origin/master
 	 */
 	revisions.log = function() {
 		if ( window.console && revisions.debug ) {

@@ -177,7 +177,11 @@ var tagBox, array_unique_noempty;
 				var tax = $(this).closest('div.tagsdiv').attr('id');
 				$(this).suggest(
 					ajaxurl + '?action=ajax-tag-search&tax=' + tax,
+<<<<<<< HEAD
 					{ delay: 500, minchars: 2, multiple: true, multipleSep: window.tagsBoxL10n.tagDelimiter }
+=======
+					{ delay: 500, minchars: 2, multiple: true, multipleSep: window.tagsBoxL10n.tagDelimiter + ' ' }
+>>>>>>> origin/master
 				);
 			});
 

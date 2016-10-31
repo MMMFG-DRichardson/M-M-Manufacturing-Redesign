@@ -288,4 +288,8 @@ class getid3_dts extends getid3_handler
 		return false;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master

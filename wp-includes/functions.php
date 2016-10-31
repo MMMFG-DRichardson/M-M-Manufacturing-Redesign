@@ -78,8 +78,11 @@ function current_time( $type, $gmt = 0 ) {
  *
  * @since 0.71
  *
+<<<<<<< HEAD
  * @global WP_Locale $wp_locale
  *
+=======
+>>>>>>> origin/master
  * @param string   $dateformatstring Format to display the date.
  * @param bool|int $unixtimestamp    Optional. Unix timestamp. Default false.
  * @param bool     $gmt              Optional. Whether to use GMT timezone. Default false.
@@ -132,7 +135,11 @@ function date_i18n( $dateformatstring, $unixtimestamp = false, $gmt = false ) {
 		if ( $timezone_string ) {
 			$timezone_object = timezone_open( $timezone_string );
 			$date_object = date_create( null, $timezone_object );
+<<<<<<< HEAD
 			foreach ( $timezone_formats as $timezone_format ) {
+=======
+			foreach( $timezone_formats as $timezone_format ) {
+>>>>>>> origin/master
 				if ( false !== strpos( $dateformatstring, $timezone_format ) ) {
 					$formatted = date_format( $date_object, $timezone_format );
 					$dateformatstring = ' '.$dateformatstring;
@@ -145,7 +152,11 @@ function date_i18n( $dateformatstring, $unixtimestamp = false, $gmt = false ) {
 	$j = @$datefunc( $dateformatstring, $i );
 
 	/**
+<<<<<<< HEAD
 	 * Filters the date formatted based on the locale.
+=======
+	 * Filter the date formatted based on the locale.
+>>>>>>> origin/master
 	 *
 	 * @since 2.8.0
 	 *
@@ -159,6 +170,7 @@ function date_i18n( $dateformatstring, $unixtimestamp = false, $gmt = false ) {
 }
 
 /**
+<<<<<<< HEAD
  * Determines if the date should be declined.
  *
  * If the locale specifies that month names require a genitive case in certain
@@ -218,10 +230,19 @@ function wp_maybe_decline_date( $date ) {
  *
  * @param float $number   The number to convert based on locale.
  * @param int   $decimals Optional. Precision of the number of decimal places. Default 0.
+=======
+ * Convert integer number to format based on the locale.
+ *
+ * @since 2.3.0
+ *
+ * @param int $number   The number to convert based on locale.
+ * @param int $decimals Optional. Precision of the number of decimal places. Default 0.
+>>>>>>> origin/master
  * @return string Converted number in string format.
  */
 function number_format_i18n( $number, $decimals = 0 ) {
 	global $wp_locale;
+<<<<<<< HEAD
 
 	if ( isset( $wp_locale ) ) {
 		$formatted = number_format( $number, absint( $decimals ), $wp_locale->number_format['decimal_point'], $wp_locale->number_format['thousands_sep'] );
@@ -231,6 +252,12 @@ function number_format_i18n( $number, $decimals = 0 ) {
 
 	/**
 	 * Filters the number formatted based on the locale.
+=======
+	$formatted = number_format( $number, absint( $decimals ), $wp_locale->number_format['decimal_point'], $wp_locale->number_format['thousands_sep'] );
+
+	/**
+	 * Filter the number formatted based on the locale.
+>>>>>>> origin/master
 	 *
 	 * @since  2.8.0
 	 *
@@ -242,7 +269,11 @@ function number_format_i18n( $number, $decimals = 0 ) {
 /**
  * Convert number of bytes largest unit bytes will fit into.
  *
+<<<<<<< HEAD
  * It is easier to read 1 KB than 1024 bytes and 1 MB than 1048576 bytes. Converts
+=======
+ * It is easier to read 1 kB than 1024 bytes and 1 MB than 1048576 bytes. Converts
+>>>>>>> origin/master
  * number of bytes to human readable number by taking the number of that unit
  * that the bytes will go into it. Supports TB value.
  *
@@ -261,6 +292,7 @@ function number_format_i18n( $number, $decimals = 0 ) {
  */
 function size_format( $bytes, $decimals = 0 ) {
 	$quant = array(
+<<<<<<< HEAD
 		'TB' => TB_IN_BYTES,
 		'GB' => GB_IN_BYTES,
 		'MB' => MB_IN_BYTES,
@@ -272,6 +304,16 @@ function size_format( $bytes, $decimals = 0 ) {
 		return number_format_i18n( 0, $decimals ) . ' B';
 	}
 
+=======
+		// ========================= Origin ====
+		'TB' => 1099511627776,  // pow( 1024, 4)
+		'GB' => 1073741824,     // pow( 1024, 3)
+		'MB' => 1048576,        // pow( 1024, 2)
+		'kB' => 1024,           // pow( 1024, 1)
+		'B'  => 1,              // pow( 1024, 0)
+	);
+
+>>>>>>> origin/master
 	foreach ( $quant as $unit => $mag ) {
 		if ( doubleval( $bytes ) >= $mag ) {
 			return number_format_i18n( $bytes / $mag, $decimals ) . ' ' . $unit;
@@ -315,8 +357,13 @@ function get_weekstartend( $mysqlstring, $start_of_week = '' ) {
 	// The most recent week start day on or before $day.
 	$start = $day - DAY_IN_SECONDS * ( $weekday - $start_of_week );
 
+<<<<<<< HEAD
 	// $start + 1 week - 1 second.
 	$end = $start + WEEK_IN_SECONDS - 1;
+=======
+	// $start + 7 days - 1 second.
+	$end = $start + 7 * DAY_IN_SECONDS - 1;
+>>>>>>> origin/master
 	return compact( 'start', 'end' );
 }
 
@@ -444,7 +491,10 @@ function maybe_serialize( $data ) {
 
 	// Double serialization is required for backward compatibility.
 	// See https://core.trac.wordpress.org/ticket/12930
+<<<<<<< HEAD
 	// Also the world will end. See WP 3.6.1.
+=======
+>>>>>>> origin/master
 	if ( is_serialized( $data, false ) )
 		return serialize( $data );
 
@@ -554,10 +604,17 @@ function wp_extract_urls( $content ) {
  *
  * @since 1.5.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $content Post Content.
  * @param int    $post_ID Post ID.
+=======
+ * @see $wpdb
+ *
+ * @param string $content Post Content.
+ * @param int $post_ID Post ID.
+>>>>>>> origin/master
  */
 function do_enclose( $content, $post_ID ) {
 	global $wpdb;
@@ -591,6 +648,7 @@ function do_enclose( $content, $post_ID ) {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Filters the list of enclosure links before querying the database.
 	 *
@@ -604,6 +662,8 @@ function do_enclose( $content, $post_ID ) {
 	 */
 	$post_links = apply_filters( 'enclosure_links', $post_links, $post_ID );
 
+=======
+>>>>>>> origin/master
 	foreach ( (array) $post_links as $url ) {
 		if ( $url != '' && !$wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = 'enclosure' AND meta_value LIKE %s", $post_ID, $wpdb->esc_like( $url ) . '%' ) ) ) {
 
@@ -636,6 +696,65 @@ function do_enclose( $content, $post_ID ) {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Perform a HTTP HEAD or GET request.
+ *
+ * If $file_path is a writable filename, this will do a GET request and write
+ * the file to that path.
+ *
+ * @since 2.5.0
+ *
+ * @param string      $url       URL to fetch.
+ * @param string|bool $file_path Optional. File path to write request to. Default false.
+ * @param int         $red       Optional. The number of Redirects followed, Upon 5 being hit,
+ *                               returns false. Default 1.
+ * @return bool|string False on failure and string of headers if HEAD request.
+ */
+function wp_get_http( $url, $file_path = false, $red = 1 ) {
+	@set_time_limit( 60 );
+
+	if ( $red > 5 )
+		return false;
+
+	$options = array();
+	$options['redirection'] = 5;
+
+	if ( false == $file_path )
+		$options['method'] = 'HEAD';
+	else
+		$options['method'] = 'GET';
+
+	$response = wp_safe_remote_request( $url, $options );
+
+	if ( is_wp_error( $response ) )
+		return false;
+
+	$headers = wp_remote_retrieve_headers( $response );
+	$headers['response'] = wp_remote_retrieve_response_code( $response );
+
+	// WP_HTTP no longer follows redirects for HEAD requests.
+	if ( 'HEAD' == $options['method'] && in_array($headers['response'], array(301, 302)) && isset( $headers['location'] ) ) {
+		return wp_get_http( $headers['location'], $file_path, ++$red );
+	}
+
+	if ( false == $file_path )
+		return $headers;
+
+	// GET request - write it to the supplied filename
+	$out_fp = fopen($file_path, 'w');
+	if ( !$out_fp )
+		return $headers;
+
+	fwrite( $out_fp,  wp_remote_retrieve_body( $response ) );
+	fclose($out_fp);
+	clearstatcache();
+
+	return $headers;
+}
+
+/**
+>>>>>>> origin/master
  * Retrieve HTTP Headers from URL.
  *
  * @since 1.5.1
@@ -646,7 +765,11 @@ function do_enclose( $content, $post_ID ) {
  */
 function wp_get_http_headers( $url, $deprecated = false ) {
 	if ( !empty( $deprecated ) )
+<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '2.7.0' );
+=======
+		_deprecated_argument( __FUNCTION__, '2.7' );
+>>>>>>> origin/master
 
 	$response = wp_safe_remote_head( $url );
 
@@ -684,8 +807,13 @@ function is_new_day() {
  * @since 2.3.0
  *
  * @see _http_build_query() Used to build the query
+<<<<<<< HEAD
  * @link https://secure.php.net/manual/en/function.http-build-query.php for more on what
  *		 http_build_query() does.
+=======
+ * @see http://us2.php.net/manual/en/function.http-build-query.php for more on what
+ *		http_build_query() does.
+>>>>>>> origin/master
  *
  * @param array $data URL-encode key/value pairs.
  * @return string URL-encoded string.
@@ -700,7 +828,11 @@ function build_query( $data ) {
  * @since 3.2.0
  * @access private
  *
+<<<<<<< HEAD
  * @see https://secure.php.net/manual/en/function.http-build-query.php
+=======
+ * @see http://us1.php.net/manual/en/function.http-build-query.php
+>>>>>>> origin/master
  *
  * @param array|object  $data       An array or object of data. Converted to array.
  * @param string        $prefix     Optional. Numeric index. If set, start parameter numbering with it.
@@ -742,6 +874,7 @@ function _http_build_query( $data, $prefix = null, $sep = null, $key = '', $urle
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves a modified URL query string.
  *
  * You can rebuild the URL and append query variables to the URL query by using this function.
@@ -775,6 +908,24 @@ function _http_build_query( $data, $prefix = null, $sep = null, $key = '', $urle
  * @param string       $value Optional. Either a query variable value, or a URL to act upon.
  * @param string       $url   Optional. A URL to act upon.
  * @return string New URL query string (unescaped).
+=======
+ * Retrieve a modified URL query string.
+ *
+ * You can rebuild the URL and append a new query variable to the URL query by
+ * using this function. You can also retrieve the full URL with query data.
+ *
+ * Adding a single key & value or an associative array. Setting a key value to
+ * an empty string removes the key. Omitting oldquery_or_uri uses the $_SERVER
+ * value. Additional values provided are expected to be encoded appropriately
+ * with urlencode() or rawurlencode().
+ *
+ * @since 1.5.0
+ *
+ * @param string|array $param1 Either newkey or an associative_array.
+ * @param string       $param2 Either newvalue or oldquery or URI.
+ * @param string       $param3 Optional. Old query or URI.
+ * @return string New URL query string.
+>>>>>>> origin/master
  */
 function add_query_arg() {
 	$args = func_get_args();
@@ -840,12 +991,20 @@ function add_query_arg() {
 }
 
 /**
+<<<<<<< HEAD
  * Removes an item or items from a query string.
+=======
+ * Removes an item or list from the query string.
+>>>>>>> origin/master
  *
  * @since 1.5.0
  *
  * @param string|array $key   Query key or keys to remove.
+<<<<<<< HEAD
  * @param bool|string  $query Optional. When false uses the current URL. Default false.
+=======
+ * @param bool|string  $query Optional. When false uses the $_SERVER value. Default false.
+>>>>>>> origin/master
  * @return string New URL query string.
  */
 function remove_query_arg( $key, $query = false ) {
@@ -858,6 +1017,7 @@ function remove_query_arg( $key, $query = false ) {
 }
 
 /**
+<<<<<<< HEAD
  * Returns an array of single-use query variable names that can be removed from a URL.
  *
  * @since 4.4.0
@@ -902,6 +1062,8 @@ function wp_removable_query_args() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Walks the array while sanitizing the contents.
  *
  * @since 0.71
@@ -952,10 +1114,13 @@ function wp_remote_fopen( $uri ) {
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @global WP       $wp_locale
  * @global WP_Query $wp_query
  * @global WP_Query $wp_the_query
  *
+=======
+>>>>>>> origin/master
  * @param string|array $query_vars Default WP_Query arguments.
  */
 function wp( $query_vars = '' ) {
@@ -971,8 +1136,11 @@ function wp( $query_vars = '' ) {
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @global array $wp_header_to_desc
  *
+=======
+>>>>>>> origin/master
  * @param int $code HTTP status code.
  * @return string Empty string if not found, or description if found.
  */
@@ -1005,7 +1173,10 @@ function get_status_header_desc( $code ) {
 			305 => 'Use Proxy',
 			306 => 'Reserved',
 			307 => 'Temporary Redirect',
+<<<<<<< HEAD
 			308 => 'Permanent Redirect',
+=======
+>>>>>>> origin/master
 
 			400 => 'Bad Request',
 			401 => 'Unauthorized',
@@ -1026,7 +1197,10 @@ function get_status_header_desc( $code ) {
 			416 => 'Requested Range Not Satisfiable',
 			417 => 'Expectation Failed',
 			418 => 'I\'m a teapot',
+<<<<<<< HEAD
 			421 => 'Misdirected Request',
+=======
+>>>>>>> origin/master
 			422 => 'Unprocessable Entity',
 			423 => 'Locked',
 			424 => 'Failed Dependency',
@@ -1034,7 +1208,10 @@ function get_status_header_desc( $code ) {
 			428 => 'Precondition Required',
 			429 => 'Too Many Requests',
 			431 => 'Request Header Fields Too Large',
+<<<<<<< HEAD
 			451 => 'Unavailable For Legal Reasons',
+=======
+>>>>>>> origin/master
 
 			500 => 'Internal Server Error',
 			501 => 'Not Implemented',
@@ -1059,6 +1236,7 @@ function get_status_header_desc( $code ) {
  * Set HTTP status header.
  *
  * @since 2.0.0
+<<<<<<< HEAD
  * @since 4.4.0 Added the `$description` parameter.
  *
  * @see get_status_header_desc()
@@ -1076,11 +1254,31 @@ function status_header( $code, $description = '' ) {
 	}
 
 	$protocol = wp_get_server_protocol();
+=======
+ *
+ * @see get_status_header_desc()
+ *
+ * @param int $code HTTP status code.
+ */
+function status_header( $code ) {
+	$description = get_status_header_desc( $code );
+
+	if ( empty( $description ) )
+		return;
+
+	$protocol = $_SERVER['SERVER_PROTOCOL'];
+	if ( 'HTTP/1.1' != $protocol && 'HTTP/1.0' != $protocol )
+		$protocol = 'HTTP/1.0';
+>>>>>>> origin/master
 	$status_header = "$protocol $code $description";
 	if ( function_exists( 'apply_filters' ) )
 
 		/**
+<<<<<<< HEAD
 		 * Filters an HTTP status header.
+=======
+		 * Filter an HTTP status header.
+>>>>>>> origin/master
 		 *
 		 * @since 2.2.0
 		 *
@@ -1108,11 +1306,19 @@ function wp_get_nocache_headers() {
 	$headers = array(
 		'Expires' => 'Wed, 11 Jan 1984 05:00:00 GMT',
 		'Cache-Control' => 'no-cache, must-revalidate, max-age=0',
+<<<<<<< HEAD
+=======
+		'Pragma' => 'no-cache',
+>>>>>>> origin/master
 	);
 
 	if ( function_exists('apply_filters') ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the cache-controlling headers.
+=======
+		 * Filter the cache-controlling headers.
+>>>>>>> origin/master
 		 *
 		 * @since 2.8.0
 		 *
@@ -1123,6 +1329,10 @@ function wp_get_nocache_headers() {
 		 *
 		 *     @type string $Expires       Expires header.
 		 *     @type string $Cache-Control Cache-Control header.
+<<<<<<< HEAD
+=======
+		 *     @type string $Pragma        Pragma header.
+>>>>>>> origin/master
 		 * }
 		 */
 		$headers = (array) apply_filters( 'nocache_headers', $headers );
@@ -1161,7 +1371,11 @@ function nocache_headers() {
 		}
 	}
 
+<<<<<<< HEAD
 	foreach ( $headers as $name => $field_value )
+=======
+	foreach( $headers as $name => $field_value )
+>>>>>>> origin/master
 		@header("{$name}: {$field_value}");
 }
 
@@ -1216,7 +1430,11 @@ function bool_from_yn( $yn ) {
  *
  * @since 2.1.0
  *
+<<<<<<< HEAD
  * @global WP_Query $wp_query Used to tell if the use a comment feed.
+=======
+ * @uses $wp_query Used to tell if the use a comment feed.
+>>>>>>> origin/master
  */
 function do_feed() {
 	global $wp_query;
@@ -1229,13 +1447,20 @@ function do_feed() {
 	if ( $feed == '' || $feed == 'feed' )
 		$feed = get_default_feed();
 
+<<<<<<< HEAD
 	if ( ! has_action( "do_feed_{$feed}" ) ) {
 		wp_die( __( 'ERROR: This is not a valid feed template.' ), '', array( 'response' => 404 ) );
 	}
+=======
+	$hook = 'do_feed_' . $feed;
+	if ( ! has_action( $hook ) )
+		wp_die( __( 'ERROR: This is not a valid feed template.' ), '', array( 'response' => 404 ) );
+>>>>>>> origin/master
 
 	/**
 	 * Fires once the given feed is loaded.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$feed`, refers to the feed template name.
 	 * Possible values include: 'rdf', 'rss', 'rss2', and 'atom'.
 	 *
@@ -1246,6 +1471,15 @@ function do_feed() {
 	 * @param string $feed            The feed name.
 	 */
 	do_action( "do_feed_{$feed}", $wp_query->is_comment_feed, $feed );
+=======
+	 * The dynamic hook name, $hook, refers to the feed name.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param bool $is_comment_feed Whether the feed is a comment feed.
+	 */
+	do_action( $hook, $wp_query->is_comment_feed );
+>>>>>>> origin/master
 }
 
 /**
@@ -1328,11 +1562,18 @@ function do_robots() {
 		$site_url = parse_url( site_url() );
 		$path = ( !empty( $site_url['path'] ) ) ? $site_url['path'] : '';
 		$output .= "Disallow: $path/wp-admin/\n";
+<<<<<<< HEAD
 		$output .= "Allow: $path/wp-admin/admin-ajax.php\n";
 	}
 
 	/**
 	 * Filters the robots.txt output.
+=======
+	}
+
+	/**
+	 * Filter the robots.txt output.
+>>>>>>> origin/master
 	 *
 	 * @since 3.0.0
 	 *
@@ -1343,7 +1584,11 @@ function do_robots() {
 }
 
 /**
+<<<<<<< HEAD
  * Test whether WordPress is already installed.
+=======
+ * Test whether blog is already installed.
+>>>>>>> origin/master
  *
  * The cache will be checked first. If you have a cache plugin, which saves
  * the cache values, then this will work. If you use the default WordPress
@@ -1355,7 +1600,11 @@ function do_robots() {
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @return bool Whether the site is already installed.
+=======
+ * @return bool Whether the blog is already installed.
+>>>>>>> origin/master
  */
 function is_blog_installed() {
 	global $wpdb;
@@ -1368,7 +1617,11 @@ function is_blog_installed() {
 		return true;
 
 	$suppress = $wpdb->suppress_errors();
+<<<<<<< HEAD
 	if ( ! wp_installing() ) {
+=======
+	if ( ! defined( 'WP_INSTALLING' ) ) {
+>>>>>>> origin/master
 		$alloptions = wp_load_alloptions();
 	}
 	// If siteurl is not set to autoload, check it specifically
@@ -1529,6 +1782,7 @@ function wp_original_referer_field( $echo = true, $jump_back_to = 'current' ) {
  * @return false|string False on failure. Referer URL on success.
  */
 function wp_get_referer() {
+<<<<<<< HEAD
 	if ( ! function_exists( 'wp_validate_redirect' ) ) {
 		return false;
 	}
@@ -1558,6 +1812,18 @@ function wp_get_raw_referer() {
 		return wp_unslash( $_SERVER['HTTP_REFERER'] );
 	}
 
+=======
+	if ( ! function_exists( 'wp_validate_redirect' ) )
+		return false;
+	$ref = false;
+	if ( ! empty( $_REQUEST['_wp_http_referer'] ) )
+		$ref = wp_unslash( $_REQUEST['_wp_http_referer'] );
+	elseif ( ! empty( $_SERVER['HTTP_REFERER'] ) )
+		$ref = wp_unslash( $_SERVER['HTTP_REFERER'] );
+
+	if ( $ref && $ref !== wp_unslash( $_SERVER['REQUEST_URI'] ) )
+		return wp_validate_redirect( $ref, false );
+>>>>>>> origin/master
 	return false;
 }
 
@@ -1588,7 +1854,11 @@ function wp_mkdir_p( $target ) {
 	$wrapper = null;
 
 	// Strip the protocol.
+<<<<<<< HEAD
 	if ( wp_is_stream( $target ) ) {
+=======
+	if( wp_is_stream( $target ) ) {
+>>>>>>> origin/master
 		list( $wrapper, $target ) = explode( '://', $target, 2 );
 	}
 
@@ -1596,7 +1866,11 @@ function wp_mkdir_p( $target ) {
 	$target = str_replace( '//', '/', $target );
 
 	// Put the wrapper back on the target.
+<<<<<<< HEAD
 	if ( $wrapper !== null ) {
+=======
+	if( $wrapper !== null ) {
+>>>>>>> origin/master
 		$target = $wrapper . '://' . $target;
 	}
 
@@ -1694,6 +1968,7 @@ function path_join( $base, $path ) {
 /**
  * Normalize a filesystem path.
  *
+<<<<<<< HEAD
  * On windows systems, replaces backslashes with forward slashes
  * and forces upper-case drive letters.
  * Allows for two leading slashes for Windows network shares, but
@@ -1702,16 +1977,26 @@ function path_join( $base, $path ) {
  * @since 3.9.0
  * @since 4.4.0 Ensures upper-case drive letters on Windows systems.
  * @since 4.5.0 Allows for Windows network shares.
+=======
+ * Replaces backslashes with forward slashes for Windows systems, and ensures
+ * no duplicate slashes exist.
+ *
+ * @since 3.9.0
+>>>>>>> origin/master
  *
  * @param string $path Path to normalize.
  * @return string Normalized path.
  */
 function wp_normalize_path( $path ) {
 	$path = str_replace( '\\', '/', $path );
+<<<<<<< HEAD
 	$path = preg_replace( '|(?<=.)/+|', '/', $path );
 	if ( ':' === substr( $path, 1, 1 ) ) {
 		$path = ucfirst( $path );
 	}
+=======
+	$path = preg_replace( '|/+|','/', $path );
+>>>>>>> origin/master
 	return $path;
 }
 
@@ -1727,12 +2012,19 @@ function wp_normalize_path( $path ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @staticvar string $temp
  *
  * @return string Writable temporary directory.
  */
 function get_temp_dir() {
 	static $temp = '';
+=======
+ * @return string Writable temporary directory.
+ */
+function get_temp_dir() {
+	static $temp;
+>>>>>>> origin/master
 	if ( defined('WP_TEMP_DIR') )
 		return trailingslashit(WP_TEMP_DIR);
 
@@ -1753,7 +2045,12 @@ function get_temp_dir() {
 	if ( is_dir( $temp ) && wp_is_writable( $temp ) )
 		return $temp;
 
+<<<<<<< HEAD
 	return '/tmp/';
+=======
+	$temp = '/tmp/';
+	return $temp;
+>>>>>>> origin/master
 }
 
 /**
@@ -1786,8 +2083,13 @@ function wp_is_writable( $path ) {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @see https://bugs.php.net/bug.php?id=27609
  * @see https://bugs.php.net/bug.php?id=30931
+=======
+ * @see http://bugs.php.net/bug.php?id=27609
+ * @see http://bugs.php.net/bug.php?id=30931
+>>>>>>> origin/master
  *
  * @param string $path Windows path to check for write-ability.
  * @return bool Whether the path is writable.
@@ -1811,6 +2113,7 @@ function win_is_writable( $path ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves uploads directory information.
  *
  * Same as wp_upload_dir() but "light weight" as it doesn't attempt to create the uploads directory.
@@ -1828,6 +2131,8 @@ function wp_get_upload_dir() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Get an array containing the current upload directory's path and url.
  *
  * Checks the 'upload_path' option, which should be from the web root folder,
@@ -1852,6 +2157,7 @@ function wp_get_upload_dir() {
  * 'subdir' - sub directory if uploads use year/month folders option is on.
  * 'basedir' - path without subdir.
  * 'baseurl' - URL path without subdir.
+<<<<<<< HEAD
  * 'error' - false or error message.
  *
  * @since 2.0.0
@@ -1914,6 +2220,16 @@ function wp_upload_dir( $time = null, $create_dir = true, $refresh_cache = false
  * @return array See wp_upload_dir()
  */
 function _wp_upload_dir( $time = null ) {
+=======
+ * 'error' - set to false.
+ *
+ * @since 2.0.0
+ *
+ * @param string $time Optional. Time formatted in 'yyyy/mm'. Default null.
+ * @return array See above for description.
+ */
+function wp_upload_dir( $time = null ) {
+>>>>>>> origin/master
 	$siteurl = get_option( 'siteurl' );
 	$upload_path = trim( get_option( 'upload_path' ) );
 
@@ -2002,6 +2318,7 @@ function _wp_upload_dir( $time = null ) {
 	$dir .= $subdir;
 	$url .= $subdir;
 
+<<<<<<< HEAD
 	return array(
 		'path'    => $dir,
 		'url'     => $url,
@@ -2010,6 +2327,38 @@ function _wp_upload_dir( $time = null ) {
 		'baseurl' => $baseurl,
 		'error'   => false,
 	);
+=======
+	/**
+	 * Filter the uploads directory data.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $uploads Array of upload directory data with keys of 'path',
+	 *                       'url', 'subdir, 'basedir', and 'error'.
+	 */
+	$uploads = apply_filters( 'upload_dir',
+		array(
+			'path'    => $dir,
+			'url'     => $url,
+			'subdir'  => $subdir,
+			'basedir' => $basedir,
+			'baseurl' => $baseurl,
+			'error'   => false,
+		) );
+
+	// Make sure we have an uploads directory.
+	if ( ! wp_mkdir_p( $uploads['path'] ) ) {
+		if ( 0 === strpos( $uploads['basedir'], ABSPATH ) )
+			$error_path = str_replace( ABSPATH, '', $uploads['basedir'] ) . $uploads['subdir'];
+		else
+			$error_path = basename( $uploads['basedir'] ) . $uploads['subdir'];
+
+		$message = sprintf( __( 'Unable to create directory %s. Is its parent directory writable by the server?' ), $error_path );
+		$uploads['error'] = $message;
+	}
+
+	return $uploads;
+>>>>>>> origin/master
 }
 
 /**
@@ -2026,7 +2375,11 @@ function _wp_upload_dir( $time = null ) {
  *
  * @param string   $dir                      Directory.
  * @param string   $filename                 File name.
+<<<<<<< HEAD
  * @param callable $unique_filename_callback Callback. Default null.
+=======
+ * @param callback $unique_filename_callback Callback. Default null.
+>>>>>>> origin/master
  * @return string New filename, if given wasn't unique.
  */
 function wp_unique_filename( $dir, $filename, $unique_filename_callback = null ) {
@@ -2059,6 +2412,7 @@ function wp_unique_filename( $dir, $filename, $unique_filename_callback = null )
 			// Check for both lower and upper case extension or image sub-sizes may be overwritten.
 			while ( file_exists($dir . "/$filename") || file_exists($dir . "/$filename2") ) {
 				$new_number = $number + 1;
+<<<<<<< HEAD
 				$filename = str_replace( array( "-$number$ext", "$number$ext" ), "-$new_number$ext", $filename );
 				$filename2 = str_replace( array( "-$number$ext2", "$number$ext2" ), "-$new_number$ext2", $filename2 );
 				$number = $new_number;
@@ -2088,6 +2442,24 @@ function wp_unique_filename( $dir, $filename, $unique_filename_callback = null )
 
 	/** This filter is documented in wp-includes/functions.php */
 	return apply_filters( 'wp_unique_filename', $filename, $ext, $dir, $unique_filename_callback );
+=======
+				$filename = str_replace( "$number$ext", "$new_number$ext", $filename );
+				$filename2 = str_replace( "$number$ext2", "$new_number$ext2", $filename2 );
+				$number = $new_number;
+			}
+			return $filename2;
+		}
+
+		while ( file_exists( $dir . "/$filename" ) ) {
+			if ( '' == "$number$ext" )
+				$filename = $filename . ++$number . $ext;
+			else
+				$filename = str_replace( "$number$ext", ++$number . $ext, $filename );
+		}
+	}
+
+	return $filename;
+>>>>>>> origin/master
 }
 
 /**
@@ -2115,7 +2487,11 @@ function wp_unique_filename( $dir, $filename, $unique_filename_callback = null )
  */
 function wp_upload_bits( $name, $deprecated, $bits, $time = null ) {
 	if ( !empty( $deprecated ) )
+<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '2.0.0' );
+=======
+		_deprecated_argument( __FUNCTION__, '2.0' );
+>>>>>>> origin/master
 
 	if ( empty( $name ) )
 		return array( 'error' => __( 'Empty filename' ) );
@@ -2130,7 +2506,11 @@ function wp_upload_bits( $name, $deprecated, $bits, $time = null ) {
 		return $upload;
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether to treat the upload bits as an error.
+=======
+	 * Filter whether to treat the upload bits as an error.
+>>>>>>> origin/master
 	 *
 	 * Passing a non-array to the filter will effectively short-circuit preparing
 	 * the upload bits, returning that value instead.
@@ -2176,8 +2556,12 @@ function wp_upload_bits( $name, $deprecated, $bits, $time = null ) {
 	// Compute the URL
 	$url = $upload['url'] . "/$filename";
 
+<<<<<<< HEAD
 	/** This filter is documented in wp-admin/includes/file.php */
 	return apply_filters( 'wp_handle_upload', array( 'file' => $new_file, 'url' => $url, 'type' => $wp_filetype['type'], 'error' => false ), 'sideload' );
+=======
+	return array( 'file' => $new_file, 'url' => $url, 'error' => false );
+>>>>>>> origin/master
 }
 
 /**
@@ -2186,15 +2570,50 @@ function wp_upload_bits( $name, $deprecated, $bits, $time = null ) {
  * @since 2.5.0
  *
  * @param string $ext The extension to search.
+<<<<<<< HEAD
  * @return string|void The file type, example: audio, video, document, spreadsheet, etc.
+=======
+ * @return string|null The file type, example: audio, video, document, spreadsheet, etc.
+ *                     Null if not found.
+>>>>>>> origin/master
  */
 function wp_ext2type( $ext ) {
 	$ext = strtolower( $ext );
 
+<<<<<<< HEAD
 	$ext2type = wp_get_ext_types();
 	foreach ( $ext2type as $type => $exts )
 		if ( in_array( $ext, $exts ) )
 			return $type;
+=======
+	/**
+	 * Filter file type based on the extension name.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @see wp_ext2type()
+	 *
+	 * @param array $ext2type Multi-dimensional array with extensions for a default set
+	 *                        of file types.
+	 */
+	$ext2type = apply_filters( 'ext2type', array(
+		'image'       => array( 'jpg', 'jpeg', 'jpe',  'gif',  'png',  'bmp',   'tif',  'tiff', 'ico' ),
+		'audio'       => array( 'aac', 'ac3',  'aif',  'aiff', 'm3a',  'm4a',   'm4b',  'mka',  'mp1',  'mp2',  'mp3', 'ogg', 'oga', 'ram', 'wav', 'wma' ),
+		'video'       => array( '3g2',  '3gp', '3gpp', 'asf', 'avi',  'divx', 'dv',   'flv',  'm4v',   'mkv',  'mov',  'mp4',  'mpeg', 'mpg', 'mpv', 'ogm', 'ogv', 'qt',  'rm', 'vob', 'wmv' ),
+		'document'    => array( 'doc', 'docx', 'docm', 'dotm', 'odt',  'pages', 'pdf',  'xps',  'oxps', 'rtf',  'wp', 'wpd', 'psd', 'xcf' ),
+		'spreadsheet' => array( 'numbers',     'ods',  'xls',  'xlsx', 'xlsm',  'xlsb' ),
+		'interactive' => array( 'swf', 'key',  'ppt',  'pptx', 'pptm', 'pps',   'ppsx', 'ppsm', 'sldx', 'sldm', 'odp' ),
+		'text'        => array( 'asc', 'csv',  'tsv',  'txt' ),
+		'archive'     => array( 'bz2', 'cab',  'dmg',  'gz',   'rar',  'sea',   'sit',  'sqx',  'tar',  'tgz',  'zip', '7z' ),
+		'code'        => array( 'css', 'htm',  'html', 'php',  'js' ),
+	) );
+
+	foreach ( $ext2type as $type => $exts )
+		if ( in_array( $ext, $exts ) )
+			return $type;
+
+	return null;
+>>>>>>> origin/master
 }
 
 /**
@@ -2246,6 +2665,10 @@ function wp_check_filetype( $filename, $mimes = null ) {
  *               if original $filename is valid.
  */
 function wp_check_filetype_and_ext( $file, $filename, $mimes = null ) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	$proper_filename = false;
 
 	// Do basic extension validation and MIME mapping
@@ -2267,7 +2690,11 @@ function wp_check_filetype_and_ext( $file, $filename, $mimes = null ) {
 		// If getimagesize() knows what kind of image it really is and if the real MIME doesn't match the claimed MIME
 		if ( !empty($imgstats['mime']) && $imgstats['mime'] != $type ) {
 			/**
+<<<<<<< HEAD
 			 * Filters the list mapping image mime types to their respective extensions.
+=======
+			 * Filter the list mapping image mime types to their respective extensions.
+>>>>>>> origin/master
 			 *
 			 * @since 3.0.0
 			 *
@@ -2300,7 +2727,11 @@ function wp_check_filetype_and_ext( $file, $filename, $mimes = null ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the "real" file type of the given file.
+=======
+	 * Filter the "real" file type of the given file.
+>>>>>>> origin/master
 	 *
 	 * @since 3.0.0
 	 *
@@ -2324,10 +2755,17 @@ function wp_check_filetype_and_ext( $file, $filename, $mimes = null ) {
  */
 function wp_get_mime_types() {
 	/**
+<<<<<<< HEAD
 	 * Filters the list of mime types and file extensions.
 	 *
 	 * This filter should be used to add, not remove, mime types. To remove
 	 * mime types, use the {@see 'upload_mimes'} filter.
+=======
+	 * Filter the list of mime types and file extensions.
+	 *
+	 * This filter should be used to add, not remove, mime types. To remove
+	 * mime types, use the 'upload_mimes' filter.
+>>>>>>> origin/master
 	 *
 	 * @since 3.5.0
 	 *
@@ -2436,6 +2874,7 @@ function wp_get_mime_types() {
 	'pages' => 'application/vnd.apple.pages',
 	) );
 }
+<<<<<<< HEAD
 
 /**
  * Retrieves the list of common file extensions and their types.
@@ -2469,6 +2908,8 @@ function wp_get_ext_types() {
 	) );
 }
 
+=======
+>>>>>>> origin/master
 /**
  * Retrieve list of allowed mime types and file extensions.
  *
@@ -2489,7 +2930,11 @@ function get_allowed_mime_types( $user = null ) {
 		unset( $t['htm|html'] );
 
 	/**
+<<<<<<< HEAD
 	 * Filters list of allowed mime types and file extensions.
+=======
+	 * Filter list of allowed mime types and file extensions.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
@@ -2541,7 +2986,11 @@ function wp_nonce_ays( $action ) {
  * @since 4.1.0 The `$title` and `$args` parameters were changed to optionally accept
  *              an integer to be used as the response code.
  *
+<<<<<<< HEAD
  * @param string|WP_Error  $message Optional. Error message. If this is a WP_Error object,
+=======
+ * @param string|WP_Error  $message Optional. Error message. If this is a {@see WP_Error} object,
+>>>>>>> origin/master
  *                                  the error's messages are used. Default empty.
  * @param string|int       $title   Optional. Error title. If `$message` is a `WP_Error` object,
  *                                  error data with the key 'title' may be used to specify the title.
@@ -2555,7 +3004,11 @@ function wp_nonce_ays( $action ) {
  *     @type bool   $back_link      Whether to include a link to go back. Default false.
  *     @type string $text_direction The text direction. This is only useful internally, when WordPress
  *                                  is still loading and the site's locale is not set up yet. Accepts 'rtl'.
+<<<<<<< HEAD
  *                                  Default is the value of is_rtl().
+=======
+ *                                  Default is the value of {@see is_rtl()}.
+>>>>>>> origin/master
  * }
  */
 function wp_die( $message = '', $title = '', $args = array() ) {
@@ -2569,29 +3022,53 @@ function wp_die( $message = '', $title = '', $args = array() ) {
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the callback for killing WordPress execution for Ajax requests.
 		 *
 		 * @since 3.4.0
 		 *
 		 * @param callable $function Callback function name.
+=======
+		 * Filter callback for killing WordPress execution for AJAX requests.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param callback $function Callback function name.
+>>>>>>> origin/master
 		 */
 		$function = apply_filters( 'wp_die_ajax_handler', '_ajax_wp_die_handler' );
 	} elseif ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the callback for killing WordPress execution for XML-RPC requests.
 		 *
 		 * @since 3.4.0
 		 *
 		 * @param callable $function Callback function name.
+=======
+		 * Filter callback for killing WordPress execution for XML-RPC requests.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param callback $function Callback function name.
+>>>>>>> origin/master
 		 */
 		$function = apply_filters( 'wp_die_xmlrpc_handler', '_xmlrpc_wp_die_handler' );
 	} else {
 		/**
+<<<<<<< HEAD
 		 * Filters the callback for killing WordPress execution for all non-Ajax, non-XML-RPC requests.
 		 *
 		 * @since 3.0.0
 		 *
 		 * @param callable $function Callback function name.
+=======
+		 * Filter callback for killing WordPress execution for all non-AJAX, non-XML-RPC requests.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param callback $function Callback function name.
+>>>>>>> origin/master
 		 */
 		$function = apply_filters( 'wp_die_handler', '_default_wp_die_handler' );
 	}
@@ -2600,10 +3077,17 @@ function wp_die( $message = '', $title = '', $args = array() ) {
 }
 
 /**
+<<<<<<< HEAD
  * Kills WordPress execution and display HTML message with error message.
  *
  * This is the default handler for wp_die if you want a custom one for your
  * site then you can overload using the {@see 'wp_die_handler'} filter in wp_die().
+=======
+ * Kill WordPress execution and display HTML message with error message.
+ *
+ * This is the default handler for wp_die if you want a custom one for your
+ * site then you can overload using the wp_die_handler filter in wp_die
+>>>>>>> origin/master
  *
  * @since 3.0.0
  * @access private
@@ -2667,12 +3151,15 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 <html xmlns="http://www.w3.org/1999/xhtml" <?php if ( function_exists( 'language_attributes' ) && function_exists( 'is_rtl' ) ) language_attributes(); else echo "dir='$text_direction'"; ?>>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
 	<meta name="viewport" content="width=device-width">
 	<?php
 	if ( function_exists( 'wp_no_robots' ) ) {
 		wp_no_robots();
 	}
 	?>
+=======
+>>>>>>> origin/master
 	<title><?php echo $title ?></title>
 	<style type="text/css">
 		html {
@@ -2681,7 +3168,11 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 		body {
 			background: #fff;
 			color: #444;
+<<<<<<< HEAD
 			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+=======
+			font-family: "Open Sans", sans-serif;
+>>>>>>> origin/master
 			margin: 2em auto;
 			padding: 1em 2em;
 			max-width: 700px;
@@ -2692,7 +3183,11 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			border-bottom: 1px solid #dadada;
 			clear: both;
 			color: #666;
+<<<<<<< HEAD
 			font-size: 24px;
+=======
+			font: 24px "Open Sans", sans-serif;
+>>>>>>> origin/master
 			margin: 30px 0 0 0;
 			padding: 0;
 			padding-bottom: 7px;
@@ -2713,6 +3208,7 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			font-size: 14px ;
 		}
 		a {
+<<<<<<< HEAD
 			color: #0073aa;
 		}
 		a:hover,
@@ -2732,6 +3228,17 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 		.button {
 			background: #f7f7f7;
 			border: 1px solid #ccc;
+=======
+			color: #21759B;
+			text-decoration: none;
+		}
+		a:hover {
+			color: #D54E21;
+		}
+		.button {
+			background: #f7f7f7;
+			border: 1px solid #cccccc;
+>>>>>>> origin/master
 			color: #555;
 			display: inline-block;
 			text-decoration: none;
@@ -2749,21 +3256,33 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			-moz-box-sizing:    border-box;
 			box-sizing:         border-box;
 
+<<<<<<< HEAD
 			-webkit-box-shadow: 0 1px 0 #ccc;
 			box-shadow: 0 1px 0 #ccc;
+=======
+			-webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,.08);
+			box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,.08);
+>>>>>>> origin/master
 		 	vertical-align: top;
 		}
 
 		.button.button-large {
+<<<<<<< HEAD
 			height: 30px;
 			line-height: 28px;
 			padding: 0 12px 2px;
+=======
+			height: 29px;
+			line-height: 28px;
+			padding: 0 12px;
+>>>>>>> origin/master
 		}
 
 		.button:hover,
 		.button:focus {
 			background: #fafafa;
 			border-color: #999;
+<<<<<<< HEAD
 			color: #23282d;
 		}
 
@@ -2772,11 +3291,20 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 			box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 			outline: none;
+=======
+			color: #222;
+		}
+
+		.button:focus  {
+			-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+			box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+>>>>>>> origin/master
 		}
 
 		.button:active {
 			background: #eee;
 			border-color: #999;
+<<<<<<< HEAD
 		 	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 		 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 		 	-webkit-transform: translateY(1px);
@@ -2789,6 +3317,16 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			echo 'body { font-family: Tahoma, Arial; }';
 		}
 		?>
+=======
+			color: #333;
+			-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+		 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+		}
+
+		<?php if ( 'rtl' == $text_direction ) : ?>
+		body { font-family: Tahoma, Arial; }
+		<?php endif; ?>
+>>>>>>> origin/master
 	</style>
 </head>
 <body id="error-page">
@@ -2808,8 +3346,11 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
  * @since 3.2.0
  * @access private
  *
+<<<<<<< HEAD
  * @global wp_xmlrpc_server $wp_xmlrpc_server
  *
+=======
+>>>>>>> origin/master
  * @param string       $message Error message.
  * @param string       $title   Optional. Error title. Default empty.
  * @param string|array $args    Optional. Arguments to control behavior. Default empty array.
@@ -2868,7 +3409,11 @@ function _scalar_wp_die_handler( $message = '' ) {
  * @param int   $options Optional. Options to be passed to json_encode(). Default 0.
  * @param int   $depth   Optional. Maximum depth to walk through $data. Must be
  *                       greater than 0. Default 512.
+<<<<<<< HEAD
  * @return string|false The JSON encoded string, or false if it cannot be encoded.
+=======
+ * @return bool|string The JSON encoded string, or false if it cannot be encoded.
+>>>>>>> origin/master
  */
 function wp_json_encode( $data, $options = 0, $depth = 512 ) {
 	/*
@@ -2884,10 +3429,14 @@ function wp_json_encode( $data, $options = 0, $depth = 512 ) {
 		$args = array( $data );
 	}
 
+<<<<<<< HEAD
 	// Prepare the data for JSON serialization.
 	$args[0] = _wp_json_prepare_data( $data );
 
 	$json = @call_user_func_array( 'json_encode', $args );
+=======
+	$json = call_user_func_array( 'json_encode', $args );
+>>>>>>> origin/master
 
 	// If json_encode() was successful, no need to do more sanity checking.
 	// ... unless we're in an old version of PHP, and json_encode() returned
@@ -2977,8 +3526,11 @@ function _wp_json_sanity_check( $data, $depth ) {
  *
  * @see _wp_json_sanity_check()
  *
+<<<<<<< HEAD
  * @staticvar bool $use_mb
  *
+=======
+>>>>>>> origin/master
  * @param string $string The string which is to be converted.
  * @return string The checked string.
  */
@@ -3001,6 +3553,7 @@ function _wp_json_convert_string( $string ) {
 }
 
 /**
+<<<<<<< HEAD
  * Prepares response data to be serialized to JSON.
  *
  * This supports the JsonSerializable interface for PHP 5.2-5.3 as well.
@@ -3051,6 +3604,8 @@ function _wp_json_prepare_data( $data ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Send a JSON response back to an Ajax request.
  *
  * @since 3.5.0
@@ -3086,13 +3641,22 @@ function wp_send_json_success( $data = null ) {
 /**
  * Send a JSON response back to an Ajax request, indicating failure.
  *
+<<<<<<< HEAD
  * If the `$data` parameter is a WP_Error object, the errors
+=======
+ * If the `$data` parameter is a {@see WP_Error} object, the errors
+>>>>>>> origin/master
  * within the object are processed and output as an array of error
  * codes and corresponding messages. All other types are output
  * without further processing.
  *
  * @since 3.5.0
+<<<<<<< HEAD
  * @since 4.1.0 The `$data` parameter is now processed if a WP_Error object is passed in.
+=======
+ * @since 4.1.0 The `$data` parameter is now processed if a {@see WP_Error}
+ *              object is passed in.
+>>>>>>> origin/master
  *
  * @param mixed $data Data to encode as JSON, then print and die.
  */
@@ -3118,6 +3682,7 @@ function wp_send_json_error( $data = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Checks that a JSONP callback is a valid JavaScript callback.
  *
  * Only allows alphanumeric characters and the dot character in callback
@@ -3140,6 +3705,8 @@ function wp_check_jsonp_callback( $callback ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Retrieve the WordPress home page URL.
  *
  * If the constant named 'WP_HOME' exists, then it will be used and returned
@@ -3190,11 +3757,16 @@ function _config_wp_siteurl( $url = '' ) {
  * Fills in the 'directionality' setting, enables the 'directionality'
  * plugin, and adds the 'ltr' button to 'toolbar1', formerly
  * 'theme_advanced_buttons1' array keys. These keys are then returned
+<<<<<<< HEAD
  * in the $mce_init (TinyMCE settings) array.
+=======
+ * in the $input (TinyMCE settings) array.
+>>>>>>> origin/master
  *
  * @since 2.1.0
  * @access private
  *
+<<<<<<< HEAD
  * @param array $mce_init MCE settings array.
  * @return array Direction set for 'rtl', if needed by locale.
  */
@@ -3213,6 +3785,25 @@ function _mce_set_direction( $mce_init ) {
 	}
 
 	return $mce_init;
+=======
+ * @param array $input MCE settings array.
+ * @return array Direction set for 'rtl', if needed by locale.
+ */
+function _mce_set_direction( $input ) {
+	if ( is_rtl() ) {
+		$input['directionality'] = 'rtl';
+
+		if ( ! empty( $input['plugins'] ) && strpos( $input['plugins'], 'directionality' ) === false ) {
+			$input['plugins'] .= ',directionality';
+		}
+
+		if ( ! empty( $input['toolbar1'] ) && ! preg_match( '/\bltr\b/', $input['toolbar1'] ) ) {
+			$input['toolbar1'] .= ',ltr';
+		}
+	}
+
+	return $input;
+>>>>>>> origin/master
 }
 
 
@@ -3252,7 +3843,11 @@ function smilies_init() {
 		':twisted:' => "\xf0\x9f\x98\x88",
 		  ':arrow:' => "\xe2\x9e\xa1",
 		  ':shock:' => "\xf0\x9f\x98\xaf",
+<<<<<<< HEAD
 		  ':smile:' => "\xf0\x9f\x99\x82",
+=======
+		  ':smile:' => 'simple-smile.png',
+>>>>>>> origin/master
 		    ':???:' => "\xf0\x9f\x98\x95",
 		   ':cool:' => "\xf0\x9f\x98\x8e",
 		   ':evil:' => "\xf0\x9f\x91\xbf",
@@ -3260,17 +3855,29 @@ function smilies_init() {
 		   ':idea:' => "\xf0\x9f\x92\xa1",
 		   ':oops:' => "\xf0\x9f\x98\xb3",
 		   ':razz:' => "\xf0\x9f\x98\x9b",
+<<<<<<< HEAD
 		   ':roll:' => "\xf0\x9f\x99\x84",
+=======
+		   ':roll:' => 'rolleyes.png',
+>>>>>>> origin/master
 		   ':wink:' => "\xf0\x9f\x98\x89",
 		    ':cry:' => "\xf0\x9f\x98\xa5",
 		    ':eek:' => "\xf0\x9f\x98\xae",
 		    ':lol:' => "\xf0\x9f\x98\x86",
 		    ':mad:' => "\xf0\x9f\x98\xa1",
+<<<<<<< HEAD
 		    ':sad:' => "\xf0\x9f\x99\x81",
 		      '8-)' => "\xf0\x9f\x98\x8e",
 		      '8-O' => "\xf0\x9f\x98\xaf",
 		      ':-(' => "\xf0\x9f\x99\x81",
 		      ':-)' => "\xf0\x9f\x99\x82",
+=======
+		    ':sad:' => 'frownie.png',
+		      '8-)' => "\xf0\x9f\x98\x8e",
+		      '8-O' => "\xf0\x9f\x98\xaf",
+		      ':-(' => 'frownie.png',
+		      ':-)' => 'simple-smile.png',
+>>>>>>> origin/master
 		      ':-?' => "\xf0\x9f\x98\x95",
 		      ':-D' => "\xf0\x9f\x98\x80",
 		      ':-P' => "\xf0\x9f\x98\x9b",
@@ -3281,8 +3888,13 @@ function smilies_init() {
 		// This one transformation breaks regular text with frequency.
 		//     '8)' => "\xf0\x9f\x98\x8e",
 		       '8O' => "\xf0\x9f\x98\xaf",
+<<<<<<< HEAD
 		       ':(' => "\xf0\x9f\x99\x81",
 		       ':)' => "\xf0\x9f\x99\x82",
+=======
+		       ':(' => 'frownie.png',
+		       ':)' => 'simple-smile.png',
+>>>>>>> origin/master
 		       ':?' => "\xf0\x9f\x98\x95",
 		       ':D' => "\xf0\x9f\x98\x80",
 		       ':P' => "\xf0\x9f\x98\x9b",
@@ -3393,6 +4005,7 @@ function wp_array_slice_assoc( $array, $keys ) {
 }
 
 /**
+<<<<<<< HEAD
  * Determines if the variable is a numeric-indexed array.
  *
  * @since 4.4.0
@@ -3411,6 +4024,8 @@ function wp_is_numeric_array( $data ) {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Filters a list of objects, based on a set of key => value arguments.
  *
  * @since 3.0.0
@@ -3420,8 +4035,12 @@ function wp_is_numeric_array( $data ) {
  *                              against each object. Default empty array.
  * @param string      $operator Optional. The logical operation to perform. 'or' means
  *                              only one element from the array needs to match; 'and'
+<<<<<<< HEAD
  *                              means all elements must match; 'not' means no elements may
  *                              match. Default 'and'.
+=======
+ *                              means all elements must match. Default 'and'.
+>>>>>>> origin/master
  * @param bool|string $field    A field from the object to place instead of the entire object.
  *                              Default false.
  * @return array A list of objects or object fields.
@@ -3549,7 +4168,11 @@ function wp_list_pluck( $list, $field, $index_key = null ) {
  */
 function wp_maybe_load_widgets() {
 	/**
+<<<<<<< HEAD
 	 * Filters whether to load the Widgets library.
+=======
+	 * Filter whether to load the Widgets library.
+>>>>>>> origin/master
 	 *
 	 * Passing a falsey value to the filter will effectively short-circuit
 	 * the Widgets library from loading.
@@ -3572,8 +4195,11 @@ function wp_maybe_load_widgets() {
  * Append the Widgets menu to the themes main menu.
  *
  * @since 2.2.0
+<<<<<<< HEAD
  *
  * @global array $submenu
+=======
+>>>>>>> origin/master
  */
 function wp_widgets_add_menu() {
 	global $submenu;
@@ -3628,7 +4254,11 @@ function dead_db() {
 	}
 
 	// If installing or in the admin, provide the verbose message.
+<<<<<<< HEAD
 	if ( wp_installing() || defined( 'WP_ADMIN' ) )
+=======
+	if ( defined('WP_INSTALLING') || defined('WP_ADMIN') )
+>>>>>>> origin/master
 		wp_die($wpdb->error);
 
 	// Otherwise, be terse.
@@ -3666,11 +4296,19 @@ function absint( $maybeint ) {
 /**
  * Mark a function as deprecated and inform when it has been used.
  *
+<<<<<<< HEAD
  * There is a {@see 'hook deprecated_function_run'} that will be called that can be used
  * to get the backtrace up to what file and function called the deprecated
  * function.
  *
  * The current behavior is to trigger a user error if `WP_DEBUG` is true.
+=======
+ * There is a hook deprecated_function_run that will be called that can be used
+ * to get the backtrace up to what file and function called the deprecated
+ * function.
+ *
+ * The current behavior is to trigger a user error if WP_DEBUG is true.
+>>>>>>> origin/master
  *
  * This function is to be used in every function that is deprecated.
  *
@@ -3695,7 +4333,11 @@ function _deprecated_function( $function, $version, $replacement = null ) {
 	do_action( 'deprecated_function_run', $function, $replacement, $version );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether to trigger an error for deprecated functions.
+=======
+	 * Filter whether to trigger an error for deprecated functions.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *
@@ -3717,6 +4359,7 @@ function _deprecated_function( $function, $version, $replacement = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Marks a constructor as deprecated and informs when it has been used.
  *
  * Similar to _deprecated_function(), but with different strings. Used to
@@ -3791,6 +4434,15 @@ function _deprecated_constructor( $class, $version, $parent_class = '' ) {
  * file.
  *
  * The current behavior is to trigger a user error if `WP_DEBUG` is true.
+=======
+ * Mark a file as deprecated and inform when it has been used.
+ *
+ * There is a hook deprecated_file_included that will be called that can be used
+ * to get the backtrace up to what file and function included the deprecated
+ * file.
+ *
+ * The current behavior is to trigger a user error if WP_DEBUG is true.
+>>>>>>> origin/master
  *
  * This function is to be used in every file that is deprecated.
  *
@@ -3818,7 +4470,11 @@ function _deprecated_file( $file, $version, $replacement = null, $message = '' )
 	do_action( 'deprecated_file_included', $file, $replacement, $version, $message );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether to trigger an error for deprecated files.
+=======
+	 * Filter whether to trigger an error for deprecated files.
+>>>>>>> origin/master
 	 *
 	 * @since 2.5.0
 	 *
@@ -3848,7 +4504,11 @@ function _deprecated_file( $file, $version, $replacement = null, $message = '' )
  * For example:
  *
  *     if ( ! empty( $deprecated ) ) {
+<<<<<<< HEAD
  *         _deprecated_argument( __FUNCTION__, '3.0.0' );
+=======
+ *         _deprecated_argument( __FUNCTION__, '3.0' );
+>>>>>>> origin/master
  *     }
  *
  *
@@ -3879,7 +4539,11 @@ function _deprecated_argument( $function, $version, $message = null ) {
 	do_action( 'deprecated_argument_run', $function, $message, $version );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether to trigger an error for deprecated arguments.
+=======
+	 * Filter whether to trigger an error for deprecated arguments.
+>>>>>>> origin/master
 	 *
 	 * @since 3.0.0
 	 *
@@ -3901,6 +4565,7 @@ function _deprecated_argument( $function, $version, $message = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Marks a deprecated action or filter hook as deprecated and throws a notice.
  *
  * Use the {@see 'deprecated_hook_run'} action to get the backtrace describing where
@@ -3958,6 +4623,15 @@ function _deprecated_hook( $hook, $version, $replacement = null, $message = null
  * function.
  *
  * The current behavior is to trigger a user error if `WP_DEBUG` is true.
+=======
+ * Mark something as being incorrectly called.
+ *
+ * There is a hook doing_it_wrong_run that will be called that can be used
+ * to get the backtrace up to what file and function called the deprecated
+ * function.
+ *
+ * The current behavior is to trigger a user error if WP_DEBUG is true.
+>>>>>>> origin/master
  *
  * @since 3.1.0
  * @access private
@@ -3980,7 +4654,11 @@ function _doing_it_wrong( $function, $message, $version ) {
 	do_action( 'doing_it_wrong_run', $function, $message, $version );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether to trigger an error for _doing_it_wrong() calls.
+=======
+	 * Filter whether to trigger an error for _doing_it_wrong() calls.
+>>>>>>> origin/master
 	 *
 	 * @since 3.1.0
 	 *
@@ -3989,6 +4667,7 @@ function _doing_it_wrong( $function, $message, $version ) {
 	if ( WP_DEBUG && apply_filters( 'doing_it_wrong_trigger_error', true ) ) {
 		if ( function_exists( '__' ) ) {
 			$version = is_null( $version ) ? '' : sprintf( __( '(This message was added in version %s.)' ), $version );
+<<<<<<< HEAD
 			/* translators: %s: Codex URL */
 			$message .= ' ' . sprintf( __( 'Please see <a href="%s">Debugging in WordPress</a> for more information.' ),
 				__( 'https://codex.wordpress.org/Debugging_in_WordPress' )
@@ -3999,6 +4678,13 @@ function _doing_it_wrong( $function, $message, $version ) {
 			$message .= sprintf( ' Please see <a href="%s">Debugging in WordPress</a> for more information.',
 				'https://codex.wordpress.org/Debugging_in_WordPress'
 			);
+=======
+			$message .= ' ' . __( 'Please see <a href="https://codex.wordpress.org/Debugging_in_WordPress">Debugging in WordPress</a> for more information.' );
+			trigger_error( sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s' ), $function, $message, $version ) );
+		} else {
+			$version = is_null( $version ) ? '' : sprintf( '(This message was added in version %s.)', $version );
+			$message .= ' Please see <a href="https://codex.wordpress.org/Debugging_in_WordPress">Debugging in WordPress</a> for more information.';
+>>>>>>> origin/master
 			trigger_error( sprintf( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s', $function, $message, $version ) );
 		}
 	}
@@ -4022,8 +4708,11 @@ function is_lighttpd_before_150() {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @global bool $is_apache
  *
+=======
+>>>>>>> origin/master
  * @param string $mod     The module, e.g. mod_rewrite.
  * @param bool   $default Optional. The default return value if the module is not found. Default false.
  * @return bool Whether the specified module is loaded.
@@ -4053,8 +4742,11 @@ function apache_mod_loaded($mod, $default = false) {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @global bool $is_iis7
  *
+=======
+>>>>>>> origin/master
  * @return bool Whether IIS7 supports permalinks.
  */
 function iis7_supports_permalinks() {
@@ -4071,11 +4763,19 @@ function iis7_supports_permalinks() {
 		 * Lastly we make sure that PHP is running via FastCGI. This is important because if it runs
 		 * via ISAPI then pretty permalinks will not work.
 		 */
+<<<<<<< HEAD
 		$supports_permalinks = class_exists( 'DOMDocument', false ) && isset($_SERVER['IIS_UrlRewriteModule']) && ( PHP_SAPI == 'cgi-fcgi' );
 	}
 
 	/**
 	 * Filters whether IIS 7+ supports pretty permalinks.
+=======
+		$supports_permalinks = class_exists('DOMDocument') && isset($_SERVER['IIS_UrlRewriteModule']) && ( PHP_SAPI == 'cgi-fcgi' );
+	}
+
+	/**
+	 * Filter whether IIS 7+ supports pretty permalinks.
+>>>>>>> origin/master
 	 *
 	 * @since 2.8.0
 	 *
@@ -4095,7 +4795,11 @@ function iis7_supports_permalinks() {
  * @since 1.2.0
  *
  * @param string $file File path.
+<<<<<<< HEAD
  * @param array  $allowed_files List of allowed files.
+=======
+ * @param array $allowed_files List of allowed files.
+>>>>>>> origin/master
  * @return int 0 means nothing is wrong, greater than 0 means something was wrong.
  */
 function validate_file( $file, $allowed_files = '' ) {
@@ -4115,11 +4819,50 @@ function validate_file( $file, $allowed_files = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Whether to force SSL used for the Administration Screens.
  *
  * @since 2.6.0
  *
  * @staticvar bool $forced
+=======
+ * Determine if SSL is used.
+ *
+ * @since 2.6.0
+ *
+ * @return bool True if SSL, false if not used.
+ */
+function is_ssl() {
+	if ( isset($_SERVER['HTTPS']) ) {
+		if ( 'on' == strtolower($_SERVER['HTTPS']) )
+			return true;
+		if ( '1' == $_SERVER['HTTPS'] )
+			return true;
+	} elseif ( isset($_SERVER['SERVER_PORT']) && ( '443' == $_SERVER['SERVER_PORT'] ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Whether SSL login should be forced.
+ *
+ * @since 2.6.0
+ *
+ * @see force_ssl_admin()
+ *
+ * @param string|bool $force Optional Whether to force SSL login. Default null.
+ * @return bool True if forced, false if not forced.
+ */
+function force_ssl_login( $force = null ) {
+	return force_ssl_admin( $force );
+}
+
+/**
+ * Whether to force SSL used for the Administration Screens.
+ *
+ * @since 2.6.0
+>>>>>>> origin/master
  *
  * @param string|bool $force Optional. Whether to force SSL in admin screens. Default null.
  * @return bool True if forced, false if not forced.
@@ -4166,7 +4909,11 @@ function wp_guess_url() {
 			if ( false !== strpos( $_SERVER['SCRIPT_FILENAME'], $abspath_fix ) ) {
 				// Request is hitting a file inside ABSPATH
 				$directory = str_replace( ABSPATH, '', $script_filename_dir );
+<<<<<<< HEAD
 				// Strip off the sub directory, and any file/query params
+=======
+				// Strip off the sub directory, and any file/query paramss
+>>>>>>> origin/master
 				$path = preg_replace( '#/' . preg_quote( $directory, '#' ) . '/[^/]*$#i', '' , $_SERVER['REQUEST_URI'] );
 			} elseif ( false !== strpos( $abspath_fix, $script_filename_dir ) ) {
 				// Request is hitting a file above ABSPATH
@@ -4197,8 +4944,11 @@ function wp_guess_url() {
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @staticvar bool $_suspend
  *
+=======
+>>>>>>> origin/master
  * @param bool $suspend Optional. Suspends additions if true, re-enables them if false.
  * @return bool The current suspend setting
  */
@@ -4220,8 +4970,11 @@ function wp_suspend_cache_addition( $suspend = null ) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @global bool $_wp_suspend_cache_invalidation
  *
+=======
+>>>>>>> origin/master
  * @param bool $suspend Optional. Whether to suspend or enable cache invalidation. Default true.
  * @return bool The current suspend setting.
  */
@@ -4238,9 +4991,14 @@ function wp_suspend_cache_invalidation( $suspend = true ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global object $current_site
  *
  * @param int $site_id Optional. Site ID to test. Defaults to current site.
+=======
+ * @param int $site_id Optional. Site ID to test. Defaults to current site.
+ *                     Defaults to current site.
+>>>>>>> origin/master
  * @return bool True if $site_id is the main site of the network, or if not
  *              running Multisite.
  */
@@ -4266,6 +5024,7 @@ function is_main_site( $site_id = null ) {
  * @return bool True if $network_id is the main network, or if not running Multisite.
  */
 function is_main_network( $network_id = null ) {
+<<<<<<< HEAD
 	if ( ! is_multisite() ) {
 		return true;
 	}
@@ -4321,6 +5080,34 @@ function get_main_network_id() {
 	 * @param int $main_network_id The ID of the main network.
 	 */
 	return (int) apply_filters( 'get_main_network_id', $main_network_id );
+=======
+	global $wpdb;
+
+	if ( ! is_multisite() )
+		return true;
+
+	$current_network_id = (int) get_current_site()->id;
+
+	if ( ! $network_id )
+		$network_id = $current_network_id;
+	$network_id = (int) $network_id;
+
+	if ( defined( 'PRIMARY_NETWORK_ID' ) )
+		return $network_id === (int) PRIMARY_NETWORK_ID;
+
+	if ( 1 === $current_network_id )
+		return $network_id === $current_network_id;
+
+	$primary_network_id = (int) wp_cache_get( 'primary_network_id', 'site-options' );
+
+	if ( $primary_network_id )
+		return $network_id === $primary_network_id;
+
+	$primary_network_id = (int) $wpdb->get_var( "SELECT id FROM $wpdb->site ORDER BY id LIMIT 1" );
+	wp_cache_add( 'primary_network_id', $primary_network_id, 'site-options' );
+
+	return $network_id === $primary_network_id;
+>>>>>>> origin/master
 }
 
 /**
@@ -4328,8 +5115,11 @@ function get_main_network_id() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @staticvar bool $global_terms
  *
+=======
+>>>>>>> origin/master
  * @return bool True if multisite and global terms enabled.
  */
 function global_terms_enabled() {
@@ -4340,14 +5130,22 @@ function global_terms_enabled() {
 	if ( is_null( $global_terms ) ) {
 
 		/**
+<<<<<<< HEAD
 		 * Filters whether global terms are enabled.
+=======
+		 * Filter whether global terms are enabled.
+>>>>>>> origin/master
 		 *
 		 * Passing a non-null value to the filter will effectively short-circuit the function,
 		 * returning the value of the 'global_terms_enabled' site option instead.
 		 *
 		 * @since 3.0.0
 		 *
+<<<<<<< HEAD
 		 * @param null $enabled Whether global terms are enabled.
+=======
+		 * @param null $anbled Whether global terms are enabled.
+>>>>>>> origin/master
 		 */
 		$filter = apply_filters( 'global_terms_enabled', null );
 		if ( ! is_null( $filter ) )
@@ -4365,7 +5163,11 @@ function global_terms_enabled() {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @return float|false Timezone GMT offset, false otherwise.
+=======
+ * @return float|bool Timezone GMT offset, false otherwise.
+>>>>>>> origin/master
  */
 function wp_timezone_override_offset() {
 	if ( !$timezone_string = get_option( 'timezone_string' ) ) {
@@ -4433,8 +5235,11 @@ function _wp_timezone_choice_usort_callback( $a, $b ) {
  *
  * @since 2.9.0
  *
+<<<<<<< HEAD
  * @staticvar bool $mo_loaded
  *
+=======
+>>>>>>> origin/master
  * @param string $selected_zone Selected timezone.
  * @return string
  */
@@ -4581,8 +5386,11 @@ function _cleanup_header_comment( $str ) {
  * The default value of `EMPTY_TRASH_DAYS` is 30 (days).
  *
  * @since 2.9.0
+<<<<<<< HEAD
  *
  * @global wpdb $wpdb WordPress database abstraction object.
+=======
+>>>>>>> origin/master
  */
 function wp_scheduled_delete() {
 	global $wpdb;
@@ -4619,7 +5427,11 @@ function wp_scheduled_delete() {
 			delete_comment_meta($comment_id, '_wp_trash_meta_time');
 			delete_comment_meta($comment_id, '_wp_trash_meta_status');
 		} else {
+<<<<<<< HEAD
 			wp_delete_comment( $del_comment );
+=======
+			wp_delete_comment($comment_id);
+>>>>>>> origin/master
 		}
 	}
 }
@@ -4640,7 +5452,11 @@ function wp_scheduled_delete() {
  *
  * @param string $file            Path to the file.
  * @param array  $default_headers List of headers, in the format array('HeaderKey' => 'Header Name').
+<<<<<<< HEAD
  * @param string $context         Optional. If specified adds filter hook {@see 'extra_$context_headers'}.
+=======
+ * @param string $context         Optional. If specified adds filter hook "extra_{$context}_headers".
+>>>>>>> origin/master
  *                                Default empty.
  * @return array Array of file headers in `HeaderKey => Header Value` format.
  */
@@ -4658,7 +5474,11 @@ function get_file_data( $file, $default_headers, $context = '' ) {
 	$file_data = str_replace( "\r", "\n", $file_data );
 
 	/**
+<<<<<<< HEAD
 	 * Filters extra file headers by context.
+=======
+	 * Filter extra file headers by context.
+>>>>>>> origin/master
 	 *
 	 * The dynamic portion of the hook name, `$context`, refers to
 	 * the context where extra headers might be loaded.
@@ -4693,7 +5513,11 @@ function get_file_data( $file, $default_headers, $context = '' ) {
  *
  * @see __return_false()
  *
+<<<<<<< HEAD
  * @return true True.
+=======
+ * @return bool True.
+>>>>>>> origin/master
  */
 function __return_true() {
 	return true;
@@ -4708,7 +5532,11 @@ function __return_true() {
  *
  * @see __return_true()
  *
+<<<<<<< HEAD
  * @return false False.
+=======
+ * @return bool False.
+>>>>>>> origin/master
  */
 function __return_false() {
 	return false;
@@ -4773,8 +5601,13 @@ function __return_empty_string() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @see https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx
  * @see https://src.chromium.org/viewvc/chrome?view=rev&revision=6985
+=======
+ * @see http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx
+ * @see http://src.chromium.org/viewvc/chrome?view=rev&revision=6985
+>>>>>>> origin/master
  */
 function send_nosniff_header() {
 	@header( 'X-Content-Type-Options: nosniff' );
@@ -4811,7 +5644,11 @@ function _wp_mysql_week( $column ) {
  * @since 3.1.0
  * @access private
  *
+<<<<<<< HEAD
  * @param callable $callback      Function that accepts ( ID, $callback_args ) and outputs parent_ID.
+=======
+ * @param callback $callback      Function that accepts ( ID, $callback_args ) and outputs parent_ID.
+>>>>>>> origin/master
  * @param int      $start         The ID to start the loop check at.
  * @param int      $start_parent  The parent_ID of $start to use instead of calling $callback( $start ).
  *                                Use null to always use $callback
@@ -4836,7 +5673,11 @@ function wp_find_hierarchy_loop( $callback, $start, $start_parent, $callback_arg
  * @since 3.1.0
  * @access private
  *
+<<<<<<< HEAD
  * @param callable $callback      Function that accepts ( ID, callback_arg, ... ) and outputs parent_ID.
+=======
+ * @param callback $callback      Function that accepts ( ID, callback_arg, ... ) and outputs parent_ID.
+>>>>>>> origin/master
  * @param int      $start         The ID to start the loop check at.
  * @param array    $override      Optional. An array of ( ID => parent_ID, ... ) to use instead of $callback.
  *                                Default empty array.
@@ -4889,11 +5730,15 @@ function send_frame_options_header() {
  * Retrieve a list of protocols to allow in HTML attributes.
  *
  * @since 3.3.0
+<<<<<<< HEAD
  * @since 4.3.0 Added 'webcal' to the protocols array.
+=======
+>>>>>>> origin/master
  *
  * @see wp_kses()
  * @see esc_url()
  *
+<<<<<<< HEAD
  * @staticvar array $protocols
  *
  * @return array Array of allowed protocols. Defaults to an array containing 'http', 'https',
@@ -4908,6 +5753,18 @@ function wp_allowed_protocols() {
 
 		/**
 		 * Filters the list of protocols allowed in HTML attributes.
+=======
+ * @return array Array of allowed protocols.
+ */
+function wp_allowed_protocols() {
+	static $protocols;
+
+	if ( empty( $protocols ) ) {
+		$protocols = array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet', 'mms', 'rtsp', 'svn', 'tel', 'fax', 'xmpp' );
+
+		/**
+		 * Filter the list of protocols allowed in HTML attributes.
+>>>>>>> origin/master
 		 *
 		 * @since 3.0.0
 		 *
@@ -4999,7 +5856,11 @@ function _get_non_cached_ids( $object_ids, $cache_key ) {
  * @since 3.4.0
  * @access private
  *
+<<<<<<< HEAD
  * @return bool Whether the device is able to upload files.
+=======
+ * @return bool true|false Whether the device is able to upload files.
+>>>>>>> origin/master
  */
 function _device_can_upload() {
 	if ( ! wp_is_mobile() )
@@ -5044,7 +5905,11 @@ function wp_is_stream( $path ) {
  */
 function wp_checkdate( $month, $day, $year, $source_date ) {
 	/**
+<<<<<<< HEAD
 	 * Filters whether the given date is valid for the Gregorian calendar.
+=======
+	 * Filter whether the given date is valid for the Gregorian calendar.
+>>>>>>> origin/master
 	 *
 	 * @since 3.5.0
 	 *
@@ -5060,7 +5925,11 @@ function wp_checkdate( $month, $day, $year, $source_date ) {
  * Can be disabled with remove_action( 'admin_enqueue_scripts', 'wp_auth_check_load' );
  *
  * This is disabled for certain screens where a login screen could cause an
+<<<<<<< HEAD
  * inconvenient interruption. A filter called {@see 'wp_auth_check_load'} can be used
+=======
+ * inconvenient interruption. A filter called wp_auth_check_load can be used
+>>>>>>> origin/master
  * for fine-grained control.
  *
  * @since 3.6.0
@@ -5077,7 +5946,11 @@ function wp_auth_check_load() {
 	$show = ! in_array( $screen->id, $hidden );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether to load the authentication check.
+=======
+	 * Filter whether to load the authentication check.
+>>>>>>> origin/master
 	 *
 	 * Passing a falsey value to the filter will effectively short-circuit
 	 * loading the authentication check.
@@ -5107,7 +5980,11 @@ function wp_auth_check_html() {
 	$same_domain = ( strpos( $login_url, $current_domain ) === 0 );
 
 	/**
+<<<<<<< HEAD
 	 * Filters whether the authentication check originated at the same domain.
+=======
+	 * Filter whether the authentication check originated at the same domain.
+>>>>>>> origin/master
 	 *
 	 * @since 3.6.0
 	 *
@@ -5120,12 +5997,20 @@ function wp_auth_check_html() {
 	<div id="wp-auth-check-wrap" class="<?php echo $wrap_class; ?>">
 	<div id="wp-auth-check-bg"></div>
 	<div id="wp-auth-check">
+<<<<<<< HEAD
 	<button type="button" class="wp-auth-check-close button-link"><span class="screen-reader-text"><?php _e( 'Close dialog' ); ?></span></button>
+=======
+	<div class="wp-auth-check-close" tabindex="0" title="<?php esc_attr_e('Close'); ?>"></div>
+>>>>>>> origin/master
 	<?php
 
 	if ( $same_domain ) {
 		?>
+<<<<<<< HEAD
 		<div id="wp-auth-check-form" class="loading" data-src="<?php echo esc_url( add_query_arg( array( 'interim-login' => 1 ), $login_url ) ); ?>"></div>
+=======
+		<div id="wp-auth-check-form" data-src="<?php echo esc_url( add_query_arg( array( 'interim-login' => 1 ), $login_url ) ); ?>"></div>
+>>>>>>> origin/master
 		<?php
 	}
 
@@ -5148,10 +6033,16 @@ function wp_auth_check_html() {
  *
  * @since 3.6.0
  *
+<<<<<<< HEAD
  * @global int $login_grace_period
  *
  * @param array $response  The Heartbeat response.
  * @return array $response The Heartbeat response with 'wp-auth-check' value set.
+=======
+ * @param array|object $response  The Heartbeat response object or array.
+ * @return array|object $response The Heartbeat response object or array with 'wp-auth-check'
+ *                                value set.
+>>>>>>> origin/master
  */
 function wp_auth_check( $response ) {
 	$response['wp-auth-check'] = is_user_logged_in() && empty( $GLOBALS['login_grace_period'] );
@@ -5224,9 +6115,12 @@ function _canonical_charset( $charset ) {
  *
  * @see reset_mbstring_encoding()
  *
+<<<<<<< HEAD
  * @staticvar array $encodings
  * @staticvar bool  $overloaded
  *
+=======
+>>>>>>> origin/master
  * @param bool $reset Optional. Whether to reset the encoding back to a previously-set encoding.
  *                    Default false.
  */
@@ -5294,7 +6188,11 @@ function wp_validate_boolean( $var ) {
  */
 function wp_delete_file( $file ) {
 	/**
+<<<<<<< HEAD
 	 * Filters the path of the file to delete.
+=======
+	 * Filter the path of the file to delete.
+>>>>>>> origin/master
 	 *
 	 * @since 2.1.0
 	 *
@@ -5305,6 +6203,7 @@ function wp_delete_file( $file ) {
 		@unlink( $delete );
 	}
 }
+<<<<<<< HEAD
 
 /**
  * Outputs a small JS snippet on preview tabs/windows to remove `window.name` on unload.
@@ -5464,3 +6363,5 @@ function wp_raise_memory_limit( $context = 'admin' ) {
 
 	return false;
 }
+=======
+>>>>>>> origin/master

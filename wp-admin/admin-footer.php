@@ -9,11 +9,14 @@
 // don't load directly
 if ( !defined('ABSPATH') )
 	die('-1');
+<<<<<<< HEAD
 
 /**
  * @global string $hook_suffix
  */
 global $hook_suffix;
+=======
+>>>>>>> origin/master
 ?>
 
 <div class="clear"></div></div><!-- wpbody-content -->
@@ -33,7 +36,11 @@ global $hook_suffix;
 		<?php
 		$text = sprintf( __( 'Thank you for creating with <a href="%s">WordPress</a>.' ), __( 'https://wordpress.org/' ) );
 		/**
+<<<<<<< HEAD
 		 * Filters the "Thank you" text displayed in the admin footer.
+=======
+		 * Filter the "Thank you" text displayed in the admin footer.
+>>>>>>> origin/master
 		 *
 		 * @since 2.8.0
 		 *
@@ -45,7 +52,11 @@ global $hook_suffix;
 	<p id="footer-upgrade" class="alignright">
 		<?php
 		/**
+<<<<<<< HEAD
 		 * Filters the version/update text displayed in the admin footer.
+=======
+		 * Filter the version/update text displayed in the admin footer.
+>>>>>>> origin/master
 		 *
 		 * WordPress prints the current version and update information,
 		 * using core_update_footer() at priority 10.
@@ -63,7 +74,11 @@ global $hook_suffix;
 </div>
 <?php
 /**
+<<<<<<< HEAD
  * Prints scripts or data before the default footer scripts.
+=======
+ * Print scripts or data before the default footer scripts.
+>>>>>>> origin/master
  *
  * @since 1.2.0
  *
@@ -72,6 +87,7 @@ global $hook_suffix;
 do_action( 'admin_footer', '' );
 
 /**
+<<<<<<< HEAD
  * Prints scripts and data queued for the footer.
  *
  * The dynamic portion of the hook name, `$hook_suffix`,
@@ -86,6 +102,8 @@ do_action( 'admin_footer', '' );
 do_action( "admin_print_footer_scripts-$hook_suffix" );
 
 /**
+=======
+>>>>>>> origin/master
  * Prints any scripts and data queued for the footer.
  *
  * @since 2.8.0
@@ -93,17 +111,29 @@ do_action( "admin_print_footer_scripts-$hook_suffix" );
 do_action( 'admin_print_footer_scripts' );
 
 /**
+<<<<<<< HEAD
  * Prints scripts or data after the default footer scripts.
  *
  * The dynamic portion of the hook name, `$hook_suffix`,
+=======
+ * Print scripts or data after the default footer scripts.
+ *
+ * The dynamic portion of the hook name, `$GLOBALS['hook_suffix']`,
+>>>>>>> origin/master
  * refers to the global hook suffix of the current page.
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @global string $hook_suffix
  * @param string $hook_suffix The current admin page.
  */
 do_action( "admin_footer-$hook_suffix" );
+=======
+ * @param string $hook_suffix The current admin page.
+ */
+do_action( "admin_footer-" . $GLOBALS['hook_suffix'] );
+>>>>>>> origin/master
 
 // get_site_option() won't exist when auto upgrading from <= 2.7
 if ( function_exists('get_site_option') ) {

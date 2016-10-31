@@ -16,12 +16,19 @@
 			});
 
 			frame = $('<iframe id="wp-auth-check-frame" frameborder="0">').attr( 'title', noframe.text() );
+<<<<<<< HEAD
 			frame.on( 'load', function() {
 				var height, body;
 
 				loaded = true;
 				// Remove the spinner to avoid unnecessary CPU/GPU usage.
 				form.removeClass( 'loading' );
+=======
+			frame.load( function() {
+				var height, body;
+
+				loaded = true;
+>>>>>>> origin/master
 
 				try {
 					body = $(this).contents().find('body');
@@ -48,7 +55,11 @@
 				}
 			}).attr( 'src', form.data('src') );
 
+<<<<<<< HEAD
 			form.append( frame );
+=======
+			$('#wp-auth-check-form').append( frame );
+>>>>>>> origin/master
 		}
 
 		$( 'body' ).addClass( 'modal-open' );
@@ -77,7 +88,10 @@
 		if ( typeof adminpage !== 'undefined' && ( adminpage === 'post-php' || adminpage === 'post-new-php' ) &&
 			typeof wp !== 'undefined' && wp.heartbeat ) {
 
+<<<<<<< HEAD
 			$(document).off( 'heartbeat-tick.wp-auth-check' );
+=======
+>>>>>>> origin/master
 			wp.heartbeat.connectNow();
 		}
 

@@ -1,8 +1,11 @@
 jQuery( function ( $ ) {
+<<<<<<< HEAD
 	var mshotRemovalTimer = null;
 	var mshotSecondTryTimer = null
 	var mshotThirdTryTimer = null
 	
+=======
+>>>>>>> origin/master
 	$( 'a.activate-option' ).click( function(){
 		var link = $( this );
 		if ( link.hasClass( 'clicked' ) ) {
@@ -22,6 +25,7 @@ jQuery( function ( $ ) {
 		var thisId = $(this).attr('commentid');
 		$(this).insertAfter('#comment-' + thisId + ' .author strong:first').show();
 	});
+<<<<<<< HEAD
 	$('#the-comment-list')
 		.find('tr.comment, tr[id ^= "comment-"]')
 		.find('.column-author a[href^="http"]:first') // Ignore mailto: links, which would be the comment author's email.
@@ -47,6 +51,25 @@ jQuery( function ( $ ) {
 	});
 	
 	$( '#the-comment-list' ).on( 'click', '.remove_url', function () {
+=======
+	$('#the-comment-list').find('tr.comment, tr[id ^= "comment-"]').find('.column-author a[title]').each(function () {
+		// Comment author URLs are the only URL with a title attribute in the author column.
+		var thisTitle = $(this).attr('title');
+
+		var thisCommentId = $(this).parents('tr:first').attr('id').split("-");
+
+		$(this).attr("id", "author_comment_url_"+ thisCommentId[1]);
+
+		if (thisTitle) {
+			$(this).after(
+				$( '<a href="#" class="remove_url">x</a>' )
+					.attr( 'commentid', thisCommentId[1] )
+					.attr( 'title', WPAkismet.strings['Remove this URL'] )
+			);
+		}
+	});
+	$('.remove_url').live('click', function () {
+>>>>>>> origin/master
 		var thisId = $(this).attr('commentid');
 		var data = {
 			action: 'comment_author_deurl',
@@ -83,7 +106,12 @@ jQuery( function ( $ ) {
 		});
 
 		return false;
+<<<<<<< HEAD
 	}).on( 'click', '.akismet_undo_link_removal', function () {
+=======
+	});
+	$('.akismet_undo_link_removal').live('click', function () {
+>>>>>>> origin/master
 		var thisId = $(this).attr('cid');
 		var thisUrl = $(this).attr('href');
 		var data = {
@@ -112,6 +140,7 @@ jQuery( function ( $ ) {
 
 		return false;
 	});
+<<<<<<< HEAD
 
 	// Show a preview image of the hovered URL. Applies to author URLs and URLs inside the comments.
 	$( 'a[id^="author_comment_url"], tr.pingback td.column-author a:first-of-type, table.comments td.comment p a' ).mouseover( function () {
@@ -161,6 +190,32 @@ jQuery( function ( $ ) {
 		}, 200 );
 	} );
 
+=======
+	$('a[id^="author_comment_url"], tr.pingback td.column-author a:first-of-type').mouseover(function () {
+		var wpcomProtocol = ( 'https:' === location.protocol ) ? 'https://' : 'http://';
+		// Need to determine size of author column
+		var thisParentWidth = $(this).parent().width();
+		// It changes based on if there is a gravatar present
+		thisParentWidth = ($(this).parent().find('.grav-hijack').length) ? thisParentWidth - 42 + 'px' : thisParentWidth + 'px';
+		if ($(this).find('.mShot').length == 0 && !$(this).hasClass('akismet_undo_link_removal')) {
+			var self = $( this );
+			$('.widefat td').css('overflow', 'visible');
+			$(this).css('position', 'relative');
+			var thisHref = $.URLEncode( $(this).attr('href') );
+			$(this).append('<div class="mShot mshot-container" style="left: '+thisParentWidth+'"><div class="mshot-arrow"></div><img src="//s0.wordpress.com/mshots/v1/'+thisHref+'?w=450" width="450" class="mshot-image" style="margin: 0;" /></div>');
+			setTimeout(function () {
+				self.find( '.mshot-image' ).attr('src', '//s0.wordpress.com/mshots/v1/'+thisHref+'?w=450&r=2');
+			}, 6000);
+			setTimeout(function () {
+				self.find( '.mshot-image' ).attr('src', '//s0.wordpress.com/mshots/v1/'+thisHref+'?w=450&r=3');
+			}, 12000);
+		} else {
+			$(this).find('.mShot').css('left', thisParentWidth).show();
+		}
+	}).mouseout(function () {
+		$(this).find('.mShot').hide();
+	});
+>>>>>>> origin/master
 	$('.checkforspam:not(.button-disabled)').click( function(e) {
 		$('.checkforspam:not(.button-disabled)').addClass('button-disabled');
 		$('.checkforspam-spinner').addClass( 'spinner' );
@@ -177,12 +232,20 @@ jQuery( function ( $ ) {
 				'limit': limit
 			},
 			function(result) {
+<<<<<<< HEAD
 				if (result.counts.processed < limit) {
 					window.location.reload();
 				}
 				else {
 					// Account for comments that were caught as spam and moved out of the queue.
 					akismet_check_for_spam(offset + limit - result.counts.spam, limit);
+=======
+				if (result.processed < limit) {
+					window.location.reload();
+				}
+				else {
+					akismet_check_for_spam(offset + limit, limit);
+>>>>>>> origin/master
 				}
 			}
 		);

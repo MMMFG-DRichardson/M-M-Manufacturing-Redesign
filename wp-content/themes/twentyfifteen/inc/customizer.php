@@ -20,6 +20,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
+<<<<<<< HEAD
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
 			'selector' => '.site-title a',
@@ -33,6 +34,8 @@ function twentyfifteen_customize_register( $wp_customize ) {
 		) );
 	}
 
+=======
+>>>>>>> origin/master
 	// Add color scheme setting and control.
 	$wp_customize->add_setting( 'color_scheme', array(
 		'default'           => 'default',
@@ -83,6 +86,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'twentyfifteen_customize_register', 11 );
 
 /**
+<<<<<<< HEAD
  * Render the site title for the selective refresh partial.
  *
  * @since Twenty Fifteen 1.5
@@ -107,6 +111,8 @@ function twentyfifteen_customize_partial_blogdescription() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Register color schemes for Twenty Fifteen.
  *
  * Can be filtered with {@see 'twentyfifteen_color_schemes'}.
@@ -124,6 +130,7 @@ function twentyfifteen_customize_partial_blogdescription() {
  * @return array An associative array of color scheme options.
  */
 function twentyfifteen_get_color_schemes() {
+<<<<<<< HEAD
 	/**
 	 * Filter the color schemes registered for use with Twenty Fifteen.
 	 *
@@ -145,6 +152,8 @@ function twentyfifteen_get_color_schemes() {
 	 *     }
 	 * }
 	 */
+=======
+>>>>>>> origin/master
 	return apply_filters( 'twentyfifteen_color_schemes', array(
 		'default' => array(
 			'label'  => __( 'Default', 'twentyfifteen' ),

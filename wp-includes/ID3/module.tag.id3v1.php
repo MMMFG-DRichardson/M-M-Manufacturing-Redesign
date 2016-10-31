@@ -357,4 +357,8 @@ class getid3_id3v1 extends getid3_handler
 		return $ID3v1Tag;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master

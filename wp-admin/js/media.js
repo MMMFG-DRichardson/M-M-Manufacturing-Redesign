@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* global ajaxurl, attachMediaBoxL10n, _wpMediaGridSettings, showNotice */
+=======
+/* global ajaxurl, attachMediaBoxL10n, _wpMediaGridSettings */
+>>>>>>> origin/master
 
 var findPosts;
 ( function( $ ){
@@ -99,6 +103,7 @@ var findPosts;
 		$( '#find-posts-close' ).click( findPosts.close );
 		$( '#doaction, #doaction2' ).click( function( event ) {
 			$( 'select[name^="action"]' ).each( function() {
+<<<<<<< HEAD
 				var optionValue = $( this ).val();
 
 				if ( 'attach' === optionValue ) {
@@ -108,6 +113,11 @@ var findPosts;
 					if ( ! showNotice.warn() ) {
 						event.preventDefault();
 					}
+=======
+				if ( $(this).val() === 'attach' ) {
+					event.preventDefault();
+					findPosts.open();
+>>>>>>> origin/master
 				}
 			});
 		});

@@ -14,7 +14,11 @@ window.wp = window.wp || {};
 	 *
 	 * The Plupload library provides cross-browser uploader UI integration.
 	 * This object bridges the Plupload API to integrate uploads into the
+<<<<<<< HEAD
 	 * WordPress back end and the WordPress media experience.
+=======
+	 * WordPress back-end and the WordPress media experience.
+>>>>>>> origin/master
 	 *
 	 * @param {object} options           The options passed to the new plupload instance.
 	 * @param {object} options.container The id of uploader container.
@@ -180,11 +184,14 @@ window.wp = window.wp || {};
 			$(self).trigger( 'uploader:ready' );
 		});
 
+<<<<<<< HEAD
 		this.uploader.bind( 'postinit', function( up ) {
 			up.refresh();
 			self.init();
 		});
 
+=======
+>>>>>>> origin/master
 		this.uploader.init();
 
 		if ( this.browser ) {
@@ -316,6 +323,12 @@ window.wp = window.wp || {};
 			up.refresh();
 		});
 
+<<<<<<< HEAD
+=======
+		this.uploader.bind( 'PostInit', function() {
+			self.init();
+		});
+>>>>>>> origin/master
 	};
 
 	// Adds the 'defaults' and 'browser' properties.

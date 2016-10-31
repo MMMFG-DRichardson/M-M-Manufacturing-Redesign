@@ -11,7 +11,11 @@
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @return int|WP_Error WP_Error or User ID.
+=======
+ * @return null|WP_Error|int Null when adding user, WP_Error or User ID integer when no parameters.
+>>>>>>> origin/master
  */
 function add_user() {
 	return edit_user();
@@ -25,10 +29,17 @@ function add_user() {
  * @since 2.0.0
  *
  * @param int $user_id Optional. User ID.
+<<<<<<< HEAD
  * @return int|WP_Error user id of the updated user
  */
 function edit_user( $user_id = 0 ) {
 	$wp_roles = wp_roles();
+=======
+ * @return int user id of the updated user
+ */
+function edit_user( $user_id = 0 ) {
+	global $wp_roles;
+>>>>>>> origin/master
 	$user = new stdClass;
 	if ( $user_id ) {
 		$update = true;
@@ -108,11 +119,15 @@ function edit_user( $user_id = 0 ) {
 	if ( $user->user_login == '' )
 		$errors->add( 'user_login', __( '<strong>ERROR</strong>: Please enter a username.' ) );
 
+<<<<<<< HEAD
 	/* checking that nickname has been typed */
 	if ( $update && empty( $user->nickname ) ) {
 		$errors->add( 'nickname', __( '<strong>ERROR</strong>: Please enter a nickname.' ) );
 	}
 
+=======
+	/* checking the password has been typed twice */
+>>>>>>> origin/master
 	/**
 	 * Fires before the password and confirm password fields are checked for congruity.
 	 *
@@ -124,6 +139,7 @@ function edit_user( $user_id = 0 ) {
 	 */
 	do_action_ref_array( 'check_passwords', array( $user->user_login, &$pass1, &$pass2 ) );
 
+<<<<<<< HEAD
 	// Check for blank password when adding a user.
 	if ( ! $update && empty( $pass1 ) ) {
 		$errors->add( 'pass', __( '<strong>ERROR</strong>: Please enter a password.' ), array( 'form-field' => 'pass1' ) );
@@ -138,6 +154,27 @@ function edit_user( $user_id = 0 ) {
 	if ( ( $update || ! empty( $pass1 ) ) && $pass1 != $pass2 ) {
 		$errors->add( 'pass', __( '<strong>ERROR</strong>: Please enter the same password in both password fields.' ), array( 'form-field' => 'pass1' ) );
 	}
+=======
+	if ( $update ) {
+		if ( empty($pass1) && !empty($pass2) )
+			$errors->add( 'pass', __( '<strong>ERROR</strong>: You entered your new password only once.' ), array( 'form-field' => 'pass1' ) );
+		elseif ( !empty($pass1) && empty($pass2) )
+			$errors->add( 'pass', __( '<strong>ERROR</strong>: You entered your new password only once.' ), array( 'form-field' => 'pass2' ) );
+	} else {
+		if ( empty($pass1) )
+			$errors->add( 'pass', __( '<strong>ERROR</strong>: Please enter your password.' ), array( 'form-field' => 'pass1' ) );
+		elseif ( empty($pass2) )
+			$errors->add( 'pass', __( '<strong>ERROR</strong>: Please enter your password twice.' ), array( 'form-field' => 'pass2' ) );
+	}
+
+	/* Check for "\" in password */
+	if ( false !== strpos( wp_unslash( $pass1 ), "\\" ) )
+		$errors->add( 'pass', __( '<strong>ERROR</strong>: Passwords may not contain the character "\\".' ), array( 'form-field' => 'pass1' ) );
+
+	/* checking the password has been typed twice the same */
+	if ( $pass1 != $pass2 )
+		$errors->add( 'pass', __( '<strong>ERROR</strong>: Please enter the same password in the two password fields.' ), array( 'form-field' => 'pass1' ) );
+>>>>>>> origin/master
 
 	if ( !empty( $pass1 ) )
 		$user->user_pass = $pass1;
@@ -148,6 +185,7 @@ function edit_user( $user_id = 0 ) {
 	if ( !$update && username_exists( $user->user_login ) )
 		$errors->add( 'user_login', __( '<strong>ERROR</strong>: This username is already registered. Please choose another one.' ));
 
+<<<<<<< HEAD
 	/** This filter is documented in wp-includes/user.php */
 	$illegal_logins = (array) apply_filters( 'illegal_user_logins', array() );
 
@@ -158,6 +196,11 @@ function edit_user( $user_id = 0 ) {
 	/* checking email address */
 	if ( empty( $user->user_email ) ) {
 		$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please enter an email address.' ), array( 'form-field' => 'email' ) );
+=======
+	/* checking e-mail address */
+	if ( empty( $user->user_email ) ) {
+		$errors->add( 'empty_email', __( '<strong>ERROR</strong>: Please enter an e-mail address.' ), array( 'form-field' => 'email' ) );
+>>>>>>> origin/master
 	} elseif ( !is_email( $user->user_email ) ) {
 		$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.' ), array( 'form-field' => 'email' ) );
 	} elseif ( ( $owner_id = email_exists($user->user_email) ) && ( !$update || ( $owner_id != $user->ID ) ) ) {
@@ -169,9 +212,15 @@ function edit_user( $user_id = 0 ) {
 	 *
 	 * @since 2.8.0
 	 *
+<<<<<<< HEAD
 	 * @param WP_Error &$errors WP_Error object, passed by reference.
 	 * @param bool     $update  Whether this is a user update.
 	 * @param WP_User  &$user   WP_User object, passed by reference.
+=======
+	 * @param array   &$errors An array of user profile update errors, passed by reference.
+	 * @param bool    $update  Whether this is a user update.
+	 * @param WP_User &$user   WP_User object, passed by reference.
+>>>>>>> origin/master
 	 */
 	do_action_ref_array( 'user_profile_update_errors', array( &$errors, $update, &$user ) );
 
@@ -182,6 +231,7 @@ function edit_user( $user_id = 0 ) {
 		$user_id = wp_update_user( $user );
 	} else {
 		$user_id = wp_insert_user( $user );
+<<<<<<< HEAD
 		$notify  = isset( $_POST['send_user_notification'] ) ? 'both' : 'admin';
 
 		/**
@@ -194,6 +244,9 @@ function edit_user( $user_id = 0 ) {
 		  *                        for more information on possible values.
 		  */
 		do_action( 'edit_user_created_user', $user_id, $notify );
+=======
+		wp_new_user_notification( $user_id, isset( $_POST['send_password'] ) ? wp_unslash( $pass1 ) : '' );
+>>>>>>> origin/master
 	}
 	return $user_id;
 }
@@ -215,10 +268,19 @@ function edit_user( $user_id = 0 ) {
  * @return array
  */
 function get_editable_roles() {
+<<<<<<< HEAD
 	$all_roles = wp_roles()->roles;
 
 	/**
 	 * Filters the list of editable roles.
+=======
+	global $wp_roles;
+
+	$all_roles = $wp_roles->roles;
+
+	/**
+	 * Filter the list of editable roles.
+>>>>>>> origin/master
 	 *
 	 * @since 2.8.0
 	 *
@@ -251,8 +313,11 @@ function get_user_to_edit( $user_id ) {
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param int $user_id User ID.
  * @return array
  */
@@ -261,7 +326,11 @@ function get_users_drafts( $user_id ) {
 	$query = $wpdb->prepare("SELECT ID, post_title FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'draft' AND post_author = %d ORDER BY post_modified DESC", $user_id);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the user's drafts query string.
+=======
+	 * Filter the user's drafts query string.
+>>>>>>> origin/master
 	 *
 	 * @since 2.0.0
 	 *
@@ -275,14 +344,21 @@ function get_users_drafts( $user_id ) {
  * Remove user and optionally reassign posts and links to another user.
  *
  * If the $reassign parameter is not assigned to a User ID, then all posts will
+<<<<<<< HEAD
  * be deleted of that user. The action {@see 'delete_user'} that is passed the User ID
+=======
+ * be deleted of that user. The action 'delete_user' that is passed the User ID
+>>>>>>> origin/master
  * being deleted will be run after the posts are either reassigned or deleted.
  * The user meta will also be deleted that are for that User ID.
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+=======
+>>>>>>> origin/master
  * @param int $id User ID.
  * @param int $reassign Optional. Reassign posts and links to new User ID.
  * @return bool True when finished.
@@ -290,10 +366,13 @@ function get_users_drafts( $user_id ) {
 function wp_delete_user( $id, $reassign = null ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	if ( ! is_numeric( $id ) ) {
 		return false;
 	}
 
+=======
+>>>>>>> origin/master
 	$id = (int) $id;
 	$user = new WP_User( $id );
 
@@ -329,7 +408,11 @@ function wp_delete_user( $id, $reassign = null ) {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Filters the list of post types to delete with a user.
+=======
+		 * Filter the list of post types to delete with a user.
+>>>>>>> origin/master
 		 *
 		 * @since 3.4.0
 		 *
@@ -407,12 +490,18 @@ function wp_revoke_user($id) {
 	$user->remove_all_caps();
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @global int $user_ID
  *
  * @param false $errors Deprecated.
+=======
+add_action('admin_init', 'default_password_nag_handler');
+/**
+ * @since 2.8.0
+>>>>>>> origin/master
  */
 function default_password_nag_handler($errors = false) {
 	global $user_ID;
@@ -427,11 +516,18 @@ function default_password_nag_handler($errors = false) {
 	}
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @param int    $user_ID
  * @param object $old_data
+=======
+add_action('profile_update', 'default_password_nag_edit_user', 10, 2);
+
+/**
+ * @since 2.8.0
+>>>>>>> origin/master
  */
 function default_password_nag_edit_user($user_ID, $old_data) {
 	// Short-circuit it.
@@ -447,10 +543,17 @@ function default_password_nag_edit_user($user_ID, $old_data) {
 	}
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @global string $pagenow
+=======
+add_action('admin_notices', 'default_password_nag');
+
+/**
+ * @since 2.8.0
+>>>>>>> origin/master
  */
 function default_password_nag() {
 	global $pagenow;
@@ -461,12 +564,17 @@ function default_password_nag() {
 	echo '<div class="error default-password-nag">';
 	echo '<p>';
 	echo '<strong>' . __('Notice:') . '</strong> ';
+<<<<<<< HEAD
 	_e('You&rsquo;re using the auto-generated password for your account. Would you like to change it?');
+=======
+	_e('You&rsquo;re using the auto-generated password for your account. Would you like to change it to something easier to remember?');
+>>>>>>> origin/master
 	echo '</p><p>';
 	printf( '<a href="%s">' . __('Yes, take me to my profile page') . '</a> | ', get_edit_profile_url() . '#password' );
 	printf( '<a href="%s" id="default-password-nag-no">' . __('No thanks, do not remind me again') . '</a>', '?default_password_nag=0' );
 	echo '</p></div>';
 }
+<<<<<<< HEAD
 
 /**
  * @since 3.5.0
@@ -523,3 +631,5 @@ this email. This invitation will expire in a few days.
 Please click the following link to activate your user account:
 %%s' ), get_bloginfo( 'name' ), home_url(), wp_specialchars_decode( translate_user_role( $role['name'] ) ) );
 }
+=======
+>>>>>>> origin/master

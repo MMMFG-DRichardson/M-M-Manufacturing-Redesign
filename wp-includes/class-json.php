@@ -136,17 +136,26 @@ class Services_JSON
     *                                   from encode() should be checked with isError()
     *                           - SERVICES_JSON_USE_TO_JSON:  call toJSON when serializing objects
     *                                   It serializes the return value from the toJSON call rather 
+<<<<<<< HEAD
     *                                   than the object itself, toJSON can return associative arrays, 
     *                                   strings or numbers, if you return an object, make sure it does
     *                                   not have a toJSON method, otherwise an error will occur.
     */
     function __construct( $use = 0 )
+=======
+    *                                   than the object it'self,  toJSON can return associative arrays, 
+    *                                   strings or numbers, if you return an object, make sure it does
+    *                                   not have a toJSON method, otherwise an error will occur.
+    */
+    function Services_JSON($use = 0)
+>>>>>>> origin/master
     {
         $this->use = $use;
         $this->_mb_strlen            = function_exists('mb_strlen');
         $this->_mb_convert_encoding  = function_exists('mb_convert_encoding');
         $this->_mb_substr            = function_exists('mb_substr');
     }
+<<<<<<< HEAD
 
 	/**
 	 * PHP4 constructor.
@@ -154,6 +163,8 @@ class Services_JSON
 	public function Services_JSON( $use = 0 ) {
 		self::__construct( $use );
 	}
+=======
+>>>>>>> origin/master
     // private - cache the mbstring lookup results..
     var $_mb_strlen = false;
     var $_mb_substr = false;
@@ -445,7 +456,11 @@ class Services_JSON
             case 'array':
                /*
                 * As per JSON spec if any array key is not an integer
+<<<<<<< HEAD
                 * we must treat the whole array as an object. We
+=======
+                * we must treat the the whole array as an object. We
+>>>>>>> origin/master
                 * also try to catch a sparsely populated associative
                 * array with numeric keys here because some JS engines
                 * will create an array with empty indexes up to
@@ -917,17 +932,24 @@ if (class_exists('PEAR_Error')) {
 
     class Services_JSON_Error extends PEAR_Error
     {
+<<<<<<< HEAD
         function __construct($message = 'unknown error', $code = null,
+=======
+        function Services_JSON_Error($message = 'unknown error', $code = null,
+>>>>>>> origin/master
                                      $mode = null, $options = null, $userinfo = null)
         {
             parent::PEAR_Error($message, $code, $mode, $options, $userinfo);
         }
+<<<<<<< HEAD
 
 	public function Services_JSON_Error($message = 'unknown error', $code = null,
                                      $mode = null, $options = null, $userinfo = null) {
 		self::__construct($message = 'unknown error', $code = null,
                                      $mode = null, $options = null, $userinfo = null);
 	}
+=======
+>>>>>>> origin/master
     }
 
 } else {
@@ -937,6 +959,7 @@ if (class_exists('PEAR_Error')) {
      */
     class Services_JSON_Error
     {
+<<<<<<< HEAD
 	    /**
 	     * PHP5 constructor.
 	     */
@@ -953,6 +976,13 @@ if (class_exists('PEAR_Error')) {
 	                                     $mode = null, $options = null, $userinfo = null ) {
 			self::__construct( $message, $code, $mode, $options, $userinfo );
 		}
+=======
+        function Services_JSON_Error($message = 'unknown error', $code = null,
+                                     $mode = null, $options = null, $userinfo = null)
+        {
+
+        }
+>>>>>>> origin/master
     }
     
 }

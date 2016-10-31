@@ -48,12 +48,20 @@
 }
 
 #wp-auth-check-wrap #wp-auth-check-form {
+<<<<<<< HEAD
 	height: 100%;
 	position: relative;
+=======
+	background: url(../images/spinner-2x.gif) no-repeat center center;
+	-webkit-background-size: 16px 16px;
+	background-size: 16px 16px;
+	height: 100%;
+>>>>>>> origin/master
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
+<<<<<<< HEAD
 #wp-auth-check-form.loading:before {
 	content: "";
 	display: block;
@@ -80,6 +88,8 @@
 
 }
 
+=======
+>>>>>>> origin/master
 #wp-auth-check-wrap #wp-auth-check-form iframe {
 	height: 98%; /* Scrollbar fix */
 	width: 100%;
@@ -87,6 +97,7 @@
 
 #wp-auth-check-wrap .wp-auth-check-close {
 	position: absolute;
+<<<<<<< HEAD
 	top: 5px;
 	right: 5px;
 	height: 22px;
@@ -98,15 +109,45 @@
 	content: "\f158";
 	font: normal 20px/22px dashicons;
 	speak: none;
+=======
+	top: 8px;
+	right: 8px;
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+}
+
+#wp-auth-check-wrap .wp-auth-check-close:before {
+	content: '\f158';
+	display: block !important;
+	font: normal 20px/1 'dashicons';
+	speak: none;
+	height: 22px;
+	margin: 2px 0;
+	text-align: center;
+	width: 22px;
+	color: #777;
+>>>>>>> origin/master
 	-webkit-font-smoothing: antialiased !important;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 #wp-auth-check-wrap .wp-auth-check-close:hover,
 #wp-auth-check-wrap .wp-auth-check-close:focus {
 	color: #0073aa;
 }
 
+=======
+#wp-auth-check-wrap .wp-auth-check-close:hover:before {
+	color: #0073aa;
+}
+
+#wp-auth-check-wrap .wp-auth-check-close:focus {
+	outline: 1px dotted #82878c;
+}
+
+>>>>>>> origin/master
 #wp-auth-check-wrap .wp-auth-fallback-expired {
 	outline: 0;
 }

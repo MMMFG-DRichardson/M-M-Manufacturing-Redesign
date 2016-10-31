@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * Dependencies API: WP_Dependencies base class
  *
  * @since 2.6.0
@@ -14,6 +15,17 @@
  * @package WordPress
  * @since 2.6.0
  * @uses _WP_Dependency
+=======
+ * BackPress Scripts enqueue
+ *
+ * Classes were refactored from the WP_Scripts and WordPress script enqueue API.
+ *
+ * @since BackPress r74
+ *
+ * @package BackPress
+ * @uses _WP_Dependency
+ * @since r74
+>>>>>>> origin/master
  */
 class WP_Dependencies {
 	/**
@@ -77,19 +89,30 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @deprecated 4.5.0
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $group = 0;
 
 	/**
+<<<<<<< HEAD
 	 * Processes the items and dependencies.
+=======
+	 * Process the items and dependencies.
+>>>>>>> origin/master
 	 *
 	 * Processes the items passed to it or the queue, and their dependencies.
 	 *
 	 * @access public
+<<<<<<< HEAD
 	 * @since 2.6.0
 	 * @since 2.8.0 Added the `$group` parameter.
+=======
+	 * @since 2.1.0
+>>>>>>> origin/master
 	 *
 	 * @param mixed $handles Optional. Items to be processed: Process queue (false), process item (string), process items (array of strings).
 	 * @param mixed $group   Group level: level (int), no groups (false).
@@ -103,8 +126,28 @@ class WP_Dependencies {
 		$handles = false === $handles ? $this->queue : (array) $handles;
 		$this->all_deps( $handles );
 
+<<<<<<< HEAD
 		foreach ( $this->to_do as $key => $handle ) {
 			if ( !in_array($handle, $this->done, true) && isset($this->registered[$handle]) ) {
+=======
+		foreach( $this->to_do as $key => $handle ) {
+			if ( !in_array($handle, $this->done, true) && isset($this->registered[$handle]) ) {
+
+				/*
+				 * A single item may alias a set of items, by having dependencies,
+				 * but no source. Queuing the item queues the dependencies.
+				 *
+				 * Example: The extending class WP_Scripts is used to register 'scriptaculous' as a set of registered handles:
+				 *   <code>add( 'scriptaculous', false, array( 'scriptaculous-dragdrop', 'scriptaculous-slider', 'scriptaculous-controls' ) );</code>
+				 *
+				 * The src property is false.
+				 */
+				if ( ! $this->registered[$handle]->src ) {
+					$this->done[] = $handle;
+					continue;
+				}
+
+>>>>>>> origin/master
 				/*
 				 * Attempt to process the item. If successful,
 				 * add the handle to the done array.
@@ -122,7 +165,11 @@ class WP_Dependencies {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Processes a dependency.
+=======
+	 * Process a dependency.
+>>>>>>> origin/master
 	 *
 	 * @access public
 	 * @since 2.6.0
@@ -135,19 +182,30 @@ class WP_Dependencies {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Determines dependencies.
+=======
+	 * Determine dependencies.
+>>>>>>> origin/master
 	 *
 	 * Recursively builds an array of items to process taking
 	 * dependencies into account. Does NOT catch infinite loops.
 	 *
 	 * @access public
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 * @since 2.8.0 Added the `$group` parameter.
 	 *
 	 * @param mixed     $handles   Item handle and argument (string) or item handles and arguments (array of strings).
 	 * @param bool      $recursion Internal flag that function is calling itself.
 	 * @param int|false $group     Group level: (int) level, (false) no groups.
+=======
+	 *
+	 * @param mixed $handles   Item handle and argument (string) or item handles and arguments (array of strings).
+	 * @param bool  $recursion Internal flag that function is calling itself.
+	 * @param mixed $group     Group level: (int) level, (false) no groups.
+>>>>>>> origin/master
 	 * @return bool True on success, false on failure.
 	 */
 	public function all_deps( $handles, $recursion = false, $group = false ) {
@@ -162,8 +220,12 @@ class WP_Dependencies {
 			if ( in_array($handle, $this->done, true) ) // Already done
 				continue;
 
+<<<<<<< HEAD
 			$moved     = $this->set_group( $handle, $recursion, $group );
 			$new_group = $this->groups[ $handle ];
+=======
+			$moved = $this->set_group( $handle, $recursion, $group );
+>>>>>>> origin/master
 
 			if ( $queued && !$moved ) // already queued and in the right group
 				continue;
@@ -173,7 +235,11 @@ class WP_Dependencies {
 				$keep_going = false; // Item doesn't exist.
 			elseif ( $this->registered[$handle]->deps && array_diff($this->registered[$handle]->deps, array_keys($this->registered)) )
 				$keep_going = false; // Item requires dependencies that don't exist.
+<<<<<<< HEAD
 			elseif ( $this->registered[$handle]->deps && !$this->all_deps( $this->registered[$handle]->deps, true, $new_group ) )
+=======
+			elseif ( $this->registered[$handle]->deps && !$this->all_deps( $this->registered[$handle]->deps, true, $group ) )
+>>>>>>> origin/master
 				$keep_going = false; // Item requires dependencies that don't exist.
 
 			if ( ! $keep_going ) { // Either item or its dependencies don't exist.
@@ -202,6 +268,7 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
 	 * @param string           $handle Name of the item. Should be unique.
@@ -213,6 +280,15 @@ class WP_Dependencies {
 	 *                                 If set to null, no version is added.
 	 * @param mixed            $args   Optional. Custom property of the item. NOT the class property $args. Examples: $media, $in_footer. 
 	 * @return bool Whether the item has been registered. True on success, false on failure.
+=======
+	 *
+	 * @param string $handle Unique item name.
+	 * @param string $src    The item url.
+	 * @param array  $deps   Optional. An array of item handle strings on which this item depends.
+	 * @param string $ver    Optional. Version (used for cache busting).
+	 * @param mixed  $args   Optional. Custom property of the item. NOT the class property $args. Examples: $media, $in_footer.
+	 * @return bool True on success, false on failure.
+>>>>>>> origin/master
 	 */
 	public function add( $handle, $src, $deps = array(), $ver = false, $args = null ) {
 		if ( isset($this->registered[$handle]) )
@@ -268,7 +344,10 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.6.0 Moved from `WP_Scripts`.
+=======
+>>>>>>> origin/master
 	 *
 	 * @param mixed $handles Item handle and argument (string) or item handles and arguments (array of strings).
 	 * @return void
@@ -288,7 +367,10 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.6.0 Moved from `WP_Scripts`.
+=======
+>>>>>>> origin/master
 	 *
 	 * @param mixed $handles Item handle and argument (string) or item handles and arguments (array of strings).
 	 */
@@ -311,7 +393,10 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.6.0 Moved from `WP_Scripts`.
+=======
+>>>>>>> origin/master
 	 *
 	 * @param mixed $handles Item handle and argument (string) or item handles and arguments (array of strings).
 	 */
@@ -333,7 +418,11 @@ class WP_Dependencies {
 	 *
 	 * @param array  $queue  An array of queued _WP_Dependency handle objects.
 	 * @param string $handle Name of the item. Should be unique.
+<<<<<<< HEAD
 	 * @return bool Whether the handle is found after recursively searching the dependency tree.
+=======
+	 * @return boolean Whether the handle is found after recursively searching the dependency tree.
+>>>>>>> origin/master
 	 */
 	protected function recurse_deps( $queue, $handle ) {
 		foreach ( $queue as $queued ) {
@@ -356,11 +445,18 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
 	 * @param string $handle Name of the item. Should be unique.
 	 * @param string $list   Property name of list array.
 	 * @return bool|_WP_Dependency Found, or object Item data.
+=======
+	 *
+	 * @param string $handle Name of the item. Should be unique.
+	 * @param string $list   Property name of list array.
+	 * @return bool Found, or object Item data.
+>>>>>>> origin/master
 	 */
 	public function query( $handle, $list = 'registered' ) {
 		switch ( $list ) {
@@ -402,12 +498,24 @@ class WP_Dependencies {
 	public function set_group( $handle, $recursion, $group ) {
 		$group = (int) $group;
 
+<<<<<<< HEAD
 		if ( isset( $this->groups[ $handle ] ) && $this->groups[ $handle ] <= $group ) {
 			return false;
 		}
 
 		$this->groups[ $handle ] = $group;
 
+=======
+		if ( $recursion )
+			$group = min($this->group, $group);
+		else
+			$this->group = $group;
+
+		if ( isset($this->groups[$handle]) && $this->groups[$handle] <= $group )
+			return false;
+
+		$this->groups[$handle] = $group;
+>>>>>>> origin/master
 		return true;
 	}
 

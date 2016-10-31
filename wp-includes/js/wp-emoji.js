@@ -3,6 +3,7 @@
 	function wpEmoji() {
 		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver,
 
+<<<<<<< HEAD
 		// Compression and maintain local scope
 		document = window.document,
 
@@ -30,6 +31,40 @@
 			// if future browsers remove it, the browser will support SVGs as images.
 			return true;
 		}
+=======
+		/**
+		 * Flag to determine if the browser and the OS support emoji.
+		 *
+		 * @since 4.2.0
+		 *
+		 * @var Boolean
+		 */
+		supportsEmoji = false,
+
+		/**
+		 * Flag to determine if the browser and the OS support flag (two character) emoji.
+		 *
+		 * @since 4.2.0
+		 *
+		 * @var Boolean
+		 */
+		supportsFlagEmoji = false,
+
+		/**
+		 * Flag to determine if we should replace emoji characters with images.
+		 *
+		 * @since 4.2.0
+		 *
+		 * @var Boolean
+		 */
+		replaceEmoji = false,
+
+		isIE8 = window.navigator.userAgent.indexOf( 'IE 8' ) !== -1,
+
+		// Private
+		twemoji, timer,
+		count = 0;
+>>>>>>> origin/master
 
 		/**
 		 * Runs when the document load event is fired, so we can do our first parse of the page.
@@ -37,10 +72,13 @@
 		 * @since 4.2.0
 		 */
 		function load() {
+<<<<<<< HEAD
 			if ( loaded ) {
 				return;
 			}
 
+=======
+>>>>>>> origin/master
 			if ( typeof window.twemoji === 'undefined' ) {
 				// Break if waiting for longer than 30 sec.
 				if ( count > 600 ) {
@@ -56,11 +94,15 @@
 			}
 
 			twemoji = window.twemoji;
+<<<<<<< HEAD
 			loaded = true;
+=======
+>>>>>>> origin/master
 
 			if ( MutationObserver ) {
 				new MutationObserver( function( mutationRecords ) {
 					var i = mutationRecords.length,
+<<<<<<< HEAD
 						addedNodes, removedNodes, ii, node;
 
 					while ( i-- ) {
@@ -109,6 +151,21 @@
 							}
 
 							if ( test( node.textContent ) ) {
+=======
+						ii, node;
+
+					while ( i-- ) {
+						ii = mutationRecords[ i ].addedNodes.length;
+
+						while ( ii-- ) {
+							node = mutationRecords[ i ].addedNodes[ ii ];
+
+							if ( node.nodeType === 3 ) {
+								node = node.parentNode;
+							}
+
+							if ( node && node.nodeType === 1 ) {
+>>>>>>> origin/master
 								parse( node );
 							}
 						}
@@ -123,6 +180,7 @@
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Test if a text string contains emoji characters.
 		 *
 		 * @since 4.3.0
@@ -145,6 +203,8 @@
 		}
 
 		/**
+=======
+>>>>>>> origin/master
 		 * Given an element or string, parse any emoji characters into Twemoji images.
 		 *
 		 * @since 4.2.0
@@ -153,19 +213,32 @@
 		 * @param {Object} args Additional options for Twemoji.
 		 */
 		function parse( object, args ) {
+<<<<<<< HEAD
 			var params;
 
 			if ( settings.supports.everything || ! twemoji || ! object ||
 				( 'string' !== typeof object && ( ! object.childNodes || ! object.childNodes.length ) ) ) {
 
+=======
+			if ( ! replaceEmoji ) {
+>>>>>>> origin/master
 				return object;
 			}
 
 			args = args || {};
+<<<<<<< HEAD
 			params = {
 				base: browserSupportsSvgAsImage() ? settings.svgUrl : settings.baseUrl,
 				ext:  browserSupportsSvgAsImage() ? settings.svgExt : settings.ext,
 				className: args.className || 'emoji',
+=======
+
+			return twemoji.parse( object, {
+				base: settings.baseUrl,
+				ext: settings.ext,
+				className: args.className || 'emoji',
+				imgAttr: args.imgAttr,
+>>>>>>> origin/master
 				callback: function( icon, options ) {
 					// Ignore some standard characters that TinyMCE recommends in its character map.
 					switch ( icon ) {
@@ -180,14 +253,21 @@
 							return false;
 					}
 
+<<<<<<< HEAD
 					if ( settings.supports.everythingExceptFlag &&
 						! /^1f1(?:e[6-9a-f]|f[0-9a-f])-1f1(?:e[6-9a-f]|f[0-9a-f])$/.test( icon ) && // Country flags
 						! /^(1f3f3-fe0f-200d-1f308|1f3f4-200d-2620-fe0f)$/.test( icon )             // Rainbow and pirate flags
 					) {
+=======
+					if ( ! supportsFlagEmoji && supportsEmoji &&
+						! /^1f1(?:e[6-9a-f]|f[0-9a-f])-1f1(?:e[6-9a-f]|f[0-9a-f])$/.test( icon ) ) {
+
+>>>>>>> origin/master
 						return false;
 					}
 
 					return ''.concat( options.base, icon, options.ext );
+<<<<<<< HEAD
 				},
 				onerror: function() {
 					if ( twemoji.parentNode ) {
@@ -204,22 +284,53 @@
 			}
 
 			return twemoji.parse( object, params );
+=======
+				}
+			} );
+		}
+
+		// Load when the readyState changes to 'interactive', not 'complete'.
+		function onLoad() {
+			if ( ( ! isIE8 && 'interactive' === document.readyState ) || ( isIE8 && 'complete' === document.readyState ) ) {
+				load();
+			}
+>>>>>>> origin/master
 		}
 
 		/**
 		 * Initialize our emoji support, and set up listeners.
 		 */
 		if ( settings ) {
+<<<<<<< HEAD
 			if ( settings.DOMReady ) {
 				load();
 			} else {
 				settings.readyCallback = load;
+=======
+			supportsEmoji = window._wpemojiSettings.supports.simple;
+			supportsFlagEmoji = window._wpemojiSettings.supports.flag;
+			replaceEmoji = ! supportsEmoji || ! supportsFlagEmoji;
+
+			if ( ( ! isIE8 && 'loading' === document.readyState ) || ( isIE8 && 'complete' !== document.readyState ) ) {
+				if ( document.addEventListener ) {
+					document.addEventListener( 'readystatechange', onLoad, false );
+				} else if ( document.attachEvent ) {
+					document.attachEvent( 'onreadystatechange', onLoad );
+				}
+			} else {
+				load();
+>>>>>>> origin/master
 			}
 		}
 
 		return {
+<<<<<<< HEAD
 			parse: parse,
 			test: test
+=======
+			replaceEmoji: replaceEmoji,
+			parse: parse
+>>>>>>> origin/master
 		};
 	}
 

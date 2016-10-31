@@ -16,7 +16,11 @@
 /**
  * Deprecated. Use SimplePie (class-simplepie.php) instead.
  */
+<<<<<<< HEAD
 _deprecated_file( basename( __FILE__ ), '3.0.0', WPINC . '/class-simplepie.php' );
+=======
+_deprecated_file( basename( __FILE__ ), '3.0', WPINC . '/class-simplepie.php' );
+>>>>>>> origin/master
 
 /**
  * Fires before MagpieRSS is loaded, to optionally replace it.
@@ -55,20 +59,32 @@ class MagpieRSS {
 
 	var $_CONTENT_CONSTRUCTS = array('content', 'summary', 'info', 'title', 'tagline', 'copyright');
 
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $source ) {
+=======
+	function MagpieRSS ($source) {
+>>>>>>> origin/master
 
 		# if PHP xml isn't compiled in, die
 		#
 		if ( !function_exists('xml_parser_create') )
+<<<<<<< HEAD
 			trigger_error( "Failed to load PHP's XML Extension. https://secure.php.net/manual/en/ref.xml.php" );
+=======
+			trigger_error( "Failed to load PHP's XML Extension. http://www.php.net/manual/en/ref.xml.php" );
+>>>>>>> origin/master
 
 		$parser = @xml_parser_create();
 
 		if ( !is_resource($parser) )
+<<<<<<< HEAD
 			trigger_error( "Failed to create an instance of PHP's XML parser. https://secure.php.net/manual/en/ref.xml.php");
+=======
+			trigger_error( "Failed to create an instance of PHP's XML parser. http://www.php.net/manual/en/ref.xml.php");
+>>>>>>> origin/master
 
 		$this->parser = $parser;
 
@@ -100,6 +116,7 @@ class MagpieRSS {
 		$this->normalize();
 	}
 
+<<<<<<< HEAD
 	/**
 	 * PHP4 constructor.
 	 */
@@ -107,6 +124,8 @@ class MagpieRSS {
 		self::__construct( $source );
 	}
 
+=======
+>>>>>>> origin/master
 	function feed_start_element($p, $element, &$attrs) {
 		$el = $element = strtolower($element);
 		$attrs = array_change_key_case($attrs, CASE_LOWER);
@@ -114,7 +133,11 @@ class MagpieRSS {
 		// check for a namespace, and split if found
 		$ns	= false;
 		if ( strpos( $element, ':' ) ) {
+<<<<<<< HEAD
 			list($ns, $el) = explode( ':', $element, 2);
+=======
+			list($ns, $el) = split( ':', $element, 2);
+>>>>>>> origin/master
 		}
 		if ( $ns and $ns != 'rdf' ) {
 			$this->current_namespace = $ns;
@@ -599,7 +622,11 @@ function _response_to_rss ($resp) {
 	if ( $rss && (!isset($rss->ERROR) || !$rss->ERROR) ) {
 
 		// find Etag, and Last-Modified
+<<<<<<< HEAD
 		foreach ( (array) $resp->headers as $h) {
+=======
+		foreach( (array) $resp->headers as $h) {
+>>>>>>> origin/master
 			// 2003-03-02 - Nicola Asuni (www.tecnick.com) - fixed bug "Undefined offset: 1"
 			if (strpos($h, ": ")) {
 				list($field, $val) = explode(": ", $h, 2);
@@ -719,10 +746,14 @@ class RSSCache {
 	var $MAX_AGE	= 43200;  		// when are files stale, default twelve hours
 	var $ERROR 		= '';			// accumulate error messages
 
+<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $base = '', $age = '' ) {
+=======
+	function RSSCache ($base='', $age='') {
+>>>>>>> origin/master
 		$this->BASE_CACHE = WP_CONTENT_DIR . '/cache';
 		if ( $base ) {
 			$this->BASE_CACHE = $base;
@@ -733,6 +764,7 @@ class RSSCache {
 
 	}
 
+<<<<<<< HEAD
 	/**
 	 * PHP4 constructor.
 	 */
@@ -740,6 +772,8 @@ class RSSCache {
 		self::__construct( $base, $age );
 	}
 
+=======
+>>>>>>> origin/master
 /*=======================================================================*\
 	Function:	set
 	Purpose:	add an item to the cache, keyed on url
