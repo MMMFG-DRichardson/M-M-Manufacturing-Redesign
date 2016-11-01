@@ -1,0 +1,273 @@
+/*
+Theme Name: MMMFG
+Theme URI: http://www.mmmfg.com/
+Description: Vantage Child Theme for M&M Manufacturing
+Author: Daniel Richardson & Sindhuja Singireddy
+Template: vantage
+Version: 0.0.1
+Tags: custom, light, mmmfg, page-builder
+*/
+
+body {
+    font-family: futura-pt, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: futura-pt, sans-serif;
+}
+
+#main {
+    padding-top: 0 !important;
+}
+
+.main-navigation {
+    background: #055FAE;
+}
+
+.main-navigation ul li a:hover {
+    background: #054c8b;
+}
+
+.site-title {
+    font-family: futura-pt, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
+
+.widget_headline-widget {
+    margin-bottom: 0 !important;
+}
+
+.widget_headline-widget h1 {
+    color: #3E454D;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    padding: 40px 0 10px 0;
+    text-transform: none;
+    letter-spacing: 0px;
+}
+
+.widget_headline-widget .decoration {
+    background-image: linear-gradient(to right,
+        rgba(62, 69, 77, 0),
+        rgba(62, 69, 77, 1),
+        rgba(62, 69, 77, 0));
+    border: 0;
+    margin-top: 5px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.widget_headline-widget .decoration::after {
+    font-family: FontAwesome;
+    content: "\F103";
+    background-color: #fcfcfc;
+    color: #3E454D;
+    display: inline-block;
+    position: relative;
+    top: -0.5em;
+    font-size: 24px;
+    padding: 0 0.25em;
+}
+
+.SectionTitleLight {
+    color: #E7E8E8;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    padding: 40px 0 10px 0;
+}
+
+.SectionTitleDark {
+    color: #3E454D;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    padding: 40px 0 10px 0;
+    text-transform: none !important;
+    
+}
+
+.SectionTitleDarkHR {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right,
+        rgba(62, 69, 77, 0),
+        rgba(62, 69, 77, 1),
+        rgba(62, 69, 77, 0));
+    margin-bottom: 20px;
+    text-align: center;
+    width: 90%;
+}
+
+.SectionTitleDarkHR::after {
+    font-family: FontAwesome;
+    content: "\F103";
+    background-color: white;
+    color: #3E454D;
+    display: inline-block;
+    position: relative;
+    top: -0.5em;
+    font-size: 24px;
+    padding: 0 0.25em;
+}
+
+.SectionTitleLightHR {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right,
+        rgba(232, 232, 232, 0),
+        rgba(232, 232, 232, 1),
+        rgba(232, 232, 232, 0));
+    margin-bottom: 20px;
+    text-align: center;
+    width: 90%;
+}
+
+.SectionTitleLightHR::after {
+    font-family: FontAwesome;
+    content: "\F103";
+    background-color: #3E454D;
+    color: #E7E8E8;
+    display: inline-block;
+    position: relative;
+    top: -0.5em;
+    font-size: 24px;
+    padding: 0 0.25em;
+}
+
+.ProductImageBox {
+    width: 100%;
+    height: 250px;
+    color: #E7E8E8;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    position: relative;
+}
+
+#ProductImageBox1 {
+    background-image: url(images/Asset%201.png);
+}
+
+#ProductImageBox2 {
+    background-image: url(images/Asset%202.png);
+}
+
+#ProductImageBox3 {
+    background-image: url(images/Asset%203.png);
+}
+
+#ProductImageBox4 {
+    background-image: url(images/Asset%204.png);
+}
+
+.ProductTextBoxRight {
+    font-size: 12px;
+    right: 0;
+    width: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px;
+    transition: all 0.2s;
+}
+
+.ProductTextBoxLeft {
+    font-size: 12px;
+    width: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px;
+    transition: all 0.2s;
+}
+
+.ProductImageBox h1{
+    color: #E7E8E8;
+    padding: 0;
+    margin: 0;
+    font-size: 36px;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+    font-weight: 800;
+}
+
+.ProductImageBox p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.DivLink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none; /* No underlines on the link */
+    z-index: 10; /* Places the link above everything else in the div */
+    background-color: #FFF; /* Fix to make div clickable in IE */
+    opacity: 0; /* Fix to make div clickable in IE */
+    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
+}
+
+.ProductImageBox a {
+    color: #E7E8E8;
+    font-weight: 800;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.ProductTextBox:hover a {
+    color: white;
+}
+
+.ProductTextBoxRight:hover {
+    padding-right: 50px;
+}
+
+.ProductTextBoxLeft:hover {
+    padding-left: 50px;
+}
+
+.main-navigation {
+    
+}
+
+.menu-main-menu-container {
+    float: right;
+    font-weight: 100;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1::before {
+    font-family: "FontAwesome";
+    content: "\F015";
+    font-size: 24px !important;
+    opacity: 0;
+    transition: all 0.2s;
+    padding-right: 5px;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover:before {
+    opacity: 1;
+    padding-right: 0;
+}
+
+.menu-item a {
+    font-weight: 800;
+    font-size: 16px;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1 {
+    font-size: 24px !important;
+    padding-left: 0 !important; 
+    width: 259px;
+    text-align: right;
+    transition: all 0.2s;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover {
+    
+}
