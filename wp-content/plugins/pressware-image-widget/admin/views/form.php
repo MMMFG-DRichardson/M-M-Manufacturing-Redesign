@@ -45,15 +45,28 @@
         <br><br>
         <label>Select Page for Link:</label>
         <?php
-        $args = array(
-          'id' => $this->get_field_id('pressare-page'),
-          'name' => $this->get_field_name('pressare-page'),
-          'show_option_none' =>  __('None', 'int_link_wdg'),
-          'option_none_value' => '-1',
-          'selected' => $instance['pressware-page']
-        );
-    wp_dropdown_pages( $args );
-    ?>
+			$args = array(
+			  'id' => $this->get_field_id( 'pressware-page' ),
+			  'name' => $this->get_field_name('pressware-page'),
+			  'show_option_none' =>  __('None', 'int_link_wdg'),
+			  'option_none_value' => '-1',
+			  'selected' => $instance['pressware-page'],
+			);
+			wp_dropdown_pages( $args );
+    	?>
+       	
+       	<br><br>
+		<label for="<?php echo $this->get_field_id('text_area'); ?>">
+			<?php echo('Select Text Box Alignment:'); ?>
+		</label><br>
+		<label for="<?php echo $this->get_field_id('pressware-leftright'); ?>">
+			<?php _e('Left:     '); ?>
+				<input class="" id="<?php echo $this->get_field_id('radio-left'); ?>" name="<?php echo $this->get_field_name('pressware-leftright'); ?>" type="radio" value="Left" <?php if($instance['pressware-leftright'] === 'Left'){ echo 'checked="checked"'; } ?> />
+		</label><br>
+		<label for="<?php echo $this->get_field_id('pressware-leftright'); ?>">
+			<?php _e('Right:'); ?>
+			<input class="" id="<?php echo $this->get_field_id('radio-right'); ?>" name="<?php echo $this->get_field_name('pressware-leftright'); ?>" type="radio" value="Right" <?php if($instance['pressware-leftright'] === 'Right'){ echo 'checked="checked"'; } ?> />
+		</label>
         
 	</div><!-- .pressware-image-upload-container -->
 

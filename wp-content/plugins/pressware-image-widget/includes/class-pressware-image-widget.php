@@ -99,7 +99,7 @@ class Pressware_Image_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Renders teh dashboard of the widget.
+	 * Renders the dashboard of the widget.
 	 *
 	 * @since    1.0.0
 	 * @param    array    $instance    The array of settings for the widget.
@@ -118,6 +118,7 @@ class Pressware_Image_Widget extends WP_Widget {
         $title = isset( $instance['pressware-title'] ) ? $instance['pressware-title'] : '';
         $description = isset( $instance['pressware-description'] ) ? $instance['pressware-description'] : '';
         $page = isset( $instance['pressware-page'] ) ? $instance['pressware-page'] : '';
+		$leftright = isset( $instance['pressware-leftright'] ) ? $instance['pressware-leftright'] : '';
 
 		/**
 		 * The dashboard template for the widget.
@@ -153,6 +154,7 @@ class Pressware_Image_Widget extends WP_Widget {
         $instance['pressware-title'] = ( ! empty( $new_instance['pressware-title'] ) ) ? $new_instance['pressware-title'] : '';
         $instance['pressware-description'] = ( ! empty( $new_instance['pressware-description'] ) ) ? $new_instance['pressware-description'] : '';
         $instance['pressware-page'] = ( ! empty( $new_instance['pressware-page'] ) ) ? $new_instance['pressware-page'] : '';
+		$instance['pressware-leftright'] = ( ! empty( $new_instance['pressware-leftright'] ) ) ? $new_instance['pressware-leftright'] : '';
 
 		return $instance;
 

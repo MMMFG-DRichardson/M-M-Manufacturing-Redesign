@@ -16,18 +16,18 @@
 	<?php if ( $this->has_image_anchor( $instance['pressware-image-anchor'] ) ) { ?>
 
 		<a href="<?php echo $instance['pressware-image-anchor'] ?>">
-            <div class="ProductTextBox ProductTextBoxLeft">
-                <a class="DivLink" href="#"></a>
-                <h1 class="ProductTextBox"><?php echo $instance['pressware-title']; ?></h1>
-                <p class="ProductTextBox"><?php echo $instance['pressware-description']; ?></p>
-                <a href="#">Read More >></a>
-            </div>	
+            <div class="ProductTextBox ProductTextBox<?php echo $instance['pressware-leftright']; ?>">
+				<a class="DivLink" href="<?php echo get_permalink( $instance['pressware-page'] ) ?>"></a>
+				<h1 class="ProductTextBox"><?php echo $instance['pressware-title']; ?></h1>
+				<p class="ProductTextBox"><?php echo $instance['pressware-description']; ?></p>
+				<a href="<?php echo get_permalink( $instance['pressware-page'] ) ?>">Read More >></a>
+			</div>	
 		</a>
 
 	<?php } else { ?>
 
-	<div class="ProductTextBox ProductTextBoxLeft">
-        <a class="DivLink" href="<?php get_permalink( $instance['pressware-page'] ) ?>"></a>
+	<div class="ProductTextBox ProductTextBox<?php echo $instance['pressware-leftright']; ?>">
+        <a class="DivLink" href="<?php echo get_permalink( $instance['pressware-page'] ) ?>"></a>
         <h1 class="ProductTextBox"><?php echo $instance['pressware-title']; ?></h1>
         <p class="ProductTextBox"><?php echo $instance['pressware-description']; ?></p>
         <a href="<?php echo get_permalink( $instance['pressware-page'] ) ?>">Read More >></a>
