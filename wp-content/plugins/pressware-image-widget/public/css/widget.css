@@ -1,1 +1,82 @@
 .pressware-image-container img{max-width:100%;height:auto}
+
+.ProductImageBox {
+    width: 100%;
+    height: 250px;
+    color: #E7E8E8;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    position: relative;
+}
+
+.ProductTextBoxRight {
+    font-size: 12px;
+    right: 0;
+    width: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px;
+    transition: all 0.2s;
+}
+
+.ProductTextBoxLeft {
+    font-size: 12px;
+    width: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px;
+    transition: all 0.2s;
+}
+
+.ProductImageBox h1{
+    color: #E7E8E8;
+    padding: 0;
+    margin: 0;
+    font-size: 36px;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+    font-weight: 800;
+}
+
+.ProductImageBox p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.DivLink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none; /* No underlines on the link */
+    z-index: 10; /* Places the link above everything else in the div */
+    background-color: #FFF; /* Fix to make div clickable in IE */
+    opacity: 0; /* Fix to make div clickable in IE */
+    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
+}
+
+.ProductImageBox a {
+    color: #E7E8E8;
+    font-weight: 800;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.ProductTextBox:hover a {
+    color: white;
+}
+
+.ProductTextBoxRight:hover {
+    padding-right: 50px;
+}
+
+.ProductTextBoxLeft:hover {
+    padding-left: 50px;
+}
+
+/*Change*/
