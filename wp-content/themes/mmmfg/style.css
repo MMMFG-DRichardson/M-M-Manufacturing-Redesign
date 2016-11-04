@@ -147,22 +147,6 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
-#ProductImageBox1 {
-    background-image: url(images/Asset%201.png);
-}
-
-#ProductImageBox2 {
-    background-image: url(images/Asset%202.png);
-}
-
-#ProductImageBox3 {
-    background-image: url(images/Asset%203.png);
-}
-
-#ProductImageBox4 {
-    background-image: url(images/Asset%204.png);
-}
-
 .ProductTextBoxRight {
     font-size: 12px;
     right: 0;
@@ -270,4 +254,54 @@ h1, h2, h3, h4, h5, h6 {
 
 #masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover {
     
+}
+
+.HeaderText {
+    display: inline-block;
+    position: absolute;
+}
+
+.HeaderText h1, h2, h3 {
+    vertical-align: top;
+	color: #E7E8E8 !important;
+	font-family: "futura-pt" !important;
+}
+
+.HeaderText h1 {
+    font-size: 62px;
+    margin: 0;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+	font-weight: 800;
+}
+
+.HeaderText h2 {
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.HeaderText h3 {
+    font-weight: 400;
+    padding-top: 40px;
+    font-size: 20px;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.HeaderActionButton {
+    background-color: rgb(190, 59, 39) !important;
+	background-image: none;
+    border: none;
+	color: #E7E8E8 !important;
+    font-size: 23px;
+    font-weight: 800;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.HeaderActionButton:hover {
+    background-color: rgb(210, 79, 59);
+    text-decoration: underline;
 }
