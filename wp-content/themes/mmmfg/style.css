@@ -39,14 +39,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .widget_headline-widget h1 {
-    color: #3E454D;
+    color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
     font-size: 36px;
-    font-weight: 800;
+    font-family: futura-pt, sans-serif !important;
+   /* font-style: italic; 
+    font-weight: bold;   */
     text-align: center;
     padding: 40px 0 10px 0;
     text-transform: none;
-    letter-spacing: 0px;
-}
+    letter-spacing: 2px;
+    }
 
 .widget_headline-widget .decoration {
     background-image: linear-gradient(to right,
@@ -57,12 +59,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5px;
     margin: 0 auto;
     width: 95%;
+bottom: -15px;
 }
 
 .widget_headline-widget .decoration::after {
     font-family: FontAwesome;
     content: "\F103";
-    background-color: #fcfcfc;
+    background-color: #000;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
     color: #3E454D;
     display: inline-block;
     position: relative;
@@ -271,3 +274,134 @@ h1, h2, h3, h4, h5, h6 {
 #masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover {
     
 }
+
+                                          /*     Background image on First Section of Home Page */
+.module{
+	
+	background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url(http://127.0.0.1/wp-content/uploads/2016/11/warehouse-1.jpg);
+  background-size: cover;
+  width: 2000px;
+  height: 667px;
+  margin: 0px 0 0 -415px;
+  position: relative;
+  float: left;
+	
+
+	                                /*      Headline on image     */
+}
+
+.mid h2 {
+  font-family: 'futura-pt';
+
+  font-style: italic;
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  font-size: 5rem !important;
+  transform: translate(-50%, -50%);
+}
+                                                                         
+
+                                      /*   Paragraph content right below Headline */
+.mid p{
+  font-family: 'futura-pt';
+ 
+  font-style: italic;
+  color: white;
+  line-height: 1.5;
+  margin: 0;
+  position: relative;
+  top: 55%;
+  left: 90%;
+  font-size: 2rem !important;
+  transform: translate(-50%, -50%);
+}
+
+                                     /* Fonts for Our Mission Statement  */
+
+#panel-25-1-0-0  h1{
+  
+font-size: 30px; 
+font-family: 'futura-pt' ;
+font-style: italic;
+
+}
+#panel-25-1-0-0  p{
+  
+font-size: 20px; 
+font-family: 'futura-pt';
+
+line-height :1.5;
+
+}
+
+
+                                    /* Line  Decoration for Our Mission Statement   */
+
+hr {
+  border: 0;
+  text-align: center;
+
+background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+
+
+}
+hr::after {
+  content:'\2662';
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  padding: 0 10px;
+background : #fff;
+
+  color: #1e62af;
+  font-size: 25px;
+}
+
+                                  /*  Hiding 'A Site Origin theme' line from Footer */
+#theme-attribution {
+     
+      display:none;  
+     
+}
+ 
+
+                                  /*  Removed bottom borders from Footer Elements */
+
+#colophon .widget_nav_menu .menu-item a{
+
+border-bottom: none ; 
+font-family: 'ubuntu';
+font-size: 15px;
+
+}
+
+#colophon .widget_nav_menu .menu-item:hover a{
+
+color: #1e62af ; 
+font-family: 'ubuntu';
+font-size: 15px;
+}
+
+                                 /*  Applied CSS styles to Footer Widget Title  */
+
+#footer-widgets .widget .widget-title{
+ 
+ font-size: 20px;
+ margin-bottom: 25px;
+ font-family: 'ubuntu';
+ }
+ 
+.ProductImageBox {
+	
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)),url(http://127.0.0.1/wp-content/uploads/2016/11/warehouse-1.jpg);
+}
+

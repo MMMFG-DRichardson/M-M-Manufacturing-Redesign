@@ -19,6 +19,15 @@
     <script src="https://use.typekit.net/dqm6umi.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 	<?php wp_head(); ?>
+<script src="https://use.typekit.net/obt1mrh.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script src="https://use.typekit.net/sei7dce.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script src="https://use.typekit.net/vfq6oms.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script src="https://use.typekit.net/ydo2dkj.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
 </head>
 
 <body <?php body_class(); ?>>

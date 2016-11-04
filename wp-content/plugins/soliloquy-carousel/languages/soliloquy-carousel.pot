@@ -1,0 +1,120 @@
+# Copyright (C) 2016 Soliloquy - Carousel Addon
+# This file is distributed under the same license as the Soliloquy - Carousel Addon package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Soliloquy - Carousel Addon 2.2.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/soliloquy-"
+"carousel\n"
+"POT-Creation-Date: 2016-07-20 17:34:11+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/admin/metaboxes.php:93
+msgid "Carousel"
+msgstr ""
+
+#: includes/admin/metaboxes.php:111 includes/admin/metaboxes.php:143
+msgid "Enable Slider Carousel?"
+msgstr ""
+
+#: includes/admin/metaboxes.php:115
+msgid "Enables or disables the slider carousel feature on mobile devices."
+msgstr ""
+
+#: includes/admin/metaboxes.php:135
+msgid "The settings below adjust the carousel settings for the slider."
+msgstr ""
+
+#: includes/admin/metaboxes.php:136
+msgid "Need some help?"
+msgstr ""
+
+#: includes/admin/metaboxes.php:136
+msgid " Watch a video on how to setup your slider configuration"
+msgstr ""
+
+#: includes/admin/metaboxes.php:147
+msgid "Enables or disables the slider carousel feature."
+msgstr ""
+
+#: includes/admin/metaboxes.php:152
+msgid "Carousel Slide Width"
+msgstr ""
+
+#: includes/admin/metaboxes.php:155 includes/admin/metaboxes.php:164
+#: includes/admin/metaboxes.php:173
+msgid "px"
+msgstr ""
+
+#: includes/admin/metaboxes.php:156
+msgid ""
+"The width of each slide inside of the carousel (acts as max width and "
+"adjusts dynamically)."
+msgstr ""
+
+#: includes/admin/metaboxes.php:161
+msgid "Carousel Slide Height"
+msgstr ""
+
+#: includes/admin/metaboxes.php:165
+msgid ""
+"The height of each slide inside of the carousel (acts as max height and "
+"adjusts dynamically)."
+msgstr ""
+
+#: includes/admin/metaboxes.php:170
+msgid "Carousel Slide Margin"
+msgstr ""
+
+#: includes/admin/metaboxes.php:174
+msgid "The margin between each carousel slide within the slider."
+msgstr ""
+
+#: includes/admin/metaboxes.php:179
+msgid "Carousel Slides Minimum"
+msgstr ""
+
+#: includes/admin/metaboxes.php:183
+msgid ""
+"The minimum number of slides that should be visible within the carousel."
+msgstr ""
+
+#: includes/admin/metaboxes.php:188
+msgid "Carousel Slides Maximum"
+msgstr ""
+
+#: includes/admin/metaboxes.php:192
+msgid ""
+"The maximum number of slides that should be visible within the carousel."
+msgstr ""
+
+#: includes/admin/metaboxes.php:197
+msgid "Number of Slides to Move"
+msgstr ""
+
+#: includes/admin/metaboxes.php:201
+msgid "The number of slides to move when navigating through the carousel."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Soliloquy - Carousel Addon"
+msgstr ""
+
+#. #-#-#-#-#  soliloquy-carousel.pot (Soliloquy - Carousel Addon 2.2.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  soliloquy-carousel.pot (Soliloquy - Carousel Addon 2.2.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://soliloquywp.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Enables carousel display for Soliloquy sliders."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Soliloquy Team"
+msgstr ""

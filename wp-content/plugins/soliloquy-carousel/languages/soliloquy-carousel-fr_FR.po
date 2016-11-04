@@ -1,0 +1,124 @@
+# Copyright (C) 2015 Soliloquy - Carousel Addon
+# This file is distributed under the same license as the Soliloquy - Carousel Addon package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Soliloquy - Carousel Addon 2.1.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/soliloquy-"
+"carousel\n"
+"POT-Creation-Date: 2016-02-04 22:23+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-02-04 23:23+0100\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: Joseph Rézeau <joseph@rezeau.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_FR\n"
+
+#: soliloquy-carousel.php:157
+msgid "Carousel"
+msgstr "Carrousel"
+
+#: soliloquy-carousel.php:175 soliloquy-carousel.php:203
+msgid "Enable Slider Carousel?"
+msgstr "Activer le Carrousel ?"
+
+#: soliloquy-carousel.php:179
+msgid "Enables or disables the slider carousel feature on mobile devices."
+msgstr "Activer/désactiver le diaporama de type Carrousel sur mobiles."
+
+#: soliloquy-carousel.php:198
+msgid "The settings below adjust the carousel settings for the slider."
+msgstr ""
+"Les réglages ci-dessous vous permettent de régler les options de carrousel "
+"pour ce diaporama."
+
+#: soliloquy-carousel.php:207
+msgid "Enables or disables the slider carousel feature."
+msgstr "Activer/désactiver l'option Carrousel."
+
+#: soliloquy-carousel.php:212
+msgid "Carousel Slide Width"
+msgstr "Largeur des diapos"
+
+#: soliloquy-carousel.php:215 soliloquy-carousel.php:224
+#: soliloquy-carousel.php:233
+msgid "px"
+msgstr "px"
+
+#: soliloquy-carousel.php:216
+msgid ""
+"The width of each slide inside of the carousel (acts a max width and adjusts "
+"dynamically)."
+msgstr ""
+"La largeur de chaque diapo à l'intérieur du diaporama de type carrousel "
+"(agit comme largeur maximum et s'adapte dynamiquement)."
+
+#: soliloquy-carousel.php:221
+msgid "Carousel Slide Height"
+msgstr "Hauteur des diapos"
+
+#: soliloquy-carousel.php:225
+msgid ""
+"The height of each slide inside of the carousel (acts a max height and "
+"adjusts dynamically)."
+msgstr ""
+"La hauteur de chaque diapo à l'intérieur du diaporama de type carrousel "
+"(agit comme hauteur maximum et s'adapte dynamiquement)."
+
+#: soliloquy-carousel.php:230
+msgid "Carousel Slide Margin"
+msgstr "Marge des diapos"
+
+#: soliloquy-carousel.php:234
+msgid "The margin between each carousel slide within the slider."
+msgstr "La marge entre chaque diapo du carrousel à l'intérieur du diaporama."
+
+#: soliloquy-carousel.php:239
+msgid "Carousel Slides Minimum"
+msgstr "Minimum de diapos"
+
+#: soliloquy-carousel.php:243
+msgid ""
+"The minimum number of slides that should be visible within the carousel."
+msgstr "Nombre minimum de diapos à afficher dans le carrousel."
+
+#: soliloquy-carousel.php:248
+msgid "Carousel Slides Maximum"
+msgstr "Maximum de diapos"
+
+#: soliloquy-carousel.php:252
+msgid ""
+"The maximum number of slides that should be visible within the carousel."
+msgstr "Nombre maximum de diapos à afficher dans le carrousel."
+
+#: soliloquy-carousel.php:257
+msgid "Number of Slides to Move"
+msgstr "Nombre de diapos à faire défiler"
+
+#: soliloquy-carousel.php:261
+msgid "The number of slides to move when navigating through the carousel."
+msgstr ""
+"Nombre de diapos à faire défiler ensemble lors de la navigation dans le "
+"carrousel."
+
+#. Plugin Name of the plugin/theme
+msgid "Soliloquy - Carousel Addon"
+msgstr "Soliloquy - Carousel Addon"
+
+#. Plugin URI of the plugin/theme
+msgid "http://soliloquywp.com"
+msgstr "http://soliloquywp.com"
+
+#. Description of the plugin/theme
+msgid "Enables carousel display for Soliloquy sliders."
+msgstr "Enables carousel display for Soliloquy sliders."
+
+#. Author of the plugin/theme
+msgid "Thomas Griffin"
+msgstr "Thomas Griffin"
+
+#. Author URI of the plugin/theme
+msgid "http://thomasgriffinmedia.com"
+msgstr "http://thomasgriffinmedia.com"

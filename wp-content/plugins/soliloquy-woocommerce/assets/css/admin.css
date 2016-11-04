@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Featured Content Styles
+   ========================================================================== */
+
+#soliloquy-woocommerce .chosen-container {
+    min-width: 350px;
+    max-width: 100%;
+}
+
+#soliloquy-woocommerce th select,
+#soliloquy-woocommerce th .chosen-container {
+    min-width: 210px;
+    width: 210px;
+    max-width: 100%;
+}
+
+#soliloquy-woocommerce .chosen-container .search-field input {
+    height: 27px;
+}
