@@ -8,6 +8,15 @@ Version: 0.0.1
 Tags: custom, light, mmmfg, page-builder
 */
 
+/*
+	Primary Color: 			#1E62AF
+	Light Primary Color: 	#E8E8E8
+	Dark Primary Color: 	#3E454D
+	Red Accent Color: 		#BD3A27
+*/
+
+/*Global Theme Styles*/
+
 body {
     font-family: futura-pt, sans-serif;
 }
@@ -19,6 +28,10 @@ h1, h2, h3, h4, h5, h6 {
 #main {
     padding-top: 0 !important;
 }
+
+/*End Global Theme Styles*/
+
+/*Main Menu Styles*/
 
 .main-navigation {
     background: #055FAE;
@@ -33,6 +46,14 @@ h1, h2, h3, h4, h5, h6 {
     font-style: normal !important;
     font-weight: 600 !important;
 }
+
+.menu ul {
+	float: right;
+}
+
+/*End Main Menu Styles*/
+
+/*Page Builder Headline Widget*/
 
 .widget_headline-widget {
     margin-bottom: 0 !important;
@@ -73,6 +94,8 @@ bottom: -15px;
     font-size: 24px;
     padding: 0 0.25em;
 }
+
+/*End Page Builder Headline Widget*/
 
 .SectionTitleLight {
     color: #E7E8E8;
@@ -440,4 +463,11 @@ font-size: 15px;
     background-color: rgb(210, 79, 59);
     text-decoration: underline;
 }
->>>>>>> origin/master
+/*>>>>>>> origin/master*/
+
+
+.sow-carousel-item h3 {
+	color: #3E454D !important;
+	font-family: futura-pt;
+	font-weight: 800 !important;
+}
