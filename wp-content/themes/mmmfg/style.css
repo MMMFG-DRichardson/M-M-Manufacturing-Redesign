@@ -15,6 +15,59 @@ Tags: custom, light, mmmfg, page-builder
 	Red Accent Color: 		#BD3A27
 */
 
+/*Post Grid Plugin Styles*/
+
+.post-grid.grid {
+	background: none !important;
+}
+
+.item {
+	background: #1E62AF !important;
+}
+
+.item a {
+	color: #E8E8E8 !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover .overlay, .rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay {
+	opacity: 0;
+	transition: none !important;
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover img {
+	
+	-webkit-transform: none !important;
+	-moz-transform: none !important;
+	-ms-transform: none !important;
+	transform: none !important;-o-transform: none !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-detail {
+	background: none;
+}
+
+.entry-content a {
+	text-decoration: none;
+	line-height: 1.1em;
+}
+
+.entry-content a:hover {
+	color: #BD3A27;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay .view-details {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.container-fluid {
+	padding-top: 20px;
+}
+
 /*Global Theme Styles*/
 
 body {
@@ -32,6 +85,10 @@ h1, h2, h3, h4, h5, h6 {
 /*End Global Theme Styles*/
 
 /*Main Menu Styles*/
+
+#masthead {
+	padding-bottom: 20px;
+}
 
 .main-navigation {
     background: #055FAE;
@@ -57,18 +114,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .widget_headline-widget {
     margin-bottom: 0 !important;
+	padding-bottom: 10px;
 }
 
 .widget_headline-widget h1 {
-    color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
+    color: #3E454D; 
     font-size: 36px;
     font-family: futura-pt, sans-serif !important;
-   /* font-style: italic; 
-    font-weight: bold;   */
+   /* font-style: italic; */
+    font-weight: bold;   
     text-align: center;
     padding: 40px 0 10px 0;
     text-transform: none;
     letter-spacing: 2px;
+    }
+
+.widget_headline-widget .light h1 {
+    color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
     }
 
 .widget_headline-widget .decoration {
@@ -86,13 +148,18 @@ bottom: -15px;
 .widget_headline-widget .decoration::after {
     font-family: FontAwesome;
     content: "\F103";
-    background-color: #000;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
+    background-color: #fcfcfc;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
     color: #3E454D;
     display: inline-block;
     position: relative;
     top: -0.5em;
     font-size: 24px;
     padding: 0 0.25em;
+}
+
+.widget_headline-widget .light .decoration::after {
+    background-color: #000;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
+    color: #3E454D;
 }
 
 /*End Page Builder Headline Widget*/
@@ -427,7 +494,7 @@ font-size: 15px;
 
 .HeaderText h1 {
     font-size: 62px;
-    margin: 0;
+    margin: 30px 0 0 0;
     text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
 	font-weight: 800;
 }
