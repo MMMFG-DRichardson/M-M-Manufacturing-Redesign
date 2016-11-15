@@ -12,7 +12,7 @@ class rtTPG
 
         $this->options = array(
             'settings' => 'rt_the_post_grid_settings',
-            'version' => '1.2',
+            'version' => '1.4',
             'installed_version' => 'rt_the_post_grid_current_version',
             'slug' => RT_THE_POST_GRID_PLUGIN_SLUG
         );

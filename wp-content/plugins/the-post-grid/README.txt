@@ -4,7 +4,7 @@ Donate link:
 Tags: post grid, content grid, post display, post format, post view, blog display, news display, post
 Requires at least: 3.5
 Tested up to: 4.6
-Stable tag: 1.2
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,12 @@ In WordPress dashboard menu, click Content Views
 
 
 == Changelog ==
+
+= 1.4 =
+* Uncaught TypeError: $(...).imagesLoaded is not a function(…)  issue is fixed
+
+= 1.3 =
+* Fixed The equal height issue
 
 = 1.2 =
 * Isotope button conflict removed

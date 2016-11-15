@@ -15,59 +15,6 @@ Tags: custom, light, mmmfg, page-builder
 	Red Accent Color: 		#BD3A27
 */
 
-/*Post Grid Plugin Styles*/
-
-.post-grid.grid {
-	background: none !important;
-}
-
-.item {
-	background: #1E62AF !important;
-}
-
-.item a {
-	color: #E8E8E8 !important;
-}
-
-.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover .overlay, .rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay {
-	opacity: 0;
-	transition: none !important;
-	-webkit-transition: none !important;
-	-moz-transition: none !important;
-	-ms-transition: none !important;
-	-o-transition: none !important;
-}
-
-.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover img {
-	
-	-webkit-transform: none !important;
-	-moz-transform: none !important;
-	-ms-transform: none !important;
-	transform: none !important;-o-transform: none !important;
-}
-
-.rt-tpg-container .layout1 .rt-holder .rt-detail {
-	background: none;
-}
-
-.entry-content a {
-	text-decoration: none;
-	line-height: 1.1em;
-}
-
-.entry-content a:hover {
-	color: #BD3A27;
-}
-
-.rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay .view-details {
-	width: 100% !important;
-	height: 100% !important;
-}
-
-.container-fluid {
-	padding-top: 20px;
-}
-
 /*Global Theme Styles*/
 
 body {
@@ -86,10 +33,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Main Menu Styles*/
 
-#masthead {
-	padding-bottom: 20px;
-}
-
 .main-navigation {
     background: #055FAE;
 }
@@ -98,19 +41,109 @@ h1, h2, h3, h4, h5, h6 {
     background: #054c8b;
 }
 
-.site-title {
-    font-family: futura-pt, sans-serif !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
+#masthead {
+	padding-bottom: 20px;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1 {
+    font-size: 24px !important;
+    padding-left: 0 !important;
+	text-align: right;
+	transition: all 0.2s;
+    width: 259px;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1::before {
+    content: "\F015";
+	font-family: "FontAwesome";
+    font-size: 24px !important;
+    opacity: 0;
+	padding-right: 5px;
+    transition: all 0.2s;
+}
+
+#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover:before {
+    opacity: 1;
+    padding-right: 0;
 }
 
 .menu ul {
 	float: right;
 }
 
+.menu-item a {
+    font-size: 16px;
+	font-weight: 800;
+}
+
+.menu-main-menu-container {
+    float: right;
+    font-weight: 100;
+}
+
+.site-title {
+    font-family: futura-pt, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+}
+
 /*End Main Menu Styles*/
 
-/*Page Builder Headline Widget*/
+/*Hero Image Styles*/
+
+.HeaderActionButton {
+    background-color: rgb(190, 59, 39) !important;
+	background-image: none;
+    border: none;
+	color: #E7E8E8 !important;
+    font-size: 23px;
+    font-weight: 800;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.HeaderActionButton:hover {
+    background-color: rgb(210, 79, 59);
+    text-decoration: underline;
+}
+
+.HeaderText {
+    display: inline-block;
+    position: absolute;
+}
+
+.HeaderText h1, h2, h3 {
+    vertical-align: top;
+	color: #E7E8E8 !important;
+	font-family: "futura-pt" !important;
+}
+
+.HeaderText h1 {
+    font-size: 62px;
+    margin: 30px 0 0 0;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+	font-weight: 800;
+}
+
+.HeaderText h2 {
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.HeaderText h3 {
+    font-weight: 400;
+    padding-top: 40px;
+    font-size: 20px;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+/*End Hero Image Styles*/
+
+/*Page Builder Headline Widget Styles*/
 
 .widget_headline-widget {
     margin-bottom: 0 !important;
@@ -119,19 +152,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .widget_headline-widget h1 {
     color: #3E454D; 
+	text-align: center;
+	font-family: futura-pt, sans-serif !important;
     font-size: 36px;
-    font-family: futura-pt, sans-serif !important;
-   /* font-style: italic; */
     font-weight: bold;   
-    text-align: center;
+    letter-spacing: 2px;
     padding: 40px 0 10px 0;
     text-transform: none;
-    letter-spacing: 2px;
-    }
+}
 
 .widget_headline-widget .light h1 {
-    color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
-    }
+    color: #fcfcfc;
+}
 
 .widget_headline-widget .decoration {
     background-image: linear-gradient(to right,
@@ -139,217 +171,36 @@ h1, h2, h3, h4, h5, h6 {
         rgba(62, 69, 77, 1),
         rgba(62, 69, 77, 0));
     border: 0;
-    margin-top: 5px;
-    margin: 0 auto;
+    margin: 5px auto 0 auto;
     width: 95%;
-bottom: -15px;
 }
 
-.widget_headline-widget .decoration::after {
-    font-family: FontAwesome;
-    content: "\F103";
-    background-color: #fcfcfc;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
-    color: #3E454D;
-    display: inline-block;
-    position: relative;
-    top: -0.5em;
-    font-size: 24px;
-    padding: 0 0.25em;
-}
-
-.widget_headline-widget .light .decoration::after {
-    background-color: #000;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
-    color: #3E454D;
-}
-
-/*End Page Builder Headline Widget*/
-
-.SectionTitleLight {
-    color: #E7E8E8;
-    font-size: 36px;
-    font-weight: 800;
-    text-align: center;
-    padding: 40px 0 10px 0;
-}
-
-.SectionTitleDark {
-    color: #3E454D;
-    font-size: 36px;
-    font-weight: 800;
-    text-align: center;
-    padding: 40px 0 10px 0;
-    text-transform: none !important;
-    
-}
-
-.SectionTitleDarkHR {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right,
-        rgba(62, 69, 77, 0),
-        rgba(62, 69, 77, 1),
-        rgba(62, 69, 77, 0));
-    margin-bottom: 20px;
-    text-align: center;
-    width: 90%;
-}
-
-.SectionTitleDarkHR::after {
-    font-family: FontAwesome;
-    content: "\F103";
-    background-color: white;
-    color: #3E454D;
-    display: inline-block;
-    position: relative;
-    top: -0.5em;
-    font-size: 24px;
-    padding: 0 0.25em;
-}
-
-.SectionTitleLightHR {
-    border: 0;
-    height: 1px;
+.widget_headline-widget .light .decoration {
     background-image: linear-gradient(to right,
         rgba(232, 232, 232, 0),
         rgba(232, 232, 232, 1),
         rgba(232, 232, 232, 0));
-    margin-bottom: 20px;
-    text-align: center;
-    width: 90%;
 }
 
-.SectionTitleLightHR::after {
-    font-family: FontAwesome;
-    content: "\F103";
-    background-color: #3E454D;
-    color: #E7E8E8;
-    display: inline-block;
+.widget_headline-widget .decoration::after {
+    background-color: #fcfcfc;
+	color: #3E454D;
+	content: "\F103";
+	display: inline-block;
+	font-family: FontAwesome;
+	font-size: 24px;
+	padding: 0 0.25em;
     position: relative;
-    top: -0.5em;
-    font-size: 24px;
-    padding: 0 0.25em;
+    top: -0.4em;
 }
 
-.ProductImageBox {
-    width: 100%;
-    height: 250px;
-    color: #E7E8E8;
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    position: relative;
+.widget_headline-widget .light .decoration::after {
+    background-color: #3E454D !important;
+    color: #fcfcfc !important;
 }
 
-.ProductTextBoxRight {
-    font-size: 12px;
-    right: 0;
-    width: 350px;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 15px;
-    transition: all 0.2s;
-}
+/*End Page Builder Headline Widget*/
 
-.ProductTextBoxLeft {
-    font-size: 12px;
-    width: 350px;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 15px;
-    transition: all 0.2s;
-}
-
-.ProductImageBox h1{
-    color: #E7E8E8;
-    padding: 0;
-    margin: 0;
-    font-size: 36px;
-    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
-    font-weight: 800;
-}
-
-.ProductImageBox p {
-    font-size: 14px;
-    margin: 5px 0;
-}
-
-.DivLink {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    text-decoration: none; /* No underlines on the link */
-    z-index: 10; /* Places the link above everything else in the div */
-    background-color: #FFF; /* Fix to make div clickable in IE */
-    opacity: 0; /* Fix to make div clickable in IE */
-    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
-}
-
-.ProductImageBox a {
-    color: #E7E8E8;
-    font-weight: 800;
-    font-size: 14px;
-    transition: color 0.2s;
-}
-
-.ProductTextBox:hover a {
-    color: white;
-}
-
-.ProductTextBoxRight:hover {
-    padding-right: 50px;
-}
-
-.ProductTextBoxLeft:hover {
-    padding-left: 50px;
-}
-
-.main-navigation {
-    
-}
-
-.menu-main-menu-container {
-    float: right;
-    font-weight: 100;
-}
-
-#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1::before {
-    font-family: "FontAwesome";
-    content: "\F015";
-    font-size: 24px !important;
-    opacity: 0;
-    transition: all 0.2s;
-    padding-right: 5px;
-}
-
-#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover:before {
-    opacity: 1;
-    padding-right: 0;
-}
-
-.menu-item a {
-    font-weight: 800;
-    font-size: 16px;
-}
-
-#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1 {
-    font-size: 24px !important;
-    padding-left: 0 !important; 
-    width: 259px;
-    text-align: right;
-    transition: all 0.2s;
-}
-
-#masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover {
-    
-}
-
-<<<<<<< HEAD
                                           /*     Background image on First Section of Home Page */
 .module{
 	
@@ -442,9 +293,7 @@ background : #fff;
 
                                   /*  Hiding 'A Site Origin theme' line from Footer */
 #theme-attribution {
-     
-      display:none;  
-     
+      display:none;
 }
  
 
@@ -480,61 +329,51 @@ font-size: 15px;
       rgba(0, 0, 0, 0.6)),url(http://127.0.0.1/wp-content/uploads/2016/11/warehouse-1.jpg);
 }
 
-=======
-.HeaderText {
-    display: inline-block;
-    position: absolute;
-}
-
-.HeaderText h1, h2, h3 {
-    vertical-align: top;
-	color: #E7E8E8 !important;
-	font-family: "futura-pt" !important;
-}
-
-.HeaderText h1 {
-    font-size: 62px;
-    margin: 30px 0 0 0;
-    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
-	font-weight: 800;
-}
-
-.HeaderText h2 {
-    font-size: 24px;
-    font-weight: 400;
-    font-style: italic;
-    margin: 0;
-    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
-}
-
-.HeaderText h3 {
-    font-weight: 400;
-    padding-top: 40px;
-    font-size: 20px;
-    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
-}
-
-.HeaderActionButton {
-    background-color: rgb(190, 59, 39) !important;
-	background-image: none;
-    border: none;
-	color: #E7E8E8 !important;
-    font-size: 23px;
-    font-weight: 800;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-
-.HeaderActionButton:hover {
-    background-color: rgb(210, 79, 59);
-    text-decoration: underline;
-}
-/*>>>>>>> origin/master*/
-
-
 .sow-carousel-item h3 {
 	color: #3E454D !important;
 	font-family: futura-pt;
 	font-weight: 800 !important;
 }
+
+/*Post Grid Plugin Styles*/
+
+.container-fluid {
+	padding-top: 20px;
+}
+
+.entry-content a {
+	text-decoration: none;
+	line-height: 1.1em;
+}
+
+.entry-content a:hover {
+	color: #BD3A27;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-detail {
+	background: none;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover img {
+	-moz-transform: none !important;
+	-ms-transform: none !important;
+	-o-transform: none !important;
+	-webkit-transform: none !important;
+	transform: none !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay .view-details {
+		height: 100% !important;
+		width: 100% !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover .overlay, .rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay {
+	opacity: 0;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+	-webkit-transition: none !important;
+	transition: none !important;
+}
+
+/*End Post Grid Plugin Styles*/

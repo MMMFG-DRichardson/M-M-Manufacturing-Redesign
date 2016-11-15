@@ -1,7 +1,8 @@
 .pressware-image-container img{max-width:100%;height:auto}
 
 .ProductImageBox {
-    width: 100%;
+    background-position: center center;
+	width: 100%;
     height: 250px;
     color: #E7E8E8;
     margin: 0;
@@ -10,11 +11,15 @@
     position: relative;
 }
 
+.ProductTextBox {
+	
+}
+
 .ProductTextBoxRight {
     font-size: 12px;
     right: 0;
     width: 350px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -25,7 +30,7 @@
 .ProductTextBoxLeft {
     font-size: 12px;
     width: 350px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -79,4 +84,43 @@
     padding-left: 50px;
 }
 
-/*Change 2*/
+@media only screen and (max-width: 500px) {
+	.ProductTextBoxRight {
+		display: block;
+  		position:absolute;
+  		height:auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		transform: none;
+		width: auto;
+		padding: 10px;
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+
+	.ProductTextBoxLeft {
+		display: block;
+  		position:absolute;
+  		height:auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		transform: none;
+		width: auto;
+		padding: 10px;background-color: rgba(0, 0, 0, 0.4);
+	}
+	
+	.ProductTextBox h1 {
+		line-height: 0.9em;
+	}
+	
+	.ProductTextBoxRight:hover {
+		padding-right: 10px;
+	}
+
+	.ProductTextBoxLeft:hover {
+		padding-left: 10px;
+	}
+}

@@ -24,11 +24,11 @@ if(!class_exists('rtTPGShortCode')):
             }
             if(count($this->scA)){
                 if($iso){
-                    wp_enqueue_script('rt-image-load-js');
-                    wp_enqueue_script('rt-isotope-js');
+	                wp_enqueue_script('rt-isotope-js');
                 }
-                wp_enqueue_style('rt-fontawsome');
-                wp_enqueue_script('rt-actual-height-js');
+	            wp_enqueue_style('rt-fontawsome');
+	            wp_enqueue_script('rt-image-load-js');
+	            wp_enqueue_script('rt-actual-height-js');
                 wp_enqueue_script('rt-tpg-js');
                 $nonce = wp_create_nonce( $rtTPG->nonceText() );
                 wp_localize_script( 'rt-tpg-js', 'rttpg',
