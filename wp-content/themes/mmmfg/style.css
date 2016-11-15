@@ -8,6 +8,68 @@ Version: 0.0.1
 Tags: custom, light, mmmfg, page-builder
 */
 
+/*
+	Primary Color: 			#1E62AF
+	Light Primary Color: 	#E8E8E8
+	Dark Primary Color: 	#3E454D
+	Red Accent Color: 		#BD3A27
+*/
+
+/*Post Grid Plugin Styles*/
+
+.post-grid.grid {
+	background: none !important;
+}
+
+.item {
+	background: #1E62AF !important;
+}
+
+.item a {
+	color: #E8E8E8 !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover .overlay, .rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay {
+	opacity: 0;
+	transition: none !important;
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder:hover img {
+	
+	-webkit-transform: none !important;
+	-moz-transform: none !important;
+	-ms-transform: none !important;
+	transform: none !important;-o-transform: none !important;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-detail {
+	background: none;
+}
+
+.entry-content a {
+	text-decoration: none;
+	line-height: 1.1em;
+}
+
+.entry-content a:hover {
+	color: #BD3A27;
+}
+
+.rt-tpg-container .layout1 .rt-holder .rt-img-holder .overlay .view-details {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.container-fluid {
+	padding-top: 20px;
+}
+
+/*Global Theme Styles*/
+
 body {
     font-family: futura-pt;
 }
@@ -18,6 +80,14 @@ h1, h2, h3, h4, h5, h6 {
 
 #main {
     padding-top: 0 !important;
+}
+
+/*End Global Theme Styles*/
+
+/*Main Menu Styles*/
+
+#masthead {
+	padding-bottom: 20px;
 }
 
 .main-navigation {
@@ -34,20 +104,39 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600 !important;
 }
 
+.menu ul {
+	float: right;
+}
+
+/*End Main Menu Styles*/
+
+/*Page Builder Headline Widget*/
+
 .widget_headline-widget {
     margin-bottom: 0 !important;
+	padding-bottom: 10px;
 }
 
 .widget_headline-widget h1 {
-    color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
+    color: #3E454D; 
     font-size: 36px;
+<<<<<<< HEAD
     font-family: futura-pt !important;
    /* font-style: italic; 
     font-weight: bold;   */
+=======
+    font-family: futura-pt, sans-serif !important;
+   /* font-style: italic; */
+    font-weight: bold;   
+>>>>>>> origin/master
     text-align: center;
     padding: 40px 0 10px 0;
     text-transform: none;
     letter-spacing: 2px;
+    }
+
+.widget_headline-widget .light h1 {
+    color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
     }
 
 .widget_headline-widget .decoration {
@@ -65,7 +154,7 @@ bottom: -15px;
 .widget_headline-widget .decoration::after {
     font-family: FontAwesome;
     content: "\F103";
-    background-color: #000;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
+    background-color: #fcfcfc;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
     color: #3E454D;
     display: inline-block;
     position: relative;
@@ -73,6 +162,13 @@ bottom: -15px;
     font-size: 24px;
     padding: 0 0.25em;
 }
+
+.widget_headline-widget .light .decoration::after {
+    background-color: #000;         /*  changes made to background-color property from #fcfcfc to #0000    -- Sindhu   */
+    color: #3E454D;
+}
+
+/*End Page Builder Headline Widget*/
 
 .SectionTitleLight {
     color: #E7E8E8;
@@ -416,7 +512,7 @@ font-size: 15px;
 
 .HeaderText h1 {
     font-size: 62px;
-    margin: 0;
+    margin: 30px 0 0 0;
     text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
 	font-weight: 800;
 }
@@ -452,6 +548,7 @@ font-size: 15px;
     background-color: rgb(210, 79, 59);
     text-decoration: underline;
 }
+<<<<<<< HEAD
 
                                           /*   CSS style -- for the row after Our Mission Statement   */
  
@@ -604,3 +701,13 @@ color: #000000;
     height: 162px;
 }
 
+=======
+/*>>>>>>> origin/master*/
+
+
+.sow-carousel-item h3 {
+	color: #3E454D !important;
+	font-family: futura-pt;
+	font-weight: 800 !important;
+}
+>>>>>>> origin/master
