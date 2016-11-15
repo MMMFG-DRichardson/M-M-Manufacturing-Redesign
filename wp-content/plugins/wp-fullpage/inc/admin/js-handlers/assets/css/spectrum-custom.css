@@ -1,0 +1,81 @@
+
+.sp-replacer {
+    padding: 0px;
+    border-radius: 20px;
+    border-color: #A5A5A5;
+}
+.sp-replacer.sp-active,
+.sp-replacer:hover {
+    -khtml-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+       -moz-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+        -ms-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+         -o-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+    -webkit-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+            box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+    border-color: #A5A5A5;
+}
+.sp-replacer .sp-preview {
+    margin-right: 0px;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+.sp-replacer .sp-preview .sp-preview-inner {
+    border-radius: 15px;
+}
+.sp-clear-display {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+    background-repeat: repeat;
+}
+.sp-replacer .sp-dd {
+    display: none;
+}
+.sp-clear.sp-clear-display {
+    border-radius: 15px;
+}
+input.sp-input:focus,
+input.sp-input {
+    height: 26px !important;
+    border-radius: 4px !important;
+    border: 1px solid #9E9E9E !important;
+    padding-left: 4% !important;
+    width: 96% !important;
+    
+    -khtml-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+       -moz-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+        -ms-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+         -o-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+    -webkit-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+            box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+}
+.sp-container.sp-light.sp-alpha-enabled.sp-clear-enabled.sp-palette-buttons-disabled.sp-palette-disabled.full-spectrum {
+    border-radius: 4px;
+    border: 1px solid #9E9E9E;
+    background-color: #E9E9E9;
+    
+    -khtml-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+       -moz-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+        -ms-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+         -o-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+    -webkit-box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+            box-shadow: 0px 4px 8px #65727b, 0 0 4px #b6bdc2;
+}
+.sp-initial {
+    float: left;
+    border: solid 1px #333;
+}
+.sp-picker-container .sp-color,
+.sp-picker-container .sp-hue,
+.sp-picker-container .sp-hue .sp-slider,
+.sp-picker-container .sp-initial.sp-thumb.sp-cf,
+.sp-picker-container .sp-alpha .sp-alpha-inner {
+    border: 1px solid #9E9E9E;
+    border-radius: 4px;
+}
+.sp-picker-container .sp-color {
+    border-radius: 1px;
+}
+.sp-cancel,
+.sp-cancel:hover {
+    color: #17A5C7 !important;
+}
