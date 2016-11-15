@@ -1,0 +1,16 @@
+
+.collection {
+	margin-bottom: 20px !important;
+}
+
+.collection-item .move-cursor {
+	cursor: move;
+}
+
+.collection-item:nth-child(2n) {
+	background-color: #eeeeee !important;
+}
+
+.collection-item:nth-child(2n+1) {
+	background-color: #f5f5f5 !important;
+}

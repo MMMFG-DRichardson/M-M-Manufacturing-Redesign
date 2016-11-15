@@ -9,11 +9,11 @@ Tags: custom, light, mmmfg, page-builder
 */
 
 body {
-    font-family: futura-pt, sans-serif;
+    font-family: futura-pt;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: futura-pt, sans-serif;
+    font-family: futura-pt;
 }
 
 #main {
@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 .widget_headline-widget h1 {
     color: #fff;    /*      changes made to color property from #3E454D to #ffff    -- Sindhu    */
     font-size: 36px;
-    font-family: futura-pt, sans-serif !important;
+    font-family: futura-pt !important;
    /* font-style: italic; 
     font-weight: bold;   */
     text-align: center;
@@ -177,7 +177,7 @@ bottom: -15px;
     color: #E7E8E8;
     padding: 0;
     margin: 0;
-    font-size: 36px;
+    font-size: 24px;
     text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.4);
     font-weight: 800;
 }
@@ -218,7 +218,7 @@ bottom: -15px;
 .ProductTextBoxLeft:hover {
     padding-left: 50px;
 }
-
+/*
 .main-navigation {
     
 }
@@ -258,8 +258,7 @@ bottom: -15px;
 #masthead .hgroup h1, #masthead.masthead-logo-in-menu .logo > h1:hover {
     
 }
-
-<<<<<<< HEAD
+*/
                                           /*     Background image on First Section of Home Page */
 .module{
 	
@@ -276,11 +275,12 @@ bottom: -15px;
   float: left;
 	
 
-	                                /*      Headline on image     */
+	                               
 }
 
+                                        /*      Headline on image     */
 .mid h2 {
-  font-family: 'futura-pt';
+  font-family: 'futura-pt' !important;
 
   font-style: italic;
   color: white;
@@ -315,26 +315,29 @@ bottom: -15px;
   
 font-size: 30px; 
 font-family: 'futura-pt' ;
-font-style: italic;
+color: #000000;
+/*font-style: italic;*/
+
 
 }
 #panel-25-1-0-0  p{
   
-font-size: 20px; 
+font-size: 20px !important; 
 font-family: 'futura-pt';
-
+font-style: normal !important;
+color: #000000;
 line-height :1.5;
 
-}
-
-
-                                    /* Line  Decoration for Our Mission Statement   */
+} 
+                            /* Line  Decoration for Our Mission Statement   */
 
 hr {
   border: 0;
   text-align: center;
 
-background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+background-image: linear-gradient(to right, rgba(255, 255,255, 0.8), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+background-color: #000000;
+
 
 
 }
@@ -363,7 +366,7 @@ background : #fff;
 #colophon .widget_nav_menu .menu-item a{
 
 border-bottom: none ; 
-font-family: 'ubuntu';
+font-family: 'Ubuntu' !important;
 font-size: 15px;
 
 }
@@ -383,6 +386,13 @@ font-size: 15px;
  margin-bottom: 25px;
  font-family: 'ubuntu';
  }
+ h3.widget-title {
+ 
+ font-size: 20px !important;
+ margin-bottom: 25px;
+ font-family: 'ubuntu'!important;
+ color: #b9b9b9;
+ }
  
 .ProductImageBox {
 	
@@ -390,7 +400,9 @@ font-size: 15px;
       rgba(0, 0, 0, 0.6)),url(http://127.0.0.1/wp-content/uploads/2016/11/warehouse-1.jpg);
 }
 
-=======
+ 
+
+
 .HeaderText {
     display: inline-block;
     position: absolute;
@@ -440,4 +452,155 @@ font-size: 15px;
     background-color: rgb(210, 79, 59);
     text-decoration: underline;
 }
->>>>>>> origin/master
+
+                                          /*   CSS style -- for the row after Our Mission Statement   */
+ 
+#panel-25-2-0-0 p{
+
+ 
+    font-size: 15px !important;
+    font-family: 'Ubuntu';
+    padding-left: 140px !important;
+
+}
+
+#panel-25-2-0-0 {
+ 
+ 
+ padding-bottom: 50px;
+ padding-top: 50px;
+ padding-right: 0px;
+ padding-left: 50px !important;
+}
+
+                                    /*     CSS style for  'How can we help you'  */
+
+#panel-25-3-0-0 h1{
+
+   color: #000000 !important;
+ 
+}
+
+                                   /*     decoration  line after vantage headline 'How can we help you?'        */
+
+
+#panel-25-3-0-0 .decoration {
+            
+              border: 0;
+              text-align: center;
+              background-image: linear-gradient(to right, rgba(255, 255,255, 0.8), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+background-color: #000000;
+              
+}
+#panel-25-3-0-0 .decoration::after {
+  content:'\2662';
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  padding: 0 10px;
+background : #fff;
+
+  color: #1e62af;
+  font-size: 25px;
+}
+
+                                       /*  About M&M in Footer     */
+
+#panel-w582214757db41-0-0-0 p{
+
+font-family: 'Ubuntu';
+font-size: 15px;
+              
+ 
+
+}
+#panel-w582214757db41-0-0-0{
+
+margin-left: 60px;
+margin-right: 20px;
+
+}
+                                                /*    Hiding the Search Icon in Menu Bar of Home Page     */
+#search-icon {
+
+display: none; 
+
+}
+                                                  
+                                                /*    Font styles of Menu -- Home Page */
+.menu-menu-1-container{
+
+font-family: 'Ubuntu';
+}
+
+#panel-140-0-0-0, #panel-140-3-0-0 p{
+
+font-family: 'Ubuntu';
+font-size:   18px;
+color: #000000;
+
+}
+                                                /*   Font styles of Locations (Contact numbers)  */ 
+
+#panel-140-2-0-0, #panel-140-2-1-0, #panel-140-2-2-0,  #panel-140-2-3-0, #panel-140-5-0-0, #panel-140-5-1-0, #panel-140-5-2-0, #panel-140-5-3-0 p{
+
+font-family : 'Ubuntu';
+font-size: 15px;
+
+
+}
+                                                /*  CSS Styles -- Our Sales Team   */
+#panel-140-1-0-0 h1{
+
+color: #000000;
+}
+   
+#panel-140-4-0-0 h1 {
+
+color: #000000;
+}                                          
+                                               /*   CSS Styles -- Decoration below Our Sales Team   */
+
+#panel-140-1-0-0 .decoration-inside {
+              border: 0;
+              text-align: center;
+              background-image: linear-gradient(to right, rgba(255, 255,255, 0.8), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+              background-color: #000000;
+
+}
+#panel-140-1-0-0 .decoration::after {
+  content:'\2662';
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  padding: 0 10px;
+  background : #fff;
+  color: #1e62af;
+  font-size: 25px;
+}
+
+
+                                          /*         CSS Styles for Name field in Contact Form -- Locations Page         */
+
+.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required {
+
+      width : 200px; 
+      margin-left: 0px;
+      color: #000000;
+}
+
+                                         /*         CSS Styles for Email Field in Contact Form -- Locations Page         */
+
+.wpcf7-form-control.wpcf7-text.wpcf7-email.wpcf7-validates-as-required.wpcf7-validates-as-email {
+
+      margin-left: 9px;
+}
+                                           
+                                         /*         CSS Styles for Message Field in Contact Form -- Locations Page         */
+
+.wpcf7-form-control.wpcf7-textarea{
+     
+    width: 500px;
+    height: 162px;
+}
+
