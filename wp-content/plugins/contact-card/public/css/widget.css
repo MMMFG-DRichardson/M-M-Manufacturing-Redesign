@@ -1,0 +1,80 @@
+.Contact {
+	width: 100%;
+	height: 420px;
+	overflow: hidden;
+	position: relative;
+	background-position-x: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.InfoBox h1, .InfoBox h2, .InfoBox h3, .InfoBox h4, .InfoBox h5, .InfoBox h6, .InfoBox li, .InfoBox a {
+	color: white !important;
+	font-family: ubuntu;
+}
+
+.Contact img {
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+}
+
+.InfoBox {
+	background-color: rgba(0,0,0,0.60);
+	padding: 10px;
+	float: left;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	box-sizing: border-box;
+}
+
+h1.InfoBoxName  {
+	font-family: futura-pt;
+	font-size: 30px !important;
+	font-weight: 800;
+	margin: 0 !important;
+	line-height: 46px;
+}
+
+h1.InfoBoxTitle  {
+	font-size: 24px !important;
+	margin: 0 !important;
+	font-weight: 400 !important;
+	line-height: 28px;
+}
+
+.InfoBox ul {
+	padding-left: 0;
+	margin: 16px 0 10px 0;
+}
+
+.InfoBox ul li {
+	list-style: none;
+	margin-left: 0 !important;
+	padding-left: 0;
+	font-size: 14px;
+}
+
+span.InfoBoxData {
+	position: relative;
+	left: 0;
+}
+
+.InfoBox li a {
+	text-decoration: underline !important;
+}
+
+@media screen and (min-width: 830px) {
+	span.InfoBoxData {
+		position: absolute;
+		left: 80px;
+	}
+	
+	.InfoBox ul li {
+		list-style: none;
+		margin-left: 0 !important;
+		padding-left: 0;
+		font-size: 16px;
+	}
+}
